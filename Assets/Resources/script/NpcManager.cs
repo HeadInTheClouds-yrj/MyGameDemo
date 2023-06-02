@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NpcManager : MonoBehaviour
@@ -22,6 +23,7 @@ public class NpcManager : MonoBehaviour
         string[] strnaem = npcname.Split("(");
         NPC.name = strnaem[0]+"_"+nameFanolyId++;
         NPC.transform.SetParent(parent, false);
+        NPC.transform.AddComponent<NpcCell>();
     }
     public void registeToManager(string npcName,NpcCell npcCell)
     {
@@ -38,11 +40,16 @@ public class NpcManager : MonoBehaviour
     {
         if (allNpcCell.ContainsKey(npcName)) { return allNpcCell[npcName]; } else {Debug.Log("Ñ°ÕÒµÄnpc²»´æÔÚ£¡£¡£¡"); return null; }
     }
+    public Dictionary<string,NpcCell> getAllNpcCell() { return allNpcCell; }
     public float AlMeleeAttack()
     {
         foreach (var cell in allNpcCell.Values)
         {
-            if(attackItems.npcMeleeAttack(cell, cell.npcData.MeleeAttackRange))
+            if ((PlayerManager.instance.transform.position - cell.transform.position).magnitude < 50)
+            {
+                Vector3.Lerp(cell.transform.position, PlayerManager.instance.PlayerTransform.position,Time.deltaTime);
+            }
+            else if(attackItems.npcMeleeAttack(cell, cell.npcData.MeleeAttackRange))
             {
                 PlayerManager.instance.PlayerReduceHP(cell);
             }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerContrllo : MonoBehaviour
@@ -37,8 +38,12 @@ public class PlayerContrllo : MonoBehaviour
         test = transform.position;
         test.z = -7;
         maincamera.transform.position = Vector3.Lerp(maincamera.transform.position,test,tempfloatspeed * 6);
-        Debug.Log(Input.mousePosition+"======="+Camera.main.WorldToScreenPoint(transform.position));
-
+        //Debug.Log(Input.mousePosition+"======="+Camera.main.WorldToScreenPoint(transform.position));
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log(MouseButton.Left);
+            PlayerManager.instance.meleeAttack();
+        }
     }
     private void checkRollcool()
     {
