@@ -105,13 +105,13 @@ public class PlayerContrllo : MonoBehaviour
                 if (meleeAttackcooltime > 0.4f)
                 {
                     isMelee = true;
-                    PlayerManager.instance.meleeAttack();
+            PlayerManager.instance.meleeAttack();
                     meleeAttackcooltime = 0;
                 }
 
-            }
-
         }
+
+    }
     }
     private void checkRollcool()
     {
@@ -170,7 +170,7 @@ public class PlayerContrllo : MonoBehaviour
     public void PlayerMeleeAttack()
     {
         if (isMelee)
-        {
+    {
             animator.SetBool("isAttack", isMelee);
             meleeAttackcooltime += Time.deltaTime;
         }
