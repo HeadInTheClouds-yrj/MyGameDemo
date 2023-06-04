@@ -7,6 +7,8 @@ public class PlayerManager : MonoBehaviour
     public PlayerData playerData;
     private AttackItems attackItems;
     private Transform playerTransform;
+    private Animator animator;
+    private float tmphittimee=0;
     public Transform PlayerTransform
     {
         get
@@ -19,24 +21,39 @@ public class PlayerManager : MonoBehaviour
         instance = this;
         playerData = new PlayerData();
         attackItems = new AttackItems();
+        animator = GetComponent<Animator>();
     }
     public float PlayerReduceHP(NpcCell npcCell)
     {
         playerData.CurenttHealth -= npcCell.npcData.BaseDamage;
-        return playerData.CurenttHealth;
-    }
-    public float meleeAttack()
-    {
-        Dictionary<string,NpcCell> allnpc = NpcManager.instance.getAllNpcCell();
-        foreach (var npc in allnpc.Values)
+        animator.SetBool("isHit", true);
+        while (true)
         {
-            Debug.Log(npc.name);
-            if(attackItems.playerMeleeAttack(npc, playerData.AttackAngle, playerData.MeleeAttackRange))
+            tmphittimee += Time.deltaTime;
+            if (tmphittimee > 0.1f)
             {
-                Debug.Log(npc.NpcReduceHP(playerData.MeleeDamage));
+                tmphittimee = 0;
+                animator.SetBool("isHit", false);
+                break;
             }
         }
 
-        return 0f;
+        return playerData.CurenttHealth;
+    }
+    public void meleeAttack(bool isAttack)
+    {
+        if (isAttack)
+        {
+            Dictionary<string, NpcCell> allnpc = NpcManager.instance.getAllNpcCell();
+            foreach (var npc in allnpc.Values)
+            {
+                if (attackItems.playerMeleeAttack(npc, playerData.AttackAngle, playerData.MeleeAttackRange))
+                {
+                    NpcManager.instance.ReduceHP(npc, playerData.MeleeDamage + playerData.BaseDamage);
+                    Debug.Log(npc.NpcReduceHP(playerData.MeleeDamage)+"======"+npc.name);
+                    
+                }
+            }
+        }
     }
 }

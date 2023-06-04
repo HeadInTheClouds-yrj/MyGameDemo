@@ -9,7 +9,7 @@ public class NpcData
     private float baseDamage = 5;
     private float curenttHealth = 100;
     private float meleeDamage = 5;
-    private float meleeAttackRange = 0.5f;
+    private float meleeAttackRange = 1f;
 
     public string NpcName { get => npcName; set => npcName = value; }
     public float MaxHealth { get => maxHealth; set => maxHealth = value; }

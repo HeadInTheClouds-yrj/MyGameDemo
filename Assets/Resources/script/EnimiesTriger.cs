@@ -5,11 +5,17 @@ using UnityEngine;
 public class EnimiesTriger : MonoBehaviour
 {
     public GameObject OgameObject;
+    public Transform[] gamobjList;
     // Start is called before the first frame update
     void Start()
     {
-        NpcManager.instance.factoryNpc("npcs/Skeleton", OgameObject.transform);
+        gamobjList = OgameObject.GetComponentsInChildren<Transform>();
+        for (int i = 0;i < gamobjList.Length;i++)
+        {
+            NpcManager.instance.factoryNpc("npcs/Skeleton", gamobjList[i].transform);
+        }
     }
+    
 
     // Update is called once per frame
     void Update()

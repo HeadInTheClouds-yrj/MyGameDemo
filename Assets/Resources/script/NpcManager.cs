@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public class NpcManager : MonoBehaviour
@@ -8,10 +9,16 @@ public class NpcManager : MonoBehaviour
     public static NpcManager instance;
     private int nameFanolyId = 0;
     private AttackItems attackItems;
+    [SerializeField] LayerMask tree;
     public void Awake()
     {
         instance= this;
+        attackItems= new AttackItems();
         allNpcCell = new Dictionary<string, NpcCell>();
+
+    }
+    private void Update()
+    {
 
     }
     private Dictionary<string,NpcCell> allNpcCell;
@@ -41,23 +48,11 @@ public class NpcManager : MonoBehaviour
         if (allNpcCell.ContainsKey(npcName)) { return allNpcCell[npcName]; } else {Debug.Log("Ñ°ÕÒµÄnpc²»´æÔÚ£¡£¡£¡"); return null; }
     }
     public Dictionary<string,NpcCell> getAllNpcCell() { return allNpcCell; }
-    public float AlMeleeAttack()
-    {
-        foreach (var cell in allNpcCell.Values)
-        {
-            if ((PlayerManager.instance.transform.position - cell.transform.position).magnitude < 50)
-            {
-                Vector3.Lerp(cell.transform.position, PlayerManager.instance.PlayerTransform.position,Time.deltaTime);
-            }
-            else if(attackItems.npcMeleeAttack(cell, cell.npcData.MeleeAttackRange))
-            {
-                PlayerManager.instance.PlayerReduceHP(cell);
-            }
-        }
-        return 0f;
-    }
+
     public void ReduceHP(NpcCell npcCell,float damage)
     {
+        npcCell.isHit= true;
         npcCell.NpcReduceHP(damage);
+        npcCell.isHit = false;
     }
 }

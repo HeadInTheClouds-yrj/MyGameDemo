@@ -11,16 +11,20 @@ public class PlayerContrllo : MonoBehaviour
     private bool isMoving = false;
     private bool isRoll = false;
     private bool isMelee = false;
+    private float tempRollX = 0;
+    private float tempRollY = 0;
     private float rollcooltime = 0;
     private float meleeAttackcooltime;
     private int meleeAttackindex = 0;
     private int rollindex = 0;
-    private Vector2 input;
+    private Vector3 input;
     private float stateIndex_X;
     private float stateIndex_Y;
     private float tempfloatspeed = 2;
     private Animator animator;
     private Vector3 test;
+    [SerializeField] LayerMask tree;
+    [SerializeField] LayerMask interactive;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +36,6 @@ public class PlayerContrllo : MonoBehaviour
     {
         meleeAttackAnimationContrllo();
         StateSet(stateIndex_X, stateIndex_Y);
-        checkState();
         playmove();
         checkRollcool();
         PlayerRoll();
@@ -41,53 +44,58 @@ public class PlayerContrllo : MonoBehaviour
         test = transform.position;
         test.z = -7;
         maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, test, tempfloatspeed * 6);
-        Debug.Log(Input.mousePosition+"======="+Camera.main.WorldToScreenPoint(transform.position));
+        //Debug.Log(Input.mousePosition + "=======" + Camera.main.WorldToScreenPoint(transform.position));
 
     }
     private void meleeAttackAnimationContrllo()
     {
-        Vector3 playerOnScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
-        Vector3 mousePosition = Input.mousePosition;
-        if (mousePosition.x > playerOnScreenPosition.x && mousePosition.y >
-            playerOnScreenPosition.y && mousePosition.y*Screen.width > mousePosition.x*Screen.height)
+        if (!isMelee)
         {
-            stateIndex_X = 1;
-            stateIndex_Y = 1;
+            
+            Vector3 playerOnScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
+            Vector3 mousePosition = Input.mousePosition;
+            if (mousePosition.x > playerOnScreenPosition.x && mousePosition.y >
+                playerOnScreenPosition.y && mousePosition.y * Screen.width > mousePosition.x * Screen.height)
+            {
+                stateIndex_X = 1;
+                stateIndex_Y = 1;
+            }
+            else if (mousePosition.x < playerOnScreenPosition.x && mousePosition.y >
+                playerOnScreenPosition.y && MathF.Abs(mousePosition.y - playerOnScreenPosition.y) > MathF.Abs(mousePosition.x - playerOnScreenPosition.x))
+            {
+                stateIndex_X = -1;
+                stateIndex_Y = 1;
+            }
+            else if (mousePosition.x > playerOnScreenPosition.x && mousePosition.y >
+                playerOnScreenPosition.y && mousePosition.y * Screen.width < mousePosition.x * Screen.height ||
+                mousePosition.x > playerOnScreenPosition.x && mousePosition.y <
+                playerOnScreenPosition.y && MathF.Abs(mousePosition.y - playerOnScreenPosition.y) < MathF.Abs(mousePosition.x - playerOnScreenPosition.x))
+            {
+                stateIndex_X = 1;
+                stateIndex_Y = 0;
+            }
+            else if (mousePosition.x < playerOnScreenPosition.x && mousePosition.y >
+                playerOnScreenPosition.y && MathF.Abs(mousePosition.y - playerOnScreenPosition.y) * Screen.width < MathF.Abs(mousePosition.x - playerOnScreenPosition.x) * Screen.height ||
+                mousePosition.x < playerOnScreenPosition.x && mousePosition.y <
+                playerOnScreenPosition.y && mousePosition.y * Screen.width > mousePosition.x * Screen.height)
+            {
+                stateIndex_X = -1;
+                stateIndex_Y = 0;
+            }
+            else if (mousePosition.x > playerOnScreenPosition.x && mousePosition.y <
+                playerOnScreenPosition.y && MathF.Abs(mousePosition.y - playerOnScreenPosition.y) > MathF.Abs(mousePosition.x - playerOnScreenPosition.x))
+            {
+                stateIndex_X = 1;
+                stateIndex_Y = -1;
+            }
+            else if (mousePosition.x < playerOnScreenPosition.x && mousePosition.y <
+                playerOnScreenPosition.y && mousePosition.y * Screen.width < mousePosition.x * Screen.height)
+            {
+                stateIndex_X = -1;
+                stateIndex_Y = -1;
+            }
         }
-        else if (mousePosition.x < playerOnScreenPosition.x && mousePosition.y >
-            playerOnScreenPosition.y && MathF.Abs(mousePosition.y-playerOnScreenPosition.y) > MathF.Abs(mousePosition.x-playerOnScreenPosition.x))
-        {
-            stateIndex_X = -1;
-            stateIndex_Y = 1;
-        }
-        else if (mousePosition.x > playerOnScreenPosition.x && mousePosition.y >
-            playerOnScreenPosition.y && mousePosition.y * Screen.width < mousePosition.x * Screen.height ||
-            mousePosition.x > playerOnScreenPosition.x && mousePosition.y <
-            playerOnScreenPosition.y && MathF.Abs(mousePosition.y - playerOnScreenPosition.y) < MathF.Abs(mousePosition.x - playerOnScreenPosition.x))
-        {
-            stateIndex_X = 1;
-            stateIndex_Y = 0;
-        }
-        else if (mousePosition.x < playerOnScreenPosition.x && mousePosition.y >
-            playerOnScreenPosition.y && MathF.Abs(mousePosition.y - playerOnScreenPosition.y) * Screen.width < MathF.Abs(mousePosition.x - playerOnScreenPosition.x) * Screen.height ||
-            mousePosition.x < playerOnScreenPosition.x && mousePosition.y <
-            playerOnScreenPosition.y && mousePosition.y * Screen.width > mousePosition.x * Screen.height)
-        {
-            stateIndex_X = -1;
-            stateIndex_Y = 0;
-        }
-        else if (mousePosition.x > playerOnScreenPosition.x && mousePosition.y <
-            playerOnScreenPosition.y && MathF.Abs(mousePosition.y - playerOnScreenPosition.y) > MathF.Abs(mousePosition.x - playerOnScreenPosition.x))
-        {
-            stateIndex_X = 1;
-            stateIndex_Y = -1;
-        }
-        else if (mousePosition.x < playerOnScreenPosition.x && mousePosition.y <
-            playerOnScreenPosition.y && mousePosition.y * Screen.width < mousePosition.x * Screen.height)
-        {
-            stateIndex_X = -1;
-            stateIndex_Y = -1;
-        }
+
     }
     private void chekMeleeAttackcool()
     {
@@ -96,7 +104,7 @@ public class PlayerContrllo : MonoBehaviour
             if (meleeAttackindex == 0)
             {
                 isMelee = true;
-                PlayerManager.instance.meleeAttack();
+                PlayerManager.instance.meleeAttack(isMelee);
                 meleeAttackcooltime = 0;
                 meleeAttackindex++;
             }
@@ -105,13 +113,13 @@ public class PlayerContrllo : MonoBehaviour
                 if (meleeAttackcooltime > 0.4f)
                 {
                     isMelee = true;
-            PlayerManager.instance.meleeAttack();
+                    PlayerManager.instance.meleeAttack(isMelee);
                     meleeAttackcooltime = 0;
                 }
 
-        }
+            }
 
-    }
+        }
     }
     private void checkRollcool()
     {
@@ -130,18 +138,23 @@ public class PlayerContrllo : MonoBehaviour
                 {
                     isRoll = true;
                     rollcooltime = 0;
-                    
+
                 }
             }
         }
-        
+
     }
     public void roll()
     {
         Vector3 targetposition = transform.position;
-        targetposition.x += input.x * 4;
-        targetposition.y += input.y * 4;
-        if ((transform.position - targetposition).magnitude > Mathf.Epsilon)
+        targetposition.x += tempRollX * 4;
+        targetposition.y += tempRollY * 4;
+        if (Physics2D.OverlapCircle(transform.position, 0.1f, tree))
+        {
+            animator.SetBool("isroll", isRoll);
+            return;
+        }
+        else if((transform.position - targetposition).magnitude > Mathf.Epsilon)//使用while效果更好，可惜了之前没想到，if凑合用吧！
         {
             transform.position = Vector3.Lerp(transform.position, targetposition, tempfloatspeed * Time.deltaTime*1f);
             animator.SetBool("isroll", isRoll);
@@ -199,11 +212,13 @@ public class PlayerContrllo : MonoBehaviour
             //    input.y = 0;
             //}
             animator.SetBool("ismove", isMoving);
-            if (input != Vector2.zero&&!isRoll)
+            if (input != Vector3.zero&&!isRoll)
             {
                 Vector3 targetposition = transform.position;
                 targetposition.x += input.x;
                 targetposition.y += input.y;
+                tempRollX = input.x;
+                tempRollY = input.y;
                 if (!isRoll)
                 {
                     StartCoroutine(moving(targetposition));
@@ -221,13 +236,17 @@ public class PlayerContrllo : MonoBehaviour
         animator.SetFloat("rollx", x);
         animator.SetFloat("rolly", y);
     }
-    public void checkState()
-    {
-        animator.SetBool("isroll", isRoll);
-    }
     IEnumerator moving(Vector3 targetposition)
     {
-        if ((transform.position - targetposition).magnitude > Mathf.Epsilon)
+        Vector3 temptarget = targetposition;
+        temptarget.x -= tempRollX * 0.75f;
+        temptarget.y -= tempRollY * 0.75f;
+        Debug.DrawLine(transform.position, temptarget);
+        if (Physics2D.OverlapCircle(temptarget, 0.1f, tree))
+        {
+            animator.SetBool("ismove", isMoving);
+        }
+        else if ((transform.position - targetposition).magnitude > Mathf.Epsilon)
         {
             isMoving = true;
             animator.SetBool("ismove", isMoving);
