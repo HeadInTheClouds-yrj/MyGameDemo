@@ -7,8 +7,9 @@ public class PlayerManager : MonoBehaviour
     public PlayerData playerData;
     private AttackItems attackItems;
     private Transform playerTransform;
-    private Animator animator;
-    private float tmphittimee=0;
+    public Animator animator;
+    private float hittmptime = 0;
+    public bool isHit = false;
     public Transform PlayerTransform
     {
         get
@@ -23,21 +24,24 @@ public class PlayerManager : MonoBehaviour
         attackItems = new AttackItems();
         animator = GetComponent<Animator>();
     }
-    public float PlayerReduceHP(NpcCell npcCell)
+    private void Update()
     {
-        playerData.CurenttHealth -= npcCell.npcData.BaseDamage;
-        animator.SetBool("isHit", true);
-        while (true)
+        if (isHit)
         {
-            tmphittimee += Time.deltaTime;
-            if (tmphittimee > 0.1f)
-            {
-                tmphittimee = 0;
-                animator.SetBool("isHit", false);
-                break;
-            }
+            hittmptime += Time.deltaTime;
+            animator.SetBool("isHitt",isHit);
         }
-
+        if (isHit&&hittmptime>0.05f)
+        {
+            hittmptime = 0;
+            isHit = false;
+            animator.SetBool("isHitt", isHit);
+        }
+    }
+    public float PlayerReduceHP(float damage)
+    {
+        isHit = true;
+        playerData.CurenttHealth -= damage;
         return playerData.CurenttHealth;
     }
     public void meleeAttack(bool isAttack)
@@ -49,9 +53,8 @@ public class PlayerManager : MonoBehaviour
             {
                 if (attackItems.playerMeleeAttack(npc, playerData.AttackAngle, playerData.MeleeAttackRange))
                 {
-                    NpcManager.instance.ReduceHP(npc, playerData.MeleeDamage + playerData.BaseDamage);
-                    Debug.Log(npc.NpcReduceHP(playerData.MeleeDamage)+"======"+npc.name);
-                    
+                    npc.NpcReduceHP(playerData.MeleeDamage);
+
                 }
             }
         }

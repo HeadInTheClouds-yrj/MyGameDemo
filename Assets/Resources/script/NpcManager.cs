@@ -9,7 +9,7 @@ public class NpcManager : MonoBehaviour
     public static NpcManager instance;
     private int nameFanolyId = 0;
     private AttackItems attackItems;
-    [SerializeField] LayerMask tree;
+    public LayerMask tree;
     public void Awake()
     {
         instance= this;
@@ -49,10 +49,4 @@ public class NpcManager : MonoBehaviour
     }
     public Dictionary<string,NpcCell> getAllNpcCell() { return allNpcCell; }
 
-    public void ReduceHP(NpcCell npcCell,float damage)
-    {
-        npcCell.isHit= true;
-        npcCell.NpcReduceHP(damage);
-        npcCell.isHit = false;
-    }
 }

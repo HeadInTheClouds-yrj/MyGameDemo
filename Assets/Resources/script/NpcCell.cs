@@ -9,17 +9,19 @@ public class NpcCell : MonoBehaviour
     private Animator animator;
     public NpcData npcData;
     public bool isMoving=false;
-    public bool isIdle=true;
+    public bool isIdle=false;
     public bool isAttack = false;
     public bool isHit = false;
     public Vector3 targetMoving;
     public float skeleton01_stateY;
     public float skeleton01_stateX;
-    [SerializeField] LayerMask tree;
-    private float tmphittimee;
+    private LayerMask tree;
+    private float tmpmovetime;
     private AttackItems attackItems;
     private float idletmptime = 0;
     private Vector3 checkLayervector;
+    Vector3 playertemp;
+    private float hittmptime = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,7 @@ public class NpcCell : MonoBehaviour
         npcData = new NpcData();
         NpcManager.instance.registeToManager(transform.name, this);
         attackItems = new AttackItems();
+        tree = NpcManager.instance.tree;
     }
 
     // Update is called once per frame
@@ -41,36 +44,45 @@ public class NpcCell : MonoBehaviour
             idletmptime= 0;
         }
         AlMeleeAttack();
-
+        hitContrllo();
+    }
+    public void hitContrllo()
+    {
+        if (isHit)
+        {
+            hittmptime += Time.deltaTime;
+            animator.SetBool("skelenton01_isHit", isHit);
+        }
+        if (isHit && hittmptime > 0.1f)
+        {
+            hittmptime = 0;
+            isHit = false;
+            animator.SetBool("skelenton01_isHit", isHit);
+        }
     }
     public float NpcReduceHP(float velue)
     {
+        isHit = true;
         npcData.CurenttHealth -= velue;
         return npcData.CurenttHealth;
     }
     public bool AlIdleMoveLogic()
     {
-        if (isIdle)
+        if (!isIdle&&(PlayerManager.instance.transform.position - transform.position).magnitude > 5)
         {
             skeleton01_stateY = UnityEngine.Random.value < 0.33f ? -1f : UnityEngine.Random.value > 0.66f ? 1f : 0f;
             skeleton01_stateX = UnityEngine.Random.value < 0.33f ? -1f : UnityEngine.Random.value > 0.66f ? 1f : 0f;
             targetMoving = transform.position;
-            checkLayervector = transform.position;
-            checkLayervector.x -= 0.75f;
-            checkLayervector.y -= 0.75f;
             targetMoving.x += skeleton01_stateX;
             targetMoving.y += skeleton01_stateY;
-            if (!Physics2D.OverlapCircle(checkLayervector, 0.1f,tree))
-            {
-                StartCoroutine(AiIdleMove(targetMoving));
-            }
+            StartCoroutine(AiIdleMove(targetMoving));
         }
         return false;
     }
     IEnumerator AiIdleMove(Vector3 targetMoving)
     {
-        isIdle = false;
-        while ((transform.position - targetMoving).magnitude > Mathf.Epsilon)
+        isIdle = true;
+        while ((transform.position - targetMoving).magnitude > Mathf.Epsilon && !Physics2D.OverlapCircle(transform.position, 0.1f, tree))
         {
             
             transform.position = Vector3.MoveTowards(transform.position, targetMoving, npcData.Movespeed * Time.deltaTime*0.1f);
@@ -78,56 +90,57 @@ public class NpcCell : MonoBehaviour
             yield return null;
         }
         transform.position = targetMoving;
+        isIdle= false;
     }
 
     public float AlMeleeAttack()
     {
-        if ((PlayerManager.instance.transform.position - transform.position).magnitude < 5)
+        if ((PlayerManager.instance.transform.position - transform.position).magnitude < 5&&!isIdle)
         {
-            isIdle = false;
-            var playertemp = transform.position;
-            playertemp.x += (PlayerManager.instance.transform.position - transform.position).x*0.1f;
-            playertemp.y += (PlayerManager.instance.transform.position - transform.position).y * 0.1f;
-            if (!isAttack&&!Physics2D.OverlapCircle(playertemp, 0.1f, tree))
+            tmpmovetime += Time.deltaTime;
+            if (!isMoving&&(PlayerManager.instance.transform.position - transform.position).magnitude>1)
             {
-                StartCoroutine(moveToPlayer());
+                
+                if (!isMoving)
+                {
+                    animator.SetBool("skelenton01_isMoving", isMoving);
+                    playertemp = transform.position;
+                    playertemp.x += (PlayerManager.instance.transform.position - transform.position).x * 0.5f;
+                    playertemp.y += (PlayerManager.instance.transform.position - transform.position).y * 0.5f;
+                }
+                if (!Physics2D.OverlapCircle(playertemp, 0.1f, tree))
+                {
+                    StartCoroutine(moveToPlayer(playertemp));
+                }
+                
             }
-            if ((PlayerManager.instance.transform.position - transform.position).magnitude < 1)
+            if ((PlayerManager.instance.transform.position - transform.position).magnitude < 1f)
             {
-                isMoving = false;
-                tmphittimee += Time.deltaTime;
                 if (attackItems.npcMeleeAttack(this, npcData.MeleeAttackRange))
                 {
-
-                    if (tmphittimee > 1f)
+                    if (tmpmovetime > 0.5f)
                     {
-                        tmphittimee = 0;
+                        tmpmovetime = 0;
                         isAttack = true;
                         animator.SetBool("skelenton01_isAttack", isAttack);
-                        PlayerManager.instance.PlayerReduceHP(this);
+                        PlayerManager.instance.PlayerReduceHP(npcData.MeleeDamage);
                     }
                 }
             }
-            if (isAttack && tmphittimee > 0.05f)
+            if (isAttack && tmpmovetime > 0.05f)
             {
                 isAttack = false;
+                PlayerManager.instance.isHit = false;
                 animator.SetBool("skelenton01_isAttack", isAttack);
             }
         }
-        else
-        {
-            isIdle = true; 
-        }
         return 0f;
     }
-    IEnumerator moveToPlayer()
+    IEnumerator moveToPlayer(Vector3 playertemp)
     {
         isMoving = true;
         animator.SetBool("skelenton01_isMoving", isMoving);
-        Vector3 playertemp = transform.position;
-        playertemp.x = (PlayerManager.instance.transform.position - transform.position).x*0.5f;
-        playertemp.y = (PlayerManager.instance.transform.position - transform.position).y*0.5f;
-        while ((transform.position - PlayerManager.instance.PlayerTransform.position).magnitude > 1)
+        while ((transform.position - playertemp).magnitude > Mathf.Epsilon)
         {
             
             if (Camera.main.WorldToScreenPoint(PlayerManager.instance.PlayerTransform.position).x> Camera.main.WorldToScreenPoint(transform.position).x)
@@ -141,11 +154,14 @@ public class NpcCell : MonoBehaviour
                 skeleton01_stateY = 0;
             }
             
-            transform.position = Vector3.Lerp(transform.position, playertemp, Time.deltaTime*0.001f);
+            transform.position = Vector3.MoveTowards(transform.position, playertemp, Time.deltaTime*1f);
             yield return null;
         }
         isMoving = false;
         animator.SetBool("skelenton01_isMoving", isMoving);
+        transform.position = playertemp;
+
+
 
     }
     public void npcStatecontrllo()
