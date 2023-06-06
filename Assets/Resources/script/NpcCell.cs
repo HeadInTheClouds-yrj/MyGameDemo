@@ -36,12 +36,17 @@ public class NpcCell : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        idletmptime += Time.deltaTime;
+        
         npcStatecontrllo();
-        if (idletmptime>4f)
+        if (!isMoving)
         {
-            AlIdleMoveLogic();
-            idletmptime= 0;
+            idletmptime += Time.deltaTime;
+            if (idletmptime > 2f)
+            {
+                AlIdleMoveLogic();
+                idletmptime = 0;
+            }
+            
         }
         AlMeleeAttack();
         hitContrllo();
@@ -68,7 +73,7 @@ public class NpcCell : MonoBehaviour
     }
     public bool AlIdleMoveLogic()
     {
-        if (!isIdle&&(PlayerManager.instance.transform.position - transform.position).magnitude > 5)
+        if (!isMoving&&!isIdle&&(PlayerManager.instance.transform.position - transform.position).magnitude > 5)
         {
             skeleton01_stateY = UnityEngine.Random.value < 0.33f ? -1f : UnityEngine.Random.value > 0.66f ? 1f : 0f;
             skeleton01_stateX = UnityEngine.Random.value < 0.33f ? -1f : UnityEngine.Random.value > 0.66f ? 1f : 0f;
@@ -82,6 +87,7 @@ public class NpcCell : MonoBehaviour
     IEnumerator AiIdleMove(Vector3 targetMoving)
     {
         isIdle = true;
+        animator.SetBool("skelenton01_isIdle",isIdle);
         while ((transform.position - targetMoving).magnitude > Mathf.Epsilon && !Physics2D.OverlapCircle(transform.position, 0.1f, tree))
         {
             
@@ -91,6 +97,7 @@ public class NpcCell : MonoBehaviour
         }
         transform.position = targetMoving;
         isIdle= false;
+        animator.SetBool("skelenton01_isIdle", isIdle);
     }
 
     public float AlMeleeAttack()
@@ -98,20 +105,21 @@ public class NpcCell : MonoBehaviour
         if ((PlayerManager.instance.transform.position - transform.position).magnitude < 5&&!isIdle)
         {
             tmpmovetime += Time.deltaTime;
-            if (!isMoving&&(PlayerManager.instance.transform.position - transform.position).magnitude>1)
+            if (!isMoving&&!isIdle&&(PlayerManager.instance.transform.position - transform.position).magnitude > 1f)
             {
                 
-                if (!isMoving)
+                if (!isMoving&&!isIdle)
                 {
                     animator.SetBool("skelenton01_isMoving", isMoving);
                     playertemp = transform.position;
-                    playertemp.x += (PlayerManager.instance.transform.position - transform.position).x * 0.5f;
-                    playertemp.y += (PlayerManager.instance.transform.position - transform.position).y * 0.5f;
+                    playertemp.x += (PlayerManager.instance.transform.position - transform.position).x * 0.1f;
+                    playertemp.y += (PlayerManager.instance.transform.position - transform.position).y * 0.1f;
+                    if (!Physics2D.OverlapCircle(playertemp, 0.1f, tree))
+                    {
+                        StartCoroutine(moveToPlayer(playertemp));
+                    }
                 }
-                if (!Physics2D.OverlapCircle(playertemp, 0.1f, tree))
-                {
-                    StartCoroutine(moveToPlayer(playertemp));
-                }
+                
                 
             }
             if ((PlayerManager.instance.transform.position - transform.position).magnitude < 1f)
@@ -136,7 +144,7 @@ public class NpcCell : MonoBehaviour
         }
         return 0f;
     }
-    IEnumerator moveToPlayer(Vector3 playertemp)
+    IEnumerator moveToPlayer(Vector3 playertemp)//npc一多起来，就会停止移动，isMoving一直为True，里面的while是一直在运行的，但是会有两个npc是正常的！！！！！！！
     {
         isMoving = true;
         animator.SetBool("skelenton01_isMoving", isMoving);
@@ -155,6 +163,7 @@ public class NpcCell : MonoBehaviour
             }
             
             transform.position = Vector3.MoveTowards(transform.position, playertemp, Time.deltaTime*1f);
+
             yield return null;
         }
         isMoving = false;

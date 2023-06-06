@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
@@ -10,6 +13,8 @@ public class PlayerManager : MonoBehaviour
     public Animator animator;
     private float hittmptime = 0;
     public bool isHit = false;
+    private Image uI;
+    private TMP_Text playerhpui;
     public Transform PlayerTransform
     {
         get
@@ -23,6 +28,12 @@ public class PlayerManager : MonoBehaviour
         playerData = new PlayerData();
         attackItems = new AttackItems();
         animator = GetComponent<Animator>();
+    }
+    private void Start()
+    {
+        uI = UIManager.instance.GetUI("Panel", "Image_N").transform.GetComponent<Image>();
+        playerhpui = UIManager.instance.GetUI("Panel", "Text (TMP)_N").transform.GetComponent<TMP_Text>();
+        updateUI();
     }
     private void Update()
     {
@@ -41,8 +52,14 @@ public class PlayerManager : MonoBehaviour
     public float PlayerReduceHP(float damage)
     {
         isHit = true;
+        updateUI();
         playerData.CurenttHealth -= damage;
         return playerData.CurenttHealth;
+    }
+    public void updateUI()
+    {
+        uI.fillAmount = playerData.CurenttHealth/playerData.MaxHealth;
+        playerhpui.text = playerData.CurenttHealth.ToString()+"/"+playerData.MaxHealth.ToString();
     }
     public void meleeAttack(bool isAttack)
     {
