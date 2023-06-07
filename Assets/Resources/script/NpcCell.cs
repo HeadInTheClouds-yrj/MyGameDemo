@@ -31,6 +31,7 @@ public class NpcCell : MonoBehaviour
         NpcManager.instance.registeToManager(transform.name, this);
         attackItems = new AttackItems();
         tree = NpcManager.instance.tree;
+        Debug.Log(transform.parent.name);
     }
 
     // Update is called once per frame
