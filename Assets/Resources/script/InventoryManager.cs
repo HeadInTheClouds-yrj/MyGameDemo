@@ -33,7 +33,7 @@ public class InventoryManager : MonoBehaviour
             var itemicon = obj.transform.Find("Itemicon").GetComponent<Image>();
             var itemrmbutton = obj.transform.Find("RmButton").GetComponent<Toggle>();
             itemname.text = item.itemname;
-            itemicon.sprite = item.icon;
+            itemicon.sprite = item.Bagicon;
             if (rmToggle.isOn)
             {
                 itemrmbutton.gameObject.SetActive(true);

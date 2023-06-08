@@ -11,12 +11,9 @@ public class PlayerContrllo : MonoBehaviour
     public Camera maincamera;
     private bool isMoving = false;
     private bool isRoll = false;
-    private bool isMelee = false;
     private float tempRollX = 0;
     private float tempRollY = 0;
     private float rollcooltime = 0;
-    private float meleeAttackcooltime;
-    private int meleeAttackindex = 0;
     private int rollindex = 0;
     private Vector3 input;
     private float stateIndex_X;
@@ -40,17 +37,17 @@ public class PlayerContrllo : MonoBehaviour
         playmove();
         checkRollcool();
         PlayerRoll();
-        chekMeleeAttackcool();
-        PlayerMeleeAttack();
+        cameraFllowPlayer();
+    }
+    private void cameraFllowPlayer()
+    {
         test = transform.position;
         test.z = -7;
         maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, test, tempfloatspeed * 6);
-        //Debug.Log(Input.mousePosition + "=======" + Camera.main.WorldToScreenPoint(transform.position));
-
     }
-    private void meleeAttackAnimationContrllo()
+    private void meleeAttackAnimationContrllo() //player look for mouse funcition
     {
-        if (!isMelee)
+        if (!PlayerManager.instance.isMelee)
         {
             
             Vector3 playerOnScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
@@ -98,30 +95,7 @@ public class PlayerContrllo : MonoBehaviour
         }
 
     }
-    private void chekMeleeAttackcool()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (meleeAttackindex == 0)
-            {
-                isMelee = true;
-                PlayerManager.instance.meleeAttack(isMelee);
-                meleeAttackcooltime = 0;
-                meleeAttackindex++;
-            }
-            else
-            {
-                if (meleeAttackcooltime > 0.4f)
-                {
-                    isMelee = true;
-                    PlayerManager.instance.meleeAttack(isMelee);
-                    meleeAttackcooltime = 0;
-                }
 
-            }
-
-        }
-    }
     private void checkRollcool()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -181,23 +155,7 @@ public class PlayerContrllo : MonoBehaviour
             rollcooltime += Time.deltaTime;
         }
     }
-    public void PlayerMeleeAttack()
-    {
-        if (isMelee)
-    {
-            animator.SetBool("isAttack", isMelee);
-            meleeAttackcooltime += Time.deltaTime;
-        }
-        if (meleeAttackcooltime > 0.15f&&isMelee)
-        {
-            isMelee= false;
-            animator.SetBool("isAttack", isMelee);
-        }
-        if (meleeAttackcooltime<0.4f&&!isMelee)
-        {
-            meleeAttackcooltime += Time.deltaTime;
-        }
-    }
+
     public void playerHiting(PlayerManager playerManager)
     {
 

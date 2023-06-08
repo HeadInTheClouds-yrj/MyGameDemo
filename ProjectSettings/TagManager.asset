@@ -13,8 +13,8 @@ TagManager:
   - UI
   - interactiver
   - treer
-  - 
-  - 
+  - PlayerAttackobj
+  - Player
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: Interactive
     uniqueID: 1230461907
+    locked: 0
+  - name: PlayerAttackobjLayer
+    uniqueID: 1203313337
     locked: 0
   - name: uper
     uniqueID: 1195509031

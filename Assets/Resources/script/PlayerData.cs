@@ -12,6 +12,7 @@ public class PlayerData
     private float meleeDamage = 10;
     private float attackAngle = 60;
     private float meleeAttackRange = 1.5f;
+    private float rangedDamage = 5f;
 
     public string PlayerName { get => playerName; set => playerName = value; }
     public float MaxHealth { get => maxHealth; set => maxHealth = value; }
@@ -21,4 +22,5 @@ public class PlayerData
     public float MeleeDamage { get => meleeDamage; set => meleeDamage = value; }
     public float MeleeAttackRange { get => meleeAttackRange; set => meleeAttackRange = value; }
     public float AttackAngle { get => attackAngle; set => attackAngle = value; }
+    public float RangedDamage { get => rangedDamage; set => rangedDamage = value; }
 }

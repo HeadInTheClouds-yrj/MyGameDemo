@@ -16,4 +16,8 @@ public class ItemControl : MonoBehaviour
     {
         this.item = item;
     }
+    public void UseItem()
+    {
+        item.UseItem(item.itemkinde);
+    }
 }
