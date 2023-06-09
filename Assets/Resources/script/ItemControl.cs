@@ -1,23 +1,34 @@
+using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Item;
 
 public class ItemControl : MonoBehaviour
 {
     public Item item;
     public Button RemoveButton;
+    public void Start()
+    {
+    }
     public void RemoveItem()
     {
         InventoryManager.Instance.RemoveItem(item);
         Destroy(gameObject);
     }
-    public void AddItem(Item item)
+    public void AddItem(Item newitem)
     {
-        this.item = item;
+        item = newitem;
     }
     public void UseItem()
     {
-        item.UseItem(item.itemkinde);
+        switch (item.itemkinde)
+        {
+            case Itemkinde.RangedWeapen:
+                PlayerManager.instance.changeWearpon(item.icon, item.value, item.prefeberPath);
+                break;
+        }
     }
+    
 }

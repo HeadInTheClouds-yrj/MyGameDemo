@@ -1941,7 +1941,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1429132111}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: npc (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2359,7 +2359,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1849207554}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: npc
   m_TagString: Untagged
   m_Icon: {fileID: 0}

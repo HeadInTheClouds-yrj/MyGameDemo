@@ -20,12 +20,4 @@ public class Item : ScriptableObject
     public Sprite Bagicon;
     public Sprite icon;
     public Itemkinde itemkinde;
-    public void UseItem(Itemkinde itemkinde)
-    {
-        switch (itemkinde)
-        {
-            case Itemkinde.RangedWeapen: PlayerManager.instance.changeWearpon(icon,value,prefeberPath);
-                break;
-        }
-    }
 }

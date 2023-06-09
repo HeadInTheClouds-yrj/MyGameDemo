@@ -18,6 +18,7 @@ public class InventoryManager : MonoBehaviour
     }
     public void RemoveItem(Item item)
     {
+        Debug.Log(item);
         Items.Remove(item);
     }
     public void ListItems()
@@ -28,10 +29,10 @@ public class InventoryManager : MonoBehaviour
         }
         foreach (Item item in Items)
         {
-            GameObject obj = Instantiate(inventoryItem,itemContent);
+            GameObject obj = Instantiate(inventoryItem, itemContent);
             var itemname = obj.transform.Find("Itemname").GetComponent<TMP_Text>();
             var itemicon = obj.transform.Find("Itemicon").GetComponent<Image>();
-            var itemrmbutton = obj.transform.Find("RmButton").GetComponent<Toggle>();
+            var itemrmbutton = obj.transform.Find("RmButton").GetComponent<Button>();
             itemname.text = item.itemname;
             itemicon.sprite = item.Bagicon;
             if (rmToggle.isOn)
@@ -61,9 +62,19 @@ public class InventoryManager : MonoBehaviour
     public void setItemcontrol()
     {
         itemControlsList = itemContent.GetComponentsInChildren<ItemControl>();
-        for (int i = 0; i < Items.Count; i++)
+        if (itemControlsList.Length == Items.Count)
         {
-            itemControlsList[i].AddItem(Items[i]);
+            for (int i = 0; i < Items.Count; i++)
+            {
+                itemControlsList[i].AddItem(Items[i]);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < Items.Count; i++)
+            {
+                itemControlsList[i+ itemControlsList.Length - Items.Count].AddItem(Items[i]);
+            }
         }
     }
     // Start is called before the first frame update

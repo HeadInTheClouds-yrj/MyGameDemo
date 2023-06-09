@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7358765522225877120}
   - component: {fileID: 7358765522225877124}
   - component: {fileID: 7358765522225877125}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: sworte1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
