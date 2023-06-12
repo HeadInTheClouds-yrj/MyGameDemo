@@ -22,6 +22,10 @@ public class NpcCell : MonoBehaviour
     private Vector3 checkLayervector;
     Vector3 playertemp;
     private float hittmptime = 0;
+    private float lrMaxX = 2f;
+    private float lrX = 2f;
+    private float relativetransformX = 1f;
+    public LineRenderer lineRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +35,7 @@ public class NpcCell : MonoBehaviour
         NpcManager.instance.registeToManager(transform.name, this);
         attackItems = new AttackItems();
         tree = NpcManager.instance.tree;
+        lineRenderer = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
@@ -48,6 +53,8 @@ public class NpcCell : MonoBehaviour
             }
             
         }
+        lineRenderer.SetPosition(0, new Vector3(transform.position.x - relativetransformX, transform.position.y + 0.4f, 0));
+        lineRenderer.SetPosition(1, new Vector3(transform.position.x + lrX / 2, transform.position.y + 0.4f, 0));
         AlMeleeAttack();
         hitContrllo();
     }
@@ -69,6 +76,11 @@ public class NpcCell : MonoBehaviour
     {
         isHit = true;
         npcData.CurenttHealth -= velue;
+        lrX -= lrMaxX * (velue / npcData.MaxHealth) * 2;
+        if (lrX < -2f * relativetransformX)
+        {
+            lrX = -2f * relativetransformX;
+        }
         return npcData.CurenttHealth;
     }
     public bool AlIdleMoveLogic()

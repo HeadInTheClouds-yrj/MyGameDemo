@@ -32,6 +32,10 @@ public class PlayerManager : MonoBehaviour
     public GameObject SwordPrefer;
     [SerializeField]
     public Transform sworte2;
+    public LineRenderer lineRenderer;
+    public float lrMaxX = 2f;
+    public float lrX = 2f;
+    public float relativetransformX = 1f;
     private Transform playerTransform;
     public Transform PlayerTransform
     {
@@ -68,6 +72,8 @@ public class PlayerManager : MonoBehaviour
             isHit = false;
             animator.SetBool("isHitt", isHit);
         }
+        lineRenderer.SetPosition(0,new Vector3(transform.position.x- relativetransformX, transform.position.y + 0.8f, 0));
+        lineRenderer.SetPosition(1, new Vector3(transform.position.x + lrX / 2, transform.position.y + 0.8f, 0));
         GetMouseKey();
         chekAttackcool();
         PlayerMeleeAttack();
@@ -77,6 +83,11 @@ public class PlayerManager : MonoBehaviour
         isHit = true;
         updateUI();
         playerData.CurenttHealth -= damage;
+        lrX -= lrMaxX*(damage/playerData.MaxHealth)*2;
+        if (lrX < -2f * relativetransformX)
+        {
+            lrX = -2f * relativetransformX;
+        }
         return playerData.CurenttHealth;
     }
     public void updateUI()
