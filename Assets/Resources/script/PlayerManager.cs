@@ -24,8 +24,8 @@ public class PlayerManager : MonoBehaviour
     public bool rightMouse;
     public bool isMelee = false;
     public float sliderValue = 0f;
-    public float maxSliderValue = 5f;
-    public float BowPower = 3f;
+    public float maxSliderValue = 6f;
+    public float BowPower = 6f;
     private bool canfire = true;
     public Slider BowPowerSlider;
     public SpriteRenderer spriteRenderer;
@@ -88,6 +88,7 @@ public class PlayerManager : MonoBehaviour
         {
             lrX = -2f * relativetransformX;
         }
+        ThrowDamageText.instance.ThrowReduceTextFactory(transform,damage);
         return playerData.CurenttHealth;
     }
     public void updateUI()
@@ -165,7 +166,7 @@ public class PlayerManager : MonoBehaviour
         {
             if (sliderValue>0f)
             {
-                sliderValue -= Time.deltaTime * 1f;
+                sliderValue -= Time.deltaTime * 5f;
             }
             else
             {
@@ -187,6 +188,7 @@ public class PlayerManager : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(new Vector3(0f,0f,angle+90));
         BowControl bowControl = Instantiate(SwordPrefer,sworte2.position, rotation).GetComponent<BowControl>();
         bowControl.swordVelocity = SwordSpeed;
+        bowControl.playerDamge = playerData.BaseDamage + playerData.RangedDamage * 5 * (sliderValue / maxSliderValue);
         canfire = false;
         spriteRenderer.enabled = false;
     }
@@ -194,7 +196,7 @@ public class PlayerManager : MonoBehaviour
     private void Accumulated()
     {
         PlayerSwordBrow();
-        sliderValue += Time.deltaTime;
+        sliderValue += Time.deltaTime*2.5f;
         BowPowerSlider.value = sliderValue;
         if (sliderValue>maxSliderValue)
         {

@@ -22,9 +22,9 @@ public class NpcCell : MonoBehaviour
     private Vector3 checkLayervector;
     Vector3 playertemp;
     private float hittmptime = 0;
-    private float lrMaxX = 2f;
-    private float lrX = 2f;
-    private float relativetransformX = 1f;
+    private float lrMaxX = 1.38f;
+    private float lrX = 1.38f;
+    private float relativetransformX = 0.69f;
     public LineRenderer lineRenderer;
 
     // Start is called before the first frame update
@@ -81,6 +81,7 @@ public class NpcCell : MonoBehaviour
         {
             lrX = -2f * relativetransformX;
         }
+        ThrowDamageText.instance.ThrowReduceTextFactory(transform, velue);
         return npcData.CurenttHealth;
     }
     public bool AlIdleMoveLogic()

@@ -6,6 +6,7 @@ public class BowControl : MonoBehaviour
 {
     public float swordVelocity;
     public Rigidbody2D rb;
+    public float playerDamge;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -17,6 +18,7 @@ public class BowControl : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        collision.gameObject.GetComponent<NpcCell>().NpcReduceHP(Mathf.Round(playerDamge));
         Destroy(gameObject);
     }
 }
