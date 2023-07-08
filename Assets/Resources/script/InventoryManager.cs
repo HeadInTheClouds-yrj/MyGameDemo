@@ -18,7 +18,6 @@ public class InventoryManager : MonoBehaviour
     }
     public void RemoveItem(Item item)
     {
-        Debug.Log(item);
         Items.Remove(item);
     }
     public void ListItems()

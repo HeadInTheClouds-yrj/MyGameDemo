@@ -37,6 +37,22 @@ public class PlayerManager : MonoBehaviour
     public float lrX = 2f;
     public float relativetransformX = 1f;
     private Transform playerTransform;
+    private Sprite playerIcon;
+    public Sprite PlayerIcon
+    {
+        get
+        {
+            if (playerIcon == null)
+            {
+                playerIcon = Resources.Load("data/Art/CharacterAvatar/Beastmaster") as Sprite;
+                return playerIcon;
+            }
+            else
+            {
+                return playerIcon;
+            }
+        }
+    }
     public Transform PlayerTransform
     {
         get

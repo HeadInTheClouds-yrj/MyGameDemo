@@ -22,14 +22,15 @@ public class NpcManager : MonoBehaviour
 
     }
     private Dictionary<string,NpcCell> allNpcCell;
-    public void factoryNpc(string path,Transform parent)
+    public void factoryNpc(string path,Transform parent,Vector3 position)
     {
         GameObject tempObj = (GameObject)Resources.Load(path);
         GameObject NPC = GameObject.Instantiate(tempObj);
         string npcname = NPC.name;
         string[] strnaem = npcname.Split("(");
         NPC.name = strnaem[0]+"_"+nameFanolyId++;
-        NPC.transform.SetParent(parent, false);
+        NPC.transform.SetParent(parent,false);
+        NPC.transform.position = position;
         NPC.transform.AddComponent<NpcCell>();
     }
     public void registeToManager(string npcName,NpcCell npcCell)

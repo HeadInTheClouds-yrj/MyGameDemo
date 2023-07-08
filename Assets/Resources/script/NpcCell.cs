@@ -137,6 +137,7 @@ public class NpcCell : MonoBehaviour
             }
             if ((PlayerManager.instance.transform.position - transform.position).magnitude < 1f)
             {
+                Debug.Log(transform.name + "attack!");
                 if (attackItems.npcMeleeAttack(this, npcData.MeleeAttackRange))
                 {
                     if (tmpmovetime > 0.5f)
@@ -163,7 +164,6 @@ public class NpcCell : MonoBehaviour
         animator.SetBool("skelenton01_isMoving", isMoving);
         while ((transform.position - playertemp).magnitude > Mathf.Epsilon)
         {
-            
             if (Camera.main.WorldToScreenPoint(PlayerManager.instance.PlayerTransform.position).x> Camera.main.WorldToScreenPoint(transform.position).x)
             {
                 skeleton01_stateX = 1;
