@@ -24,11 +24,11 @@ public class FoxDailog
         List<Sprite> sprites = new List<Sprite>
         {
             PlayerManager.instance.PlayerIcon,
-            foxNpc.npcIcon
+            foxNpc.getAvatarSprite()
         };
         return sprites;
     }
-    public List<string> Task1Dailog()
+    public List<string> Task1Dialog()
     {
         task1 = new List<string> 
         {
@@ -38,5 +38,14 @@ public class FoxDailog
             "Beastmaster:Sorry, I have other matters to attend to."
         };
         return task1;
+    }
+    public List<Sprite> Task1DialogSprites(FoxNpc foxNpc)
+    {
+        List<Sprite> sprites = new List<Sprite>
+        {
+            PlayerManager.instance.PlayerIcon,
+            foxNpc.getAvatarSprite()
+        };
+        return sprites;
     }
 }

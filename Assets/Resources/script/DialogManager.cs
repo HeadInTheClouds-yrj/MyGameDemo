@@ -58,21 +58,38 @@ public class DialogManager : MonoBehaviour
         {
             if (mark.Equals(sprite.name))
             {
+                
                 if ("Beastmaster".Equals(mark))
                 {
                     playerDialogIcon.GetComponent<Image>().sprite = sprite;
+                    npcDialogIcon.SetActive(false);
+                    playerDialogIcon.SetActive(true) ;
+                    
                 }
                 else
                 {
                     npcDialogIcon.GetComponent<Image>().sprite = sprite;
+                    npcDialogIcon.SetActive(true) ;
+                    playerDialogIcon.SetActive(false) ;
                 }
             }
+            else
+            {
+                //playerDialogIcon.SetActive(false);
+                npcDialogIcon.SetActive(false);
+            }
         }
-        foreach (var letter in lines.ToCharArray())
+        if (mark.Equals("select"))
         {
-            dialogText.text += letter;
-            yield return new WaitForSeconds(1.0f / lettersPerSecond);
+            isTyping = false;
+        } else
+        {
+            foreach (var letter in lines.Split(":")[1].ToCharArray())
+            {
+                dialogText.text += letter;
+                yield return new WaitForSeconds(1.0f / lettersPerSecond);
+            }
+            isTyping = false;
         }
-        isTyping = false;
-    }
+    } 
 }

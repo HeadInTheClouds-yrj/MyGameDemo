@@ -20,7 +20,7 @@ public class EnimiesTriger : MonoBehaviour
         {
             if (i!=0)
             {
-                NpcManager.instance.factoryNpc("npcs/Skeleton", gamobjList[i].transform, vector3s[i]);
+                //NpcManager.instance.factoryNpc("npcs/Skeleton", gamobjList[i].transform, vector3s[i]);
             }
             
             

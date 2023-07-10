@@ -137,7 +137,6 @@ public class NpcCell : MonoBehaviour
             }
             if ((PlayerManager.instance.transform.position - transform.position).magnitude < 1f)
             {
-                Debug.Log(transform.name + "attack!");
                 if (attackItems.npcMeleeAttack(this, npcData.MeleeAttackRange))
                 {
                     if (tmpmovetime > 0.5f)

@@ -4,18 +4,28 @@ using UnityEngine;
 public enum GameState
 {
     Freedom,
-    Dailog,
+    Dialog,
     Fighting,
     OpenBag
 }
 public class GameControl : MonoBehaviour
 {
-    public GameState state;
-    private PlayerContrllo PlayerContrllo;
+    public GameState state = GameState.Freedom;
+    [SerializeField] public PlayerContrllo PlayerContrllo;
     // Start is called before the first frame update
     void Start()
     {
-        PlayerContrllo = new PlayerContrllo();
+        DialogManager.Instance.OnShowDialog += () =>
+        {
+            state = GameState.Dialog;
+        };
+        DialogManager.Instance.OnHideDialog += () =>
+        {
+            if (state == GameState.Dialog)
+            {
+                state = GameState.Freedom;
+            }
+        };
     }
 
     // Update is called once per frame
@@ -24,9 +34,9 @@ public class GameControl : MonoBehaviour
         if (state == GameState.Freedom)
         {
             PlayerContrllo.HandleUpdate();
-        }else if (state == GameState.Dailog)
+        }else if (state == GameState.Dialog)
         {
-
+            DialogManager.Instance.HandleUpdate();
         }else if (state==GameState.Fighting)
         {
 

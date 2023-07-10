@@ -44,7 +44,7 @@ public class PlayerManager : MonoBehaviour
         {
             if (playerIcon == null)
             {
-                playerIcon = Resources.Load("data/Art/CharacterAvatar/Beastmaster") as Sprite;
+                playerIcon = Resources.Load<Sprite>("data/Art/CharacterAvatar/Beastmaster");
                 return playerIcon;
             }
             else

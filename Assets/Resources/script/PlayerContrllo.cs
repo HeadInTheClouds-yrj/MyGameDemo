@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using TMPro;
 using Unity.VisualScripting;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class PlayerContrllo : MonoBehaviour
@@ -38,7 +39,24 @@ public class PlayerContrllo : MonoBehaviour
         checkRollcool();
         PlayerRoll();
         cameraFllowPlayer();
+        ToTalk();
     }
+
+    private void ToTalk()
+    {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            Vector3 fsdalf = new Vector3(0,0,0);
+            fsdalf.x = animator.GetFloat("idlex");
+            fsdalf.y = animator.GetFloat("idley");
+            var collider = Physics2D.OverlapCircle(transform.position + fsdalf, 0.1f, interactive);
+            if (collider != null)
+            {
+                collider.GetComponent<Interactives>()?.ToTalk();
+            }
+        }
+    }
+
     private void cameraFllowPlayer()
     {
         test = transform.position;
