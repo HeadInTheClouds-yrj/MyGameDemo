@@ -21,20 +21,20 @@ public class UIBase : MonoBehaviour
         }
 
     }
-    private void addUIBehaviourComponent()
-    {
-        allPanelUI = transform.GetComponentsInChildren<Transform>();
-        for (int i = 0; i < allPanelUI.Length; i++)
-        {
-            if (allPanelUI[i] != null)
-            {
-                if (allPanelUI[i].name.EndsWith("_I"))
-                {
-                    allPanelUI[i].gameObject.AddComponent<UIBehaviour>();
-                }
-            }
-        }
-    }
+    //private void addUIBehaviourComponent()
+    //{
+    //    allPanelUI = transform.GetComponentsInChildren<Transform>();
+    //    for (int i = 0; i < allPanelUI.Length; i++)
+    //    {
+    //        if (allPanelUI[i] != null)
+    //        {
+    //            if (allPanelUI[i].name.EndsWith("_I"))
+    //            {
+    //                allPanelUI[i].gameObject.AddComponent<UIBehaviour>();
+    //            }
+    //        }
+    //    }
+    //}
     public GameObject GetUI(string panelName, string uIName)
     {
         return UIManager.instance.GetUI(panelName, uIName);

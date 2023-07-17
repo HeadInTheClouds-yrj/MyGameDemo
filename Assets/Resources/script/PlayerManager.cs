@@ -77,19 +77,8 @@ public class PlayerManager : MonoBehaviour
     }
     private void Update()
     {
-        if (isHit)
-        {
-            hittmptime += Time.deltaTime;
-            animator.SetBool("isHitt",isHit);
-        }
-        if (isHit&&hittmptime>0.05f)
-        {
-            hittmptime = 0;
-            isHit = false;
-            animator.SetBool("isHitt", isHit);
-        }
-        lineRenderer.SetPosition(0,new Vector3(transform.position.x- relativetransformX, transform.position.y + 0.8f, 0));
-        lineRenderer.SetPosition(1, new Vector3(transform.position.x + lrX / 2, transform.position.y + 0.8f, 0));
+        HitAnimation();
+        PlayerInGameHP();
         GetMouseKey();
         chekAttackcool();
         PlayerMeleeAttack();
@@ -167,7 +156,20 @@ public class PlayerManager : MonoBehaviour
             PlayerBowSwordControl();
         }
     }
-
+    private void HitAnimation()
+    {
+        if (isHit)
+        {
+            hittmptime += Time.deltaTime;
+            animator.SetBool("isHitt", isHit);
+        }
+        if (isHit && hittmptime > 0.05f)
+        {
+            hittmptime = 0;
+            isHit = false;
+            animator.SetBool("isHitt", isHit);
+        }
+    }
     private void PlayerBowSwordControl()
     {
         if (rightMouse&&canfire)
@@ -192,7 +194,11 @@ public class PlayerManager : MonoBehaviour
             BowPowerSlider.value = sliderValue;
         }
     }
-
+    private void PlayerInGameHP()
+    {
+        lineRenderer.SetPosition(0, new Vector3(transform.position.x - relativetransformX, transform.position.y + 0.8f, 0));
+        lineRenderer.SetPosition(1, new Vector3(transform.position.x + lrX / 2, transform.position.y + 0.8f, 0));
+    }
     private void Shoot()
     {
         if (sliderValue > maxSliderValue)
@@ -264,5 +270,4 @@ public class PlayerManager : MonoBehaviour
             meleeAttackcooltime += Time.deltaTime;
         }
     }
-
 }

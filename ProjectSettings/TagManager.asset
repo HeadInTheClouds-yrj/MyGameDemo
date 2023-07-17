@@ -15,7 +15,7 @@ TagManager:
   - treer
   - PlayerAttackobj
   - Player
-  - 
+  - enemy
   - 
   - 
   - 
@@ -46,6 +46,9 @@ TagManager:
     locked: 0
   - name: item
     uniqueID: 533771001
+    locked: 0
+  - name: enemys
+    uniqueID: 1518471403
     locked: 0
   - name: Interactive
     uniqueID: 1230461907

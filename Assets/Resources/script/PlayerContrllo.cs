@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
-public class PlayerContrllo : MonoBehaviour
+public class PlayerContrllo : MonoBehaviour,IDataPersistence
 {
     public Camera maincamera;
     private bool isMoving = false;
@@ -231,5 +231,15 @@ public class PlayerContrllo : MonoBehaviour
             isMoving = false;
             yield return null;
         }
+    }
+
+    public void LoadGame(GameData gameData)
+    {
+        transform.position = gameData.PlayerPosition;
+    }
+
+    public void SaveGame(ref GameData gameData)
+    {
+        gameData.PlayerPosition = transform.position;
     }
 }
