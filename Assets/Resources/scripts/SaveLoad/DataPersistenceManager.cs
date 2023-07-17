@@ -6,6 +6,10 @@ using System;
 
 public class DataPersistenceManager : MonoBehaviour
 {
+    [Header("保存加载文件名")]
+    [SerializeField]
+    public string dataFileName;
+    private FileDataHandler fileDataHandler;
     public static DataPersistenceManager instance { get; private set; }
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceList;
@@ -19,7 +23,8 @@ public class DataPersistenceManager : MonoBehaviour
     }
     public void LoadGame()
     {
-        //接收从文件中加载逆序列化之后的json数据
+        //文件层面加载
+        this.gameData = fileDataHandler.Load();
         if (gameData == null)
         {
             NewGame();
@@ -28,7 +33,6 @@ public class DataPersistenceManager : MonoBehaviour
         foreach (IDataPersistence dataPersistence in dataPersistenceList)
         {
             dataPersistence?.LoadGame(gameData);
-            Debug.Log(gameData.PlayerPosition);
         }
     }
     public void SaveGame()
@@ -37,14 +41,14 @@ public class DataPersistenceManager : MonoBehaviour
         foreach (IDataPersistence dataPersistence in dataPersistenceList)
         {
             dataPersistence?.SaveGame(ref gameData);
-            Debug.Log(gameData.PlayerPosition);
         }
+        fileDataHandler.Save(gameData);
     }
     // Start is called before the first frame update
     void Start()
     {
+        this.fileDataHandler = new FileDataHandler(Application.persistentDataPath,dataFileName);
         this.dataPersistenceList = FindAllDataPersistenceObjects();
-        LoadGame();
     }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()

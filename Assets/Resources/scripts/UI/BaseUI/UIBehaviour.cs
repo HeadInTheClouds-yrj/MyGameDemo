@@ -18,6 +18,5 @@ public class UIBehaviour : MonoBehaviour
         {
             image.onClick.AddListener(action);
         }
-
     }
 }

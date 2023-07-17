@@ -1,7 +1,9 @@
 using System.Xml.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using static TMPro.TMP_InputField;
 
 public class UIBase : MonoBehaviour
 {
@@ -49,6 +51,14 @@ public class UIBase : MonoBehaviour
         if (uIBehaviour != null)
         {
             uIBehaviour.AddLicener(action);
+        }
+    }
+    public void OnValueChange(string uIName)
+    {
+        UIBehaviour uIBehaviour = GetUIBehaviour(uIName);
+        if (uIBehaviour != null)
+        {
+            
         }
     }
 }
