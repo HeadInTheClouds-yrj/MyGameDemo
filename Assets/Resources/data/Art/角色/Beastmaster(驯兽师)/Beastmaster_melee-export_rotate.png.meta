@@ -1,0 +1,476 @@
+fileFormatVersion: 2
+guid: 3764664f9c32bdc4294014449b0b7327
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Beastmaster_melee-export_rotate_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 159
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7122b2bc4507054faf7fcd4e5bafa1d
+      internalID: -79752968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beastmaster_melee-export_rotate_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 159
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23176b1d9df57b54e84d617c354b0144
+      internalID: 1381674294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beastmaster_melee-export_rotate_2
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 148
+        width: 21
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5247363, y: 0.69681114}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 395972c928ff5a847b926e48cfa6a5e9
+      internalID: 1265161970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beastmaster_melee-export_rotate_3
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 144
+        width: 25
+        height: 32
+      alignment: 9
+      pivot: {x: 0.6002783, y: 0.73540735}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97aca5eb635f3c240a4239022e5e65d3
+      internalID: 1812745225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beastmaster_melee-export_rotate_4
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 112
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20736b09eb300644aa910002d4ceb29b
+      internalID: -1486093397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beastmaster_melee-export_rotate_5
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 112
+        width: 16
+        height: 20
+      alignment: 9
+      pivot: {x: 0.4737506, y: 0.50000036}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3760ab8fe71ca2c439aa85833823df42
+      internalID: -894777907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beastmaster_melee-export_rotate_6
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 112
+        width: 25
+        height: 20
+      alignment: 9
+      pivot: {x: 0.30080047, y: 0.49900055}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83b9a4c48289579428284fe22f1652d9
+      internalID: 1113728760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beastmaster_melee-export_rotate_7
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 112
+        width: 30
+        height: 20
+      alignment: 9
+      pivot: {x: 0.2506673, y: 0.50000036}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7e48460023af3f4fa378c672b4f4687
+      internalID: 1872177674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beastmaster_melee-export_rotate_8
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 64
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f948760b5d329546b52549a6bf0a823
+      internalID: 1508629981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beastmaster_melee-export_rotate_9
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 64
+        width: 16
+        height: 20
+      alignment: 9
+      pivot: {x: 0.52442884, y: 0.49877852}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cf11f7dd3d5f18458757abf39860081
+      internalID: -1428895492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beastmaster_melee-export_rotate_10
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 64
+        width: 25
+        height: 20
+      alignment: 9
+      pivot: {x: 0.69836336, y: 0.49877852}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1893aef63cc83c41a24bfef8b8b857b
+      internalID: 1905267832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beastmaster_melee-export_rotate_11
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 64
+        width: 30
+        height: 20
+      alignment: 9
+      pivot: {x: 0.7475469, y: 0.49877852}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c970d3cef1e6234e93156666d7df702
+      internalID: -225641842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beastmaster_melee-export_rotate_12
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 15
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d46e1b807b8a48468bdaeed52d47e22
+      internalID: -1548341855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beastmaster_melee-export_rotate_13
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 15
+        width: 20
+        height: 19
+      alignment: 9
+      pivot: {x: 0.47600022, y: 0.43052652}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5999c80e8bd9f9b44a9e0b50733c5986
+      internalID: -289622198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beastmaster_melee-export_rotate_14
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 15
+        width: 20
+        height: 29
+      alignment: 9
+      pivot: {x: 0.4720009, y: 0.28413805}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f126e26c89f7cbc48a4fb485f606d4b3
+      internalID: -186480620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beastmaster_melee-export_rotate_15
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 15
+        width: 26
+        height: 33
+      alignment: 9
+      pivot: {x: 0.3669234, y: 0.25151524}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11ec43226d7a9a84db452ca40c3d405b
+      internalID: -1748133814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Beastmaster_melee-export_rotate_4: -1486093397
+      Beastmaster_melee-export_rotate_8: 1508629981
+      Beastmaster_melee-export_rotate_1: 1381674294
+      Beastmaster_melee-export_rotate_6: 1113728760
+      Beastmaster_melee-export_rotate_0: -79752968
+      Beastmaster_melee-export_rotate_7: 1872177674
+      Beastmaster_melee-export_rotate_2: 1265161970
+      Beastmaster_melee-export_rotate_10: 1905267832
+      Beastmaster_melee-export_rotate_9: -1428895492
+      Beastmaster_melee-export_rotate_15: -1748133814
+      Beastmaster_melee-export_rotate_13: -289622198
+      Beastmaster_melee-export_rotate_11: -225641842
+      Beastmaster_melee-export_rotate_5: -894777907
+      Beastmaster_melee-export_rotate_14: -186480620
+      Beastmaster_melee-export_rotate_3: 1812745225
+      Beastmaster_melee-export_rotate_12: -1548341855
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

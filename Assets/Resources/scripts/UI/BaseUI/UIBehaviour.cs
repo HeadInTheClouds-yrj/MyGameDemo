@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -17,6 +18,14 @@ public class UIBehaviour : MonoBehaviour
         if (image != null)
         {
             image.onClick.AddListener(action);
+        }
+    }
+    public void OnEndEditAddLicener(UnityAction<string> action)
+    {
+        TMP_InputField inputField = transform.GetComponent<TMP_InputField>();
+        if (inputField != null)
+        {
+            inputField.onEndEdit.AddListener(action);
         }
     }
 }

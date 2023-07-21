@@ -15,7 +15,10 @@ public class DataPersistenceManager : MonoBehaviour
     private List<IDataPersistence> dataPersistenceList;
     private void Awake()
     {
-        instance= this;
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
     public void NewGame()
     {

@@ -1,3 +1,5 @@
+using Microsoft.Cci;
+using System;
 using System.Xml.Linq;
 using TMPro;
 using Unity.VisualScripting;
@@ -53,12 +55,12 @@ public class UIBase : MonoBehaviour
             uIBehaviour.AddLicener(action);
         }
     }
-    public void OnValueChange(string uIName)
+    public void OnEndEditAddLicener(string uIName,UnityAction<string> action)
     {
         UIBehaviour uIBehaviour = GetUIBehaviour(uIName);
         if (uIBehaviour != null)
         {
-            
+            uIBehaviour.OnEndEditAddLicener(action);
         }
     }
 }
