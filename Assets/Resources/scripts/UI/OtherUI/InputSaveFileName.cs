@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class InputNewGameFileNameControl : UIBase
+public class InputSaveFileName : UIBase
 {
-    public void ReplaceSLFileName(string value)
+    public void ChangeSLFileName(string value)
     {
         DataPersistenceManager.instance.ChangeDataSourceName(value);
     }
@@ -17,11 +15,12 @@ public class InputNewGameFileNameControl : UIBase
     // Start is called before the first frame update
     void Start()
     {
-        OnEndEditAddLicener("NewGameDataName_N", ReplaceSLFileName);
+        OnEndEditAddLicener("NewGameDataName_N", ChangeSLFileName);
     }
 
     // Update is called once per frame
     void Update()
     {
+
     }
 }

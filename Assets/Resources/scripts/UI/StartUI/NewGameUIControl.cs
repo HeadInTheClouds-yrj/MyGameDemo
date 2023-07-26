@@ -7,7 +7,13 @@ public class NewGameUIControl : UIBase
 {
     public void LoadScenes()
     {
-        SceneManager.LoadScene(1,LoadSceneMode.Single);
+        StartCoroutine(NewCharacterLoadScene());
+    }
+    public IEnumerator NewCharacterLoadScene()
+    {
+        
+        yield return new WaitForSeconds(0.1f);
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
     // Start is called before the first frame update
     void Start()

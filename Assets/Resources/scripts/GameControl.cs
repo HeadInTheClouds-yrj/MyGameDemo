@@ -13,6 +13,9 @@ public class GameControl : MonoBehaviour
     public GameState state = GameState.Freedom;
     [SerializeField] public PlayerContrllo PlayerContrllo;
     public Dictionary<string,NpcCell> allNpcCell;
+    public void Awake()
+    {
+    }
     // Start is called before the first frame update
     void Start()
     {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using Unity.VisualScripting;
 
 public class DataPersistenceManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class DataPersistenceManager : MonoBehaviour
         {
             instance = this;
         }
+        DontDestroyOnLoad(instance);
     }
     public void NewGame()
     {
@@ -26,8 +28,11 @@ public class DataPersistenceManager : MonoBehaviour
     }
     public void LoadGame()
     {
+        Debug.Log("加载游戏");
+        this.dataPersistenceList = FindAllDataPersistenceObjects();
         //文件层面加载
         this.gameData = fileDataHandler.Load();
+        Debug.Log(gameData);
         if (gameData == null)
         {
             NewGame();
@@ -40,11 +45,13 @@ public class DataPersistenceManager : MonoBehaviour
     }
     public void SaveGame()
     {
+        this.dataPersistenceList = FindAllDataPersistenceObjects();
         //通过其他实现了IdataPersitence的脚本可以更新这个gmaeData数据
         foreach (IDataPersistence dataPersistence in dataPersistenceList)
         {
             dataPersistence?.SaveGame(ref gameData);
         }
+        Debug.Log(gameData);
         fileDataHandler.Save(gameData);
     }
     public void RemoveData(string fileName)
@@ -67,7 +74,7 @@ public class DataPersistenceManager : MonoBehaviour
         IEnumerable<IDataPersistence> allDataPersistenceObj = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
         return new List<IDataPersistence>(allDataPersistenceObj);
     }
-
+    
     // Update is called once per frame
     void Update()
     {
