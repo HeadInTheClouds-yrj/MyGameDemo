@@ -6,4 +6,5 @@ public interface Interactives
 {
     void ToTalk();
     Sprite getAvatarSprite();
+    void AddEventId(int id);
 }

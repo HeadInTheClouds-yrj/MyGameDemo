@@ -6,12 +6,13 @@ public enum GameState
     Freedom,
     Dialog,
     Fighting,
-    OpenBag
+    OpenUI
 }
 public class GameControl : MonoBehaviour
 {
     public GameState state = GameState.Freedom;
     [SerializeField] public PlayerContrllo PlayerContrllo;
+    public Dictionary<string,NpcCell> allNpcCell;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,22 @@ public class GameControl : MonoBehaviour
                 state = GameState.Freedom;
             }
         };
+        UIManager.instance.OpenUI += () =>
+        {
+            state = GameState.OpenUI;
+        };
+        UIManager.instance.CloseUI += () =>
+        {
+            if (state == GameState.OpenUI)
+            {
+                state = GameState.Freedom;
+            }
+        };
+        if (allNpcCell == null)
+        {
+            allNpcCell = new Dictionary<string, NpcCell>();
+        }
+        allNpcCell = NpcManager.instance.getAllNpcCell();
     }
 
     // Update is called once per frame
@@ -34,13 +51,18 @@ public class GameControl : MonoBehaviour
         if (state == GameState.Freedom)
         {
             PlayerContrllo.HandleUpdate();
+            PlayerManager.instance.HandleUpdate();
+            foreach (NpcCell npcCell in allNpcCell.Values)
+            {
+                npcCell.HandleUpdate();
+            }
         }else if (state == GameState.Dialog)
         {
             DialogManager.Instance.HandleUpdate();
         }else if (state==GameState.Fighting)
         {
 
-        }else if (state==GameState.OpenBag)
+        }else if (state==GameState.OpenUI)
         {
 
         }

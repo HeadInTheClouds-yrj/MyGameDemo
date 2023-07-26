@@ -7,6 +7,7 @@ public class FoxNpc : MonoBehaviour,Interactives
     [SerializeField]
     public Sprite npcIcon;
     private FoxDailog foxDialog;
+    public List<int> chooseEventId;
     public Sprite getAvatarSprite()
     {
         if (npcIcon == null)
@@ -24,22 +25,29 @@ public class FoxNpc : MonoBehaviour,Interactives
     {
         if(index == 0)
         {
-            StartCoroutine(DialogManager.Instance.ShowDialog(foxDialog.SayHello(),foxDialog.SayHelloSprites(this)));
+            StartCoroutine(DialogManager.Instance.ShowDialog(this,foxDialog.SayHello(),foxDialog.SayHelloSprites(this)));
             index++;
         }else if(index>0)
         {
-            StartCoroutine(DialogManager.Instance.ShowDialog(foxDialog.Task1Dialog(),foxDialog.Task1DialogSprites(this)));
+            StartCoroutine(DialogManager.Instance.ShowDialog(this,foxDialog.Task1Dialog(),foxDialog.Task1DialogSprites(this)));
         }
     }
+    
     // Start is called before the first frame update
     void Start()
     {
         foxDialog = new FoxDailog();
+        chooseEventId= new List<int>();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void AddEventId(int id)
+    {
+        chooseEventId.Add(id);
     }
 }

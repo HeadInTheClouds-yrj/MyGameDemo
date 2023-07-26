@@ -68,4 +68,9 @@ public class FileDataHandler
         }
         return loadedGameData;
     }
+    public void Remove(string dataFileName)
+    {
+        string fullPath = Path.Combine(dataDirPath, dataFileName);
+        Directory.Delete(fullPath, true);
+    }
 }

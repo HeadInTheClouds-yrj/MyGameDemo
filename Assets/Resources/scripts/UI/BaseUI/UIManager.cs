@@ -6,6 +6,8 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
+    public event Action OpenUI;
+    public event Action CloseUI;
     Dictionary<string, Dictionary<string, GameObject>> allUI;
 
     private void Awake()
@@ -29,5 +31,14 @@ public class UIManager : MonoBehaviour
             return allUI[panelName][uIName];         
         }
         return null;
+    }
+    public void InvokeOpenUI()
+    {
+        OpenUI.Invoke();
+    }
+
+    public void InvokeCloseUI()
+    {
+        CloseUI.Invoke();
     }
 }

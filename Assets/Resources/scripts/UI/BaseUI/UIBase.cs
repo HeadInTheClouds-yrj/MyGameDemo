@@ -63,4 +63,29 @@ public class UIBase : MonoBehaviour
             uIBehaviour.OnEndEditAddLicener(action);
         }
     }
+    public void ReplaceText(string uIName, string text)
+    {
+        UIBehaviour uIBehaviour = GetUIBehaviour(uIName);
+        if (uIBehaviour != null)
+        {
+            uIBehaviour.OnButtonReplaceText(text);
+        }
+    }
+    public string GetText(string uIName)
+    {
+        UIBehaviour uIBehaviour = GetUIBehaviour(uIName);
+        if (uIBehaviour != null)
+        {
+            return uIBehaviour.GetText();
+        }
+        return null;
+    }
+    public void OnButtonReplaceText(string uIName,string text)
+    {
+        UIBehaviour uIBehaviour = GetUIBehaviour(uIName);
+        if (uIBehaviour != null)
+        {
+            uIBehaviour.OnButtonReplaceText(text);
+        }
+    }
 }

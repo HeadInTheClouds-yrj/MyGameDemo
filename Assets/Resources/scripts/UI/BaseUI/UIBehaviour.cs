@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using static System.Net.Mime.MediaTypeNames;
 
 public class UIBehaviour : MonoBehaviour
 {
@@ -27,5 +29,31 @@ public class UIBehaviour : MonoBehaviour
         {
             inputField.onEndEdit.AddListener(action);
         }
+    }
+    internal void ReplaceText(string text)
+    {
+        TMP_Text tMP_Text = transform.GetComponent<TMP_Text>();
+        if (tMP_Text != null)
+        {
+            tMP_Text.text = text;
+        }
+    }
+    internal void OnButtonReplaceText(string text)
+    {
+        TMP_Text tMP_Text = transform.GetComponentInChildren<TMP_Text>();
+        if (tMP_Text != null)
+        {
+            tMP_Text.text = text;
+        }
+    }
+
+    internal string GetText()
+    {
+        TMP_Text tMP_Text = transform.GetComponent<TMP_Text>();
+        if (tMP_Text != null)
+        {
+            return tMP_Text.text;
+        }
+        return null;
     }
 }

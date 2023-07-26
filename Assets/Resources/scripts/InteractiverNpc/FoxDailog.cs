@@ -33,9 +33,7 @@ public class FoxDailog
         task1 = new List<string> 
         {
             "Fox:Good morning, warrior. Can you collect 5 herbs for me?",
-            "select:",
-            "Beastmaster:Sure! No problem!",
-            "Beastmaster:Sorry, I have other matters to attend to."
+            "choose:Sure! No problem!|Sorry, I have other matters to attend to.",
         };
         return task1;
     }

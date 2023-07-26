@@ -6,9 +6,9 @@ using System;
 
 public class DataPersistenceManager : MonoBehaviour
 {
-    [Header("保存加载文件名")]
+    [Header("文件名字")]
     [SerializeField]
-    public string dataFileName;
+    private string fileName;
     private FileDataHandler fileDataHandler;
     public static DataPersistenceManager instance { get; private set; }
     private GameData gameData;
@@ -47,13 +47,21 @@ public class DataPersistenceManager : MonoBehaviour
         }
         fileDataHandler.Save(gameData);
     }
+    public void RemoveData(string fileName)
+    {
+        fileDataHandler.Remove(fileName);
+        DataFileNameManager.Instance.RemoveFileName(fileName);
+    }
     // Start is called before the first frame update
     void Start()
     {
-        this.fileDataHandler = new FileDataHandler(Application.persistentDataPath,dataFileName);
         this.dataPersistenceList = FindAllDataPersistenceObjects();
     }
-
+    public void ChangeDataSourceName(string dataFileName="default.data")
+    {
+        this.fileName = dataFileName;
+        this.fileDataHandler = new FileDataHandler(Application.persistentDataPath,dataFileName);
+    }
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
         IEnumerable<IDataPersistence> allDataPersistenceObj = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
@@ -64,9 +72,5 @@ public class DataPersistenceManager : MonoBehaviour
     void Update()
     {
         
-    }
-    private void OnApplicationQuit()
-    {
-        SaveGame();
     }
 }

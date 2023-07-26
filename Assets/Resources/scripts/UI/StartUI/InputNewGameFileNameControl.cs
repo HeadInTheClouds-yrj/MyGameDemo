@@ -6,19 +6,14 @@ using UnityEngine.Events;
 
 public class InputNewGameFileNameControl : UIBase
 {
-    UnityAction<string> OnNewGameFileName;
-    public void test(string txt)
+    public void ReplaceSLFileName(string value)
     {
-        Debug.Log(txt);
-    }
-    public void ReplaceSLFileName()
-    {
-        DataPersistenceManager.instance.dataFileName = GetUI("InputNewGameFileName", "Text_N").GetComponent<TMP_Text>().text;
+        DataPersistenceManager.instance.ChangeDataSourceName(value);
     }
     // Start is called before the first frame update
     void Start()
     {
-        OnNewGameFileName = test;
+        OnEndEditAddLicener("NewGameDataName_N", ReplaceSLFileName);
     }
 
     // Update is called once per frame

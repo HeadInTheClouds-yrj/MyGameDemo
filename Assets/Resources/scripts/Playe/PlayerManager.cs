@@ -75,7 +75,7 @@ public class PlayerManager : MonoBehaviour
         BowPowerSlider.value = 0f;
         BowPowerSlider.maxValue = maxSliderValue;
     }
-    private void Update()
+    public void HandleUpdate()
     {
         HitAnimation();
         PlayerInGameHP();
