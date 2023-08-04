@@ -10,25 +10,31 @@ public class DataFileNameManager : MonoBehaviour
     private List<string> files;
     public void Init()
     {
-        files = new List<string>();
-        string[] temps = FindAllFiles();
+        if (files == null)
+        {
+            files = new List<string>();
+        }
+        List<string> temps = FindAllFiles();
         foreach (string s in temps)
         {
             AddFileName(s);
         }
     }
-    public string[] FindAllFiles()
+    public List<string> FindAllFiles()
     {
         string path = Application.persistentDataPath;
         string[] fileNames = Directory.GetFiles(path);
-        int i = 0;
+        List<string> files = new List<string>();
         foreach (string s in fileNames)
         {
-            fileNames[i] = s.Split
-                (path + "\\")[1];
-            i++;
+            if (!s.EndsWith(".log"))
+            {
+                
+                files.Add(s.Split(path + "\\")[1]);
+            }
+
         }
-        return fileNames;
+        return files;
     }
     public void AddFileName(string filesName)
     {

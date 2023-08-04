@@ -8,6 +8,10 @@ public class InputNewGameFileNameControl : UIBase
 {
     public void ReplaceSLFileName(string value)
     {
+        if (value== null)
+        {
+            value = "default";
+        }
         DataPersistenceManager.instance.ChangeDataSourceName(value);
     }
     public void SaveData()

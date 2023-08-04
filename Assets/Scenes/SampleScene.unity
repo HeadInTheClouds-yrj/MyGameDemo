@@ -348,6 +348,10 @@ PrefabInstance:
       propertyPath: savePanel
       value: 
       objectReference: {fileID: 1022382210}
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: saveInputBox
+      value: 
+      objectReference: {fileID: 711857108}
     - target: {fileID: 6441932266865916597, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_Name
       value: SaveDataButton(4)_N
@@ -435,6 +439,18 @@ PrefabInstance:
     - target: {fileID: 6441932266865916598, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2144233071}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveButtonControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveLoadGameUIControl, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -890,6 +906,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 129746585}
     m_Modifications:
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: savePanel
+      value: 
+      objectReference: {fileID: 1022382210}
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: saveInputBox
+      value: 
+      objectReference: {fileID: 711857108}
     - target: {fileID: 6441932266865916597, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_Name
       value: LoadDataButton (4)_N
@@ -978,6 +1002,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 494633867}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadButtonControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveLoadGameUIControl, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1000,6 +1036,10 @@ PrefabInstance:
       propertyPath: savePanel
       value: 
       objectReference: {fileID: 1022382210}
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: saveInputBox
+      value: 
+      objectReference: {fileID: 711857108}
     - target: {fileID: 6441932266865916597, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_Name
       value: SaveDataButton(5)_N
@@ -1087,6 +1127,18 @@ PrefabInstance:
     - target: {fileID: 6441932266865916598, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2144233071}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveButtonControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveLoadGameUIControl, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2026,6 +2078,10 @@ PrefabInstance:
       propertyPath: savePanel
       value: 
       objectReference: {fileID: 1022382210}
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: saveInputBox
+      value: 
+      objectReference: {fileID: 711857108}
     - target: {fileID: 6441932266865916597, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_Name
       value: SaveDataButton(7)_N
@@ -2113,6 +2169,18 @@ PrefabInstance:
     - target: {fileID: 6441932266865916598, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2144233071}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveButtonControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveLoadGameUIControl, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2278,6 +2346,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 129746585}
     m_Modifications:
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: savePanel
+      value: 
+      objectReference: {fileID: 1022382210}
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: saveInputBox
+      value: 
+      objectReference: {fileID: 711857108}
     - target: {fileID: 6441932266865916597, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_Name
       value: LoadDataButton(0)_N
@@ -2366,6 +2442,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 494633867}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadButtonControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveLoadGameUIControl, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2376,6 +2464,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6441932266865916598, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
   m_PrefabInstance: {fileID: 494633865}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &494633867 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+  m_PrefabInstance: {fileID: 494633865}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc7a6045dc3066848a2900357aad35f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3339,6 +3438,10 @@ PrefabInstance:
       propertyPath: savePanel
       value: 
       objectReference: {fileID: 1022382210}
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: saveInputBox
+      value: 
+      objectReference: {fileID: 711857108}
     - target: {fileID: 6441932266865916597, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_Name
       value: SaveDataButton(8)_N
@@ -3426,6 +3529,18 @@ PrefabInstance:
     - target: {fileID: 6441932266865916598, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2144233071}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveButtonControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveLoadGameUIControl, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3752,6 +3867,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1314495896}
+        m_TargetAssemblyTypeName: InGameOptions, Assembly-CSharp
+        m_MethodName: FileNameInit
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5049,6 +5176,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 129746585}
     m_Modifications:
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: savePanel
+      value: 
+      objectReference: {fileID: 1022382210}
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: saveInputBox
+      value: 
+      objectReference: {fileID: 711857108}
     - target: {fileID: 6441932266865916597, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_Name
       value: LoadDataButton(5)_N
@@ -5136,6 +5271,18 @@ PrefabInstance:
     - target: {fileID: 6441932266865916598, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 494633867}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadButtonControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveLoadGameUIControl, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5340,7 +5487,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5820,6 +5967,10 @@ PrefabInstance:
       propertyPath: savePanel
       value: 
       objectReference: {fileID: 1022382210}
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: saveInputBox
+      value: 
+      objectReference: {fileID: 711857108}
     - target: {fileID: 6441932266865916597, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_Name
       value: SaveDataButton(9)_N
@@ -5908,6 +6059,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2144233071}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveButtonControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveLoadGameUIControl, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5926,6 +6089,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 129746585}
     m_Modifications:
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: savePanel
+      value: 
+      objectReference: {fileID: 1022382210}
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: saveInputBox
+      value: 
+      objectReference: {fileID: 711857108}
     - target: {fileID: 6441932266865916597, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_Name
       value: LoadDataButton(9)_N
@@ -6013,6 +6184,18 @@ PrefabInstance:
     - target: {fileID: 6441932266865916598, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 494633867}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadButtonControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveLoadGameUIControl, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6195,6 +6378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Items: []
+  allItems: []
   itemContent: {fileID: 1215702661}
   inventoryItem: {fileID: 6173283673139398652, guid: 51e9dcd62686bf4479be61230e93954f, type: 3}
   rmToggle: {fileID: 664374999}
@@ -6801,10 +6985,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1314495892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ff9e8de19aa87c40836d43191cbe6c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d0cd79d70fe5e04493620c9c5b70d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crollView: {fileID: 792607170}
 --- !u!1001 &1320959018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6817,6 +7000,10 @@ PrefabInstance:
       propertyPath: savePanel
       value: 
       objectReference: {fileID: 1022382210}
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: saveInputBox
+      value: 
+      objectReference: {fileID: 711857108}
     - target: {fileID: 6441932266865916597, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_Name
       value: SaveDataButton(2)_N
@@ -6904,6 +7091,18 @@ PrefabInstance:
     - target: {fileID: 6441932266865916598, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2144233071}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveButtonControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveLoadGameUIControl, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7161,6 +7360,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 129746585}
     m_Modifications:
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: savePanel
+      value: 
+      objectReference: {fileID: 1022382210}
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: saveInputBox
+      value: 
+      objectReference: {fileID: 711857108}
     - target: {fileID: 6441932266865916597, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_Name
       value: LoadDataButton(6)_N
@@ -7248,6 +7455,18 @@ PrefabInstance:
     - target: {fileID: 6441932266865916598, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 494633867}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadButtonControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveLoadGameUIControl, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7713,6 +7932,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1314495896}
+        m_TargetAssemblyTypeName: InGameOptions, Assembly-CSharp
+        m_MethodName: FileNameInit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1022382214}
         m_TargetAssemblyTypeName: InGameSaveUI, Assembly-CSharp
         m_MethodName: LoadDirTextChange
@@ -7775,6 +8006,10 @@ PrefabInstance:
       propertyPath: savePanel
       value: 
       objectReference: {fileID: 1022382210}
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: saveInputBox
+      value: 
+      objectReference: {fileID: 711857108}
     - target: {fileID: 6441932266865916597, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_Name
       value: SaveDataButton(6)_N
@@ -7862,6 +8097,18 @@ PrefabInstance:
     - target: {fileID: 6441932266865916598, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2144233071}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveButtonControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveLoadGameUIControl, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8095,6 +8342,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 129746585}
     m_Modifications:
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: savePanel
+      value: 
+      objectReference: {fileID: 1022382210}
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: saveInputBox
+      value: 
+      objectReference: {fileID: 711857108}
     - target: {fileID: 6441932266865916597, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_Name
       value: LoadDataButton(8)_N
@@ -8182,6 +8437,18 @@ PrefabInstance:
     - target: {fileID: 6441932266865916598, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 494633867}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadButtonControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveLoadGameUIControl, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8716,6 +8983,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 129746585}
     m_Modifications:
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: savePanel
+      value: 
+      objectReference: {fileID: 1022382210}
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: saveInputBox
+      value: 
+      objectReference: {fileID: 711857108}
     - target: {fileID: 6441932266865916597, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_Name
       value: LoadDataButton(3)_N
@@ -8803,6 +9078,18 @@ PrefabInstance:
     - target: {fileID: 6441932266865916598, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 494633867}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadButtonControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveLoadGameUIControl, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8965,6 +9252,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 129746585}
     m_Modifications:
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: savePanel
+      value: 
+      objectReference: {fileID: 1022382210}
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: saveInputBox
+      value: 
+      objectReference: {fileID: 711857108}
     - target: {fileID: 6441932266865916597, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_Name
       value: LoadDataButton(1)_N
@@ -9052,6 +9347,18 @@ PrefabInstance:
     - target: {fileID: 6441932266865916598, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 494633867}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadButtonControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveLoadGameUIControl, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9173,6 +9480,10 @@ PrefabInstance:
       propertyPath: savePanel
       value: 
       objectReference: {fileID: 1022382210}
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: saveInputBox
+      value: 
+      objectReference: {fileID: 711857108}
     - target: {fileID: 6441932266865916597, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_Name
       value: SaveDataButton(3)_N
@@ -9261,6 +9572,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2144233071}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveButtonControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveLoadGameUIControl, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9279,6 +9602,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 129746585}
     m_Modifications:
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: savePanel
+      value: 
+      objectReference: {fileID: 1022382210}
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: saveInputBox
+      value: 
+      objectReference: {fileID: 711857108}
     - target: {fileID: 6441932266865916597, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_Name
       value: LoadDataButton(7)_N
@@ -9366,6 +9697,18 @@ PrefabInstance:
     - target: {fileID: 6441932266865916598, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 494633867}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadButtonControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveLoadGameUIControl, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17751,6 +18094,7 @@ GameObject:
   - component: {fileID: 1978741630}
   - component: {fileID: 1978741632}
   - component: {fileID: 1978741631}
+  - component: {fileID: 1978741633}
   m_Layer: 5
   m_Name: OpenOptionsManu
   m_TagString: Untagged
@@ -17817,6 +18161,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1978741629}
   m_CullTransparentMesh: 1
+--- !u!114 &1978741633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978741629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff9e8de19aa87c40836d43191cbe6c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  option: {fileID: 1314495892}
 --- !u!1 &2004717744
 GameObject:
   m_ObjectHideFlags: 0
@@ -18058,6 +18415,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 129746585}
     m_Modifications:
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: savePanel
+      value: 
+      objectReference: {fileID: 1022382210}
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: saveInputBox
+      value: 
+      objectReference: {fileID: 711857108}
     - target: {fileID: 6441932266865916597, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_Name
       value: LoadDataButton(2)_N
@@ -18145,6 +18510,18 @@ PrefabInstance:
     - target: {fileID: 6441932266865916598, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 494633867}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadButtonControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveLoadGameUIControl, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18507,6 +18884,10 @@ PrefabInstance:
       propertyPath: savePanel
       value: 
       objectReference: {fileID: 1022382210}
+    - target: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: saveInputBox
+      value: 
+      objectReference: {fileID: 711857108}
     - target: {fileID: 6441932266865916597, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
       propertyPath: m_Name
       value: SaveDataButton(1)_N
@@ -18595,6 +18976,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2144233071}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveButtonControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441932266865916599, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveLoadGameUIControl, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18605,6 +18998,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6441932266865916598, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
   m_PrefabInstance: {fileID: 2144233069}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2144233071 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -4747689703672581353, guid: 9992613cd35da64489f08fd7dc350b5c, type: 3}
+  m_PrefabInstance: {fileID: 2144233069}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc7a6045dc3066848a2900357aad35f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2146772818
 GameObject:
   m_ObjectHideFlags: 0
@@ -18779,12 +19183,24 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1290052527660870311, guid: 0b4a72f7bee0eea49a4832ab4c13c543, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 1290052527660870311, guid: 0b4a72f7bee0eea49a4832ab4c13c543, type: 3}
       propertyPath: m_Parameters.numCapVertices
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1290052527660870311, guid: 0b4a72f7bee0eea49a4832ab4c13c543, type: 3}
+      propertyPath: m_Positions.Array.data[0].y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1290052527660870311, guid: 0b4a72f7bee0eea49a4832ab4c13c543, type: 3}
       propertyPath: m_Positions.Array.data[1].x
-      value: 2
+      value: 2.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1290052527660870311, guid: 0b4a72f7bee0eea49a4832ab4c13c543, type: 3}
+      propertyPath: m_Positions.Array.data[1].y
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1290052527660870311, guid: 0b4a72f7bee0eea49a4832ab4c13c543, type: 3}
       propertyPath: m_Positions.Array.data[1].z
@@ -18805,6 +19221,10 @@ PrefabInstance:
     - target: {fileID: 1290052527660870311, guid: 0b4a72f7bee0eea49a4832ab4c13c543, type: 3}
       propertyPath: m_Positions.Array.data[3].y
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1290052527660870311, guid: 0b4a72f7bee0eea49a4832ab4c13c543, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.22478862
       objectReference: {fileID: 0}
     - target: {fileID: 1290052527660870311, guid: 0b4a72f7bee0eea49a4832ab4c13c543, type: 3}
       propertyPath: m_Parameters.colorGradient.atime1
@@ -18896,7 +19316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8381089856181859741, guid: 0b4a72f7bee0eea49a4832ab4c13c543, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0.2002
       objectReference: {fileID: 0}
     - target: {fileID: 8381089856181859741, guid: 0b4a72f7bee0eea49a4832ab4c13c543, type: 3}
       propertyPath: m_ConstrainProportionsScale

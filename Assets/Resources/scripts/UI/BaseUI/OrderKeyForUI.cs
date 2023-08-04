@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OrderKeyForUI : UIBase
+public class OrderKeyForUI : MonoBehaviour
 {
-    [SerializeField] GameObject crollView;
+    [SerializeField] GameObject option;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,14 +15,14 @@ public class OrderKeyForUI : UIBase
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!crollView.activeSelf)
+            if (!option.activeSelf)
             {
-                crollView.SetActive(true);
+                option.SetActive(true);
                 UIManager.instance.InvokeOpenUI();
             }
             else
             {
-                crollView.SetActive(false);
+                option.SetActive(false);
                 UIManager.instance.InvokeCloseUI();
             }
         }

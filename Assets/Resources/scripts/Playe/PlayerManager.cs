@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour,IDataPersistence
 {
     public static PlayerManager instance;
     public PlayerData playerData;
@@ -33,8 +33,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     public Transform sworte2;
     public LineRenderer lineRenderer;
-    public float lrMaxX = 2f;
-    public float lrX = 2f;
+    public float lrMaxX = 2.01f;
+    public float lrX = 2.01f;
     public float relativetransformX = 1f;
     private Transform playerTransform;
     private Sprite playerIcon;
@@ -71,9 +71,9 @@ public class PlayerManager : MonoBehaviour
     {
         uI = UIManager.instance.GetUI("Panel", "Image_N").transform.GetComponent<Image>();
         playerhpui = UIManager.instance.GetUI("Panel", "Text (TMP)_N").transform.GetComponent<TMP_Text>();
-        updateUI();
         BowPowerSlider.value = 0f;
         BowPowerSlider.maxValue = maxSliderValue;
+        updateUI();
     }
     public void HandleUpdate()
     {
@@ -86,13 +86,13 @@ public class PlayerManager : MonoBehaviour
     public float PlayerReduceHP(float damage)
     {
         isHit = true;
-        updateUI();
         playerData.CurenttHealth -= damage;
         lrX -= lrMaxX*(damage/playerData.MaxHealth)*2;
         if (lrX < -2f * relativetransformX)
         {
             lrX = -2f * relativetransformX;
         }
+        updateUI();
         ThrowDamageText.instance.ThrowReduceTextFactory(transform,damage);
         return playerData.CurenttHealth;
     }
@@ -269,5 +269,33 @@ public class PlayerManager : MonoBehaviour
         {
             meleeAttackcooltime += Time.deltaTime;
         }
+    }
+
+    public void LoadGame(GameData gameData)
+    {
+        playerData.RangedDamage = gameData.RangedDamage;
+        playerData.MeleeDamage = gameData.MeleeDamage;
+        playerData.MeleeAttackRange = gameData.MeleeAttackRange;
+        playerData.MaxHealth = gameData.MaxHealth;
+        playerData.CurenttHealth = gameData.CurenttHealth;
+        playerData.AttackAngle = gameData.AttackAngle;
+        playerData.BaseDamage = gameData.BaseDamage;
+        playerData.PlayerMoveSpeed = gameData.PlayerMoveSpeed;
+        playerData.PlayerName = gameData.PlayerName;
+        lrX = gameData.lrX;
+    }
+
+    public void SaveGame(ref GameData gameData)
+    {
+        gameData.RangedDamage = playerData.RangedDamage;
+        gameData.MeleeDamage = playerData.MeleeDamage;
+        gameData.MeleeAttackRange = playerData.MeleeAttackRange;
+        gameData.MaxHealth = playerData.MaxHealth;
+        gameData.CurenttHealth= playerData.CurenttHealth;
+        gameData.AttackAngle = playerData.AttackAngle;
+        gameData.BaseDamage = playerData.BaseDamage;
+        gameData.playerMoveSpeed= playerData.PlayerMoveSpeed;
+        gameData.PlayerName = playerData.PlayerName;
+        gameData.lrX = lrX;
     }
 }

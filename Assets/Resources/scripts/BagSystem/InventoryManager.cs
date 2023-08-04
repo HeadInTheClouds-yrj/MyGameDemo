@@ -4,10 +4,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : MonoBehaviour,IDataPersistence
 {
     public static InventoryManager Instance;
     public List<Item> Items;
+    public List<Item> allItems;
     public Transform itemContent;
     public GameObject inventoryItem;
     public Toggle rmToggle;
@@ -15,6 +16,10 @@ public class InventoryManager : MonoBehaviour
     public void AddItem(Item item)
     {
         Items.Add(item);
+    }
+    public void RegisterItem(Item item)
+    {
+        allItems.Add(item);
     }
     public void RemoveItem(Item item)
     {
@@ -76,6 +81,17 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
+    public Item GetItemById(string id)
+    {
+        foreach (Item item in allItems)
+        {
+            if (item.id == id)
+            {
+                return item;
+            }
+        }
+        return null;
+    }
     // Start is called before the first frame update
     void Awake()
     {
@@ -89,5 +105,21 @@ public class InventoryManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void LoadGame(GameData gameData)
+    {
+        foreach (string itemId in gameData.BagItemsId)
+        {
+            AddItem(GetItemById(itemId));
+        }
+    }
+
+    public void SaveGame(ref GameData gameData)
+    {
+        foreach (Item item in Items)
+        {
+            gameData.BagItemsId.Add(item.id);
+        }
     }
 }

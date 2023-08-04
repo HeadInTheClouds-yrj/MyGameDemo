@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemPickup : MonoBehaviour
+public class ItemPickup : MonoBehaviour,IDataPersistence
 {
     [SerializeField]
     public Item item;
@@ -18,15 +18,35 @@ public class ItemPickup : MonoBehaviour
             Pickup();
         }
     }
+    void Awake()
+    {
+        InventoryManager.Instance.RegisterItem(item);
+    }
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         isenter();
+    }
+
+    public void LoadGame(GameData gameData)
+    {
+        foreach (string itemId in gameData.BagItemsId)
+        {
+            if (itemId == item.id)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    public void SaveGame(ref GameData gameData)
+    {
+        
     }
 }

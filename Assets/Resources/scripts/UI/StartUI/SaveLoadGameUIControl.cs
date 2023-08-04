@@ -11,12 +11,11 @@ public class SaveLoadGameUIControl : MonoBehaviour
     public void LoadButtonControl()
     {
         DataPersistenceManager.instance.ChangeDataSourceName(GetComponentInChildren<TMP_Text>().text);
-        StartCoroutine(LoadSenceControl.Instance.OnLoadSenceEnd(1,DataPersistenceManager.instance.LoadGame));
+        SceneManager.LoadSceneAsync(1,LoadSceneMode.Single);
     }
     public void SaveButtonControl()
     {
         string fileName = GetComponentInChildren<TMP_Text>().text;
-        Debug.Log(fileName);
         if (fileName != "")
         {
             DataPersistenceManager.instance.ChangeDataSourceName(fileName);

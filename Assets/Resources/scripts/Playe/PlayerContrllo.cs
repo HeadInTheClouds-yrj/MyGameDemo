@@ -19,7 +19,6 @@ public class PlayerContrllo : MonoBehaviour,IDataPersistence
     private Vector3 input;
     private float stateIndex_X;
     private float stateIndex_Y;
-    private float tempfloatspeed = 2;
     private Animator animator;
     private Vector3 test;
     [SerializeField] LayerMask tree;
@@ -49,6 +48,10 @@ public class PlayerContrllo : MonoBehaviour,IDataPersistence
             Vector3 fsdalf = new Vector3(0,0,0);
             fsdalf.x = animator.GetFloat("idlex");
             fsdalf.y = animator.GetFloat("idley");
+            if (fsdalf.x!=0&&fsdalf.y!=0)
+            {
+                fsdalf.x = 0;
+            }
             var collider = Physics2D.OverlapCircle(transform.position + fsdalf, 0.1f, interactive);
             if (collider != null)
             {
@@ -61,9 +64,9 @@ public class PlayerContrllo : MonoBehaviour,IDataPersistence
     {
         test = transform.position;
         test.z = -7;
-        maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, test, tempfloatspeed * 6);
+        maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, test, PlayerManager.instance.playerData.PlayerMoveSpeed * 6);
     }
-    private void meleeAttackAnimationContrllo() //player look for mouse funcition
+    private void meleeAttackAnimationContrllo() //Player looks towards the mouse
     {
         if (!PlayerManager.instance.isMelee)
         {
@@ -149,7 +152,7 @@ public class PlayerContrllo : MonoBehaviour,IDataPersistence
         }
         else if((transform.position - targetposition).magnitude > Mathf.Epsilon)//使用while效果更好，可惜了之前没想到，if凑合用吧！
         {
-            transform.position = Vector3.Lerp(transform.position, targetposition, tempfloatspeed * Time.deltaTime*1f);
+            transform.position = Vector3.Lerp(transform.position, targetposition, PlayerManager.instance.playerData.PlayerMoveSpeed * Time.deltaTime*1f);
             animator.SetBool("isroll", isRoll);
         }
 
@@ -227,7 +230,7 @@ public class PlayerContrllo : MonoBehaviour,IDataPersistence
         {
             isMoving = true;
             animator.SetBool("ismove", isMoving);
-            transform.position = Vector3.MoveTowards(transform.position, targetposition, tempfloatspeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetposition, PlayerManager.instance.playerData.PlayerMoveSpeed * Time.deltaTime);
             isMoving = false;
             yield return null;
         }
@@ -236,10 +239,12 @@ public class PlayerContrllo : MonoBehaviour,IDataPersistence
     public void LoadGame(GameData gameData)
     {
         transform.position = gameData.PlayerPosition;
+        maincamera.transform.position = gameData.CameraPosition;
     }
 
     public void SaveGame(ref GameData gameData)
     {
         gameData.PlayerPosition = transform.position;
+        gameData.CameraPosition = maincamera.transform.position;
     }
 }

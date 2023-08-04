@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class DataPersistenceManager : MonoBehaviour
 {
@@ -28,15 +29,17 @@ public class DataPersistenceManager : MonoBehaviour
     }
     public void LoadGame()
     {
-        Debug.Log("加载游戏");
-        this.dataPersistenceList = FindAllDataPersistenceObjects();
-        //文件层面加载
-        this.gameData = fileDataHandler.Load();
-        Debug.Log(gameData);
         if (gameData == null)
         {
             NewGame();
         }
+        if (fileDataHandler == null)
+        {
+            return;
+        }
+        //文件层面加载
+        this.gameData = fileDataHandler.Load();
+
         //推送数据到需要改变数据的所有脚本(push)
         foreach (IDataPersistence dataPersistence in dataPersistenceList)
         {
@@ -45,13 +48,11 @@ public class DataPersistenceManager : MonoBehaviour
     }
     public void SaveGame()
     {
-        this.dataPersistenceList = FindAllDataPersistenceObjects();
         //通过其他实现了IdataPersitence的脚本可以更新这个gmaeData数据
         foreach (IDataPersistence dataPersistence in dataPersistenceList)
         {
             dataPersistence?.SaveGame(ref gameData);
         }
-        Debug.Log(gameData);
         fileDataHandler.Save(gameData);
     }
     public void RemoveData(string fileName)
@@ -77,6 +78,25 @@ public class DataPersistenceManager : MonoBehaviour
     
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+    }
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        this.dataPersistenceList = FindAllDataPersistenceObjects();
+        LoadGame();
+    }
+    public void OnSceneUnloaded(Scene scene)
     {
         
     }

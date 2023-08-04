@@ -21,7 +21,24 @@ public class StartUIControl : UIBase
         }
 
     }
+    public void SetColorAOpaque()
+    {
+        Color color1 = transform.GetComponent<Image>().color;
+        try
+        {
+            color1.a = 1f;
+            transform.GetComponent<Image>().color = color1;
+        }
+        catch (Exception e)
+        {
+            Debug.LogException(e);
+        }
 
+    }
+    public void FilesNameInit()
+    {
+        DataFileNameManager.Instance.Init();
+    }
     // Start is called before the first frame update
     void Start()
     {
