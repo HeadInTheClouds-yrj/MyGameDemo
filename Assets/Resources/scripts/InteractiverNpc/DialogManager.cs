@@ -17,8 +17,7 @@ public class DialogManager : MonoBehaviour
     [SerializeField] GameObject chooseBox;
     public Interactives dialogingCharacter;
     [SerializeField] GameObject contentUI;
-    public event Action OnShowDialog;
-    public event Action OnHideDialog;
+
     public static DialogManager Instance { get; private set; }
     private void Awake()
     {
@@ -49,7 +48,7 @@ public class DialogManager : MonoBehaviour
             else
             {
                 DialogBox.SetActive(false);
-                OnHideDialog?.Invoke();
+                EventManager.Instance.dialogEvent.HideDailog();
                 currentLine = 0;
             }
         }
@@ -57,7 +56,7 @@ public class DialogManager : MonoBehaviour
     public IEnumerator ShowDialog(Interactives character, List<string> dialog,List<Sprite> avatar)
     {
         yield return new WaitForEndOfFrame();
-        OnShowDialog?.Invoke();
+        EventManager.Instance.dialogEvent.ShowDailog();
         this.dialog = dialog;
         this.avatar= avatar;
         this.dialogingCharacter= character;

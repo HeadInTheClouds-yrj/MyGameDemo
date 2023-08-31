@@ -19,11 +19,11 @@ public class GameControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DialogManager.Instance.OnShowDialog += () =>
+        EventManager.Instance.dialogEvent.OnShowDialog += () =>
         {
             state = GameState.Dialog;
         };
-        DialogManager.Instance.OnHideDialog += () =>
+        EventManager.Instance.dialogEvent.OnHideDialog += () =>
         {
             if (state == GameState.Dialog)
             {

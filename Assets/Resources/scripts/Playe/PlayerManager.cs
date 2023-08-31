@@ -108,7 +108,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence
             Dictionary<string, NpcCell> allnpc = NpcManager.instance.getAllNpcCell();
             foreach (var npc in allnpc.Values)
             {
-                if (attackItems.playerMeleeAttack(npc, playerData.AttackAngle, playerData.MeleeAttackRange))
+                if (npc != null&&attackItems.playerMeleeAttack(npc, playerData.AttackAngle, playerData.MeleeAttackRange))
                 {
                     npc.NpcReduceHP(playerData.MeleeDamage);
 

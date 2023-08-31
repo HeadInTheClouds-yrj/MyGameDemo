@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -82,6 +83,10 @@ public class NpcCell : MonoBehaviour
             lrX = -2f * relativetransformX;
         }
         ThrowDamageText.instance.ThrowReduceTextFactory(transform, velue);
+        if (npcData.CurenttHealth <= 0)
+        {
+            EventManager.Instance.enimiesEvent.EnimyDie(this);
+        }
         return npcData.CurenttHealth;
     }
     public bool AlIdleMoveLogic()

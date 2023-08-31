@@ -125,8 +125,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: -4747689703672581353}
-        m_TargetAssemblyTypeName: LoadGameUIControl, Assembly-CSharp
-        m_MethodName: ManuControl
+        m_TargetAssemblyTypeName: SaveLoadGameUIControl, Assembly-CSharp
+        m_MethodName: LoadButtonControl
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -148,6 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc7a6045dc3066848a2900357aad35f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveInputBox: {fileID: 0}
+  savePanel: {fileID: 0}
 --- !u!1 &6441932267415445049
 GameObject:
   m_ObjectHideFlags: 0

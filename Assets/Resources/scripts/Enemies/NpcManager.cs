@@ -17,9 +17,16 @@ public class NpcManager : MonoBehaviour
         allNpcCell = new Dictionary<string, NpcCell>();
 
     }
-    private void Update()
+    private void OnEnable()
     {
+        EventManager.Instance.enimiesEvent.OnEnimyDie += Ondead;
+    }
 
+    private void Ondead(NpcCell npcCell)
+    {
+        PlayerManager.instance.playerData.KillEnimiesCont++;
+        RemoveNpcCell(npcCell);
+        Destroy(npcCell.gameObject);
     }
     private Dictionary<string,NpcCell> allNpcCell;
     public void factoryNpc(string path,Transform parent,Vector3 position)
@@ -47,6 +54,10 @@ public class NpcManager : MonoBehaviour
     public NpcCell GetNpcCell(string npcName)
     {
         if (allNpcCell.ContainsKey(npcName)) { return allNpcCell[npcName]; } else {Debug.Log("Ñ°ÕÒµÄnpc²»´æÔÚ£¡£¡£¡"); return null; }
+    }
+    public void RemoveNpcCell(NpcCell npcCell)
+    {
+        Debug.Log(allNpcCell.Remove(npcCell.name));
     }
     public Dictionary<string,NpcCell> getAllNpcCell() { return allNpcCell; }
 

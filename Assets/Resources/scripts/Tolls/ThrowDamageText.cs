@@ -13,11 +13,14 @@ public class ThrowDamageText : MonoBehaviour
     }
     public void ThrowReduceTextFactory(Transform parent, float value, float fontsize = 3f,float velocity =1f, float time = 1f)
     {
-        GameObject obj = Instantiate(throwDamageTextPrefeb,parent);
-        TMP_Text tmpTransform =  obj.GetComponent<TMP_Text>();
-        tmpTransform.fontSize = fontsize;
-        tmpTransform.text = value.ToString();
-        StartCoroutine(ThrowText(obj,tmpTransform,velocity,time));
+        if (parent != null)
+        {
+            GameObject obj = Instantiate(throwDamageTextPrefeb, parent);
+            TMP_Text tmpTransform = obj.GetComponent<TMP_Text>();
+            tmpTransform.fontSize = fontsize;
+            tmpTransform.text = value.ToString();
+            StartCoroutine(ThrowText(obj, tmpTransform, velocity, time));
+        }
 
     }
     IEnumerator ThrowText(GameObject gameObject, TMP_Text tmpTransform, float velocity = 1f, float time = 1f)
