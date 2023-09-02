@@ -8,17 +8,18 @@ public class KillEnimyQuestStep : QuestStep
     private int KillToComplete = 4;
     private void OnEnable()
     {
-        EventManager.Instance.enimiesEvent.CountWhenTheEnemyDies += Dead;
+        EventManager.Instance.enimiesEvent.OnEnimyDie += Dead;
     }
     private void OnDisable()
     {
-        EventManager.Instance.enimiesEvent.CountWhenTheEnemyDies -= Dead;
+        EventManager.Instance.enimiesEvent.OnEnimyDie -= Dead;
     }
-    private void Dead()
+    private void Dead(NpcCell cell)
     {
         if (killEnimiesCont < KillToComplete)
         {
             killEnimiesCont++;
+            Debug.Log(killEnimiesCont);
         }
         else
         {

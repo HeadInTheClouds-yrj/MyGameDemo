@@ -6455,6 +6455,7 @@ GameObject:
   - component: {fileID: 1193416089}
   - component: {fileID: 1193416091}
   - component: {fileID: 1193416090}
+  - component: {fileID: 1193416092}
   m_Layer: 0
   m_Name: GameContrllo
   m_TagString: Untagged
@@ -6492,6 +6493,7 @@ MonoBehaviour:
   tree:
     serializedVersion: 2
     m_Bits: 128
+  timeCount: {fileID: 1193416092}
 --- !u!4 &1193416086
 Transform:
   m_ObjectHideFlags: 0
@@ -6586,6 +6588,18 @@ MonoBehaviour:
   contentUI: {fileID: 155371180}
   isTyping: 0
   isKeyDown: 0
+--- !u!114 &1193416092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193416083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fffaf20947ab9f4f816223dd9729047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1215702660
 GameObject:
   m_ObjectHideFlags: 0
@@ -6955,7 +6969,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -6972,7 +6986,7 @@ Canvas:
   m_GameObject: {fileID: 1285192248}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0

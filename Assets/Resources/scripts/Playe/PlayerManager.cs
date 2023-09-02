@@ -106,11 +106,18 @@ public class PlayerManager : MonoBehaviour,IDataPersistence
         if (isAttack)
         {
             Dictionary<string, NpcCell> allnpc = NpcManager.instance.getAllNpcCell();
-            foreach (var npc in allnpc.Values)
+            NpcCell[] npcs = new NpcCell[allnpc.Count];
+            int j = 0;
+            foreach (NpcCell npc in allnpc.Values)
             {
-                if (npc != null&&attackItems.playerMeleeAttack(npc, playerData.AttackAngle, playerData.MeleeAttackRange))
+                npcs[j] = npc;
+                j++;
+            }
+            for (int i = 0; i < npcs.Length; i++)
+            {
+                if (npcs[i] != null && attackItems.playerMeleeAttack(npcs[i], playerData.AttackAngle, playerData.MeleeAttackRange))
                 {
-                    npc.NpcReduceHP(playerData.MeleeDamage);
+                    npcs[i].NpcReduceHP(playerData.MeleeDamage);
 
                 }
             }

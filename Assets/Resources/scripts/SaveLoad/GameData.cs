@@ -43,6 +43,7 @@ public class GameData
         meleeAttackRange = 1.5f;
         rangedDamage = 5f;
         playerMoveSpeed = 2;
+        lrX= 2.01f;
 }
 
     public Vector3 PlayerPosition { get => playerPosition; set => playerPosition = value; }

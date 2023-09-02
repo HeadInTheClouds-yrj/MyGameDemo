@@ -68,7 +68,6 @@ public class DataPersistenceManager : MonoBehaviour
     public void ChangeDataSourceName(string dataFileName="default.data")
     {
         this.fileName = dataFileName;
-        Debug.Log(dataFileName);
         this.fileDataHandler = new FileDataHandler(Application.persistentDataPath,dataFileName);
     }
     private List<IDataPersistence> FindAllDataPersistenceObjects()

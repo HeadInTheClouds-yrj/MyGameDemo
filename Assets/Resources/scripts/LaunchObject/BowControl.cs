@@ -18,7 +18,12 @@ public class BowControl : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        collision.gameObject.GetComponent<NpcCell>().NpcReduceHP(Mathf.Round(playerDamge));
+        Dictionary<string,NpcCell> allNpc = NpcManager.instance.getAllNpcCell();
+        NpcCell cell = collision.gameObject.GetComponent<NpcCell>();
+        if (allNpc.ContainsKey(cell.name))
+        {
+            cell.NpcReduceHP(Mathf.Round(playerDamge));
+        }
         Destroy(gameObject);
     }
 }

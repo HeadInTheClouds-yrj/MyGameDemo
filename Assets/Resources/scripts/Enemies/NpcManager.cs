@@ -8,12 +8,11 @@ public class NpcManager : MonoBehaviour
 {
     public static NpcManager instance;
     private int nameFanolyId = 0;
-    private AttackItems attackItems;
     public LayerMask tree;
+    [SerializeField] private TimeCount timeCount;
     public void Awake()
     {
         instance= this;
-        attackItems= new AttackItems();
         allNpcCell = new Dictionary<string, NpcCell>();
 
     }
@@ -26,7 +25,20 @@ public class NpcManager : MonoBehaviour
     {
         PlayerManager.instance.playerData.KillEnimiesCont++;
         RemoveNpcCell(npcCell);
-        Destroy(npcCell.gameObject);
+        timeCount.SetTime(1.5f);
+        StartCoroutine(NpcDestoryTime(npcCell));
+    }
+    IEnumerator NpcDestoryTime(NpcCell npcCell)
+    {
+        while (true)
+        {
+            if (timeCount.IsFinished())
+            {
+                Destroy(npcCell.gameObject);
+                break;
+            }
+            yield return null;
+        }
     }
     private Dictionary<string,NpcCell> allNpcCell;
     public void factoryNpc(string path,Transform parent,Vector3 position)
@@ -57,7 +69,7 @@ public class NpcManager : MonoBehaviour
     }
     public void RemoveNpcCell(NpcCell npcCell)
     {
-        Debug.Log(allNpcCell.Remove(npcCell.name));
+        allNpcCell.Remove(npcCell.name);
     }
     public Dictionary<string,NpcCell> getAllNpcCell() { return allNpcCell; }
 
