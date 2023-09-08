@@ -16,14 +16,13 @@ public class KillEnimyQuestStep : QuestStep
     }
     private void Dead(NpcCell cell)
     {
-        if (killEnimiesCont < KillToComplete)
+        if (killEnimiesCont < KillToComplete - 1)
         {
             killEnimiesCont++;
-            Debug.Log(killEnimiesCont);
-        }
-        else
-        {
-            FinishQuestStep();
+            if (killEnimiesCont>=KillToComplete)
+            {
+                FinishQuestStep();
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class NpcCell : MonoBehaviour
+public class NpcCell : MonoBehaviour, IDataPersistence
 {
     private Animator animator;
     public NpcData npcData;
@@ -202,4 +202,19 @@ public class NpcCell : MonoBehaviour
 
     }
 
+    public void LoadGame(GameData gameData)
+    {
+        npcData.MaxHealth = gameData.MaxHealth;
+        npcData.CurenttHealth = gameData.CurenttHealth;
+        npcData.MeleeAttackRange = gameData.MeleeAttackRange;
+        npcData.MeleeDamage = gameData.MeleeDamage;
+    }
+
+    public void SaveGame(ref GameData gameData)
+    {
+        gameData.MaxHealth = npcData.MaxHealth;
+        gameData.CurenttHealth = npcData.CurenttHealth;
+        gameData.MeleeAttackRange=npcData.MeleeAttackRange;
+        gameData.MeleeDamage=npcData.MeleeDamage;
+    }
 }

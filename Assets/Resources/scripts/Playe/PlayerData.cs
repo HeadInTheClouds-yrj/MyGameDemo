@@ -15,6 +15,7 @@ public class PlayerData
     private float rangedDamage = 5f;
     private float playerMoveSpeed = 2;
     private int killEnimiesCont = 0;
+    private float lrX = 2.01f;
 
     public string PlayerName { get => playerName; set => playerName = value; }
     public float MaxHealth { get => maxHealth; set => maxHealth = value; }
@@ -27,4 +28,5 @@ public class PlayerData
     public float RangedDamage { get => rangedDamage; set => rangedDamage = value; }
     public float PlayerMoveSpeed { get => playerMoveSpeed; set => playerMoveSpeed = value; }
     public int KillEnimiesCont { get => killEnimiesCont; set => killEnimiesCont = value; }
+    public float LrX { get => lrX; set => lrX = value; }
 }

@@ -118,7 +118,6 @@ public class PlayerManager : MonoBehaviour,IDataPersistence
                 if (npcs[i] != null && attackItems.playerMeleeAttack(npcs[i], playerData.AttackAngle, playerData.MeleeAttackRange))
                 {
                     npcs[i].NpcReduceHP(playerData.MeleeDamage);
-
                 }
             }
         }

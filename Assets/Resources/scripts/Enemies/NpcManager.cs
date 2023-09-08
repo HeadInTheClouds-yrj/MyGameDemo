@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
-public class NpcManager : MonoBehaviour
+public class NpcManager : MonoBehaviour,IDataPersistence
 {
     public static NpcManager instance;
     private int nameFanolyId = 0;
@@ -73,4 +73,22 @@ public class NpcManager : MonoBehaviour
     }
     public Dictionary<string,NpcCell> getAllNpcCell() { return allNpcCell; }
 
+    public void LoadGame(GameData gameData)
+    {
+        int i = 0;
+        foreach (NpcCell item in allNpcCell.Values)
+        {
+            item.transform.position = gameData.NpcsPosition[i];
+            i++;
+        }
+    }
+
+    public void SaveGame(ref GameData gameData)
+    {
+        int i = 0;
+        foreach (NpcCell item in allNpcCell.Values)
+        {
+            gameData.NpcsPosition[i] = item.transform.position;
+        }
+    }
 }
