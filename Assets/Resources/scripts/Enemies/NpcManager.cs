@@ -89,6 +89,7 @@ public class NpcManager : MonoBehaviour,IDataPersistence
         foreach (NpcCell item in allNpcCell.Values)
         {
             gameData.NpcsPosition[i] = item.transform.position;
+            i++;
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class QuestStep : MonoBehaviour
 {
-    private bool isFinished;
+    private bool isFinished = false;
 
     public void FinishQuestStep()
     {
