@@ -7,7 +7,7 @@ public class EnimiesEvent
     public event Action<NpcCell> OnEnimyDie;
     public void EnimyDie(NpcCell npcCell)
     {
-        if (npcCell != null)
+        if (OnEnimyDie != null)
         {
             OnEnimyDie(npcCell);
         }
@@ -15,6 +15,9 @@ public class EnimiesEvent
     public event Action CountWhenTheEnemyDies;
     public void CountTheEnemyDies()
     {
-        CountWhenTheEnemyDies();
+        if (CountWhenTheEnemyDies != null)
+        {
+            CountWhenTheEnemyDies();
+        }
     }
 }

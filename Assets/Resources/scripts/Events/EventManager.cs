@@ -9,6 +9,7 @@ public class EventManager : MonoBehaviour
     public EnimiesEvent enimiesEvent;
     public PlayerEvent playerEvent;
     public DialogEvent dialogEvent;
+    public InputEvent inputEvent;
     private void Awake()
     {
         Instance = this;
@@ -17,5 +18,6 @@ public class EventManager : MonoBehaviour
         enimiesEvent = new EnimiesEvent();
         playerEvent = new PlayerEvent();
         dialogEvent = new DialogEvent();
+        inputEvent = new InputEvent();
     }
 }

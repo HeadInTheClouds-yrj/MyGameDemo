@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KillEnimyQuestStep : QuestStep
 {
-    private int killEnimiesCont = 0;
+    private int killEnimiesCount = 0;
     private int KillToComplete = 2;
     private void OnEnable()
     {
@@ -16,10 +16,10 @@ public class KillEnimyQuestStep : QuestStep
     }
     private void Dead(NpcCell cell)
     {
-        if (killEnimiesCont < KillToComplete)
+        if (killEnimiesCount < KillToComplete)
         {
-            killEnimiesCont++;
-            if (killEnimiesCont>=KillToComplete)
+            killEnimiesCount++;
+            if (killEnimiesCount >=KillToComplete)
             {
                 FinishQuestStep();
             }

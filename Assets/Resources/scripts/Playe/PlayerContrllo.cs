@@ -28,7 +28,14 @@ public class PlayerContrllo : MonoBehaviour,IDataPersistence
     {
         animator = GetComponent<Animator>();
     }
-
+    private void OnEnable()
+    {
+        EventManager.Instance.inputEvent.onSubmitPressed += ToTalk;
+    }
+    private void OnDisable()
+    {
+        EventManager.Instance.inputEvent.onSubmitPressed -= ToTalk;
+    }
     // Update is called once per frame
     public void HandleUpdate()
     {
@@ -38,25 +45,22 @@ public class PlayerContrllo : MonoBehaviour,IDataPersistence
         checkRollcool();
         PlayerRoll();
         cameraFllowPlayer();
-        ToTalk();
+        EventManager.Instance.inputEvent.SubmitPressed();
     }
 
     private void ToTalk()
     {
-        if (Input.GetKeyDown(KeyCode.V))
+        Vector3 fsdalf = new Vector3(0,0,0);
+        fsdalf.x = animator.GetFloat("idlex");
+        fsdalf.y = animator.GetFloat("idley");
+        if (fsdalf.x!=0&&fsdalf.y!=0)
         {
-            Vector3 fsdalf = new Vector3(0,0,0);
-            fsdalf.x = animator.GetFloat("idlex");
-            fsdalf.y = animator.GetFloat("idley");
-            if (fsdalf.x!=0&&fsdalf.y!=0)
-            {
-                fsdalf.x = 0;
-            }
-            var collider = Physics2D.OverlapCircle(transform.position + fsdalf, 0.1f, interactive);
-            if (collider != null)
-            {
-                collider.GetComponent<Interactives>()?.ToTalk();
-            }
+            fsdalf.x = 0;
+        }
+        var collider = Physics2D.OverlapCircle(transform.position + fsdalf, 0.1f, interactive);
+        if (collider != null)
+        {
+            collider.GetComponent<Interactives>()?.ToTalk();
         }
     }
 
