@@ -59,19 +59,40 @@ public class QuestManager : MonoBehaviour
     }
     private void StartQuest(string id)
     {
-        
+        Quest quest = GetQuestById(id);
+        quest.InstantiateCurrentQuestStep(this.transform);
+        ChangeQuestState(id,QuestState.IN_PROGRESS);
     }
 
     private void AdvanceQuest(string id)
     {
-        
+        Quest quest = GetQuestById(id);
+
+        // move on to the next step
+        quest.MoveToNextStep();
+
+        // if there are more steps, instantiate the next one
+        if (quest.CurrentStepExists())
+        {
+            quest.InstantiateCurrentQuestStep(this.transform);
+        }
+        // if there are no more steps, then we've finished all of them for this quest
+        else
+        {
+            ChangeQuestState(quest.info.id, QuestState.CAN_FINISH);
+        }
     }
 
     private void FinishQuest(string id)
     {
-        
+        Quest quest = GetQuestById(id);
+        Reward(id);
+        ChangeQuestState(quest.info.id, QuestState.FINISHED);
     }
-
+    private void Reward(string id)
+    {
+        InventoryManager.Instance.AddItem(InventoryManager.Instance.GetItemById(GetQuestById(id).info.iteamId));
+    }
     private bool CheckRequirementsMet(Quest quest)
     {
         bool meetRequirements = true;

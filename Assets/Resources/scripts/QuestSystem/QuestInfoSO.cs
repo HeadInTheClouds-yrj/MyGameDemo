@@ -20,7 +20,7 @@ public class QuestInfoSO : ScriptableObject
 
     [Header("½±Àø")]
     public int skillId;
-    public int iteamId;
+    public string iteamId;
 
     private void OnValidate()
     {

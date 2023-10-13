@@ -8,7 +8,7 @@ public class InventoryManager : MonoBehaviour,IDataPersistence
 {
     public static InventoryManager Instance;
     public List<Item> Items;
-    public List<Item> allItems;
+    public Item[] allItems;
     public Transform itemContent;
     public GameObject inventoryItem;
     public Toggle rmToggle;
@@ -17,13 +17,13 @@ public class InventoryManager : MonoBehaviour,IDataPersistence
     {
         Items.Add(item);
     }
-    public void RegisterItem(Item item)
-    {
-        allItems.Add(item);
-    }
     public void RemoveItem(Item item)
     {
         Items.Remove(item);
+    }
+    private void InitializeAllItems()
+    {
+        allItems = Resources.LoadAll<Item>("Items");
     }
     public void ListItems()
     {
@@ -96,6 +96,7 @@ public class InventoryManager : MonoBehaviour,IDataPersistence
     void Awake()
     {
         Instance = this;
+        InitializeAllItems();
     }
     private void Start()
     {

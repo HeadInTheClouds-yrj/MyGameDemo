@@ -20,7 +20,6 @@ public class ItemPickup : MonoBehaviour,IDataPersistence
     }
     void Awake()
     {
-        InventoryManager.Instance.RegisterItem(item);
     }
     // Start is called before the first frame update
     void Start()
