@@ -291,7 +291,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence
         lrX = gameData.lrX;
     }
 
-    public void SaveGame(ref GameData gameData)
+    public void SaveGame(GameData gameData)
     {
         gameData.RangedDamage = playerData.RangedDamage;
         gameData.MeleeDamage = playerData.MeleeDamage;

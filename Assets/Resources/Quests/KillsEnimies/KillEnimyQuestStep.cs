@@ -19,10 +19,21 @@ public class KillEnimyQuestStep : QuestStep
         if (killEnimiesCount < KillToComplete)
         {
             killEnimiesCount++;
+            UpdateStepState();
             if (killEnimiesCount >=KillToComplete)
             {
                 FinishQuestStep();
             }
         }
+    }
+    private void UpdateStepState()
+    {
+        string state = killEnimiesCount.ToString();
+        ChangeStepState(state);
+    }
+    protected override void SetStepState(string newState)
+    {
+        killEnimiesCount = System.Int32.Parse(newState);
+        UpdateStepState();
     }
 }

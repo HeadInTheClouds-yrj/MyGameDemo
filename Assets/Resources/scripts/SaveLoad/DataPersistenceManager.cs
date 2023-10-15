@@ -51,7 +51,7 @@ public class DataPersistenceManager : MonoBehaviour
         //通过其他实现了IdataPersitence的脚本可以更新这个gmaeData数据
         foreach (IDataPersistence dataPersistence in dataPersistenceList)
         {
-            dataPersistence?.SaveGame(ref gameData);
+            dataPersistence?.SaveGame(gameData);
         }
         fileDataHandler.Save(gameData);
     }

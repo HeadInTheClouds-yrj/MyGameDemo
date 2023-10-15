@@ -246,7 +246,7 @@ public class PlayerContrllo : MonoBehaviour,IDataPersistence
         maincamera.transform.position = gameData.CameraPosition;
     }
 
-    public void SaveGame(ref GameData gameData)
+    public void SaveGame(GameData gameData)
     {
         gameData.PlayerPosition = transform.position;
         gameData.CameraPosition = maincamera.transform.position;

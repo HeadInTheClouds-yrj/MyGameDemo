@@ -210,7 +210,7 @@ public class NpcCell : MonoBehaviour, IDataPersistence
         npcData.MeleeDamage = gameData.MeleeDamage;
     }
 
-    public void SaveGame(ref GameData gameData)
+    public void SaveGame(GameData gameData)
     {
         gameData.MaxHealth = npcData.MaxHealth;
         gameData.CurenttHealth = npcData.CurenttHealth;

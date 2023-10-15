@@ -8,7 +8,7 @@ public class QuestPoint : MonoBehaviour
 {
     private bool plyerIsNear = false;
     [SerializeField] private QuestInfoSO questInfoSO;
-    [Header("任务npc是否可以开始任务和结束任务功能")]
+    [Header("任务npc是否拥有开始任务和结束任务功能")]
     [SerializeField] private bool startQuest = false;
     [SerializeField] private bool finishQuest = false;
     private string questId;

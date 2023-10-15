@@ -83,12 +83,12 @@ public class NpcManager : MonoBehaviour,IDataPersistence
         }
     }
 
-    public void SaveGame(ref GameData gameData)
+    public void SaveGame(GameData gameData)
     {
         int i = 0;
         foreach (NpcCell item in allNpcCell.Values)
         {
-            gameData.NpcsPosition[i] = item.transform.position;
+            gameData.NpcsPosition.Add(item.transform.position);
             i++;
         }
     }

@@ -1,4 +1,5 @@
 using System;
+using System.Net.NetworkInformation;
 
 public class QuestEvent
 {
@@ -32,6 +33,14 @@ public class QuestEvent
         if (OnQuestStateChange != null)
         {
             OnQuestStateChange(quest);
+        }
+    }
+    public event Action<string,int, QuestStepState> OnQuestStepStateChange;
+    public void QuestStepStateChange(string id, int questStepIndex, QuestStepState stepState)
+    {
+        if (OnQuestStepStateChange != null)
+        {
+            OnQuestStepStateChange(id, questStepIndex,stepState);
         }
     }
 }

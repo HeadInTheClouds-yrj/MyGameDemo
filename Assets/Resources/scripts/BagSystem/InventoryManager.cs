@@ -116,7 +116,7 @@ public class InventoryManager : MonoBehaviour,IDataPersistence
         }
     }
 
-    public void SaveGame(ref GameData gameData)
+    public void SaveGame(GameData gameData)
     {
         foreach (Item item in Items)
         {

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestManager : MonoBehaviour
+public class QuestManager : MonoBehaviour,IDataPersistence
 {
     private Dictionary<string, Quest> questMap;
     private int kiiEnimyCount = 0;
@@ -16,6 +16,7 @@ public class QuestManager : MonoBehaviour
         EventManager.Instance.questEvent.OnStartQuest += StartQuest;
         EventManager.Instance.questEvent.OnAdvanceQuest += AdvanceQuest;
         EventManager.Instance.questEvent.OnFinishQuest += FinishQuest;
+        EventManager.Instance.questEvent.OnQuestStepStateChange += QuestStepStateChange;
         EventManager.Instance.enimiesEvent.OnEnimyDie += EnimyDie;
     }
 
@@ -29,8 +30,11 @@ public class QuestManager : MonoBehaviour
         EventManager.Instance.questEvent.OnStartQuest -= StartQuest;
         EventManager.Instance.questEvent.OnAdvanceQuest -= AdvanceQuest;
         EventManager.Instance.questEvent.OnFinishQuest -= FinishQuest;
+        EventManager.Instance.questEvent.OnQuestStepStateChange += QuestStepStateChange;
         EventManager.Instance.enimiesEvent.OnEnimyDie -= EnimyDie;
     }
+
+
     private void Start()
     {
         foreach (Quest quest in questMap.Values)
@@ -93,6 +97,13 @@ public class QuestManager : MonoBehaviour
     {
         InventoryManager.Instance.AddItem(InventoryManager.Instance.GetItemById(GetQuestById(id).info.iteamId));
     }
+    private void QuestStepStateChange(string questId, int currentQuestStepIndex, QuestStepState questStepState)
+    {
+        Quest quest = GetQuestById(questId);
+        quest.StoryQuestStepState(currentQuestStepIndex,questStepState);
+        ChangeQuestState(questId,quest.state);
+    }
+
     private bool CheckRequirementsMet(Quest quest)
     {
         bool meetRequirements = true;
@@ -131,5 +142,39 @@ public class QuestManager : MonoBehaviour
             Debug.LogWarning("任务不在QuestMap中");
         }
         return quest;
+    }
+
+    public void LoadGame(GameData gameData)
+    {
+        foreach (QuestData questData in gameData.questDatas)
+        {
+            questMap[questData.questId].LoadQuestData(questData.questState,questData.currentQuestStepIndex,questData.questStepStates);
+            if (questMap[questData.questId].state.Equals(QuestState.IN_PROGRESS))
+            {
+                questMap[questData.questId].InstantiateCurrentQuestStep(this.transform);
+            }
+        }
+    }
+
+    public void SaveGame(GameData gameData)
+    {
+        bool flag = false;
+        foreach (Quest quest in questMap.Values)
+        {
+            flag = false;
+            QuestData questData = quest.GetQuestData();
+            for (int i = 0; i < gameData.questDatas.Count; i++)
+            {
+                if (questData.questId.Equals(gameData.questDatas[i].questId))
+                {
+                    gameData.questDatas[i] = questData;
+                    flag = true;
+                }
+            }
+            if (!flag)
+            {
+                gameData.questDatas.Add(questData);
+            }
+        }
     }
 }

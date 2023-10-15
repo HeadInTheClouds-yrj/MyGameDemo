@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
-    public Vector3 playerPosition;
+    public Vector3 playerPosition;//ÕÊº“Œª÷√
     private Vector3 cameraPosition;
     public Vector3 foxPosition;
     public List<Vector3> npcsPosition;
@@ -24,6 +24,7 @@ public class GameData
     public float rangedDamage;
     public float playerMoveSpeed;
     public float lrX;
+    public List<QuestData> questDatas;
     public GameData()
     {
         PlayerPosition = new Vector3(1,0,0);
@@ -44,6 +45,7 @@ public class GameData
         rangedDamage = 5f;
         playerMoveSpeed = 2;
         lrX= 2.01f;
+        questDatas = new List<QuestData>();
 }
 
     public Vector3 PlayerPosition { get => playerPosition; set => playerPosition = value; }
