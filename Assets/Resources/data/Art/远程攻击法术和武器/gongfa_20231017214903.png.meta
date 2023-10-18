@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a597c169bbbbb3f45836bcd1b86cc87f
+guid: 4bd1678e487c6814da282689c529e110
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -103,467 +103,542 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: items_0
+      name: gongfa_20231017214903_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 137
-        width: 38
-        height: 38
+        x: 13
+        y: 478.4
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfab03ca56966b34588e5b2149edc353
-      internalID: -872409537
+      spriteID: 4f684f79cf6f9624289342a73267208a
+      internalID: 755865553
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_1
+      name: gongfa_20231017214903_1
       rect:
         serializedVersion: 2
-        x: 49
-        y: 137
-        width: 38
-        height: 38
+        x: 129
+        y: 478.4
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3607e990d19d3f438586044e01c6d63
-      internalID: 738654295
+      spriteID: 45d75c26cb0ff6d439d8b2dcc0e7b023
+      internalID: -1372146429
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_2
+      name: gongfa_20231017214903_2
       rect:
         serializedVersion: 2
-        x: 93
-        y: 137
-        width: 38
-        height: 38
+        x: 245
+        y: 478.4
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f5b4cf5c475e514c81dc30fdcf05973
-      internalID: -2039331059
+      spriteID: e5449f14ff39aa640b5ec34f43f99076
+      internalID: 864444005
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_3
+      name: gongfa_20231017214903_3
       rect:
         serializedVersion: 2
-        x: 137
-        y: 137
-        width: 38
-        height: 38
+        x: 361
+        y: 478.4
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc4c1c5183683c34693652befd822cfa
-      internalID: 978071462
+      spriteID: 81b2ef43f50f970499cf1e8fdbe639c4
+      internalID: -1944938233
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_4
+      name: gongfa_20231017214903_4
       rect:
         serializedVersion: 2
-        x: 181
-        y: 137
-        width: 38
-        height: 38
+        x: 477
+        y: 478.4
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ed510ba6f2a7ed42a575a77174f4f52
-      internalID: -1707738171
+      spriteID: c1ccfeceb4f5a32468b16b6682681409
+      internalID: 303689073
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_5
+      name: gongfa_20231017214903_5
       rect:
         serializedVersion: 2
-        x: 5
-        y: 93
-        width: 38
-        height: 38
+        x: 13
+        y: 361.4
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 876c9b5ad0051f74aa0f67407da9275f
-      internalID: -359728728
+      spriteID: 37afca01a95b3b04bb04d0f767ee2657
+      internalID: -1427685540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_6
+      name: gongfa_20231017214903_6
       rect:
         serializedVersion: 2
-        x: 49
-        y: 93
-        width: 38
-        height: 38
+        x: 129
+        y: 361.4
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85ef8a48e9559d64b85e9e15567a2ede
-      internalID: 1728126980
+      spriteID: b6d9ed200afae2748a806fefd9f4088b
+      internalID: -160695758
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_7
+      name: gongfa_20231017214903_7
       rect:
         serializedVersion: 2
-        x: 93
-        y: 93
-        width: 38
-        height: 38
+        x: 245
+        y: 361.4
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c11df4e9195c2d8408bcb90ebeb51dbf
-      internalID: -959293074
+      spriteID: 5272a536bb8adb741b7c3e813340b9ae
+      internalID: 503817716
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_8
+      name: gongfa_20231017214903_8
       rect:
         serializedVersion: 2
-        x: 137
-        y: 93
-        width: 38
-        height: 38
+        x: 361
+        y: 361.4
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac17d02788b971e4babe3a2c3cb9d7d2
-      internalID: -1204001386
+      spriteID: c022a04dbf342a441b37db15d5b8b9ef
+      internalID: -1929975841
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_9
+      name: gongfa_20231017214903_9
       rect:
         serializedVersion: 2
-        x: 181
-        y: 93
-        width: 38
-        height: 38
+        x: 477
+        y: 361.4
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b1ed46bc43fc034ea475d7d37fb02ad
-      internalID: 1292154067
+      spriteID: de95585872bf429449905bfec2a82291
+      internalID: -85630602
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_10
+      name: gongfa_20231017214903_10
       rect:
         serializedVersion: 2
-        x: 225
-        y: 93
-        width: 38
-        height: 38
+        x: 13
+        y: 244.4
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1dfb51c7d3d51344497c0b4cafe64dc8
-      internalID: -1861109154
+      spriteID: 986fb54d73668254b9594694687bbaa9
+      internalID: -762443317
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_11
+      name: gongfa_20231017214903_11
       rect:
         serializedVersion: 2
-        x: 5
-        y: 49
-        width: 38
-        height: 38
+        x: 129
+        y: 244.4
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db424cbf77dd840478b7bbe8a0a50eac
-      internalID: 1710391639
+      spriteID: 896ff28d611cf7f4098be63cc2a79102
+      internalID: -495038558
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_12
+      name: gongfa_20231017214903_12
       rect:
         serializedVersion: 2
-        x: 49
-        y: 49
-        width: 38
-        height: 38
+        x: 245
+        y: 244.4
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe1d4b3a368d1b344a3cda9dafecd5a1
-      internalID: -615855890
+      spriteID: 5f8cf4680d066de498d3d647bad1e4d9
+      internalID: -573512449
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_13
+      name: gongfa_20231017214903_13
       rect:
         serializedVersion: 2
-        x: 93
-        y: 49
-        width: 38
-        height: 38
+        x: 361
+        y: 244.4
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d894c9f3d7029a940933d6d681de158f
-      internalID: -1934862500
+      spriteID: 07d7dd381d3fe6e4daf2c10210c06f0c
+      internalID: -894943807
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_14
+      name: gongfa_20231017214903_14
       rect:
         serializedVersion: 2
-        x: 137
-        y: 49
-        width: 38
-        height: 38
+        x: 477
+        y: 244.4
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 197413c23cc59bb48b77d5a06d9967b9
-      internalID: -189480976
+      spriteID: 1c945ee1ba729fd429b0c5930d82c759
+      internalID: -1121883684
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_15
+      name: gongfa_20231017214903_15
       rect:
         serializedVersion: 2
-        x: 181
-        y: 49
-        width: 38
-        height: 38
+        x: 13
+        y: 127.4
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f546ecd4d3d2f64083ebbbaa54e1bc9
-      internalID: 54345462
+      spriteID: d059ce209731c9e469bb945b8f573d11
+      internalID: 1437444406
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_16
+      name: gongfa_20231017214903_16
       rect:
         serializedVersion: 2
-        x: 225
-        y: 49
-        width: 38
-        height: 38
+        x: 129
+        y: 127.4
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f690b05f05555294a94526d27dd98ef4
-      internalID: 25954878
+      spriteID: 79d7c89f71c614243b2fccf1f98e91b9
+      internalID: 234707628
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_17
+      name: gongfa_20231017214903_17
       rect:
         serializedVersion: 2
-        x: 5
-        y: 5
-        width: 38
-        height: 38
+        x: 245
+        y: 127.4
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1698f859b82d0c46a2e21f8dba23247
-      internalID: 1554529544
+      spriteID: 1999e67891ccd134b93ae2f664acdcbc
+      internalID: -2088243867
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_18
+      name: gongfa_20231017214903_18
       rect:
         serializedVersion: 2
-        x: 49
-        y: 5
-        width: 38
-        height: 38
+        x: 361
+        y: 127.4
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dbfaf8f2454ac38428e562395a23f3a8
-      internalID: -1702705206
+      spriteID: c93ad1039ea03e549bebe6bc981806f0
+      internalID: -356541295
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_19
+      name: gongfa_20231017214903_19
       rect:
         serializedVersion: 2
-        x: 93
-        y: 5
-        width: 38
-        height: 38
+        x: 477
+        y: 127.4
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf258dd9e8e990149acc033a3a155b83
-      internalID: 1248229748
+      spriteID: b8a6bab3c330ca240860149d37ea24b9
+      internalID: 902373080
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_20
+      name: gongfa_20231017214903_20
       rect:
         serializedVersion: 2
-        x: 137
-        y: 5
-        width: 38
-        height: 38
+        x: 13
+        y: 10.400002
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9251adad9141904b9fe9370365426c3
-      internalID: -1159066710
+      spriteID: c209612b631981c4691601597cf0c09a
+      internalID: -1662610493
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_21
+      name: gongfa_20231017214903_21
       rect:
         serializedVersion: 2
-        x: 181
-        y: 5
-        width: 38
-        height: 38
+        x: 129
+        y: 10.400002
+        width: 109.8
+        height: 109.6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a28bc846981af97459a5bbc5a94d24f6
-      internalID: -372519960
+      spriteID: 5cf4bb58a49dac2419726498458d9f98
+      internalID: -1455522414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gongfa_20231017214903_22
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 10.400002
+        width: 109.8
+        height: 109.6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b3f841c56dee9f4f92c83be10791509
+      internalID: 674232058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gongfa_20231017214903_23
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 10.400002
+        width: 109.8
+        height: 109.6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ebf87f52f10f2e4dbe4be1b00e479da
+      internalID: -431577130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gongfa_20231017214903_24
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 10.400002
+        width: 109.8
+        height: 109.6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d39bbce4e555384e83695606e320eb4
+      internalID: 226665348
       vertices: []
       indices: 
       edges: []
@@ -579,28 +654,31 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      items_2: -2039331059
-      items_10: -1861109154
-      items_15: 54345462
-      items_8: -1204001386
-      items_19: 1248229748
-      items_4: -1707738171
-      items_14: -189480976
-      items_3: 978071462
-      items_18: -1702705206
-      items_20: -1159066710
-      items_1: 738654295
-      items_16: 25954878
-      items_0: -872409537
-      items_5: -359728728
-      items_7: -959293074
-      items_11: 1710391639
-      items_17: 1554529544
-      items_6: 1728126980
-      items_12: -615855890
-      items_13: -1934862500
-      items_9: 1292154067
-      items_21: -372519960
+      gongfa_20231017214903_8: -1929975841
+      gongfa_20231017214903_17: -2088243867
+      gongfa_20231017214903_9: -85630602
+      gongfa_20231017214903_4: 303689073
+      gongfa_20231017214903_21: -1455522414
+      gongfa_20231017214903_23: -431577130
+      gongfa_20231017214903_14: -1121883684
+      gongfa_20231017214903_11: -495038558
+      gongfa_20231017214903_16: 234707628
+      gongfa_20231017214903_18: -356541295
+      gongfa_20231017214903_5: -1427685540
+      gongfa_20231017214903_6: -160695758
+      gongfa_20231017214903_20: -1662610493
+      gongfa_20231017214903_1: -1372146429
+      gongfa_20231017214903_0: 755865553
+      gongfa_20231017214903_13: -894943807
+      gongfa_20231017214903_19: 902373080
+      gongfa_20231017214903_22: 674232058
+      gongfa_20231017214903_7: 503817716
+      gongfa_20231017214903_10: -762443317
+      gongfa_20231017214903_2: 864444005
+      gongfa_20231017214903_3: -1944938233
+      gongfa_20231017214903_12: -573512449
+      gongfa_20231017214903_15: 1437444406
+      gongfa_20231017214903_24: 226665348
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

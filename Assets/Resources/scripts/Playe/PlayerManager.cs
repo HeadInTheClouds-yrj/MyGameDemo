@@ -67,6 +67,16 @@ public class PlayerManager : MonoBehaviour,IDataPersistence
         attackItems = new AttackItems();
         animator = GetComponent<Animator>();
     }
+    private void OnEnable()
+    {
+        EventManager.Instance.battleEvent.OnPlayerReduceLingQi += PlayerReduceLingQi;
+    }
+    private void OnDisable()
+    {
+        EventManager.Instance.battleEvent.OnPlayerReduceLingQi -= PlayerReduceLingQi;
+    }
+
+
     private void Start()
     {
         uI = UIManager.instance.GetUI("Panel", "Image_N").transform.GetComponent<Image>();
@@ -82,6 +92,22 @@ public class PlayerManager : MonoBehaviour,IDataPersistence
         GetMouseKey();
         chekAttackcool();
         PlayerMeleeAttack();
+    }
+    private void PlayerReduceLingQi(float damage)
+    {
+        if (damage>0)
+        {
+            if (damage>playerData.CurenttHealth)
+            {
+                float temp = damage - playerData.CurenttHealth;
+                playerData.CurenttHealth = 0;
+                EventManager.Instance.battleEvent.PlayerReduceHP(temp);
+            }
+            else
+            {
+                playerData.CurrentLingQi -= damage;
+            }
+        }
     }
     public float PlayerReduceHP(float damage)
     {
@@ -144,6 +170,15 @@ public class PlayerManager : MonoBehaviour,IDataPersistence
         spriteRenderer.sprite = wearponIcon;
         playerData.RangedDamage = Damage;
 
+    }
+    public void UsePoint(int value)
+    {
+        playerData.CurenttHealth+=value;
+        if (playerData.CurenttHealth>playerData.MaxHealth)
+        {
+            playerData.CurenttHealth = playerData.MaxHealth;
+        }
+        updateUI();
     }
     public void GetMouseKey()
     {

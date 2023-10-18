@@ -10,6 +10,7 @@ public class EventManager : MonoBehaviour
     public PlayerEvent playerEvent;
     public DialogEvent dialogEvent;
     public InputEvent inputEvent;
+    public BattleEvent battleEvent;
     private void Awake()
     {
         Instance = this;
@@ -19,5 +20,6 @@ public class EventManager : MonoBehaviour
         playerEvent = new PlayerEvent();
         dialogEvent = new DialogEvent();
         inputEvent = new InputEvent();
+        battleEvent = new BattleEvent();
     }
 }

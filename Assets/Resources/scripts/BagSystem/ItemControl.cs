@@ -28,6 +28,10 @@ public class ItemControl : MonoBehaviour
             case Itemkinde.RangedWeapen:
                 PlayerManager.instance.changeWearpon(item.icon, item.value, item.prefeberPath);
                 break;
+            case Itemkinde.Point:
+                PlayerManager.instance.UsePoint(item.value);
+                RemoveItem();
+                break;
         }
     }
     

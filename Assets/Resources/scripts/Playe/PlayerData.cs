@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerData
 {
     private string playerName = "beastmaster";
+    private float maxLingQi = 1000;
+    private float currentLingQi = 1000;
     private float maxHealth = 100;
     private float movespeed = 2;
     private float baseDamage = 5;
@@ -29,4 +31,6 @@ public class PlayerData
     public float PlayerMoveSpeed { get => playerMoveSpeed; set => playerMoveSpeed = value; }
     public int KillEnimiesCont { get => killEnimiesCont; set => killEnimiesCont = value; }
     public float LrX { get => lrX; set => lrX = value; }
+    public float MaxLingQi { get => maxLingQi; set => maxLingQi = value; }
+    public float CurrentLingQi { get => currentLingQi; set => currentLingQi = value; }
 }
