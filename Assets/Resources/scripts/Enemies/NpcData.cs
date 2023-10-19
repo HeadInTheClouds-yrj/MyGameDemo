@@ -5,7 +5,7 @@ public class NpcData
 {
     private string npcName = "enimy";
     private float maxHealth = 100;
-    private float movespeed = 2;
+    private float moveSpeed = 2;
     private float baseDamage = 5;
     private float curenttHealth = 100;
     private float meleeDamage = 5;
@@ -13,7 +13,7 @@ public class NpcData
 
     public string NpcName { get => npcName; set => npcName = value; }
     public float MaxHealth { get => maxHealth; set => maxHealth = value; }
-    public float Movespeed { get => movespeed; set => movespeed = value; }
+    public float Movespeed { get => moveSpeed; set => moveSpeed = value; }
     public float BaseDamage { get => baseDamage; set => baseDamage = value; }
     public float CurenttHealth { get => curenttHealth; set => curenttHealth = value; }
     public float MeleeDamage { get => meleeDamage; set => meleeDamage = value; }

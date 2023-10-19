@@ -14,6 +14,10 @@ public class GongFaInfoSO : ScriptableObject
     public int gongFaLevel;
     public Sprite gongFaInItemIcon;
     public Sprite gongFaInBattleIcon;
+    public int gongFaXiuLianSpeek;
+    public GongFaTypes gongFaTypes;
+    public int canLearnMaxRate;
+    public int currentLearnedRate;
     [Header("功法实体功能预制体")]
     public GameObject gongFaPrefab;
     private void OnValidate()

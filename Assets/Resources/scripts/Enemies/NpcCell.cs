@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 public class NpcCell : MonoBehaviour, IDataPersistence
 {
     private Animator animator;
-    public NpcData npcData;
+    public Data npcData;
     public bool isMoving=false;
     public bool isIdle=false;
     public bool isAttack = false;
@@ -32,7 +32,7 @@ public class NpcCell : MonoBehaviour, IDataPersistence
     void Start()
     {
         animator = transform.GetComponent<Animator>();
-        npcData = new NpcData();
+        npcData = new Data();
         NpcManager.instance.registeToManager(transform.name, this);
         attackItems = new AttackItems();
         tree = NpcManager.instance.tree;
@@ -109,7 +109,7 @@ public class NpcCell : MonoBehaviour, IDataPersistence
         while ((transform.position - targetMoving).magnitude > Mathf.Epsilon && !Physics2D.OverlapCircle(transform.position, 0.1f, tree))
         {
             
-            transform.position = Vector3.MoveTowards(transform.position, targetMoving, npcData.Movespeed * Time.deltaTime*0.1f);
+            transform.position = Vector3.MoveTowards(transform.position, targetMoving, npcData.MoveSpeed * Time.deltaTime*0.1f);
             
             yield return null;
         }
@@ -142,16 +142,16 @@ public class NpcCell : MonoBehaviour, IDataPersistence
             }
             if ((PlayerManager.instance.transform.position - transform.position).magnitude < 1f)
             {
-                if (attackItems.npcMeleeAttack(this, npcData.MeleeAttackRange))
-                {
-                    if (tmpmovetime > 0.5f)
-                    {
-                        tmpmovetime = 0;
-                        isAttack = true;
-                        animator.SetBool("skelenton01_isAttack", isAttack);
-                        PlayerManager.instance.PlayerReduceHP(npcData.MeleeDamage);
-                    }
-                }
+                //if (attackItems.npcMeleeAttack(this, npcData.MeleeAttackRange))
+                //{
+                //    if (tmpmovetime > 0.5f)
+                //    {
+                //        tmpmovetime = 0;
+                //        isAttack = true;
+                //        animator.SetBool("skelenton01_isAttack", isAttack);
+                //        PlayerManager.instance.PlayerReduceHP(npcData.MeleeDamage);
+                //    }
+                //}
             }
             if (isAttack && tmpmovetime > 0.05f)
             {
@@ -206,15 +206,15 @@ public class NpcCell : MonoBehaviour, IDataPersistence
     {
         npcData.MaxHealth = gameData.MaxHealth;
         npcData.CurenttHealth = gameData.CurenttHealth;
-        npcData.MeleeAttackRange = gameData.MeleeAttackRange;
-        npcData.MeleeDamage = gameData.MeleeDamage;
+        //npcData.MeleeAttackRange = gameData.MeleeAttackRange;
+        //npcData.MeleeDamage = gameData.MeleeDamage;
     }
 
     public void SaveGame(GameData gameData)
     {
         gameData.MaxHealth = npcData.MaxHealth;
         gameData.CurenttHealth = npcData.CurenttHealth;
-        gameData.MeleeAttackRange=npcData.MeleeAttackRange;
-        gameData.MeleeDamage=npcData.MeleeDamage;
+        //gameData.MeleeAttackRange=npcData.MeleeAttackRange;
+        //gameData.MeleeDamage=npcData.MeleeDamage;
     }
 }

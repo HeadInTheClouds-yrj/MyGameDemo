@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    public int currentHearth = 0;
+    public int currentHearth = 1000;
     public float rectangleMaxLength = 50.9f;
     public float blackDonateLength = 10.0f;
     public float blackDonatespacing = 10f;

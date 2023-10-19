@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class PlayerManager : MonoBehaviour,IDataPersistence
 {
     public static PlayerManager instance;
-    public PlayerData playerData;
+    public Data playerData;
     private AttackItems attackItems;
     public Animator animator;
     private float hittmptime = 0;
@@ -63,7 +63,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence
     private void Awake()
     {
         instance = this;
-        playerData = new PlayerData();
+        playerData = new Data(this.transform);
         attackItems = new AttackItems();
         animator = GetComponent<Animator>();
     }
@@ -83,6 +83,9 @@ public class PlayerManager : MonoBehaviour,IDataPersistence
         playerhpui = UIManager.instance.GetUI("Panel", "Text (TMP)_N").transform.GetComponent<TMP_Text>();
         BowPowerSlider.value = 0f;
         BowPowerSlider.maxValue = maxSliderValue;
+        playerData.InstaillGongFa["ChangShenFa"] = 0;
+        playerData.CurrentUsingGongFa.Add(GongFaManager.instance.InstantiateGongFa("ChangShenFa", playerData, this.transform));
+        EventManager.Instance.gongFaEvent.InstallGongFa_Onece(playerData,new List<Data>(), new List<Data>());
         updateUI();
     }
     public void HandleUpdate()
@@ -90,7 +93,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence
         HitAnimation();
         PlayerInGameHP();
         GetMouseKey();
-        chekAttackcool();
+        //chekAttackcool();
         PlayerMeleeAttack();
     }
     private void PlayerReduceLingQi(float damage)
@@ -127,27 +130,27 @@ public class PlayerManager : MonoBehaviour,IDataPersistence
         uI.fillAmount = playerData.CurenttHealth/playerData.MaxHealth;
         playerhpui.text = playerData.CurenttHealth.ToString()+"/"+playerData.MaxHealth.ToString();
     }
-    public void meleeAttack(bool isAttack)
-    {
-        if (isAttack)
-        {
-            Dictionary<string, NpcCell> allnpc = NpcManager.instance.getAllNpcCell();
-            NpcCell[] npcs = new NpcCell[allnpc.Count];
-            int j = 0;
-            foreach (NpcCell npc in allnpc.Values)
-            {
-                npcs[j] = npc;
-                j++;
-            }
-            for (int i = 0; i < npcs.Length; i++)
-            {
-                if (npcs[i] != null && attackItems.playerMeleeAttack(npcs[i], playerData.AttackAngle, playerData.MeleeAttackRange))
-                {
-                    npcs[i].NpcReduceHP(playerData.MeleeDamage);
-                }
-            }
-        }
-    }
+    //public void meleeAttack(bool isAttack)
+    //{
+    //    if (isAttack)
+    //    {
+    //        Dictionary<string, NpcCell> allnpc = NpcManager.instance.getAllNpcCell();
+    //        NpcCell[] npcs = new NpcCell[allnpc.Count];
+    //        int j = 0;
+    //        foreach (NpcCell npc in allnpc.Values)
+    //        {
+    //            npcs[j] = npc;
+    //            j++;
+    //        }
+    //        for (int i = 0; i < npcs.Length; i++)
+    //        {
+    //            if (npcs[i] != null && attackItems.playerMeleeAttack(npcs[i], playerData.AttackAngle, playerData.MeleeAttackRange))
+    //            {
+    //                npcs[i].NpcReduceHP(playerData.MeleeDamage);
+    //            }
+    //        }
+    //    }
+    //}
     public void PlayerSwordBrow()
     {
         spriteRenderer.enabled = true;
@@ -163,14 +166,14 @@ public class PlayerManager : MonoBehaviour,IDataPersistence
         float angle = Mathf.Atan2(mouseposition.y, mouseposition.x) * Mathf.Rad2Deg;
         return angle;
     }
-    public void changeWearpon(Sprite wearponIcon, float Damage, string path)
-    {
-        SwordPrefer = Resources.Load(path) as GameObject;
-        spriteRenderer = Hand.GetComponentInChildren<SpriteRenderer>();
-        spriteRenderer.sprite = wearponIcon;
-        playerData.RangedDamage = Damage;
+    //public void changeWearpon(Sprite wearponIcon, float Damage, string path)
+    //{
+    //    SwordPrefer = Resources.Load(path) as GameObject;
+    //    spriteRenderer = Hand.GetComponentInChildren<SpriteRenderer>();
+    //    spriteRenderer.sprite = wearponIcon;
+    //    playerData.RangedDamage = Damage;
 
-    }
+    //}
     public void UsePoint(int value)
     {
         playerData.CurenttHealth+=value;
@@ -189,14 +192,14 @@ public class PlayerManager : MonoBehaviour,IDataPersistence
             leftMouse = false;
         }
     }
-    private void chekAttackcool()
-    {
-        playerMeleeTimeControl();
-        if (SwordPrefer != null)
-        {
-            PlayerBowSwordControl();
-        }
-    }
+    //private void chekAttackcool()
+    //{
+    //    playerMeleeTimeControl();
+    //    if (SwordPrefer != null)
+    //    {
+    //        PlayerBowSwordControl();
+    //    }
+    //}
     private void HitAnimation()
     {
         if (isHit)
@@ -211,50 +214,50 @@ public class PlayerManager : MonoBehaviour,IDataPersistence
             animator.SetBool("isHitt", isHit);
         }
     }
-    private void PlayerBowSwordControl()
-    {
-        if (rightMouse&&canfire)
-        {
-            Accumulated();
-        }
-        else if (Input.GetMouseButtonUp(1) && canfire)
-        {
-            Shoot();
-        }
-        else
-        {
-            if (sliderValue>0f)
-            {
-                sliderValue -= Time.deltaTime * 5f;
-            }
-            else
-            {
-                sliderValue = 0f;
-                canfire = true;
-            }
-            BowPowerSlider.value = sliderValue;
-        }
-    }
+    //private void PlayerBowSwordControl()
+    //{
+    //    if (rightMouse&&canfire)
+    //    {
+    //        Accumulated();
+    //    }
+    //    else if (Input.GetMouseButtonUp(1) && canfire)
+    //    {
+    //        Shoot();
+    //    }
+    //    else
+    //    {
+    //        if (sliderValue>0f)
+    //        {
+    //            sliderValue -= Time.deltaTime * 5f;
+    //        }
+    //        else
+    //        {
+    //            sliderValue = 0f;
+    //            canfire = true;
+    //        }
+    //        BowPowerSlider.value = sliderValue;
+    //    }
+    //}
     private void PlayerInGameHP()
     {
         lineRenderer.SetPosition(0, new Vector3(transform.position.x - relativetransformX, transform.position.y + 0.8f, 0));
         lineRenderer.SetPosition(1, new Vector3(transform.position.x + lrX / 2, transform.position.y + 0.8f, 0));
     }
-    private void Shoot()
-    {
-        if (sliderValue > maxSliderValue)
-        {
-            sliderValue = maxSliderValue;
-        }
-        float SwordSpeed = sliderValue + BowPower;
-        float angle = AngleTowardsMouse();
-        Quaternion rotation = Quaternion.Euler(new Vector3(0f,0f,angle+90));
-        BowControl bowControl = Instantiate(SwordPrefer,sworte2.position, rotation).GetComponent<BowControl>();
-        bowControl.swordVelocity = SwordSpeed;
-        bowControl.playerDamge = playerData.BaseDamage + playerData.RangedDamage * 5 * (sliderValue / maxSliderValue);
-        canfire = false;
-        spriteRenderer.enabled = false;
-    }
+    //private void Shoot()
+    //{
+    //    if (sliderValue > maxSliderValue)
+    //    {
+    //        sliderValue = maxSliderValue;
+    //    }
+    //    float SwordSpeed = sliderValue + BowPower;
+    //    float angle = AngleTowardsMouse();
+    //    Quaternion rotation = Quaternion.Euler(new Vector3(0f,0f,angle+90));
+    //    BowControl bowControl = Instantiate(SwordPrefer,sworte2.position, rotation).GetComponent<BowControl>();
+    //    bowControl.swordVelocity = SwordSpeed;
+    //    bowControl.playerDamge = playerData.BaseDamage + playerData.RangedDamage * 5 * (sliderValue / maxSliderValue);
+    //    canfire = false;
+    //    spriteRenderer.enabled = false;
+    //}
 
     private void Accumulated()
     {
@@ -267,32 +270,32 @@ public class PlayerManager : MonoBehaviour,IDataPersistence
         }
     }
 
-    public void playerMeleeTimeControl()
-    {
-        if (leftMouse)
-        {
-            if (meleeAttackindex == 0)
-            {
-                isMelee = true;
+    //public void playerMeleeTimeControl()
+    //{
+    //    if (leftMouse)
+    //    {
+    //        if (meleeAttackindex == 0)
+    //        {
+    //            isMelee = true;
 
-                meleeAttack(isMelee);
-                meleeAttackcooltime = 0;
-                meleeAttackindex++;
-            }
-            else
-            {
-                if (meleeAttackcooltime > 0.4f)
-                {
-                    isMelee = true;
+    //            meleeAttack(isMelee);
+    //            meleeAttackcooltime = 0;
+    //            meleeAttackindex++;
+    //        }
+    //        else
+    //        {
+    //            if (meleeAttackcooltime > 0.4f)
+    //            {
+    //                isMelee = true;
 
-                    meleeAttack(isMelee);
-                    meleeAttackcooltime = 0;
-                }
+    //                meleeAttack(isMelee);
+    //                meleeAttackcooltime = 0;
+    //            }
 
-            }
+    //        }
 
-        }
-    }
+    //    }
+    //}
     public void PlayerMeleeAttack()
     {
         if (isMelee)
@@ -314,29 +317,29 @@ public class PlayerManager : MonoBehaviour,IDataPersistence
 
     public void LoadGame(GameData gameData)
     {
-        playerData.RangedDamage = gameData.RangedDamage;
-        playerData.MeleeDamage = gameData.MeleeDamage;
-        playerData.MeleeAttackRange = gameData.MeleeAttackRange;
-        playerData.MaxHealth = gameData.MaxHealth;
-        playerData.CurenttHealth = gameData.CurenttHealth;
-        playerData.AttackAngle = gameData.AttackAngle;
-        playerData.BaseDamage = gameData.BaseDamage;
-        playerData.PlayerMoveSpeed = gameData.PlayerMoveSpeed;
-        playerData.PlayerName = gameData.PlayerName;
-        lrX = gameData.lrX;
+        //playerData.RangedDamage = gameData.RangedDamage;
+        //playerData.MeleeDamage = gameData.MeleeDamage;
+        //playerData.MeleeAttackRange = gameData.MeleeAttackRange;
+        //playerData.MaxHealth = gameData.MaxHealth;
+        //playerData.CurenttHealth = gameData.CurenttHealth;
+        //playerData.AttackAngle = gameData.AttackAngle;
+        //playerData.BaseDamage = gameData.BaseDamage;
+        //playerData.PlayerMoveSpeed = gameData.PlayerMoveSpeed;
+        //playerData.PlayerName = gameData.PlayerName;
+        //lrX = gameData.lrX;
     }
 
     public void SaveGame(GameData gameData)
     {
-        gameData.RangedDamage = playerData.RangedDamage;
-        gameData.MeleeDamage = playerData.MeleeDamage;
-        gameData.MeleeAttackRange = playerData.MeleeAttackRange;
-        gameData.MaxHealth = playerData.MaxHealth;
-        gameData.CurenttHealth= playerData.CurenttHealth;
-        gameData.AttackAngle = playerData.AttackAngle;
-        gameData.BaseDamage = playerData.BaseDamage;
-        gameData.playerMoveSpeed= playerData.PlayerMoveSpeed;
-        gameData.PlayerName = playerData.PlayerName;
-        gameData.lrX = lrX;
+        //gameData.RangedDamage = playerData.RangedDamage;
+        //gameData.MeleeDamage = playerData.MeleeDamage;
+        //gameData.MeleeAttackRange = playerData.MeleeAttackRange;
+        //gameData.MaxHealth = playerData.MaxHealth;
+        //gameData.CurenttHealth= playerData.CurenttHealth;
+        //gameData.AttackAngle = playerData.AttackAngle;
+        //gameData.BaseDamage = playerData.BaseDamage;
+        //gameData.playerMoveSpeed= playerData.PlayerMoveSpeed;
+        //gameData.PlayerName = playerData.PlayerName;
+        //gameData.lrX = lrX;
     }
 }

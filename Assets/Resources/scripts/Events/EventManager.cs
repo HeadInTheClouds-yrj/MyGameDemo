@@ -11,6 +11,7 @@ public class EventManager : MonoBehaviour
     public DialogEvent dialogEvent;
     public InputEvent inputEvent;
     public BattleEvent battleEvent;
+    public GongFaEvent gongFaEvent;
     private void Awake()
     {
         Instance = this;
@@ -21,5 +22,6 @@ public class EventManager : MonoBehaviour
         dialogEvent = new DialogEvent();
         inputEvent = new InputEvent();
         battleEvent = new BattleEvent();
+        gongFaEvent= new GongFaEvent();
     }
 }

@@ -26,7 +26,7 @@ public class ItemControl : MonoBehaviour
         switch (item.itemkinde)
         {
             case Itemkinde.RangedWeapen:
-                PlayerManager.instance.changeWearpon(item.icon, item.value, item.prefeberPath);
+                //PlayerManager.instance.changeWearpon(item.icon, item.value, item.prefeberPath);
                 break;
             case Itemkinde.Point:
                 PlayerManager.instance.UsePoint(item.value);

@@ -18,4 +18,8 @@ MonoBehaviour:
   gongFaLevel: 1
   gongFaInItemIcon: {fileID: -762443317, guid: 4bd1678e487c6814da282689c529e110, type: 3}
   gongFaInBattleIcon: {fileID: -762443317, guid: 4bd1678e487c6814da282689c529e110, type: 3}
-  gongFaPrefab: {fileID: 0}
+  gongFaXiuLianSpeek: 0
+  gongFaTypes: 0
+  canLearnMaxRate: 0
+  currentLearnedRate: 0
+  gongFaPrefab: {fileID: 5688731024090396649, guid: 47453d4d5ba58d54db736b00114a19d2, type: 3}

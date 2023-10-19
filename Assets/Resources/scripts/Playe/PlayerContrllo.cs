@@ -68,7 +68,7 @@ public class PlayerContrllo : MonoBehaviour,IDataPersistence
     {
         test = transform.position;
         test.z = -7;
-        maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, test, PlayerManager.instance.playerData.PlayerMoveSpeed * 6);
+        maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, test, PlayerManager.instance.playerData.MoveSpeed * 6);
     }
     private void meleeAttackAnimationContrllo() //Player looks towards the mouse
     {
@@ -156,7 +156,7 @@ public class PlayerContrllo : MonoBehaviour,IDataPersistence
         }
         else if((transform.position - targetposition).magnitude > Mathf.Epsilon)//使用while效果更好，可惜了之前没想到，if凑合用吧！
         {
-            transform.position = Vector3.Lerp(transform.position, targetposition, PlayerManager.instance.playerData.PlayerMoveSpeed * Time.deltaTime*1f);
+            transform.position = Vector3.Lerp(transform.position, targetposition, PlayerManager.instance.playerData.MoveSpeed * Time.deltaTime*1f);
             animator.SetBool("isroll", isRoll);
         }
 
@@ -234,7 +234,7 @@ public class PlayerContrllo : MonoBehaviour,IDataPersistence
         {
             isMoving = true;
             animator.SetBool("ismove", isMoving);
-            transform.position = Vector3.MoveTowards(transform.position, targetposition, PlayerManager.instance.playerData.PlayerMoveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetposition, PlayerManager.instance.playerData.MoveSpeed * Time.deltaTime);
             isMoving = false;
             yield return null;
         }
