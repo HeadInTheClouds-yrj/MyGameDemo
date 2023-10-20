@@ -21,76 +21,76 @@ public class GongFaEvent
             OnRemoveGongFa(gongFaId, parent);
         }
     }
-    public event Action<GongFa, string,Data,Transform> OnGongFaLevelUP;
-    public void GongFaLevelUP(GongFa gongFa,string id,Data data, Transform parent)
+    public event Action<string,Transform> OnGongFaLevelUP;
+    public void GongFaLevelUP(GongFa gongFa,string id,Transform parent)
     {
         if (OnGongFaLevelUP != null)
         {
-            OnGongFaLevelUP(gongFa,id,data,parent);
+            OnGongFaLevelUP(id,parent);
         }
     }
-    public event Action<Data,List<Data>,List<Data>> OnInstallGongFa_Onece;
-    public void InstallGongFa_Onece(Data myselfData,List<Data> teamDatas,List<Data> enimyDatas)
+    public event Action OnInstallGongFa_Onece;
+    public void InstallGongFa_Onece()
     {
         if (OnInstallGongFa_Onece != null)
         {
-            OnInstallGongFa_Onece(myselfData,teamDatas,enimyDatas);
+            OnInstallGongFa_Onece();
         }
     }
-    public event Action<Data, List<Data>, List<Data>> OnUsedGongFa_Keep;
-    public void UsedGongFa_Keep(Data myselfData, List<Data> teamDatas, List<Data> enimyDatas)
+    public event Action OnUsedGongFa_Keep;
+    public void UsedGongFa_Keep()
     {
         if (OnUsedGongFa_Keep != null)
         {
-            OnUsedGongFa_Keep(myselfData, teamDatas, enimyDatas);
+            OnUsedGongFa_Keep();
         }
     }
-    public event Action<Data, List<Data>, List<Data>> OnBeforeEnterBattel_Onece;
-    public void BeforeEnterBattel_Onece(Data myselfData, List<Data> teamDatas, List<Data> enimyDatas)
+    public event Action OnBeforeEnterBattel_Onece;
+    public void BeforeEnterBattel_Onece()
     {
         if (OnBeforeEnterBattel_Onece != null)
         {
-            OnBeforeEnterBattel_Onece(myselfData, teamDatas, enimyDatas);
+            OnBeforeEnterBattel_Onece();
         }
     }
-    public event Action<Data, List<Data>, List<Data>> OnStartEnterBattel_Onece;
-    public void StartEnterBattel_Onece(Data myselfData, List<Data> teamDatas, List<Data> enimyDatas)
+    public event Action OnStartEnterBattel_Onece;
+    public void StartEnterBattel_Onece()
     {
         if (OnStartEnterBattel_Onece != null)
         {
-            OnStartEnterBattel_Onece(myselfData, teamDatas, enimyDatas);
+            OnStartEnterBattel_Onece();
         }
     }
-    public event Action<Data, List<Data>, List<Data>> OnBattelIsOngoing_Keep;
-    public void BattelIsOngoing_Keep(Data myselfData, List<Data> teamDatas, List<Data> enimyDatas)
+    public event Action OnBattelIsOngoing_Keep;
+    public void BattelIsOngoing_Keep()
     {
         if (OnBattelIsOngoing_Keep != null)
         {
-            OnBattelIsOngoing_Keep(myselfData, teamDatas, enimyDatas);
+            OnBattelIsOngoing_Keep();
         }
     }
-    public event Action<Data, List<Data>, List<Data>> OnBeforeBattelOver_Onece;
-    public void BeforeBattelOver_Onece(Data myselfData, List<Data> teamDatas, List<Data> enimyDatas)
+    public event Action OnBeforeBattelOver_Onece;
+    public void BeforeBattelOver_Onece()
     {
         if (OnBeforeBattelOver_Onece != null)
         {
-            OnBeforeBattelOver_Onece(myselfData, teamDatas, enimyDatas);
+            OnBeforeBattelOver_Onece();
         }
     }
-    public event Action<Data, List<Data>, List<Data>> OnAfterBattelOver_Onece;
-    public void AfterBattelOver_Onece(Data myselfData, List<Data> teamDatas, List<Data> enimyDatas)
+    public event Action OnAfterBattelOver_Onece;
+    public void AfterBattelOver_Onece()
     {
         if (OnAfterBattelOver_Onece != null)
         {
-            OnAfterBattelOver_Onece(myselfData, teamDatas, enimyDatas);
+            OnAfterBattelOver_Onece();
         }
     }
-    public event Action<Data, List<Data>, List<Data>> OnUninstallGongFa_Onece;
-    public void UninstallGongFa_Onece(Data myselfData, List<Data> teamDatas, List<Data> enimyDatas)
+    public event Action OnUninstallGongFa_Onece;
+    public void UninstallGongFa_Onece()
     {
         if (OnUninstallGongFa_Onece != null)
         {
-            OnUninstallGongFa_Onece(myselfData, teamDatas, enimyDatas);
+            OnUninstallGongFa_Onece();
         }
     }
 

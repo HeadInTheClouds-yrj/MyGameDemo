@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerManager : MonoBehaviour,IDataPersistence
+public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
 {
     public static PlayerManager instance;
     public Data playerData;
@@ -83,9 +83,6 @@ public class PlayerManager : MonoBehaviour,IDataPersistence
         playerhpui = UIManager.instance.GetUI("Panel", "Text (TMP)_N").transform.GetComponent<TMP_Text>();
         BowPowerSlider.value = 0f;
         BowPowerSlider.maxValue = maxSliderValue;
-        playerData.InstaillGongFa["ChangShenFa"] = 0;
-        playerData.CurrentUsingGongFa.Add(GongFaManager.instance.InstantiateGongFa("ChangShenFa", playerData, this.transform));
-        EventManager.Instance.gongFaEvent.InstallGongFa_Onece(playerData,new List<Data>(), new List<Data>());
         updateUI();
     }
     public void HandleUpdate()
@@ -341,5 +338,10 @@ public class PlayerManager : MonoBehaviour,IDataPersistence
         //gameData.playerMoveSpeed= playerData.PlayerMoveSpeed;
         //gameData.PlayerName = playerData.PlayerName;
         //gameData.lrX = lrX;
+    }
+
+    public Data GetData()
+    {
+        return playerData;
     }
 }

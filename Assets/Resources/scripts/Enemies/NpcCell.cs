@@ -5,7 +5,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class NpcCell : MonoBehaviour, IDataPersistence
+public class NpcCell : MonoBehaviour, IDataPersistence,Humanoid
 {
     private Animator animator;
     public Data npcData;
@@ -32,7 +32,7 @@ public class NpcCell : MonoBehaviour, IDataPersistence
     void Start()
     {
         animator = transform.GetComponent<Animator>();
-        npcData = new Data();
+        npcData = new Data(this.transform);
         NpcManager.instance.registeToManager(transform.name, this);
         attackItems = new AttackItems();
         tree = NpcManager.instance.tree;
@@ -216,5 +216,10 @@ public class NpcCell : MonoBehaviour, IDataPersistence
         gameData.CurenttHealth = npcData.CurenttHealth;
         //gameData.MeleeAttackRange=npcData.MeleeAttackRange;
         //gameData.MeleeDamage=npcData.MeleeDamage;
+    }
+
+    public Data GetData()
+    {
+        return npcData;
     }
 }

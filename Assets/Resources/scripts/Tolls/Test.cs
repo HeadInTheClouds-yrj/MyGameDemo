@@ -10,10 +10,16 @@ public class Test : MonoBehaviour
     public float blackDonatespacing = 10f;
     public Vector2 blackDonateWidth;
     public Vector3 blackDonateScal;
+
+
     private void Awake()
     {
         blackDonateScal = GetComponent<Transform>().localScale;
         blackDonateWidth = GetComponent<SpriteRenderer>().size;
+        
+    }
+    private void Start()
+    {
     }
     private void Update()
     {

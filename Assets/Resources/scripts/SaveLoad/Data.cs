@@ -1,10 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class Data
 {
+    private string id;
     private string Name;
+    private bool survival;
     private float maxLingQi;
     private float currentLingQi;
     private float maxHealth;
@@ -14,24 +18,12 @@ public class Data
     private SerializableDictionary<string,int> instaillGongFa;
     private SerializableDictionary<string, int> learnedGongFa;
     private SerializableDictionary<string, int> learnedSkill;
-    private List<GongFa> currentUsingGongFa;
-    public Data()
-    {
-        Name = "";
-        maxLingQi = 1000;
-        currentLingQi = 1000;
-        maxHealth = 100;
-        curenttHealth = 100;
-        moveSpeed = 2;
-        killEnimiesCont = 0;
-        this.instaillGongFa = new SerializableDictionary<string, int>();
-        this.learnedGongFa = new SerializableDictionary<string, int>();
-        this.learnedSkill = new SerializableDictionary<string, int>();
-        this.currentUsingGongFa = new List<GongFa>();
-    }
+
     public Data(Transform transform)
     {
-        Name = transform.name;
+        id = transform.name;
+        Name = "";
+        survival = true;
         maxLingQi = 1000;
         currentLingQi = 1000;
         maxHealth = 100;
@@ -41,7 +33,6 @@ public class Data
         this.instaillGongFa = new SerializableDictionary<string, int>();
         this.learnedGongFa = new SerializableDictionary<string, int>();
         this.learnedSkill = new SerializableDictionary<string, int>();
-        this.currentUsingGongFa = new List<GongFa>();
     }
 
     public string Name1 { get => Name; set => Name = value; }
@@ -54,5 +45,6 @@ public class Data
     public SerializableDictionary<string, int> InstaillGongFa { get => instaillGongFa; set => instaillGongFa = value; }
     public SerializableDictionary<string, int> LearnedGongFa { get => learnedGongFa; set => learnedGongFa = value; }
     public SerializableDictionary<string, int> LearnedSkill { get => learnedSkill; set => learnedSkill = value; }
-    public List<GongFa> CurrentUsingGongFa { get => currentUsingGongFa; set => currentUsingGongFa = value; }
+    public bool Survival { get => survival; set => survival = value; }
+    public string Id { get => id; set => id = value; }
 }

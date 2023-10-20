@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: ChangShenFa
   m_EditorClassIdentifier: 
   <id>k__BackingField: ChangShenFa
-  gongFaName: "\u957F\u751F\u6CD5"
+  gongFaName: hhhhhhh
   gongFaDisplayName: "\u4FEE\u70BC\u7C7B\u529F\u6CD5\uFF0C\u4FEE\u4ED9\u754C\u6D41\u4F20\u5E7F\u6CDB\uFF0C\u6B64\u529F\u6CD5\u4E0D\u64C5\u4E89\u6597\uFF0C\u4F46\u6709\u4FEE\u8EAB\u517B\u7075\u5EF6\u5E74\u76CA\u5BFF\u4E4B\u529F\u6548\u3002"
   gongFaLevel: 1
   gongFaInItemIcon: {fileID: -762443317, guid: 4bd1678e487c6814da282689c529e110, type: 3}
   gongFaInBattleIcon: {fileID: -762443317, guid: 4bd1678e487c6814da282689c529e110, type: 3}
   gongFaXiuLianSpeek: 0
   gongFaTypes: 0
-  canLearnMaxRate: 0
-  currentLearnedRate: 0
+  currentLearnedRate: 2
   gongFaPrefab: {fileID: 5688731024090396649, guid: 47453d4d5ba58d54db736b00114a19d2, type: 3}

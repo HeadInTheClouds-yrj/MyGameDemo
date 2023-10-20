@@ -1,0 +1,2710 @@
+fileFormatVersion: 2
+guid: b5958ffaaa05d3c4a8854a4076463778
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Village-sprites_0
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 325
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30738a398e3f5e543acee38eb7fea8e7
+      internalID: -1043333925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_1
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 315
+        width: 26
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7df95990f45d4514eb0e31ebc2648bb0
+      internalID: 1877264974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_2
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 315
+        width: 28
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7556f4b2839da66428c95f3aa4fe1534
+      internalID: -1774552325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_3
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 318
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3bcd0a1cc7ef4342a0170e1879e2ae7
+      internalID: 129423845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_4
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 311
+        width: 29
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8313cd4cd66ebe644909e644098a1386
+      internalID: 1472304881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_5
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 319
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cab7cc143f44a58448b4fdba0a80f2c1
+      internalID: -1593615749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_6
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 312
+        width: 33
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86858e1826f516d45b2895891843726b
+      internalID: -157390934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_7
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 313
+        width: 42
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09d9a620f754f744dad3f6363e2d79f2
+      internalID: 698226197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_8
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 302
+        width: 34
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 267dce7dda355e640a592c955fe14583
+      internalID: 1228254394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_9
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 302
+        width: 37
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7da3eefaf73f7d049adb1205c018b4e0
+      internalID: -1199006907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_10
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 304
+        width: 49
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a6536a3ad222794ba31dc070f96ebe8
+      internalID: -183567991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_11
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 325
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aff6cda9e828914990a6ad982b1faa8
+      internalID: 774435092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_12
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 314
+        width: 36
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 634638034cd19cb4f94e61667ed9149f
+      internalID: -1268414802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_13
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 325
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5efc37db8affcd844b344cd7b8d5b7bf
+      internalID: -968826682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_14
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 318
+        width: 35
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1501d2fc5d9445645b89b8785d2e6547
+      internalID: 1476938028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_15
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 318
+        width: 35
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6814daad6f212ae489a025917936c42f
+      internalID: -1044491561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_16
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 310
+        width: 39
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b28b29fe012dd4747afe73b3d29e91fa
+      internalID: 1220178345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_17
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 310
+        width: 39
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92db5cab2887c0e46806947933a5040d
+      internalID: -2054203654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_18
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 323
+        width: 33
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f090ddd01984ca4c924287e3d792ab6
+      internalID: 612455223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_19
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 320
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abd805ad41405f84a8ba66d8d44dfe7c
+      internalID: 747695641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_20
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 264
+        width: 34
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 232c121ddcffdaf4ca3bd28a7957c0f0
+      internalID: -2133190308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_21
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 261
+        width: 41
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93a3141c6f7ad874fb8c74db9cb49ad7
+      internalID: -496596895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_22
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 259
+        width: 44
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5d2ef350b990214bb6f67e3f9db13e5
+      internalID: -1948219916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_23
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 252
+        width: 49
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffbd82c90a5c41b4db974304f25abb58
+      internalID: 1500211245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_24
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 254
+        width: 50
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6b9f637991e91d4a98c1fb359c14ad7
+      internalID: -1423566377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_25
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 251
+        width: 51
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b904c8f71ba7674ab521435d2e4ceb5
+      internalID: 1320288458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_26
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 242
+        width: 49
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74b56e2e3fd01b547906fdb4749d62cc
+      internalID: -439797996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_27
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 265
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3382ebddaf468048b7100b07a9831c7
+      internalID: 1123935691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_28
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 263
+        width: 34
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d04a09b078a45744a3115588c1d64c0
+      internalID: 1514886134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_29
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 257
+        width: 39
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 917a6af735fdd1f498fd4c36ee68170c
+      internalID: -2071656891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_30
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 258
+        width: 44
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ead10bcffc551a84f8f94b5c54bf1355
+      internalID: -2106574969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_31
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 255
+        width: 48
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be0785b0e53da4e49b2d38f5d577884e
+      internalID: 1194271273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_32
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 253
+        width: 44
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68d0b8d02361d094287682d301cc2f32
+      internalID: 412580838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_33
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 254
+        width: 48
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 788dd070e6065ce449adbe275db51244
+      internalID: 1705722676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_34
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 250
+        width: 50
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4003abe5ad8c514a8ed709a5ee7f451
+      internalID: -193472232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_35
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 249
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cafbd0a723571a848b81675c7b22788d
+      internalID: 694741633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_36
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 261
+        width: 28
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68f26c85051a0a54e82380a32bca1477
+      internalID: -503434150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_37
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 260
+        width: 30
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2ae6c4b243dede4587a34b71bb7b5ea
+      internalID: -210390995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_38
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 258
+        width: 38
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa0ff6d127334a642889f31e5f147448
+      internalID: 1530064422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_39
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 262
+        width: 35
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 876457637400edf4abac868ea9c043cf
+      internalID: 1184574159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_40
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 203
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bee1ab06ec0b591499843c3870c04013
+      internalID: -1638521949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_41
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 200
+        width: 44
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df369c68e687c6945a334e855ed75a09
+      internalID: 441308659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_42
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 193
+        width: 33
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5855d580ecf63694faa5376eef8775ed
+      internalID: 2029578882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_43
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 192
+        width: 34
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23af0aad610d48f48942aebe5f896731
+      internalID: 1958509329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_44
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 190
+        width: 42
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a515f8bd535c6f44a4fdaba1f94b1f0
+      internalID: 827096576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_45
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 208
+        width: 67
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8f0e15d12b387c4f8bc05d3d38af77b
+      internalID: 275901417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_46
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 200
+        width: 36
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6de135f5e74fa4488b7659143928ab1
+      internalID: -31345414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_47
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 202
+        width: 44
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 051a00f3b885115438ab00ee96ed439e
+      internalID: 415915589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_48
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 200
+        width: 46
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de6d84fc7d79b6549b170a0a5b300d11
+      internalID: -1810993850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_49
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 190
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ca2dddc9e7333346993370660b85528
+      internalID: 287225893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_50
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 187
+        width: 44
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28c9c69c07ae4aa4bab7e9f1221a58f1
+      internalID: -1335960041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_51
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 181
+        width: 52
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 999d3e4e7d40c4942a07097c9646e740
+      internalID: -1141775807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_52
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 206
+        width: 36
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f09bb652a12469d40883c6bb8c023013
+      internalID: -1360259447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_53
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 203
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da2182140aee4b549ab99ce122e2d576
+      internalID: -1865197842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_54
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 199
+        width: 36
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac029c00826334c4e8914b3e20a14917
+      internalID: -1703007746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_55
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 199
+        width: 87
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2fe40a251361854686e33edb1f6c08a
+      internalID: 678819058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_56
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 194
+        width: 44
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86b28259eaae8bb48bf515dd281bb18e
+      internalID: 1592927900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_57
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 130
+        width: 45
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86f655e3ad72a0448a86d6052ea1cd58
+      internalID: -431283400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_58
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 131
+        width: 47
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88cf65009edbc1b42a7cdf8f60a5000e
+      internalID: 424432101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_59
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 124
+        width: 48
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce7d86a72d6759442b302893b789812f
+      internalID: 593657839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_60
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 143
+        width: 36
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7609cda34d4c7494d9ad9c2721fa1299
+      internalID: 277257396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_61
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 137
+        width: 41
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76bd8000f1255694ab89b6f7c967b7ec
+      internalID: 295083402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_62
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 128
+        width: 41
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b920979ac2a24642907e01561e4bd52
+      internalID: -816427477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_63
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 144
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83b3c92d4a0fa8a48b6e6fb031c9e1b3
+      internalID: -845575817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_64
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 138
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e8f163f9f0732042bf7ed453387de3a
+      internalID: 1122866565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_65
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 133
+        width: 36
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4db679e5edbc0dd44aaac42b3d09e8ad
+      internalID: -889072723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_66
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 145
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ccadc437b503b9408a24d2bd4ebe6e8
+      internalID: 950759994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_67
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 132
+        width: 42
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93946480e9adcea4d9e0f8e72733499b
+      internalID: 1591759432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_68
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 79
+        width: 46
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8949f149366b906418c981db86ad6271
+      internalID: 277379310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_69
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 137
+        width: 33
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60f67607c6984cd428e0b72a78e4eaaf
+      internalID: -1659339937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_70
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 131
+        width: 38
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f63257c01d8d2af4b97b4b892d0d4b32
+      internalID: 317452751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_71
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 129
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0956081bc1779674b97b738938c6fe6c
+      internalID: -1334389352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_72
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 137
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8b69365df98e9244b6a71ee8c1a491c
+      internalID: -1716049416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_73
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 138
+        width: 40
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e01849d253a3aa4eb211025bc731566
+      internalID: -296158097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_74
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 127
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cd8c65a2704e3648b9f20c28ba7166a
+      internalID: -1907608787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_75
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 135
+        width: 32
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26f308d30bda3e940b01603bd202f58b
+      internalID: -867571225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_76
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 124
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47114f11472d8a341aa7414f14d3e0fa
+      internalID: 1732633084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_77
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 62
+        width: 46
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14635673aabddf540ae096acd1f31ee2
+      internalID: 1535202498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_78
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 78
+        width: 31
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a6d1f522f25ef74b9abea7b50ecb82f
+      internalID: 1793981688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_79
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 76
+        width: 38
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39e94df9264e5994aaf9f2844ebd758f
+      internalID: 1158889243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_80
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 69
+        width: 44
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f348a3b54b990340be555d0b73734bb
+      internalID: 1818490284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_81
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 85
+        width: 28
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1804636a7b6d05f42bafe676ca8f8d2c
+      internalID: 1183116652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_82
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 84
+        width: 30
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2822a3387f963dd4da33f14913724549
+      internalID: -1090883227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_83
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 84
+        width: 35
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8723aa424042eb4dba9506fc2f16988
+      internalID: -680190074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_84
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 84
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d84ac6185ef6915499303d65e7257e1e
+      internalID: 1046899327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_85
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 81
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 364d4f598e0b446448a38c4a24d85938
+      internalID: -2832199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_86
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 77
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d668cfc2ca0ada9438038021dd119232
+      internalID: -2108016601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_87
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 74
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 428746b1e8b8f2c46bae76db9ff5f2f4
+      internalID: 607524653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_88
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 69
+        width: 39
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e4e894ccc59edc49af20f67f9f01235
+      internalID: -1114798618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_89
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 66
+        width: 44
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3006486d71edaaa44abf5580fbf2f4ec
+      internalID: 1632471291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_90
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 60
+        width: 49
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94635627fba2c574c8f296d478cf73f2
+      internalID: 875940017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_91
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 70
+        width: 38
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 500e02b9875493640ae0fe15d0dd0265
+      internalID: 1200395276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_92
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 90
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eaa6aa317be19c04cb6d4a83496a0f01
+      internalID: 1059496841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_93
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 89
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44ccb3e3d26571740a3782873fb5cd9c
+      internalID: -239332846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_94
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 89
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab7ad7ee551f9d140b25bedb5a048e1d
+      internalID: -1598859670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_95
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 86
+        width: 30
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 019620e979b13244d9560058324f9f22
+      internalID: -1889750803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_96
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 19
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66f270aa1cc18ec4a89c8026e463da9b
+      internalID: -1996369957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_97
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 18
+        width: 36
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1d4cee982b94f5459178de6808bd4ad
+      internalID: -222843419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_98
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 18
+        width: 43
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d08f028bc7dae748bb553cc56b2f1ca
+      internalID: -1110586477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_99
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 22
+        width: 38
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a997365110fb5c54aae02b3732969075
+      internalID: -595462822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_100
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 8
+        width: 31
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d64ce75626cad54cb10005f979d7f8d
+      internalID: 619935124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_101
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 6
+        width: 35
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ccec2dbdd9d3844cbc8e58ee4f37aa6
+      internalID: -1791639240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_102
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 0
+        width: 44
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b675b9f532fdbe846910dfda612c6186
+      internalID: -1455809196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_103
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 5
+        width: 41
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b872948ab7923f946a9ec12f3021ed64
+      internalID: 1103015641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_104
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 27
+        width: 35
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8304b3df32f895c48b3427cb3ead8a2e
+      internalID: 863444152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_105
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 27
+        width: 36
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d086b00e47e6a84c8838253f50e0fa7
+      internalID: 742317909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_106
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 27
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b01d740566143e64c93a6f8d128438e3
+      internalID: -476588268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_107
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 27
+        width: 35
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8edaf84974498b144832e06586ee0a53
+      internalID: -1229441421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_108
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 22
+        width: 41
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23025bdae6b378a4880edc763a9942dc
+      internalID: 730097615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_109
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 22
+        width: 41
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9824b39348c484e46aa70c7e93e5571d
+      internalID: 133620966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_110
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 22
+        width: 40
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61125e7a5030d83478ddbc0cc0210275
+      internalID: -1751149964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_111
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 22
+        width: 40
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a8d5e9e18a0de548b1b5dd40a5ac467
+      internalID: -1826462593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_112
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 14
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fad388165c5e084c8ba1f2cfe3bbe07
+      internalID: 1425286000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_113
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 13
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76b0b397694cba0479b0ad51cdb87599
+      internalID: 1634190874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_114
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 13
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfb88be91717f9840a56cc69379b20f9
+      internalID: 200370221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_115
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 14
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 461f9fa65a25c1646b5861141b6f94e3
+      internalID: 2025677182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village-sprites_116
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 187
+        width: 48
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c78087b56323bd34c922ece7fffcc712
+      internalID: -990963415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Village-sprites_32: 412580838
+      Village-sprites_29: -2071656891
+      Village-sprites_99: -595462822
+      Village-sprites_11: 774435092
+      Village-sprites_96: -1996369957
+      Village-sprites_20: -2133190308
+      Village-sprites_108: 730097615
+      Village-sprites_82: -1090883227
+      Village-sprites_23: 1500211245
+      Village-sprites_81: 1183116652
+      Village-sprites_39: 1184574159
+      Village-sprites_115: 2025677182
+      Village-sprites_116: -990963415
+      Village-sprites_4: 1472304881
+      Village-sprites_5: -1593615749
+      Village-sprites_19: 747695641
+      Village-sprites_87: 607524653
+      Village-sprites_114: 200370221
+      Village-sprites_25: 1320288458
+      Village-sprites_78: 1793981688
+      Village-sprites_98: -1110586477
+      Village-sprites_31: 1194271273
+      Village-sprites_22: -1948219916
+      Village-sprites_75: -867571225
+      Village-sprites_76: 1732633084
+      Village-sprites_109: 133620966
+      Village-sprites_112: 1425286000
+      Village-sprites_89: 1632471291
+      Village-sprites_14: 1476938028
+      Village-sprites_30: -2106574969
+      Village-sprites_68: 277379310
+      Village-sprites_103: 1103015641
+      Village-sprites_60: 277257396
+      Village-sprites_72: -1716049416
+      Village-sprites_18: 612455223
+      Village-sprites_92: 1059496841
+      Village-sprites_50: -1335960041
+      Village-sprites_61: 295083402
+      Village-sprites_2: -1774552325
+      Village-sprites_33: 1705722676
+      Village-sprites_0: -1043333925
+      Village-sprites_8: 1228254394
+      Village-sprites_84: 1046899327
+      Village-sprites_106: -476588268
+      Village-sprites_9: -1199006907
+      Village-sprites_37: -210390995
+      Village-sprites_77: 1535202498
+      Village-sprites_16: 1220178345
+      Village-sprites_40: -1638521949
+      Village-sprites_102: -1455809196
+      Village-sprites_15: -1044491561
+      Village-sprites_49: 287225893
+      Village-sprites_26: -439797996
+      Village-sprites_79: 1158889243
+      Village-sprites_83: -680190074
+      Village-sprites_46: -31345414
+      Village-sprites_6: -157390934
+      Village-sprites_12: -1268414802
+      Village-sprites_86: -2108016601
+      Village-sprites_94: -1598859670
+      Village-sprites_90: 875940017
+      Village-sprites_67: 1591759432
+      Village-sprites_71: -1334389352
+      Village-sprites_64: 1122866565
+      Village-sprites_17: -2054203654
+      Village-sprites_34: -193472232
+      Village-sprites_52: -1360259447
+      Village-sprites_54: -1703007746
+      Village-sprites_48: -1810993850
+      Village-sprites_24: -1423566377
+      Village-sprites_113: 1634190874
+      Village-sprites_69: -1659339937
+      Village-sprites_28: 1514886134
+      Village-sprites_101: -1791639240
+      Village-sprites_45: 275901417
+      Village-sprites_66: 950759994
+      Village-sprites_80: 1818490284
+      Village-sprites_111: -1826462593
+      Village-sprites_43: 1958509329
+      Village-sprites_85: -2832199
+      Village-sprites_91: 1200395276
+      Village-sprites_42: 2029578882
+      Village-sprites_3: 129423845
+      Village-sprites_74: -1907608787
+      Village-sprites_110: -1751149964
+      Village-sprites_65: -889072723
+      Village-sprites_35: 694741633
+      Village-sprites_57: -431283400
+      Village-sprites_95: -1889750803
+      Village-sprites_36: -503434150
+      Village-sprites_56: 1592927900
+      Village-sprites_104: 863444152
+      Village-sprites_47: 415915589
+      Village-sprites_38: 1530064422
+      Village-sprites_27: 1123935691
+      Village-sprites_70: 317452751
+      Village-sprites_13: -968826682
+      Village-sprites_51: -1141775807
+      Village-sprites_97: -222843419
+      Village-sprites_59: 593657839
+      Village-sprites_62: -816427477
+      Village-sprites_10: -183567991
+      Village-sprites_107: -1229441421
+      Village-sprites_88: -1114798618
+      Village-sprites_58: 424432101
+      Village-sprites_41: 441308659
+      Village-sprites_100: 619935124
+      Village-sprites_105: 742317909
+      Village-sprites_1: 1877264974
+      Village-sprites_44: 827096576
+      Village-sprites_7: 698226197
+      Village-sprites_21: -496596895
+      Village-sprites_93: -239332846
+      Village-sprites_73: -296158097
+      Village-sprites_55: 678819058
+      Village-sprites_53: -1865197842
+      Village-sprites_63: -845575817
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

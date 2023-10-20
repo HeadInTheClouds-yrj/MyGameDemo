@@ -10,18 +10,14 @@ public class GongFa
     {
         this.gfInfo = gfInfo;
     }
-    public void InstantiateGongFa(Transform parent,GongFa gongFa)
+    public void InstantiateGongFa(Transform parent)
     {
         GameObject gongFaPrfab = gfInfo.gongFaPrefab;
         if (gongFaPrfab != null)
         {
             GameObject obj =GameObject.Instantiate<GameObject>(gongFaPrfab, parent);
-            obj.name = gongFa.gfInfo.id;
-            obj.GetComponent<GongFaInvokeContro>().InitializeGongFaMessage(gongFa);
+            obj.name = gfInfo.id;
+            obj.GetComponent<GongFaInvokeContro>().InitializeGongFaMessage(this);
         }
-    }
-    public void RemoveGongFa(string id,Transform parent)
-    {
-        EventManager.Instance.gongFaEvent.RemoveGongFa(id,parent);
     }
 }

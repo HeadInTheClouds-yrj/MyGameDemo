@@ -11,7 +11,9 @@ public class Item : ScriptableObject
         MeleeWeapen,
         Point,
         Book,
-        Food
+        Food,
+        Skill,
+        GongFa
     }
     public string id;
     public string itemname;

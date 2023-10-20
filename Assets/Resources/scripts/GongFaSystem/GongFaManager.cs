@@ -6,7 +6,7 @@ using UnityEngine;
 public class GongFaManager : MonoBehaviour
 {
     public static GongFaManager instance;
-    private Dictionary<string, GongFa> allGongFaMap;
+    private Dictionary<string,GongFa> allGongFaMap;
     private void Awake()
     {
         instance = this;
@@ -21,10 +21,9 @@ public class GongFaManager : MonoBehaviour
     {
         EventManager.Instance.gongFaEvent.OnGongFaLevelUP -= GongFaLevelUP;
     }
-    public Dictionary<string, GongFa> CreatGongFaMap()
+    private Dictionary<string, GongFa> CreatGongFaMap()
     {
         GongFaInfoSO[] gongFaInfoSOs = Resources.LoadAll<GongFaInfoSO>("AllGongFa");
-        Debug.Log(gongFaInfoSOs.Length);
         Dictionary<string,GongFa> gongFaMap = new Dictionary<string,GongFa>();
         foreach (GongFaInfoSO gfInfo in gongFaInfoSOs)
         {
@@ -35,33 +34,48 @@ public class GongFaManager : MonoBehaviour
         }
         return gongFaMap;
     }
-    public GongFa InstantiateGongFa(string id,Data data,Transform parent)
+    public void InstantiateGongFa(string id,Transform parent)
     {
-        GongFa gongFa = CloneGongFaById(id,data);
-        gongFa.InstantiateGongFa(parent,gongFa);
-        return gongFa;
+        Transform[] transforms = parent.GetComponentsInChildren<Transform>();
+        foreach (Transform t in transforms)
+        {
+            if (t.name.Equals(id))
+            {
+                return;
+            }
+        }
+        GongFa gongFa = GetInitGongFaById(id);
+        gongFa.InstantiateGongFa(parent);
     }
-    public void RemoveGongFa(GongFa gongFa,string id,Transform parent)
+    public void RemoveGongFa(string id,Transform parent)
     {
-        gongFa.RemoveGongFa(id, parent);
+        EventManager.Instance.gongFaEvent.RemoveGongFa(id, parent);
     }
-    private void GongFaLevelUP(GongFa arg1, string arg2, Data arg3, Transform parent)
+    private void GongFaLevelUP(string id, Transform parent)
     {
-        RemoveGongFa(arg1, arg2, parent);
-        arg1.InstantiateGongFa(parent, arg1);
+        Data data = parent.GetComponent<Humanoid>().GetData();
+        if (data.LearnedGongFa.ContainsKey(id))
+        {
+            data.LearnedGongFa[id]++;
+            data.InstaillGongFa[id]++;
+        }
+        else
+        {
+            return;
+        }
+        Transform[] transforms = parent.GetComponentsInChildren<Transform>();
+        foreach (Transform t in transforms)
+        {
+            if (t.name.Equals(id)&& data != null && data.InstaillGongFa.ContainsKey(id))
+            {
+                EventManager.Instance.gongFaEvent.RemoveGongFa(id, parent);
+                GongFa gongFa = GetInitGongFaById(id);
+                gongFa.InstantiateGongFa(parent);
+                return;
+            }
+        }
     }
-    public GongFa CloneGongFaById(string id, Data data)
-    {
-        GongFa gongFa = new GongFa(GetInitGongFaById(id).gfInfo);
-        gongFa.gfInfo.currentLearnedRate = data.InstaillGongFa[id];
-        return gongFa;
-    }
-    public GongFa CreateNewGongFa(string id)
-    {
-        GongFa gongFa = new GongFa(GetInitGongFaById(id).gfInfo);
-        return gongFa;
-    }
-    public GongFa GetInitGongFaById(string gongFaId)
+    private GongFa GetInitGongFaById(string gongFaId)
     {
         if (allGongFaMap.ContainsKey(gongFaId))
         {
@@ -69,12 +83,8 @@ public class GongFaManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("根据id找功法：id不存在！！");
+            Debug.LogWarning("根据id找功法：id("+gongFaId+")不存在！！");
             return null;
         }
-    }
-    private void GongFaLeveUP(string gongFaId,Data data)
-    {
-        data.InstaillGongFa[gongFaId]++;
     }
 }

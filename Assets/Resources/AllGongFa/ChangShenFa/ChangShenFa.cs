@@ -9,6 +9,11 @@ public class ChangShenFa : GongFaInvokeContro
     private Data myself;
     private List<Data> teams;
     private List<Data> enimies;
+    private void Start()
+    {
+        myself = GetComponentInParent<Humanoid>()?.GetData();
+        Debug.Log(myself.Id);
+    }
     private void OnEnable()
     {
         EventManager.Instance.gongFaEvent.OnRemoveGongFa += RemoveGongFa;
@@ -18,50 +23,47 @@ public class ChangShenFa : GongFaInvokeContro
 
     private void OnDisable()
     {
-        EventManager.Instance.gongFaEvent.UninstallGongFa_Onece(myself,teams,enimies);
+        EventManager.Instance.gongFaEvent.UninstallGongFa_Onece();
         EventManager.Instance.gongFaEvent.OnRemoveGongFa -= RemoveGongFa;
         EventManager.Instance.gongFaEvent.OnInstallGongFa_Onece -= InstallGongFa_Onece;
         EventManager.Instance.gongFaEvent.OnUninstallGongFa_Onece -= UninstallGongFa_Onece;
     }
 
-    private void InstallGongFa_Onece(Data arg1, List<Data> arg2, List<Data> arg3)
+    private void InstallGongFa_Onece()
     {
-        switch (arg1.InstaillGongFa[gongFa.gfInfo.id])
+        switch (myself.InstaillGongFa[gongFa.gfInfo.id])
         {
-            case 0:arg1.MaxHealth += 10;
+            case 0:myself.MaxHealth += 10;
                 break;
-            case 1:arg1.MaxHealth += 20;
+            case 1:myself.MaxHealth += 20;
                 break;
-            case 2:arg1.MaxHealth += 40;
+            case 2:myself.MaxHealth += 40;
                 break;
-            case 3:arg1.MaxHealth += 80;
+            case 3:myself.MaxHealth += 80;
                 break;
-            case 4:arg1.MaxHealth += 160;
+            case 4:myself.MaxHealth += 160;
                 break;
         }
-        myself = arg1;
-        teams = arg2;
-        enimies = arg3;
     }
 
-    private void UninstallGongFa_Onece(Data arg1, List<Data> arg2, List<Data> arg3)
+    private void UninstallGongFa_Onece()
     {
-        switch (arg1.InstaillGongFa[gongFa.gfInfo.id])
+        switch (myself.InstaillGongFa[gongFa.gfInfo.id])
         {
             case 0:
-                arg1.MaxHealth -= 10;
+                myself.MaxHealth -= 10;
                 break;
             case 1:
-                arg1.MaxHealth -= 20;
+                myself.MaxHealth -= 20;
                 break;
             case 2:
-                arg1.MaxHealth -= 40;
+                myself.MaxHealth -= 40;
                 break;
             case 3:
-                arg1.MaxHealth -= 80;
+                myself.MaxHealth -= 80;
                 break;
             case 4:
-                arg1.MaxHealth -= 160;
+                myself.MaxHealth -= 160;
                 break;
         }
     }
