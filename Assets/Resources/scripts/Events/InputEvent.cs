@@ -13,4 +13,12 @@ public class InputEvent
             onSubmitPressed();
         }
     }
+    public event Action OnGetKeyESC;
+    public void GetKeyESC()
+    {
+        if (OnGetKeyESC != null && Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnGetKeyESC();
+        }
+    }
 }

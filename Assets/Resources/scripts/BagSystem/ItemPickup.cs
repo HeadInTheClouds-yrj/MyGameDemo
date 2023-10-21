@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,32 +6,42 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour,IDataPersistence
 {
     [SerializeField]
-    public Item item;
+    private Item item;
+    private bool playerIsNear; 
     void Pickup()
     {
         InventoryManager.Instance.AddItem(item);
         Destroy(gameObject);
     }
-    public void isenter()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((PlayerManager.instance.PlayerTransform.position - transform.position).magnitude <= 1f)
+        if (collision.CompareTag("Player"))
+        {
+            playerIsNear = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            playerIsNear = false;
+        }
+    }
+    private void OnEnable()
+    {
+        EventManager.Instance.inputEvent.onSubmitPressed += SubmitPressed;
+    }
+    private void OnDisable()
+    {
+        EventManager.Instance.inputEvent.onSubmitPressed -= SubmitPressed;
+    }
+
+    private void SubmitPressed()
+    {
+        if (playerIsNear)
         {
             Pickup();
         }
-    }
-    void Awake()
-    {
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        isenter();
     }
 
     public void LoadGame(GameData gameData)

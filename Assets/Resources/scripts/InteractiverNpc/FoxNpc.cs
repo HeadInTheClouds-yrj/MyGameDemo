@@ -50,4 +50,7 @@ public class FoxNpc : MonoBehaviour,Interactives
     {
         chooseEventId.Add(id);
     }
+    public void EnterBuilding(){
+        
+    }
 }

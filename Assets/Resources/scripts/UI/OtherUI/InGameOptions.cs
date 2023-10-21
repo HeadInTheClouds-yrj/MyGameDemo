@@ -19,4 +19,8 @@ public class InGameOptions : UIBase
     {
         
     }
+    public void OptionManuQuit()
+    {
+        Application.Quit();
+    }
 }

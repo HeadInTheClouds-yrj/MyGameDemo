@@ -12,7 +12,7 @@ public class UIBase : MonoBehaviour
     Transform[] allPanelUI;
     private void Awake()
     {
-        allPanelUI = transform.GetComponentsInChildren<Transform>();
+        allPanelUI = transform.GetComponentsInChildren<Transform>(true);
         for (int i = 0; i < allPanelUI.Length; i++)
         {
             if (allPanelUI[i] != null)

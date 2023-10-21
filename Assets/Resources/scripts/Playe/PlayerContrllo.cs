@@ -6,6 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerContrllo : MonoBehaviour,IDataPersistence
 {
@@ -31,10 +32,13 @@ public class PlayerContrllo : MonoBehaviour,IDataPersistence
     private void OnEnable()
     {
         EventManager.Instance.inputEvent.onSubmitPressed += ToTalk;
+        SceneManager.sceneLoaded += GetMainCamera;
     }
+
     private void OnDisable()
     {
         EventManager.Instance.inputEvent.onSubmitPressed -= ToTalk;
+        SceneManager.sceneLoaded -= GetMainCamera;
     }
     // Update is called once per frame
     public void HandleUpdate()
@@ -47,7 +51,11 @@ public class PlayerContrllo : MonoBehaviour,IDataPersistence
         cameraFllowPlayer();
         EventManager.Instance.inputEvent.SubmitPressed();
     }
-
+    private void GetMainCamera(Scene arg0, LoadSceneMode arg1)
+    {
+        maincamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        Debug.Log(maincamera.name);
+    }
     private void ToTalk()
     {
         Vector3 fsdalf = new Vector3(0,0,0);
@@ -243,12 +251,10 @@ public class PlayerContrllo : MonoBehaviour,IDataPersistence
     public void LoadGame(GameData gameData)
     {
         transform.position = gameData.PlayerPosition;
-        maincamera.transform.position = gameData.CameraPosition;
     }
 
     public void SaveGame(GameData gameData)
     {
         gameData.PlayerPosition = transform.position;
-        gameData.CameraPosition = maincamera.transform.position;
     }
 }

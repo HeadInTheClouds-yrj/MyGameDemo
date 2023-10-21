@@ -20,5 +20,4 @@ MonoBehaviour:
   gongFaInBattleIcon: {fileID: -762443317, guid: 4bd1678e487c6814da282689c529e110, type: 3}
   gongFaXiuLianSpeek: 0
   gongFaTypes: 0
-  currentLearnedRate: 2
   gongFaPrefab: {fileID: 5688731024090396649, guid: 47453d4d5ba58d54db736b00114a19d2, type: 3}

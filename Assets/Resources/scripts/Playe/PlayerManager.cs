@@ -62,10 +62,14 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
     }
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
         playerData = new Data(this.transform);
         attackItems = new AttackItems();
         animator = GetComponent<Animator>();
+        DontDestroyOnLoad(instance);
     }
     private void OnEnable()
     {

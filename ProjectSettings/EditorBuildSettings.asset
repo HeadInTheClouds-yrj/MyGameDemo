@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/XingHengZong.unity
+    guid: 09bbbdfa77f28e24b93c028847f8e306
   m_configObjects: {}

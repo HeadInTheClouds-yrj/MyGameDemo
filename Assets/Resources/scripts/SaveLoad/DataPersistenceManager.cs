@@ -98,6 +98,7 @@ public class DataPersistenceManager : MonoBehaviour
     }
     public void OnSceneUnloaded(Scene scene)
     {
-        
+        this.dataPersistenceList = FindAllDataPersistenceObjects();
+        SaveGame();
     }
 }

@@ -7,12 +7,14 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour,IDataPersistence
 {
     public static InventoryManager Instance;
-    public List<Item> Items;
-    public Item[] allItems;
-    public Transform itemContent;
-    public GameObject inventoryItem;
-    public Toggle rmToggle;
-    public ItemControl[] itemControlsList;
+    private List<Item> Items;
+    private Item[] allItems;
+    [SerializeField]
+    private Transform itemContent;
+    [SerializeField]
+    private GameObject inventoryItem;
+    [SerializeField] private Toggle rmToggle;
+    private ItemControl[] itemControlsList;
     public void AddItem(Item item)
     {
         Items.Add(item);
@@ -95,7 +97,10 @@ public class InventoryManager : MonoBehaviour,IDataPersistence
     // Start is called before the first frame update
     void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
         InitializeAllItems();
     }
     private void Start()
@@ -120,7 +125,10 @@ public class InventoryManager : MonoBehaviour,IDataPersistence
     {
         foreach (Item item in Items)
         {
-            gameData.BagItemsId.Add(item.id);
+            if (!item.id.Equals(gameData.BagItemsId))
+            {
+                gameData.BagItemsId.Add(item.id);
+            }
         }
     }
 }

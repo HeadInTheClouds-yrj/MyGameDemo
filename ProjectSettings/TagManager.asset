@@ -16,7 +16,7 @@ TagManager:
   - PlayerAttackobj
   - Player
   - enemy
-  - 
+  - building
   - 
   - 
   - 
@@ -47,6 +47,9 @@ TagManager:
   - name: item
     uniqueID: 533771001
     locked: 0
+  - name: buildings
+    uniqueID: 446050819
+    locked: 0
   - name: enemys
     uniqueID: 1518471403
     locked: 0
@@ -56,6 +59,12 @@ TagManager:
   - name: PlayerAttackobjLayer
     uniqueID: 1203313337
     locked: 0
+  - name: Player
+    uniqueID: 2417841645
+    locked: 0
   - name: uper
     uniqueID: 1195509031
+    locked: 0
+  - name: UI
+    uniqueID: 3192157905
     locked: 0
