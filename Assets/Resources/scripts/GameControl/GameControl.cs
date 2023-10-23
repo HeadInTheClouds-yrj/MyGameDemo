@@ -11,7 +11,7 @@ public enum GameState
 public class GameControl : MonoBehaviour
 {
     public GameState state = GameState.Freedom;
-    [SerializeField] public PlayerContrllo PlayerContrllo;
+    private PlayerContrllo PlayerContrllo;
     private Dictionary<string,NpcCell> allNpcCell;
     public void Awake()
     {

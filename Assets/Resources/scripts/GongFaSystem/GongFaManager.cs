@@ -75,7 +75,7 @@ public class GongFaManager : MonoBehaviour
             }
         }
     }
-    private GongFa GetInitGongFaById(string gongFaId)
+    public GongFa GetInitGongFaById(string gongFaId)
     {
         if (allGongFaMap.ContainsKey(gongFaId))
         {

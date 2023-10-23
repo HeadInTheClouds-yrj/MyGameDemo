@@ -3,7 +3,10 @@ guid: 814c5360d711fb4429b6ed8f436c4d99
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gongFaInItemIcon: {instanceID: 0}
+  - gongFaInBattleIcon: {instanceID: 0}
+  - gongFaPrefab: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

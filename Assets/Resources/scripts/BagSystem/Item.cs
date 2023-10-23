@@ -22,4 +22,11 @@ public class Item : ScriptableObject
     public Sprite Bagicon;
     public Sprite icon;
     public Itemkinde itemkinde;
+    private void OnValidate()
+    {
+#if UNITY_EDITOR
+        id = this.name;
+        UnityEditor.EditorUtility.SetDirty(this);
+#endif
+    }
 }

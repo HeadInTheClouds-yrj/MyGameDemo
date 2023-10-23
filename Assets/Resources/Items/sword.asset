@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b4c3251dc77fd048aa7387f41199334, type: 3}
   m_Name: sword
   m_EditorClassIdentifier: 
-  id: 1
+  id: 100
   itemname: sword1
   prefeberPath: players/sworte1 (1)
   value: 20

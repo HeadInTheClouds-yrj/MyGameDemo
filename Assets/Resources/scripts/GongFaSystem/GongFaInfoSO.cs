@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GongFaInfoSO",menuName = "ScriptableObjects/GongFaInfoSO",order = 1)]
 public class GongFaInfoSO : ScriptableObject
 {
+    [Header("在背包中的ID")]
+    public int itemId;
     [field: SerializeField] public string id { get; set; }
     [Header("功法名字")]
     public string gongFaName;
@@ -18,6 +20,7 @@ public class GongFaInfoSO : ScriptableObject
     public GongFaTypes gongFaTypes;
     [Header("功法实体功能预制体")]
     public GameObject gongFaPrefab;
+    public List<string> gongFaEffectText;
     private void OnValidate()
     {
         #if UNITY_EDITOR

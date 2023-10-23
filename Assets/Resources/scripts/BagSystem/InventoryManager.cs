@@ -94,6 +94,10 @@ public class InventoryManager : MonoBehaviour,IDataPersistence
         }
         return null;
     }
+    public List<Item> GetInBagItems()
+    {
+        return Items;
+    }
     // Start is called before the first frame update
     void Awake()
     {
