@@ -12,9 +12,10 @@ public class GameControl : MonoBehaviour
 {
     public GameState state = GameState.Freedom;
     [SerializeField] public PlayerContrllo PlayerContrllo;
-    public Dictionary<string,NpcCell> allNpcCell;
+    private Dictionary<string,NpcCell> allNpcCell;
     public void Awake()
     {
+        PlayerContrllo = PlayerManager.instance.GetComponent<PlayerContrllo>();
     }
     // Start is called before the first frame update
     void Start()
@@ -41,11 +42,11 @@ public class GameControl : MonoBehaviour
                 state = GameState.Freedom;
             }
         };
+        allNpcCell = NpcManager.instance.getAllNpcCell();
         if (allNpcCell == null)
         {
             allNpcCell = new Dictionary<string, NpcCell>();
         }
-        allNpcCell = NpcManager.instance.getAllNpcCell();
     }
 
     // Update is called once per frame
