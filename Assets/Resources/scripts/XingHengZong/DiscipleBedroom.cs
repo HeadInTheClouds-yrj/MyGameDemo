@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DiscipleBedroom : MonoBehaviour
@@ -28,5 +29,9 @@ public class DiscipleBedroom : MonoBehaviour
         {
             option.SetActive(false);
         }
+    }
+    public void ToDiZiRoom()
+    {
+        SceneManager.LoadScene(3,LoadSceneMode.Single);
     }
 }

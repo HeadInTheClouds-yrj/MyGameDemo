@@ -87,4 +87,15 @@ public class GongFaManager : MonoBehaviour
             return null;
         }
     }
+    public int GetGongFaCurrentLevelById(Data data,string gongFaId)
+    {
+        if (data.LearnedGongFa.ContainsKey(gongFaId))
+        {
+            return data.LearnedGongFa[gongFaId];
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }

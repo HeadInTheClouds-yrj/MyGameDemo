@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b4c3251dc77fd048aa7387f41199334, type: 3}
   m_Name: ChangShenFa
   m_EditorClassIdentifier: 
-  id: 0
+  id: ChangShenFa
   itemname: "\u957F\u751F\u6CD5"
   prefeberPath: 
   value: 0
   Bagicon: {fileID: -762443317, guid: 4bd1678e487c6814da282689c529e110, type: 3}
   icon: {fileID: -762443317, guid: 4bd1678e487c6814da282689c529e110, type: 3}
-  itemkinde: 0
+  itemkinde: 6

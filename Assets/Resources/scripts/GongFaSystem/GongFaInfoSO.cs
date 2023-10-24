@@ -13,7 +13,9 @@ public class GongFaInfoSO : ScriptableObject
     [Header("功法简介")]
     public string gongFaDisplayName;
     [Header("功法品级：天 地 人 玄 黄\n黄：123\n玄：456\n人：789\n地：10,11,12\n天：13,14,15")]
-    public int gongFaLevel;
+    public int gongFaRate;
+    [Header("功法最大等级")]
+    public int gongFaMaxLevel;
     public Sprite gongFaInItemIcon;
     public Sprite gongFaInBattleIcon;
     public int gongFaXiuLianSpeek;

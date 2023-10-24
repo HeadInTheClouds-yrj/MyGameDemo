@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b4c3251dc77fd048aa7387f41199334, type: 3}
   m_Name: test1
   m_EditorClassIdentifier: 
-  id: 200
+  id: test1
   itemname: yaoshui
   prefeberPath: players/items_18
   value: 50
