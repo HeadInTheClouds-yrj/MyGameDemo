@@ -8,22 +8,29 @@ using static UnityEditor.Progress;
 
 public class XiuLianInteractManager : MonoBehaviour
 {
+    public static XiuLianInteractManager Instance;
     private CurrentXiuLianManu currentManu;
     private List<Item> items;
     private List<string> allInBagGongFaIds;
     private List<GongFaInfoSO> unLearnedInBagGongFas;
     private List<GongFaInfoSO> learndeGongFas;
     private Data playerData;
+    [Header("修炼界面的功法预制体")]
     [SerializeField] private GameObject gongFaUIPrefab;
+    [Header("修炼界面功法预制体的父类")]
     [SerializeField] private Transform content;
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
         Initialize();
     }
     private void Initialize()
     {
-        currentManu = CurrentXiuLianManu.GongFaStudy;
         playerData = PlayerManager.instance.playerData;
+        currentManu = CurrentXiuLianManu.GongFaStudy;
         items = InventoryManager.Instance.GetInBagItems();
         allInBagGongFaIds = GetGongFaIds();
         unLearnedInBagGongFas = GetUnLearnedInBagGongFas(playerData);
@@ -39,7 +46,8 @@ public class XiuLianInteractManager : MonoBehaviour
         }
         foreach (Item item in items)
         {
-            if (!allInBagGongFaIds.Contains(item.id)&& "GongFa".Equals(item.itemkinde))
+            
+            if (!allInBagGongFaIds.Contains(item.id)&& Item.Itemkinde.GongFa.Equals(item.itemkinde))
             {
                 allInBagGongFaIds.Add(item.id);
             }
@@ -49,26 +57,41 @@ public class XiuLianInteractManager : MonoBehaviour
     private List<GongFaInfoSO> GetUnLearnedInBagGongFas(Data playerData)
     {
         List<GongFaInfoSO> ulibgf = new List<GongFaInfoSO>();
-        foreach (string learnedId in playerData.LearnedGongFa.Keys)
+        if (playerData.LearnedGongFas.Keys.Count == 0)
         {
             foreach (string itemId in allInBagGongFaIds)
             {
-                if (!allInBagGongFaIds.Contains(learnedId))
+                GongFaInfoSO temp = GongFaManager.instance.GetInitGongFaById(itemId).gfInfo;
+                if (!ulibgf.Contains(temp))
                 {
-                    GongFaInfoSO temp = GongFaManager.instance.GetInitGongFaById(itemId).gfInfo;
-                    if (!ulibgf.Contains(temp))
+                    ulibgf.Add(temp);
+                }
+            }
+        }
+        else
+        {
+            foreach (string learnedId in playerData.LearnedGongFas.Keys)
+            {
+                foreach (string itemId in allInBagGongFaIds)
+                {
+                    if (!allInBagGongFaIds.Contains(learnedId))
                     {
-                        ulibgf.Add(temp);
+                        GongFaInfoSO temp = GongFaManager.instance.GetInitGongFaById(itemId).gfInfo;
+                        if (!ulibgf.Contains(temp))
+                        {
+                            ulibgf.Add(temp);
+                        }
                     }
                 }
             }
         }
+
         return ulibgf;
     }
     private List<GongFaInfoSO> GetLearnedGongFas(Data playerData)
     {
         List<GongFaInfoSO> libgf = new List<GongFaInfoSO>();
-        foreach (string learnedId in playerData.LearnedGongFa.Keys)
+        foreach (string learnedId in playerData.LearnedGongFas.Keys)
         {
             libgf.Add(GongFaManager.instance.GetInitGongFaById(learnedId).gfInfo);
         }
@@ -76,11 +99,12 @@ public class XiuLianInteractManager : MonoBehaviour
     }
     private void InitializeGongFaToContent(List<GongFaInfoSO> gongFas)
     {
+        Debug.Log(gongFas);
         foreach (GongFaInfoSO info in gongFas)
         {
             GameObject obj = Instantiate<GameObject>(gongFaUIPrefab, content);
             GongFaSelectHandler gfsh = obj.GetComponent<GongFaSelectHandler>();
-            var gongFaSprite = obj.transform.Find("GongFa").GetComponent<Image>();
+            var gongFaSprite = obj.GetComponent<Image>();
             var gongFaName = obj.transform.Find("Name").GetComponent<TMP_Text>();
             gfsh.SetInfo(info);
             gfsh.UpdateCurrentManuState(currentManu);
@@ -94,6 +118,7 @@ public class XiuLianInteractManager : MonoBehaviour
         {
             Destroy(gfTransform.gameObject);
         }
+        ChanGeManuStateGongFaToStudy();
         InitializeGongFaToContent(unLearnedInBagGongFas);
     }
 
@@ -112,6 +137,7 @@ public class XiuLianInteractManager : MonoBehaviour
         {
             Destroy(gfTransform.gameObject);
         }
+        ChanGeManuStateToGongFaLevelUp();
         InitializeGongFaToContent(learndeGongFas);
     }
     public void AddLearnedGongFa(string gongFaId)
@@ -121,5 +147,43 @@ public class XiuLianInteractManager : MonoBehaviour
         {
             learndeGongFas.Add(info);
         }
+    }
+    public void AddLearnedGongFaToPlayerData(GongFaInfoSO info)
+    {
+        if (!playerData.LearnedGongFas.ContainsKey(info.id))
+        {
+            playerData.LearnedGongFas.Add(info.id,1);
+        }
+    }
+    public void GongFaLevelUPToPlayerData(GongFaInfoSO info)
+    {
+        //if (playerData.LearnedGongFa.ContainsKey(info.id))
+        //{
+        //    if (playerData.LearnedGongFa[info.id] < info.gongFaMaxLevel)
+        //    {
+        //        playerData.LearnedGongFa[info.id]++;
+        //        if (playerData.InstaillGongFa.ContainsKey(info.id))
+        //        {
+        //            playerData.InstaillGongFa[info.id]++;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        playerData.LearnedGongFa[info.id]=info.gongFaMaxLevel;
+        //        if (playerData.InstaillGongFa.ContainsKey(info.id))
+        //        {
+        //            playerData.InstaillGongFa[info.id] = info.gongFaMaxLevel;
+        //        }
+        //    }
+        //}
+        EventManager.Instance.gongFaEvent.GongFaLevelUP(info.id,PlayerManager.instance.transform);
+    }
+    public void ChanGeManuStateGongFaToStudy()
+    {
+        currentManu = CurrentXiuLianManu.GongFaStudy;
+    }
+    public void ChanGeManuStateToGongFaLevelUp()
+    {
+        currentManu = CurrentXiuLianManu.GongFaLevelUp;
     }
 }

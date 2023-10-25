@@ -3,7 +3,9 @@ guid: 7e8495404f1e89d4da4a6b35320c1482
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gongFaUIPrefab: {fileID: 6761182179036781368, guid: 75db490c7335a4146b3b65ecddc7e7ed, type: 3}
+  - content: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

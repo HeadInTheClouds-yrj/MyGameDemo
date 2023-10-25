@@ -23,7 +23,6 @@ public class UIBase : MonoBehaviour
                 }
             }
         }
-
     }
     //private void addUIBehaviourComponent()
     //{

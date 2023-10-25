@@ -119,9 +119,16 @@ public class InventoryManager : MonoBehaviour,IDataPersistence
 
     public void LoadGame(GameData gameData)
     {
-        foreach (string itemId in gameData.BagItemsId)
+        if (Items == null)
         {
-            AddItem(GetItemById(itemId));
+            Items = new List<Item>();
+        }
+        else
+        {
+            foreach (string itemId in gameData.BagItemsId)
+            {
+                AddItem(GetItemById(itemId));
+            }
         }
     }
 

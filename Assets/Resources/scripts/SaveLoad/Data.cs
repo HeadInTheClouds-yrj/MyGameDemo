@@ -15,9 +15,10 @@ public class Data
     private float curenttHealth;
     private float moveSpeed;
     private int killEnimiesCont;
-    private SerializableDictionary<string,int> instaillGongFa;
-    private SerializableDictionary<string, int> learnedGongFa;
-    private SerializableDictionary<string, int> learnedSkill;
+    private List<int> ItemIds;
+    private SerializableDictionary<string,int> instaillGongFas;
+    private SerializableDictionary<string, int> learnedGongFas;
+    private SerializableDictionary<string, int> learnedSkills;
 
     public Data(Transform transform)
     {
@@ -30,9 +31,9 @@ public class Data
         curenttHealth = 100;
         moveSpeed = 2;
         killEnimiesCont = 0;
-        this.instaillGongFa = new SerializableDictionary<string, int>();
-        this.learnedGongFa = new SerializableDictionary<string, int>();
-        this.learnedSkill = new SerializableDictionary<string, int>();
+        this.instaillGongFas = new SerializableDictionary<string, int>();
+        this.learnedGongFas = new SerializableDictionary<string, int>();
+        this.learnedSkills = new SerializableDictionary<string, int>();
     }
 
     public string Name1 { get => Name; set => Name = value; }
@@ -42,9 +43,9 @@ public class Data
     public float CurenttHealth { get => curenttHealth; set => curenttHealth = value; }
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
     public int KillEnimiesCont { get => killEnimiesCont; set => killEnimiesCont = value; }
-    public SerializableDictionary<string, int> InstaillGongFa { get => instaillGongFa; set => instaillGongFa = value; }
-    public SerializableDictionary<string, int> LearnedGongFa { get => learnedGongFa; set => learnedGongFa = value; }
-    public SerializableDictionary<string, int> LearnedSkill { get => learnedSkill; set => learnedSkill = value; }
+    public SerializableDictionary<string, int> InstaillGongFas { get => instaillGongFas; set => instaillGongFas = value; }
+    public SerializableDictionary<string, int> LearnedGongFas { get => learnedGongFas; set => learnedGongFas = value; }
+    public SerializableDictionary<string, int> LearnedSkills { get => learnedSkills; set => learnedSkills = value; }
     public bool Survival { get => survival; set => survival = value; }
     public string Id { get => id; set => id = value; }
 }

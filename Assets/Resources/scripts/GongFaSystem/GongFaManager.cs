@@ -37,27 +37,57 @@ public class GongFaManager : MonoBehaviour
     public void InstantiateGongFa(string id,Transform parent)
     {
         Transform[] transforms = parent.GetComponentsInChildren<Transform>();
-        foreach (Transform t in transforms)
+        GongFaInvokeContro[] gongFaInvokeContros = parent.GetComponentsInChildren<GongFaInvokeContro>();
+        if (gongFaInvokeContros.Length>=5)
         {
-            if (t.name.Equals(id))
-            {
-                return;
-            }
+            Debug.LogWarning("装备功法超过最大可装备数量！");
         }
-        GongFa gongFa = GetInitGongFaById(id);
-        gongFa.InstantiateGongFa(parent);
+        else
+        {
+            foreach (Transform t in transforms)
+            {
+                if (t.name.Equals(id))
+                {
+                    return;
+                }
+            }
+            GongFa gongFa = GetInitGongFaById(id);
+            Data data = parent.GetComponent<Humanoid>().GetData();
+            data.InstaillGongFas.Add(id, data.LearnedGongFas[id]);
+            gongFa.InstantiateGongFa(parent);
+        }
     }
     public void RemoveGongFa(string id,Transform parent)
     {
         EventManager.Instance.gongFaEvent.RemoveGongFa(id, parent);
+        Data data = parent.GetComponent<Humanoid>().GetData();
+        if (data.InstaillGongFas.ContainsKey(id))
+        {
+            data.InstaillGongFas.Remove(id);
+        }
     }
     private void GongFaLevelUP(string id, Transform parent)
     {
         Data data = parent.GetComponent<Humanoid>().GetData();
-        if (data.LearnedGongFa.ContainsKey(id))
+        if (data.LearnedGongFas.ContainsKey(id))
         {
-            data.LearnedGongFa[id]++;
-            data.InstaillGongFa[id]++;
+            if (data.LearnedGongFas[id] < GetInitGongFaById(id).gfInfo.gongFaMaxLevel)
+            {
+                data.LearnedGongFas[id]++;
+                if (data.InstaillGongFas.ContainsKey(id))
+                {
+                    data.InstaillGongFas[id]++;
+                }
+            }
+            else
+            {
+                data.LearnedGongFas[id] = GetInitGongFaById(id).gfInfo.gongFaMaxLevel;
+                if (data.InstaillGongFas.ContainsKey(id))
+                {
+                    data.InstaillGongFas[id] = GetInitGongFaById(id).gfInfo.gongFaMaxLevel;
+                }
+            }
+            
         }
         else
         {
@@ -66,7 +96,7 @@ public class GongFaManager : MonoBehaviour
         Transform[] transforms = parent.GetComponentsInChildren<Transform>();
         foreach (Transform t in transforms)
         {
-            if (t.name.Equals(id)&& data != null && data.InstaillGongFa.ContainsKey(id))
+            if (t.name.Equals(id)&& data != null && data.InstaillGongFas.ContainsKey(id))
             {
                 EventManager.Instance.gongFaEvent.RemoveGongFa(id, parent);
                 GongFa gongFa = GetInitGongFaById(id);
@@ -89,9 +119,9 @@ public class GongFaManager : MonoBehaviour
     }
     public int GetGongFaCurrentLevelById(Data data,string gongFaId)
     {
-        if (data.LearnedGongFa.ContainsKey(gongFaId))
+        if (data.LearnedGongFas.ContainsKey(gongFaId))
         {
-            return data.LearnedGongFa[gongFaId];
+            return data.LearnedGongFas[gongFaId];
         }
         else
         {

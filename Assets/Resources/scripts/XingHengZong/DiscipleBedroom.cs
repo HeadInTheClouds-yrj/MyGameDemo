@@ -9,7 +9,7 @@ public class DiscipleBedroom : MonoBehaviour
     [SerializeField] private GameObject option;
     private void Start()
     {
-        UIManager.instance.InvokeCloseUI();
+        //UIManager.instance.InvokeCloseUI();
     }
     private void OnEnable()
     {

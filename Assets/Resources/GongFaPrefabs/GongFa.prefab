@@ -258,7 +258,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6761182179036781367}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2602587186992917121}
+        m_TargetAssemblyTypeName: GongFaSelectHandler, Assembly-CSharp
+        m_MethodName: GongFaManuOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2602587186992917121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,10 +283,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47bcaa65206fd14eb5db121eb8bb6c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayNameText: {fileID: 0}
   gongFaEffectTextPrefab: {fileID: 8828723083429102401, guid: 543e4b2ef46dd434ca76ac68a2267696, type: 3}
-  effectTextContent: {fileID: 0}
-  pressedButtonText: {fileID: 0}
+  InitializedSprite: {fileID: 21300000, guid: c933fb3f1ab2a634aa47737f41513d9f, type: 3}
 --- !u!1 &6761182179786377688
 GameObject:
   m_ObjectHideFlags: 0

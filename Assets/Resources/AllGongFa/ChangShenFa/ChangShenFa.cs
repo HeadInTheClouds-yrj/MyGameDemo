@@ -31,38 +31,38 @@ public class ChangShenFa : GongFaInvokeContro
 
     private void InstallGongFa_Onece()
     {
-        switch (myself.InstaillGongFa[gongFa.gfInfo.id])
+        switch (myself.InstaillGongFas[gongFa.gfInfo.id])
         {
-            case 0:myself.MaxHealth += 10;
+            case 1:myself.MaxHealth += 10;
                 break;
-            case 1:myself.MaxHealth += 20;
+            case 2:myself.MaxHealth += 20;
                 break;
-            case 2:myself.MaxHealth += 40;
+            case 3:myself.MaxHealth += 40;
                 break;
-            case 3:myself.MaxHealth += 80;
+            case 4:myself.MaxHealth += 80;
                 break;
-            case 4:myself.MaxHealth += 160;
+            case 5:myself.MaxHealth += 160;
                 break;
         }
     }
 
     private void UninstallGongFa_Onece()
     {
-        switch (myself.InstaillGongFa[gongFa.gfInfo.id])
+        switch (myself.InstaillGongFas[gongFa.gfInfo.id])
         {
-            case 0:
+            case 1:
                 myself.MaxHealth -= 10;
                 break;
-            case 1:
+            case 2:
                 myself.MaxHealth -= 20;
                 break;
-            case 2:
+            case 3:
                 myself.MaxHealth -= 40;
                 break;
-            case 3:
+            case 4:
                 myself.MaxHealth -= 80;
                 break;
-            case 4:
+            case 5:
                 myself.MaxHealth -= 160;
                 break;
         }

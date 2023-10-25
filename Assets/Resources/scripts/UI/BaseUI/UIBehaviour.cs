@@ -9,10 +9,21 @@ using static System.Net.Mime.MediaTypeNames;
 
 public class UIBehaviour : MonoBehaviour
 {
+    private bool isFirstRegister = false;
     private void Awake()
     {
         UIBase tempBase = transform.GetComponentInParent<UIBase>();
         UIManager.instance.RegisterUI(tempBase.name,transform.name,this.gameObject);
+        isFirstRegister = true;
+    }
+    private void OnEnable()
+    {
+        if (!isFirstRegister)
+        {
+            UIBase tempBase = transform.GetComponentInParent<UIBase>();
+            UIManager.instance.RegisterUI(tempBase.name, transform.name, this.gameObject);
+            isFirstRegister = true;
+        }
     }
     public void AddLicener(UnityAction action)
     {

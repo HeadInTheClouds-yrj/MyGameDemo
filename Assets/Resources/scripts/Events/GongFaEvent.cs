@@ -22,7 +22,7 @@ public class GongFaEvent
         }
     }
     public event Action<string,Transform> OnGongFaLevelUP;
-    public void GongFaLevelUP(GongFa gongFa,string id,Transform parent)
+    public void GongFaLevelUP(string id,Transform parent)
     {
         if (OnGongFaLevelUP != null)
         {

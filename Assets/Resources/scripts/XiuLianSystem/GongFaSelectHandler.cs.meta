@@ -3,7 +3,13 @@ guid: c47bcaa65206fd14eb5db121eb8bb6c0
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - displayNameText: {instanceID: 0}
+  - gongFaEffectTextPrefab: {fileID: 8828723083429102401, guid: 543e4b2ef46dd434ca76ac68a2267696, type: 3}
+  - effectTextContent: {instanceID: 0}
+  - pressedButton: {instanceID: 0}
+  - pressedButtonText: {instanceID: 0}
+  - InitializedSprite: {fileID: 21300000, guid: c933fb3f1ab2a634aa47737f41513d9f, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
