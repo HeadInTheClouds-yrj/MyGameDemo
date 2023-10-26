@@ -7,15 +7,19 @@ using UnityEngine;
 public class Data
 {
     private string id;
-    private string Name;
+    private string name;
+    private long lingShi;
+    private int maxAge;
+    private int currentAge;
     private bool survival;
     private float maxLingQi;
     private float currentLingQi;
+    private float regenerateLingQi;
     private float maxHealth;
     private float curenttHealth;
     private float moveSpeed;
     private int killEnimiesCont;
-    private List<int> ItemIds;
+    private SerializableDictionary<string,int> itemIds;
     private SerializableDictionary<string,int> instaillGongFas;
     private SerializableDictionary<string, int> learnedGongFas;
     private SerializableDictionary<string, int> learnedSkills;
@@ -23,20 +27,25 @@ public class Data
     public Data(Transform transform)
     {
         id = transform.name;
-        Name = "";
+        name = "";
+        lingShi = 0;
+        maxAge = 100;
+        currentAge = 18;
         survival = true;
         maxLingQi = 1000;
         currentLingQi = 1000;
+        regenerateLingQi = 1f;
         maxHealth = 100;
         curenttHealth = 100;
         moveSpeed = 2;
         killEnimiesCont = 0;
+        itemIds = new SerializableDictionary<string, int>();
         this.instaillGongFas = new SerializableDictionary<string, int>();
         this.learnedGongFas = new SerializableDictionary<string, int>();
         this.learnedSkills = new SerializableDictionary<string, int>();
     }
 
-    public string Name1 { get => Name; set => Name = value; }
+    public string Name { get => name; set => name = value; }
     public float MaxLingQi { get => maxLingQi; set => maxLingQi = value; }
     public float CurrentLingQi { get => currentLingQi; set => currentLingQi = value; }
     public float MaxHealth { get => maxHealth; set => maxHealth = value; }
@@ -48,4 +57,9 @@ public class Data
     public SerializableDictionary<string, int> LearnedSkills { get => learnedSkills; set => learnedSkills = value; }
     public bool Survival { get => survival; set => survival = value; }
     public string Id { get => id; set => id = value; }
+    public SerializableDictionary<string, int> ItemIds { get => itemIds; set => itemIds = value; }
+    public long LingShi { get => lingShi; set => lingShi = value; }
+    public int MaxAge { get => maxAge; set => maxAge = value; }
+    public int CurrentAge { get => currentAge; set => currentAge = value; }
+    public float RegenerateLingQi { get => regenerateLingQi; set => regenerateLingQi = value; }
 }

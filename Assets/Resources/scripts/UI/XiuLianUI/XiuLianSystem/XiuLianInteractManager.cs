@@ -99,7 +99,6 @@ public class XiuLianInteractManager : MonoBehaviour
     }
     private void InitializeGongFaToContent(List<GongFaInfoSO> gongFas)
     {
-        Debug.Log(gongFas);
         foreach (GongFaInfoSO info in gongFas)
         {
             GameObject obj = Instantiate<GameObject>(gongFaUIPrefab, content);

@@ -10,6 +10,8 @@ public class QuestManager : MonoBehaviour,IDataPersistence
     private void Awake()
     {
         questMap = CreateQuestMap();
+        //这只是为页面提供任务信息而传递的map。只读。。
+        PropertyManuCtrl.instance.SetQuestMap(questMap);
     }
     private void OnEnable()
     {
@@ -20,10 +22,7 @@ public class QuestManager : MonoBehaviour,IDataPersistence
         EventManager.Instance.enimiesEvent.OnEnimyDie += EnimyDie;
     }
 
-    private void EnimyDie(NpcCell obj)
-    {
-        kiiEnimyCount++;
-    }
+
 
     private void OnDisable()
     {
@@ -33,8 +32,10 @@ public class QuestManager : MonoBehaviour,IDataPersistence
         EventManager.Instance.questEvent.OnQuestStepStateChange += QuestStepStateChange;
         EventManager.Instance.enimiesEvent.OnEnimyDie -= EnimyDie;
     }
-
-
+    private void EnimyDie(NpcCell obj)
+    {
+        kiiEnimyCount++;
+    }
     private void Start()
     {
         foreach (Quest quest in questMap.Values)

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <id>k__BackingField: KillEnimy
   displayName: "\u6740\u6B7B2\u4E2A\u8FD1\u6218\u9AB7\u9AC5"
+  questType: 1
   levelRequirement: 0
   killEnimiesCont: 1
   questPrerequisites: []

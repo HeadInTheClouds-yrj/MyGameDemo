@@ -9,7 +9,8 @@ public class QuestInfoSO : ScriptableObject
 
     [Header("任务简介")] 
     public string displayName;
-
+    [Header("任务类型（主/支线）")]
+    public QuestType questType;
     [Header("任务启动先决条件")] 
     public int levelRequirement;
     public int killEnimiesCont;

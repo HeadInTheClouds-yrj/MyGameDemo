@@ -11,6 +11,14 @@ public class ItemPickup : MonoBehaviour,IDataPersistence
     void Pickup()
     {
         InventoryManager.Instance.AddItem(item);
+        if (PlayerManager.instance.playerData.ItemIds.ContainsKey(item.id))
+        {
+            PlayerManager.instance.playerData.ItemIds[item.id]++;
+        }
+        else
+        {
+            PlayerManager.instance.playerData.ItemIds.Add(item.id,1);
+        }
         Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)

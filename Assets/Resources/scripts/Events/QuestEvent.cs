@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Net.NetworkInformation;
 
 public class QuestEvent
@@ -41,6 +42,14 @@ public class QuestEvent
         if (OnQuestStepStateChange != null)
         {
             OnQuestStepStateChange(id, questStepIndex,stepState);
+        }
+    }
+    public event Action<Dictionary<string, Quest>> OnGetQuestMapToPropertyUI;
+    public void GetQuestMapToPropertyUI(Dictionary<string, Quest> questMap)
+    {
+        if (OnGetQuestMapToPropertyUI !=null)
+        {
+            OnGetQuestMapToPropertyUI(questMap);
         }
     }
 }
