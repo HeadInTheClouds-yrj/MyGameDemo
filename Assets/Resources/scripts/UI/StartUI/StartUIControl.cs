@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class StartUIControl : UIBase
 {
+    private AudioSource audioSource;
     public void SetColorA()
     {
         Color color1 = transform.GetComponent<Image>().color;
@@ -38,6 +39,14 @@ public class StartUIControl : UIBase
     public void FilesNameInit()
     {
         DataFileNameManager.Instance.Init();
+    }
+    private void OnEnable()
+    {
+        audioSource = AudioManager.instance.LoopPlayClip("WeiWoTianXia");
+    }
+    private void OnDestroy()
+    {
+        AudioManager.instance.StopLoopPlay("WeiWoTianXia", audioSource);
     }
     // Start is called before the first frame update
     void Start()

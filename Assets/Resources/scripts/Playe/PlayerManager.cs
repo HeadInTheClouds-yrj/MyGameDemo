@@ -70,6 +70,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
         attackItems = new AttackItems();
         animator = GetComponent<Animator>();
         DontDestroyOnLoad(instance);
+        playerData.LearnedGongFas.Add("ChangShenFa", 1);
     }
     private void OnEnable()
     {

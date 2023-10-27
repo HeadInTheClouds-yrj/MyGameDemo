@@ -5,18 +5,19 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-    SourceManager sourceManager;
-    ClipManager clipManager;
+    public SourceManager sourceManager;
+    public ClipManager clipManager;
     private void Awake()
     {
+        DontDestroyOnLoad(this);
         instance= this;
+        sourceManager = new SourceManager(gameObject);
+        clipManager = new ClipManager();
     }
     // Start is called before the first frame update
     void Start()
     {
-        sourceManager = new SourceManager(gameObject);
-        clipManager = new ClipManager();
-        KeepPlayClip("WeiWoTianXia");
+
     }
 
     // Update is called once per frame
@@ -24,16 +25,33 @@ public class AudioManager : MonoBehaviour
     {
         
     }
-    public void PlayClip(string audioName)
+    public AudioSource PlayClip(string audioName)
     {
         AudioSource freeSource = sourceManager.GetFreeSource();
         ClipSingle clipSingle = clipManager.GetClipByName(audioName);
         clipSingle.Play(freeSource);
+        return freeSource;
     }
-    public void KeepPlayClip(string audioName)
+    public AudioSource LoopPlayClip(string audioName)
     {
         AudioSource freeSource = sourceManager.GetFreeSource();
         ClipSingle clipSingle = clipManager.GetClipByName(audioName);
-        clipSingle.KeepPlay(freeSource);
+        clipSingle.LoopPlay(freeSource);
+        return freeSource;
+    }
+    public void StopPlay(string audioName,AudioSource audioSource)
+    {
+        AudioSource freeSource = sourceManager.GetFreeSource();
+        ClipSingle clipSingle = clipManager.GetClipByName(audioName);
+        clipSingle.StopPlay(audioSource);
+    }
+    public void StopLoopPlay(string audioName, AudioSource audioSource)
+    {
+        ClipSingle clipSingle = clipManager.GetClipByName(audioName);
+        clipSingle.StopLoopPlay(audioSource);
+    }
+    public void FreeSource()
+    {
+        sourceManager.CloseFreeSource();
     }
 }
