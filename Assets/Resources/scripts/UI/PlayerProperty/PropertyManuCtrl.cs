@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PropertyManuCtrl : UIBase
+public class PropertyManuCtrl : MonoBehaviour
 {
     public static PropertyManuCtrl instance;
     private Data data;
@@ -35,6 +35,7 @@ public class PropertyManuCtrl : UIBase
         {
             instance = this;
         }
+        Initialize();
     }
     private void Initialize()
     {
@@ -43,13 +44,13 @@ public class PropertyManuCtrl : UIBase
     ///以下为属性页面使用
     public void ShowDataProperty()
     {
-        base_Name.text = data.Name;
-        base_MaxAge.text = data.MaxAge.ToString();
-        base_CurrentAge.text = data.CurrentAge.ToString();
-        base_HP.text = data.CurenttHealth + " / " + data.MaxHealth;
-        base_LingQi.text = data.CurrentLingQi + " / " + data.MaxLingQi;
-        base_RegenerateLingQi.text = data.RegenerateLingQi + "/每秒";
-        base_LingShi.text = data.LingShi.ToString();
+        base_Name.text = "名字:" + data.Name;
+        base_MaxAge.text = "寿元:" + data.MaxAge.ToString();
+        base_CurrentAge.text = "年龄:" + data.CurrentAge.ToString();
+        base_HP.text = "血量:" + data.CurenttHealth + " / " + data.MaxHealth;
+        base_LingQi.text = "灵气值:" + data.CurrentLingQi + " / " + data.MaxLingQi;
+        base_RegenerateLingQi.text = "灵气回复:" + data.RegenerateLingQi + "/每秒";
+        base_LingShi.text = "灵石:" + data.LingShi.ToString();
     }
     ///以下为任务页面使用
     public void SetQuestMap(Dictionary<string, Quest> questMap_OnlyRead)
@@ -58,6 +59,10 @@ public class PropertyManuCtrl : UIBase
     }
     public void ListQuest1UI()
     {
+        foreach (Transform item in questContent)
+        {
+            Destroy(item.gameObject);
+        }
         foreach (Quest quest in questMap_ReadOnly.Values)
         {
             GameObject obj = Instantiate<GameObject>(questContentPrefab, questContent);

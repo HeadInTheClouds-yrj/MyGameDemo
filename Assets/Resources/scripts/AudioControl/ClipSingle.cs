@@ -14,4 +14,10 @@ public class ClipSingle
         audioSource.clip = clip;
         audioSource.Play();
     }
+    public void KeepPlay(AudioSource audioSource)
+    {
+        audioSource.clip = clip;
+        audioSource.Play();
+        audioSource.loop = true;
+    }
 }

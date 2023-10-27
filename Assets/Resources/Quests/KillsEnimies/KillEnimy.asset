@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: KillEnimy
   m_EditorClassIdentifier: 
   <id>k__BackingField: KillEnimy
-  displayName: "\u6740\u6B7B2\u4E2A\u8FD1\u6218\u9AB7\u9AC5"
+  displayName: "\u6740\u6B7B2\u4E2A\u8FD1\u6218\u654C\u4EBA"
   questType: 1
   levelRequirement: 0
-  killEnimiesCont: 1
+  killEnimiesCont: 0
   questPrerequisites: []
   questStepPrefabs:
   - {fileID: 742501407452960050, guid: f5d7efb3260937c4295822ec1427e95c, type: 3}

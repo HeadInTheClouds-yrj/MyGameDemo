@@ -20,7 +20,28 @@ public class QuestDisplayUICtrl : MonoBehaviour
     public void ShowQuestState()
     {
         Initialize();
-        questDisplayName.text = quest_ReadOnly.info.displayName+"\n"+"任务状态：  "+ quest_ReadOnly.state;
+        string questState = "";
+        switch (quest_ReadOnly.state)
+        {
+            case QuestState.REQUIREMENTS_NOT_MET:
+                questState = "未满足任务开启条件";
+                break;
+            case QuestState.CAN_START:
+                questState = "任务可以开启";
+                break;
+            case QuestState.IN_PROGRESS:
+                questState = "任务正在进行中";
+                break;
+            case QuestState.CAN_FINISH:
+                questState = "可以完成";
+                break;
+            case QuestState.FINISHED:
+                questState = "已完成";
+                break;
+            default:
+                break;
+        }
+        questDisplayName.text = quest_ReadOnly.info.displayName+"\n"+"任务状态：  "+ questState;
         
         questAavanceState.text = quest_ReadOnly.GetQuestData().questStepStates[quest_ReadOnly.GetQuestData().currentQuestStepIndex].stepState;
     }

@@ -7,13 +7,16 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     SourceManager sourceManager;
     ClipManager clipManager;
+    private void Awake()
+    {
+        instance= this;
+    }
     // Start is called before the first frame update
     void Start()
     {
-        instance= this;
         sourceManager = new SourceManager(gameObject);
         clipManager = new ClipManager();
-        PlayClip("guigubahuang");
+        KeepPlayClip("WeiWoTianXia");
     }
 
     // Update is called once per frame
@@ -26,5 +29,11 @@ public class AudioManager : MonoBehaviour
         AudioSource freeSource = sourceManager.GetFreeSource();
         ClipSingle clipSingle = clipManager.GetClipByName(audioName);
         clipSingle.Play(freeSource);
+    }
+    public void KeepPlayClip(string audioName)
+    {
+        AudioSource freeSource = sourceManager.GetFreeSource();
+        ClipSingle clipSingle = clipManager.GetClipByName(audioName);
+        clipSingle.KeepPlay(freeSource);
     }
 }
