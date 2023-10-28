@@ -19,7 +19,7 @@ public class Data
     private float curenttHealth;
     private float moveSpeed;
     private int killEnimiesCont;
-    private string mainGongFaId;
+    private string[] installOrderGongFaIds;
     private SerializableDictionary<string,int> itemIds;
     private SerializableDictionary<string,int> instaillGongFas;
     private SerializableDictionary<string, int> learnedGongFas;
@@ -40,7 +40,7 @@ public class Data
         curenttHealth = 100;
         moveSpeed = 2;
         killEnimiesCont = 0;
-        mainGongFaId = "";
+        installOrderGongFaIds = new string[9];
         itemIds = new SerializableDictionary<string, int>();
         this.instaillGongFas = new SerializableDictionary<string, int>();
         this.learnedGongFas = new SerializableDictionary<string, int>();
@@ -64,5 +64,5 @@ public class Data
     public int MaxAge { get => maxAge; set => maxAge = value; }
     public int CurrentAge { get => currentAge; set => currentAge = value; }
     public float RegenerateLingQi { get => regenerateLingQi; set => regenerateLingQi = value; }
-    public string MainGongFaId { get => mainGongFaId; set => mainGongFaId = value; }
+    public string[] InstallOrderGongFaIds { get => installOrderGongFaIds; set => installOrderGongFaIds = value; }
 }

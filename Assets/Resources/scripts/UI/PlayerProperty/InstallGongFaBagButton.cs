@@ -8,9 +8,12 @@ using UnityEngine.UI;
 
 public class InstallGongFaBagButton : MonoBehaviour, IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    private Vector3 beforeTransformPosition;
+    private Vector3 temp;
     private string gongFaId;
     private int gongFaLevel;
     private List<RectTransform> gongFas;
+    [SerializeField] private Sprite empty;
     /// <summary>
     /// 当点击
     /// </summary>
@@ -18,7 +21,7 @@ public class InstallGongFaBagButton : MonoBehaviour, IInitializePotentialDragHan
     /// <exception cref="System.NotImplementedException"></exception>
     public void OnInitializePotentialDrag(PointerEventData eventData)
     {
-        Debug.Log("testtest");
+        beforeTransformPosition = transform.position;
     }
     /// <summary>
     /// 当开始移动
@@ -35,6 +38,9 @@ public class InstallGongFaBagButton : MonoBehaviour, IInitializePotentialDragHan
     /// <exception cref="System.NotImplementedException"></exception>
     public void OnDrag(PointerEventData eventData)
     {
+        temp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        temp.z = 0;
+        transform.position = temp;
     }
     /// <summary>
     /// 松开时
@@ -54,21 +60,24 @@ public class InstallGongFaBagButton : MonoBehaviour, IInitializePotentialDragHan
             {
                 gongFapzt.GetComponent<Image>().sprite = GongFaManager.instance.GetInitGongFaById(gongFaId).gfInfo.gongFaInBattleIcon;
                 gongFapzt.Find("Name").GetComponent<TMP_Text>().text = GongFaManager.instance.GetInitGongFaById(gongFaId).gfInfo.gongFaName;
-                if (gongFaId.Equals(PlayerManager.instance.playerData.MainGongFaId))
+                for (int i = 0; i < gongFas.Count; i++)
                 {
-                    PlayerManager.instance.playerData.MainGongFaId = gongFaId;
-                    PlayerManager.instance.playerData.InstaillGongFas.Remove(gongFapzt.GetComponent<InstallStaticGongFaUI>().GongFaId);
-                    PlayerManager.instance.playerData.InstaillGongFas.Add(gongFaId, gongFaLevel);
+                    if (gongFaId.Equals(PlayerManager.instance.playerData.InstallOrderGongFaIds[i]))
+                    {
+                        PlayerManager.instance.playerData.InstallOrderGongFaIds[i] = null;
+
+                        PlayerManager.instance.playerData.InstaillGongFas.Remove(gongFaId);
+                        gongFas[i].GetComponent<Image>().sprite = empty;
+                        gongFas[i].Find("Name").GetComponent<TMP_Text>().text = "无";
+                    }
                 }
-                else
-                {
-                    PlayerManager.instance.playerData.InstaillGongFas.Remove(gongFapzt.GetComponent<InstallStaticGongFaUI>().GongFaId);
-                    PlayerManager.instance.playerData.InstaillGongFas.Add(gongFaId, gongFaLevel);
-                }
+                PlayerManager.instance.playerData.InstallOrderGongFaIds[gongFapzt.GetComponent<InstallStaticGongFaUI>().InStaticGongFaIndex] = gongFaId;
+                PlayerManager.instance.playerData.InstaillGongFas.Add(gongFaId,gongFaLevel);
                 PropertyManuCtrl.instance.ListInstalledGongFaStaticImage();
                 PropertyManuCtrl.instance.ListInstallGongFaBag();
             }
         }
+        transform.position = beforeTransformPosition;
     }
     public void SetGongFaButton(string gongFaId,int gongFalevel, List<RectTransform> gongFas)
     {

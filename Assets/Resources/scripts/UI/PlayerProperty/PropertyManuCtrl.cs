@@ -53,17 +53,20 @@ public class PropertyManuCtrl : MonoBehaviour
     private void Initialize()
     {
         data = PlayerManager.instance.playerData;
-        gongFaButtons = new List<RectTransform>();
-        gongFaButtons.Add(zhuXiuGongFa);
-        gongFaButtons.Add(GongFa_1);
-        gongFaButtons.Add(GongFa_2);
-        gongFaButtons.Add(GongFa_3);
-        gongFaButtons.Add(GongFa_4);
-        //额外功法位置
-        gongFaButtons.Add(GongFa_5);
-        gongFaButtons.Add(GongFa_6);
-        gongFaButtons.Add(GongFa_7);
-        gongFaButtons.Add(GongFa_8);
+        gongFaButtons = new List<RectTransform>
+        {
+            zhuXiuGongFa,
+            GongFa_1,
+            GongFa_2,
+            GongFa_3,
+            GongFa_4,
+            //额外功法位置
+            GongFa_5,
+            GongFa_6,
+            GongFa_7,
+            GongFa_8
+        };
+        InitStaticGongFaManuIndex();
     }
     ///以下为属性页面使用
     public void ShowDataProperty()
@@ -127,32 +130,23 @@ public class PropertyManuCtrl : MonoBehaviour
     }
     public void ListInstalledGongFaStaticImage()
     {
-        int i = 0;
-        foreach (string gongFaId in data.InstaillGongFas.Keys)
+        for (int i = 0; i < data.InstallOrderGongFaIds.Length; i++)
         {
-            if (i==0)
+            if (data.InstallOrderGongFaIds[i] == null || data.InstallOrderGongFaIds[i] == "")
             {
-                gongFaButtons[i].GetComponent<Image>().sprite = GongFaManager.instance.GetInitGongFaById(data.MainGongFaId).gfInfo.gongFaInBattleIcon;
-                gongFaButtons[i].Find("Name").GetComponent<TMP_Text>().text = GongFaManager.instance.GetInitGongFaById(data.MainGongFaId).gfInfo.gongFaName;
-                gongFaButtons[i].GetComponent<InstallStaticGongFaUI>().GongFaId = data.MainGongFaId;
-                gongFaButtons[i].GetComponent<InstallStaticGongFaUI>().GongFaLevel = data.LearnedGongFas[data.MainGongFaId];
+                continue;
             }
-            else
-            {
-                if (!gongFaId.Equals(data.MainGongFaId))
-                {
-                    gongFaButtons[i].GetComponent<Image>().sprite = GongFaManager.instance.GetInitGongFaById(data.MainGongFaId).gfInfo.gongFaInBattleIcon;
-                    gongFaButtons[i].Find("Name").GetComponent<TMP_Text>().text = GongFaManager.instance.GetInitGongFaById(data.MainGongFaId).gfInfo.gongFaName;
-                    gongFaButtons[i].GetComponent<InstallStaticGongFaUI>().GongFaId = gongFaId;
-                    gongFaButtons[i].GetComponent<InstallStaticGongFaUI>().GongFaLevel = data.LearnedGongFas[gongFaId];
-                }
-            }
-
+            gongFaButtons[i].GetComponent<Image>().sprite = GongFaManager.instance.GetInitGongFaById(data.InstallOrderGongFaIds[i]).gfInfo.gongFaInBattleIcon;
+            gongFaButtons[i].Find("Name").GetComponent<TMP_Text>().text = GongFaManager.instance.GetInitGongFaById(data.InstallOrderGongFaIds[i]).gfInfo.gongFaName;
+            gongFaButtons[i].GetComponent<InstallStaticGongFaUI>().GongFaId = data.InstallOrderGongFaIds[i];
+            gongFaButtons[i].GetComponent<InstallStaticGongFaUI>().GongFaLevel = data.LearnedGongFas[data.InstallOrderGongFaIds[i]];
         }
     }
-    public void Test()
+    public void InitStaticGongFaManuIndex()
     {
-        
-
+        for (int i = 0; i < 9; i++)
+        {
+            gongFaButtons[i].GetComponent<InstallStaticGongFaUI>().InStaticGongFaIndex = i;
+        }
     }
 }
