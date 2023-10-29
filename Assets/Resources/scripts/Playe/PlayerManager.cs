@@ -31,11 +31,19 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
     public SpriteRenderer spriteRenderer;
     public GameObject SwordPrefer;
     [SerializeField]
-    public Transform sworte2;
+    private Transform sworte2;
     public LineRenderer lineRenderer;
-    public float lrMaxX = 2.01f;
-    public float lrX = 2.01f;
-    public float relativetransformX = 1f;
+    private float lrMaxX = 2.01f;
+    private float lrX;
+    private float relativetransformX = 1f;
+    private float currentHearth;
+    private float rectangleMaxLength = 50.9f;
+    private float blackDonateLength = 10.0f;
+    private float blackDonatespacing = 10f;
+    private Vector2 blackDonateWidth;
+    private Vector3 blackDonateScal;
+    private Transform blackDonateScalTransform;
+    private SpriteRenderer blackDonateWidthSpriteRenderer;
     private Transform playerTransform;
     private Sprite playerIcon;
     public Sprite PlayerIcon
@@ -65,12 +73,19 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-        playerData = new Data(this.transform);
+        else
+        {
+            Destroy(gameObject);
+        }
         attackItems = new AttackItems();
         animator = GetComponent<Animator>();
-        DontDestroyOnLoad(instance);
-        playerData.LearnedGongFas.Add("ChangShenFa", 1);
+        blackDonateScalTransform = transform.Find("LingQinGrid").GetComponent<Transform>();
+        blackDonateWidthSpriteRenderer = transform.Find("LingQinGrid").GetComponent<SpriteRenderer>();
+        blackDonateScal = blackDonateScalTransform.localScale;
+        blackDonateWidth = blackDonateWidthSpriteRenderer.size;
+        currentHearth = playerData.maxLingQi;
     }
     private void OnEnable()
     {
@@ -93,44 +108,48 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
     public void HandleUpdate()
     {
         HitAnimation();
-        PlayerInGameHP();
         GetMouseKey();
         //chekAttackcool();
         PlayerMeleeAttack();
+        updateUI();
     }
     private void PlayerReduceLingQi(float damage)
     {
         if (damage>0)
         {
-            if (damage>playerData.CurenttHealth)
+            if (damage>playerData.currentLingQi)
             {
-                float temp = damage - playerData.CurenttHealth;
-                playerData.CurenttHealth = 0;
+                float temp = damage - playerData.currentLingQi;
+                playerData.currentLingQi = 0;
                 EventManager.Instance.battleEvent.PlayerReduceHP(temp);
             }
             else
             {
-                playerData.CurrentLingQi -= damage;
+                playerData.currentLingQi -= damage;
             }
         }
     }
     public float PlayerReduceHP(float damage)
     {
         isHit = true;
-        playerData.CurenttHealth -= damage;
-        lrX -= lrMaxX*(damage/playerData.MaxHealth)*2;
-        if (lrX < -2f * relativetransformX)
-        {
-            lrX = -2f * relativetransformX;
-        }
+        playerData.curenttHealth -= damage;
         updateUI();
         ThrowDamageText.instance.ThrowReduceTextFactory(transform,damage);
-        return playerData.CurenttHealth;
+        return playerData.curenttHealth;
     }
     public void updateUI()
     {
-        uI.fillAmount = playerData.CurenttHealth/playerData.MaxHealth;
-        playerhpui.text = playerData.CurenttHealth.ToString()+"/"+playerData.MaxHealth.ToString();
+        lrX = (playerData.currentLingQi / playerData.maxLingQi) * lrMaxX;
+        uI.fillAmount = playerData.curenttHealth /playerData.maxHealth;
+        playerhpui.text = playerData.curenttHealth.ToString()+"/"+playerData.maxHealth.ToString();
+        lineRenderer.SetPosition(0, new Vector3(transform.position.x - relativetransformX, transform.position.y + 0.8f, 0));
+        lineRenderer.SetPosition(1, new Vector3(transform.position.x + lrX / 2, transform.position.y + 0.8f, 0));
+        blackDonateWidth.x = currentHearth * 0.001f;
+        blackDonateScal.x = rectangleMaxLength / (blackDonateWidth.x * 100);
+
+
+        blackDonateScalTransform.localScale = blackDonateScal;
+        blackDonateWidthSpriteRenderer.size = blackDonateWidth;
     }
     //public void meleeAttack(bool isAttack)
     //{
@@ -178,10 +197,10 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
     //}
     public void UsePoint(int value)
     {
-        playerData.CurenttHealth+=value;
-        if (playerData.CurenttHealth>playerData.MaxHealth)
+        playerData.curenttHealth +=value;
+        if (playerData.curenttHealth >playerData.maxHealth)
         {
-            playerData.CurenttHealth = playerData.MaxHealth;
+            playerData.curenttHealth = playerData.maxHealth;
         }
         updateUI();
     }
@@ -240,11 +259,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
     //        BowPowerSlider.value = sliderValue;
     //    }
     //}
-    private void PlayerInGameHP()
-    {
-        lineRenderer.SetPosition(0, new Vector3(transform.position.x - relativetransformX, transform.position.y + 0.8f, 0));
-        lineRenderer.SetPosition(1, new Vector3(transform.position.x + lrX / 2, transform.position.y + 0.8f, 0));
-    }
+
     //private void Shoot()
     //{
     //    if (sliderValue > maxSliderValue)
@@ -319,30 +334,184 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
 
     public void LoadGame(GameData gameData)
     {
-        //playerData.RangedDamage = gameData.RangedDamage;
-        //playerData.MeleeDamage = gameData.MeleeDamage;
-        //playerData.MeleeAttackRange = gameData.MeleeAttackRange;
-        //playerData.MaxHealth = gameData.MaxHealth;
-        //playerData.CurenttHealth = gameData.CurenttHealth;
-        //playerData.AttackAngle = gameData.AttackAngle;
-        //playerData.BaseDamage = gameData.BaseDamage;
-        //playerData.PlayerMoveSpeed = gameData.PlayerMoveSpeed;
-        //playerData.PlayerName = gameData.PlayerName;
-        //lrX = gameData.lrX;
+        playerData.id = transform.name;
+        playerData.name                     = transform.name;
+        playerData.lingShi                  = gameData.datas[0].lingShi;
+        playerData.maxAge                   = gameData.datas[0].maxAge;
+        playerData.currentAge               = gameData.datas[0].currentAge;
+        playerData.scenceIndex              = gameData.datas[0].scenceIndex;
+        playerData.survival                 = gameData.datas[0].survival;
+        playerData.maxLingQi                = gameData.datas[0].maxLingQi;
+        playerData.currentLingQi            = gameData.datas[0].currentLingQi;
+        playerData.regenerateLingQi         = gameData.datas[0].regenerateLingQi;
+        playerData.maxHealth                = gameData.datas[0].maxHealth;
+        playerData.curenttHealth            = gameData.datas[0].curenttHealth;
+        playerData.moveSpeed                = gameData.datas[0].moveSpeed;
+        playerData.killEnimiesCont          = gameData.datas[0].killEnimiesCont;
+        playerData.maxGongFaInstall         = gameData.datas[0].maxGongFaInstall;
+        foreach (var item in gameData.datas[0].pickupedItemGameObj)
+        {
+            bool flag = false;
+            foreach (var item1 in playerData.pickupedItemGameObj)
+            {
+                if (item.Equals(item1))
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag)
+            {
+                playerData.pickupedItemGameObj.Add(item);
+            }
+        }
+        foreach (var item in gameData.datas[0].installOrderGongFaIds)
+        {
+            bool flag = false;
+            int i = 0;
+            if (item == null)
+            {
+                i++;
+                continue;
+            }
+            foreach (var item1 in playerData.installOrderGongFaIds)
+            {
+                if (item.Equals(item1))
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag)
+            {
+                playerData.installOrderGongFaIds[i] = item;
+            }
+            i++;
+        }
+        foreach (var item in gameData.datas[0].itemIds)
+        {
+            if (!playerData.itemIds.ContainsKey(item.Key))
+            {
+                playerData.itemIds.Add(item.Key, item.Value);
+            }
+        }
+        foreach (var item in gameData.datas[0].instaillGongFas)
+        {
+            if (!playerData.instaillGongFas.ContainsKey(item.Key))
+            {
+                playerData.instaillGongFas.Add(item.Key, item.Value);
+            }
+        }
+        foreach (var item in gameData.datas[0].learnedGongFas)
+        {
+            if (!playerData.learnedGongFas.ContainsKey(item.Key))
+            {
+                playerData.learnedGongFas.Add(item.Key, item.Value);
+            }
+        }
+        foreach (var item in gameData.datas[0].learnedSkills)
+        {
+            if (!playerData.learnedSkills.ContainsKey(item.Key))
+            {
+                playerData.learnedSkills.Add(item.Key, item.Value);
+            }
+        }
     }
 
     public void SaveGame(GameData gameData)
     {
-        //gameData.RangedDamage = playerData.RangedDamage;
-        //gameData.MeleeDamage = playerData.MeleeDamage;
-        //gameData.MeleeAttackRange = playerData.MeleeAttackRange;
-        //gameData.MaxHealth = playerData.MaxHealth;
-        //gameData.CurenttHealth= playerData.CurenttHealth;
-        //gameData.AttackAngle = playerData.AttackAngle;
-        //gameData.BaseDamage = playerData.BaseDamage;
-        //gameData.playerMoveSpeed= playerData.PlayerMoveSpeed;
-        //gameData.PlayerName = playerData.PlayerName;
-        //gameData.lrX = lrX;
+        gameData.datas[0].id = playerData.id;
+        gameData.datas[0].name = playerData.name;
+        gameData.datas[0].lingShi = playerData.lingShi;
+        gameData.datas[0].maxAge = playerData.maxAge;
+        gameData.datas[0].currentAge = playerData.currentAge;
+        gameData.datas[0].scenceIndex = playerData.scenceIndex;
+        gameData.datas[0].survival = playerData.survival;
+        gameData.datas[0].maxLingQi = playerData.maxLingQi;
+        gameData.datas[0].currentLingQi = playerData.currentLingQi;
+        gameData.datas[0].regenerateLingQi = playerData.regenerateLingQi;
+        gameData.datas[0].maxHealth = playerData.maxHealth;
+        gameData.datas[0].curenttHealth = playerData.curenttHealth;
+        gameData.datas[0].moveSpeed = playerData.moveSpeed;
+        gameData.datas[0].killEnimiesCont = playerData.killEnimiesCont;
+        gameData.datas[0].maxGongFaInstall = playerData.maxGongFaInstall;
+
+        foreach (var item in playerData.pickupedItemGameObj)
+        {
+            bool flag = false;
+            foreach (var item1 in gameData.datas[0].pickupedItemGameObj)
+            {
+                if (item.Equals(item1))
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag)
+            {
+                gameData.datas[0].pickupedItemGameObj.Add(item);
+            }
+        }
+        foreach (var item in playerData.installOrderGongFaIds)
+        {
+            bool flag = false;
+            int i = 0;
+            if (item == null)
+            {
+                i++;
+                continue;
+            }
+            foreach (var item1 in gameData.datas[0].installOrderGongFaIds)
+            {
+                if (item.Equals(item1))
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag)
+            {
+                gameData.datas[0].installOrderGongFaIds[i] = item;
+            }
+            i++;
+        }
+        foreach (var item in playerData.itemIds)
+        {
+            if (!gameData.datas[0].itemIds.ContainsKey(item.Key))
+            {
+                gameData.datas[0].itemIds.Add(item.Key, item.Value);
+
+            }
+        }
+        foreach (var item in playerData.instaillGongFas)
+        {
+            if (!gameData.datas[0].instaillGongFas.ContainsKey(item.Key))
+            {
+                gameData.datas[0].instaillGongFas.Add(item.Key, item.Value);
+            }
+            else
+            {
+                gameData.datas[0].instaillGongFas[item.Key] = item.Value;
+            }
+        }
+        foreach (var item in playerData.learnedGongFas)
+        {
+            if (!gameData.datas[0].learnedGongFas.ContainsKey(item.Key))
+            {
+                gameData.datas[0].learnedGongFas.Add(item.Key, item.Value);
+            }
+            else
+            {
+                gameData.datas[0].learnedGongFas[item.Key] = item.Value;
+            }
+        }
+        foreach (var item in playerData.learnedSkills)
+        {
+            if (!gameData.datas[0].learnedSkills.ContainsKey(item.Key))
+            {
+                gameData.datas[0].learnedSkills.Add(item.Key, item.Value);
+            }
+        }
     }
 
     public Data GetData()

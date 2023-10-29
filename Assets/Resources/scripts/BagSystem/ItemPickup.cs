@@ -11,13 +11,14 @@ public class ItemPickup : MonoBehaviour,IDataPersistence
     void Pickup()
     {
         InventoryManager.Instance.AddItem(item);
-        if (PlayerManager.instance.playerData.ItemIds.ContainsKey(item.id))
+        PlayerManager.instance.playerData.pickupedItemGameObj.Add(this.name);
+        if (PlayerManager.instance.playerData.itemIds.ContainsKey(item.id))
         {
-            PlayerManager.instance.playerData.ItemIds[item.id]++;
+            PlayerManager.instance.playerData.itemIds[item.id]++;
         }
         else
         {
-            PlayerManager.instance.playerData.ItemIds.Add(item.id,1);
+            PlayerManager.instance.playerData.itemIds.Add(item.id,1);
         }
         Destroy(gameObject);
     }
@@ -54,9 +55,9 @@ public class ItemPickup : MonoBehaviour,IDataPersistence
 
     public void LoadGame(GameData gameData)
     {
-        foreach (string itemId in gameData.BagItemsId)
+        if (gameData.datas[0].pickupedItemGameObj != null)
         {
-            if (itemId == item.id)
+            if (gameData.datas[0].pickupedItemGameObj.Contains(this.name))
             {
                 Destroy(gameObject);
             }
@@ -65,6 +66,21 @@ public class ItemPickup : MonoBehaviour,IDataPersistence
 
     public void SaveGame(GameData gameData)
     {
-        
+        //foreach (var item in PlayerManager.instance.playerData.pickupedItemGameObj)
+        //{
+        //    bool flag = false;
+        //    foreach (var item1 in gameData.datas[0].pickupedItemGameObj)
+        //    {
+        //        if (item.Equals(item1))
+        //        {
+        //            flag = true;
+        //            break;
+        //        }
+        //    }
+        //    if (!flag)
+        //    {
+        //        gameData.datas[0].pickupedItemGameObj.Add(item);
+        //    }
+        //}
     }
 }

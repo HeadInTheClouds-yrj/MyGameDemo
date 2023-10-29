@@ -44,7 +44,7 @@ public class GongFaSelectHandler : MonoBehaviour
         }
         else if (currentManu.Equals(CurrentXiuLianManu.GongFaLevelUp))
         {
-            if (PlayerManager.instance.playerData.LearnedGongFas[info.id] == info.gongFaMaxLevel)
+            if (PlayerManager.instance.playerData.learnedGongFas[info.id] == info.gongFaMaxLevel)
             {
                 pressedButton.interactable = false;
             }

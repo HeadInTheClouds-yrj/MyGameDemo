@@ -16,6 +16,7 @@ MonoBehaviour:
   itemname: sword1
   prefeberPath: players/sworte1 (1)
   value: 20
+  itemCont: 2
   Bagicon: {fileID: -590213119, guid: 6a17726585bc9bf45895a06ff86f972d, type: 3}
   icon: {fileID: 21300000, guid: 5244f38c49ccc174d98632e7fbd0c6c1, type: 3}
   itemkinde: 0

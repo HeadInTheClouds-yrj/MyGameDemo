@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class NearDisplayUI : MonoBehaviour
 {
+    private static  NearDisplayUI Instance;
     [SerializeField] private Transform player;
     [SerializeField] private LayerMask layer;
     private Collider2D collider;
     private bool playerIsNear = false;
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    private void Start()
+    {
+        player = PlayerManager.instance.transform;
     }
     private void OnEnable() {
         EventManager.Instance.inputEvent.onSubmitPressed += SubmitPressed;

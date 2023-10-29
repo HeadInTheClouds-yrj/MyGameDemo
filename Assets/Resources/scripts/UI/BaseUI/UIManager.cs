@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,6 +16,13 @@ public class UIManager : MonoBehaviour
         instance = this;
         allUI = new Dictionary<string, Dictionary<string, GameObject>>();
 
+    }
+    private void OnEnable()
+    {
+        if (PlayerManager.instance != null)
+        {
+            PlayerManager.instance.playerData.scenceIndex = SceneManager.GetActiveScene().buildIndex;
+        }
     }
     public void RegisterUI(string  panelName,string uIName,GameObject uIObject)
     {

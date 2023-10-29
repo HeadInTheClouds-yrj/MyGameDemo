@@ -48,7 +48,11 @@ public class PropertyManuCtrl : MonoBehaviour
         {
             instance = this;
         }
-        Initialize();
+        
+    }
+    private void Start()
+    {
+        Initialize(); 
     }
     private void Initialize()
     {
@@ -71,13 +75,13 @@ public class PropertyManuCtrl : MonoBehaviour
     ///以下为属性页面使用
     public void ShowDataProperty()
     {
-        base_Name.text = "名字:" + data.Name;
-        base_MaxAge.text = "寿元:" + data.MaxAge.ToString();
-        base_CurrentAge.text = "年龄:" + data.CurrentAge.ToString();
-        base_HP.text = "血量:" + data.CurenttHealth + " / " + data.MaxHealth;
-        base_LingQi.text = "灵气值:" + data.CurrentLingQi + " / " + data.MaxLingQi;
-        base_RegenerateLingQi.text = "灵气回复:" + data.RegenerateLingQi + "/每秒";
-        base_LingShi.text = "灵石:" + data.LingShi.ToString();
+        base_Name.text = "名字:" + data.name;
+        base_MaxAge.text = "寿元:" + data.maxAge.ToString();
+        base_CurrentAge.text = "年龄:" + data.currentAge.ToString();
+        base_HP.text = "血量:" + data.curenttHealth + " / " + data.maxHealth;
+        base_LingQi.text = "灵气值:" + data.curenttHealth + " / " + data.maxHealth;
+        base_RegenerateLingQi.text = "灵气回复:" + data.regenerateLingQi + "/每秒";
+        base_LingShi.text = "灵石:" + data.lingShi.ToString();
     }
     ///以下为任务页面使用
     public void SetQuestMap(Dictionary<string, Quest> questMap_OnlyRead)
@@ -117,29 +121,29 @@ public class PropertyManuCtrl : MonoBehaviour
         {
             Destroy(item.gameObject);
         }
-        foreach (string gongFaId in data.LearnedGongFas.Keys)
+        foreach (string gongFaId in data.learnedGongFas.Keys)
         {
             GameObject obj = Instantiate<GameObject>(installGongFaPfb, installGongFaBagContent);
             InstallGongFaBagButton installGong = obj.GetComponent<InstallGongFaBagButton>();
             var gongFaButton = obj.GetComponent<Image>();
             var gongFaName = obj.transform.Find("Name").GetComponent<TMP_Text>();
-            installGong.SetGongFaButton(gongFaId, data.LearnedGongFas[gongFaId],gongFaButtons);
+            installGong.SetGongFaButton(gongFaId, data.learnedGongFas[gongFaId],gongFaButtons);
             gongFaButton.sprite = GongFaManager.instance.GetInitGongFaById(gongFaId).gfInfo.gongFaInBattleIcon;
             gongFaName.text = GongFaManager.instance.GetInitGongFaById(gongFaId).gfInfo.name;
         }
     }
     public void ListInstalledGongFaStaticImage()
     {
-        for (int i = 0; i < data.InstallOrderGongFaIds.Length; i++)
+        for (int i = 0; i < data.installOrderGongFaIds.Length; i++)
         {
-            if (data.InstallOrderGongFaIds[i] == null || data.InstallOrderGongFaIds[i] == "")
+            if (data.installOrderGongFaIds[i] == null || data.installOrderGongFaIds[i] == "")
             {
                 continue;
             }
-            gongFaButtons[i].GetComponent<Image>().sprite = GongFaManager.instance.GetInitGongFaById(data.InstallOrderGongFaIds[i]).gfInfo.gongFaInBattleIcon;
-            gongFaButtons[i].Find("Name").GetComponent<TMP_Text>().text = GongFaManager.instance.GetInitGongFaById(data.InstallOrderGongFaIds[i]).gfInfo.gongFaName;
-            gongFaButtons[i].GetComponent<InstallStaticGongFaUI>().GongFaId = data.InstallOrderGongFaIds[i];
-            gongFaButtons[i].GetComponent<InstallStaticGongFaUI>().GongFaLevel = data.LearnedGongFas[data.InstallOrderGongFaIds[i]];
+            gongFaButtons[i].GetComponent<Image>().sprite = GongFaManager.instance.GetInitGongFaById(data.installOrderGongFaIds[i]).gfInfo.gongFaInBattleIcon;
+            gongFaButtons[i].Find("Name").GetComponent<TMP_Text>().text = GongFaManager.instance.GetInitGongFaById(data.installOrderGongFaIds[i]).gfInfo.gongFaName;
+            gongFaButtons[i].GetComponent<InstallStaticGongFaUI>().GongFaId = data.installOrderGongFaIds[i];
+            gongFaButtons[i].GetComponent<InstallStaticGongFaUI>().GongFaLevel = data.learnedGongFas[data.installOrderGongFaIds[i]];
         }
     }
     public void InitStaticGongFaManuIndex()

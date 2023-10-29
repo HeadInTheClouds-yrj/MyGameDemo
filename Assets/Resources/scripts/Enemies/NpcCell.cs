@@ -5,7 +5,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class NpcCell : MonoBehaviour, IDataPersistence,Humanoid
+public class NpcCell : MonoBehaviour,Humanoid
 {
     private Animator animator;
     public Data npcData;
@@ -32,7 +32,7 @@ public class NpcCell : MonoBehaviour, IDataPersistence,Humanoid
     void Start()
     {
         animator = transform.GetComponent<Animator>();
-        npcData = new Data(this.transform);
+        npcData = new Data();
         NpcManager.instance.registeToManager(transform.name, this);
         attackItems = new AttackItems();
         tree = NpcManager.instance.tree;
@@ -76,18 +76,18 @@ public class NpcCell : MonoBehaviour, IDataPersistence,Humanoid
     public float NpcReduceHP(float velue)
     {
         isHit = true;
-        npcData.CurenttHealth -= velue;
-        lrX -= lrMaxX * (velue / npcData.MaxHealth) * 2;
+        npcData.curenttHealth -= velue;
+        lrX -= lrMaxX * (velue / npcData.maxHealth) * 2;
         if (lrX < -2f * relativetransformX)
         {
             lrX = -2f * relativetransformX;
         }
         ThrowDamageText.instance.ThrowReduceTextFactory(transform, velue);
-        if (npcData.CurenttHealth <= 0)
+        if (npcData.curenttHealth <= 0)
         {
             EventManager.Instance.enimiesEvent.EnimyDie(this);
         }
-        return npcData.CurenttHealth;
+        return npcData.curenttHealth;
     }
     public bool AlIdleMoveLogic()
     {
@@ -109,7 +109,7 @@ public class NpcCell : MonoBehaviour, IDataPersistence,Humanoid
         while ((transform.position - targetMoving).magnitude > Mathf.Epsilon && !Physics2D.OverlapCircle(transform.position, 0.1f, tree))
         {
             
-            transform.position = Vector3.MoveTowards(transform.position, targetMoving, npcData.MoveSpeed * Time.deltaTime*0.1f);
+            transform.position = Vector3.MoveTowards(transform.position, targetMoving, npcData.moveSpeed * Time.deltaTime*0.1f);
             
             yield return null;
         }
@@ -202,21 +202,6 @@ public class NpcCell : MonoBehaviour, IDataPersistence,Humanoid
 
     }
 
-    public void LoadGame(GameData gameData)
-    {
-        npcData.MaxHealth = gameData.MaxHealth;
-        npcData.CurenttHealth = gameData.CurenttHealth;
-        //npcData.MeleeAttackRange = gameData.MeleeAttackRange;
-        //npcData.MeleeDamage = gameData.MeleeDamage;
-    }
-
-    public void SaveGame(GameData gameData)
-    {
-        gameData.MaxHealth = npcData.MaxHealth;
-        gameData.CurenttHealth = npcData.CurenttHealth;
-        //gameData.MeleeAttackRange=npcData.MeleeAttackRange;
-        //gameData.MeleeDamage=npcData.MeleeDamage;
-    }
 
     public Data GetData()
     {

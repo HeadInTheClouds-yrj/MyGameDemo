@@ -8,7 +8,7 @@ using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerContrllo : MonoBehaviour,IDataPersistence
+public class PlayerContrllo : MonoBehaviour
 {
     public Camera maincamera;
     private bool isMoving = false;
@@ -75,7 +75,7 @@ public class PlayerContrllo : MonoBehaviour,IDataPersistence
     {
         test = transform.position;
         test.z = -7;
-        maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, test, PlayerManager.instance.playerData.MoveSpeed * 6);
+        maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, test, PlayerManager.instance.playerData.moveSpeed * 6);
     }
     private void meleeAttackAnimationContrllo() //Player looks towards the mouse
     {
@@ -163,7 +163,7 @@ public class PlayerContrllo : MonoBehaviour,IDataPersistence
         }
         else if((transform.position - targetposition).magnitude > Mathf.Epsilon)//使用while效果更好，可惜了之前没想到，if凑合用吧！
         {
-            transform.position = Vector3.Lerp(transform.position, targetposition, PlayerManager.instance.playerData.MoveSpeed * Time.deltaTime*1f);
+            transform.position = Vector3.Lerp(transform.position, targetposition, PlayerManager.instance.playerData.moveSpeed * Time.deltaTime*1f);
             animator.SetBool("isroll", isRoll);
         }
 
@@ -241,19 +241,10 @@ public class PlayerContrllo : MonoBehaviour,IDataPersistence
         {
             isMoving = true;
             animator.SetBool("ismove", isMoving);
-            transform.position = Vector3.MoveTowards(transform.position, targetposition, PlayerManager.instance.playerData.MoveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetposition, PlayerManager.instance.playerData.moveSpeed * Time.deltaTime);
             isMoving = false;
             yield return null;
         }
     }
 
-    public void LoadGame(GameData gameData)
-    {
-        transform.position = gameData.PlayerPosition;
-    }
-
-    public void SaveGame(GameData gameData)
-    {
-        gameData.PlayerPosition = transform.position;
-    }
 }

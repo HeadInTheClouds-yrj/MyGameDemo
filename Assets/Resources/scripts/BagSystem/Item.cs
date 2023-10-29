@@ -19,6 +19,7 @@ public class Item : ScriptableObject
     public string itemname;
     public string prefeberPath;
     public int value;
+    public int itemCont;
     public Sprite Bagicon;
     public Sprite icon;
     public Itemkinde itemkinde;

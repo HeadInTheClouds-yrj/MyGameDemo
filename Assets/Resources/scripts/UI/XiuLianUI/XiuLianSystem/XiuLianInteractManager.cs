@@ -4,9 +4,8 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
-public class XiuLianInteractManager : MonoBehaviour
+public class XiuLianInteractManager : MonoBehaviour,IDataPersistence
 {
     public static XiuLianInteractManager Instance;
     private CurrentXiuLianManu currentManu;
@@ -25,16 +24,15 @@ public class XiuLianInteractManager : MonoBehaviour
         {
             Instance = this;
         }
-        Initialize();
+
     }
-    private void Initialize()
+    public void Initialize()
     {
-        playerData = PlayerManager.instance.playerData;
         currentManu = CurrentXiuLianManu.GongFaStudy;
         items = InventoryManager.Instance.GetInBagItems();
         allInBagGongFaIds = GetGongFaIds();
-        unLearnedInBagGongFas = GetUnLearnedInBagGongFas(playerData);
-        learndeGongFas = GetLearnedGongFas(playerData);
+        unLearnedInBagGongFas = GetUnLearnedInBagGongFas(PlayerManager.instance.playerData);
+        learndeGongFas = GetlearnedGongFas(PlayerManager.instance.playerData);
     }
     private List<string> GetGongFaIds()
     {
@@ -57,7 +55,7 @@ public class XiuLianInteractManager : MonoBehaviour
     private List<GongFaInfoSO> GetUnLearnedInBagGongFas(Data playerData)
     {
         List<GongFaInfoSO> ulibgf = new List<GongFaInfoSO>();
-        if (playerData.LearnedGongFas.Keys.Count == 0)
+        if (playerData.learnedGongFas.Keys.Count == 0)
         {
             foreach (string itemId in allInBagGongFaIds)
             {
@@ -70,7 +68,7 @@ public class XiuLianInteractManager : MonoBehaviour
         }
         else
         {
-            foreach (string learnedId in playerData.LearnedGongFas.Keys)
+            foreach (string learnedId in playerData.learnedGongFas.Keys)
             {
                 foreach (string itemId in allInBagGongFaIds)
                 {
@@ -88,10 +86,10 @@ public class XiuLianInteractManager : MonoBehaviour
 
         return ulibgf;
     }
-    private List<GongFaInfoSO> GetLearnedGongFas(Data playerData)
+    private List<GongFaInfoSO> GetlearnedGongFas(Data playerData)
     {
         List<GongFaInfoSO> libgf = new List<GongFaInfoSO>();
-        foreach (string learnedId in playerData.LearnedGongFas.Keys)
+        foreach (string learnedId in playerData.learnedGongFas.Keys)
         {
             libgf.Add(GongFaManager.instance.GetInitGongFaById(learnedId).gfInfo);
         }
@@ -130,7 +128,7 @@ public class XiuLianInteractManager : MonoBehaviour
         }
     }
 
-    public void ListLearnedGongFas()
+    public void ListlearnedGongFas()
     {
         foreach (Transform gfTransform in content)
         {
@@ -149,9 +147,9 @@ public class XiuLianInteractManager : MonoBehaviour
     }
     public void AddLearnedGongFaToPlayerData(GongFaInfoSO info)
     {
-        if (!playerData.LearnedGongFas.ContainsKey(info.id))
+        if (!playerData.learnedGongFas.ContainsKey(info.id))
         {
-            playerData.LearnedGongFas.Add(info.id,1);
+            PlayerManager.instance.playerData.learnedGongFas.Add(info.id, 1);
         }
     }
     public void GongFaLevelUPToPlayerData(GongFaInfoSO info)
@@ -184,5 +182,15 @@ public class XiuLianInteractManager : MonoBehaviour
     public void ChanGeManuStateToGongFaLevelUp()
     {
         currentManu = CurrentXiuLianManu.GongFaLevelUp;
+    }
+
+    public void LoadGame(GameData gameData)
+    {
+        Initialize();
+    }
+
+    public void SaveGame(GameData gameData)
+    {
+
     }
 }

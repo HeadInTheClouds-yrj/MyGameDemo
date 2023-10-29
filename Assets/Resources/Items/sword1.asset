@@ -16,6 +16,7 @@ MonoBehaviour:
   itemname: bluesword
   prefeberPath: players/sworte2(1)
   value: 20
+  itemCont: 1
   Bagicon: {fileID: 1218164180, guid: 6a17726585bc9bf45895a06ff86f972d, type: 3}
   icon: {fileID: 21300000, guid: a736eb564b3a8cd4298fbfa7d587c3b8, type: 3}
   itemkinde: 0

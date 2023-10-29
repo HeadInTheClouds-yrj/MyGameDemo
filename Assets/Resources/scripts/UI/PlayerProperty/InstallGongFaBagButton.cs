@@ -62,17 +62,19 @@ public class InstallGongFaBagButton : MonoBehaviour, IInitializePotentialDragHan
                 gongFapzt.Find("Name").GetComponent<TMP_Text>().text = GongFaManager.instance.GetInitGongFaById(gongFaId).gfInfo.gongFaName;
                 for (int i = 0; i < gongFas.Count; i++)
                 {
-                    if (gongFaId.Equals(PlayerManager.instance.playerData.InstallOrderGongFaIds[i]))
+                    if (gongFaId.Equals(PlayerManager.instance.playerData.installOrderGongFaIds[i]))
                     {
-                        PlayerManager.instance.playerData.InstallOrderGongFaIds[i] = null;
+                        PlayerManager.instance.playerData.installOrderGongFaIds[i] = null;
 
-                        PlayerManager.instance.playerData.InstaillGongFas.Remove(gongFaId);
+                        PlayerManager.instance.playerData.instaillGongFas.Remove(gongFaId);
+                        GongFaManager.instance.RemoveGongFa(gongFaId,PlayerManager.instance.transform);
                         gongFas[i].GetComponent<Image>().sprite = empty;
                         gongFas[i].Find("Name").GetComponent<TMP_Text>().text = "нч";
                     }
                 }
-                PlayerManager.instance.playerData.InstallOrderGongFaIds[gongFapzt.GetComponent<InstallStaticGongFaUI>().InStaticGongFaIndex] = gongFaId;
-                PlayerManager.instance.playerData.InstaillGongFas.Add(gongFaId,gongFaLevel);
+                PlayerManager.instance.playerData.installOrderGongFaIds[gongFapzt.GetComponent<InstallStaticGongFaUI>().InStaticGongFaIndex] = gongFaId;
+                PlayerManager.instance.playerData.instaillGongFas.Add(gongFaId,gongFaLevel);
+                GongFaManager.instance.InstantiateGongFa(gongFaId, PlayerManager.instance.transform);
                 PropertyManuCtrl.instance.ListInstalledGongFaStaticImage();
                 PropertyManuCtrl.instance.ListInstallGongFaBag();
             }

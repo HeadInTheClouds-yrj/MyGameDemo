@@ -44,7 +44,7 @@ public class StartUIControl : UIBase
     {
         audioSource = AudioManager.instance.LoopPlayClip("WeiWoTianXia");
     }
-    private void OnDestroy()
+    private void OnDisable()
     {
         AudioManager.instance.StopLoopPlay("WeiWoTianXia", audioSource);
     }

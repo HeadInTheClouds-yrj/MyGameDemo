@@ -12,7 +12,6 @@ public class ChangShenFa : GongFaInvokeContro
     private void Start()
     {
         myself = GetComponentInParent<Humanoid>()?.GetData();
-        Debug.Log(myself.Id);
     }
     private void OnEnable()
     {
@@ -31,39 +30,39 @@ public class ChangShenFa : GongFaInvokeContro
 
     private void InstallGongFa_Onece()
     {
-        switch (myself.InstaillGongFas[gongFa.gfInfo.id])
+        switch (myself.instaillGongFas[gongFa.gfInfo.id])
         {
-            case 1:myself.MaxHealth += 10;
+            case 1:myself.maxHealth += 10;
                 break;
-            case 2:myself.MaxHealth += 20;
+            case 2:myself.maxHealth += 20;
                 break;
-            case 3:myself.MaxHealth += 40;
+            case 3:myself.maxHealth += 40;
                 break;
-            case 4:myself.MaxHealth += 80;
+            case 4:myself.maxHealth += 80;
                 break;
-            case 5:myself.MaxHealth += 160;
+            case 5:myself.maxHealth += 160;
                 break;
         }
     }
 
     private void UninstallGongFa_Onece()
     {
-        switch (myself.InstaillGongFas[gongFa.gfInfo.id])
+        switch (myself.instaillGongFas[gongFa.gfInfo.id])
         {
             case 1:
-                myself.MaxHealth -= 10;
+                myself.maxHealth -= 10;
                 break;
             case 2:
-                myself.MaxHealth -= 20;
+                myself.maxHealth -= 20;
                 break;
             case 3:
-                myself.MaxHealth -= 40;
+                myself.maxHealth -= 40;
                 break;
             case 4:
-                myself.MaxHealth -= 80;
+                myself.maxHealth -= 80;
                 break;
             case 5:
-                myself.MaxHealth -= 160;
+                myself.maxHealth -= 160;
                 break;
         }
     }

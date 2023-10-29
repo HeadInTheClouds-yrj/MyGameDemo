@@ -39,7 +39,6 @@ public class DataPersistenceManager : MonoBehaviour
         }
         //文件层面加载
         this.gameData = fileDataHandler.Load();
-
         //推送数据到需要改变数据的所有脚本(push)
         foreach (IDataPersistence dataPersistence in dataPersistenceList)
         {
@@ -98,7 +97,5 @@ public class DataPersistenceManager : MonoBehaviour
     }
     public void OnSceneUnloaded(Scene scene)
     {
-        this.dataPersistenceList = FindAllDataPersistenceObjects();
-        SaveGame();
     }
 }

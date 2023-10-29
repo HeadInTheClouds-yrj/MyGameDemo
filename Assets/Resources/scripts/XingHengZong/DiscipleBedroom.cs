@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class DiscipleBedroom : MonoBehaviour
 {
     [SerializeField] private GameObject option;
+    private void Awake()
+    {
+    }
     private void Start()
     {
         //UIManager.instance.InvokeCloseUI();
@@ -32,6 +35,12 @@ public class DiscipleBedroom : MonoBehaviour
     }
     public void ToDiZiRoom()
     {
-        SceneManager.LoadScene(3,LoadSceneMode.Single);
+        DataPersistenceManager.instance.SaveGame();
+        SceneManager.LoadSceneAsync(3,LoadSceneMode.Single);
+    }
+    public void LeftZongMen()
+    {
+        DataPersistenceManager.instance.SaveGame();
+        SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
     }
 }

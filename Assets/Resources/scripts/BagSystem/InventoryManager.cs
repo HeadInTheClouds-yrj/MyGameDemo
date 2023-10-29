@@ -17,7 +17,22 @@ public class InventoryManager : MonoBehaviour,IDataPersistence
     private ItemControl[] itemControlsList;
     public void AddItem(Item item)
     {
+        if (Items.Contains(item))
+        {
+            item.itemCont++;
+        }
         Items.Add(item);
+    }
+    public void ReduceItemCont(Item item)
+    {
+        if (item.itemCont > 0)
+        {
+            item.itemCont--;
+        }
+        else
+        {
+            Items.Remove(item);
+        }
     }
     public void RemoveItem(Item item)
     {
@@ -36,9 +51,11 @@ public class InventoryManager : MonoBehaviour,IDataPersistence
         foreach (Item item in Items)
         {
             GameObject obj = Instantiate(inventoryItem, itemContent);
+            var itemCont = obj.transform.Find("cont").GetComponent<TMP_Text>();
             var itemname = obj.transform.Find("Itemname").GetComponent<TMP_Text>();
             var itemicon = obj.transform.Find("Itemicon").GetComponent<Image>();
             var itemrmbutton = obj.transform.Find("RmButton").GetComponent<Button>();
+            itemCont.text = item.itemCont.ToString();
             itemname.text = item.itemname;
             itemicon.sprite = item.Bagicon;
             if (rmToggle.isOn)
@@ -105,6 +122,7 @@ public class InventoryManager : MonoBehaviour,IDataPersistence
         {
             Instance = this;
         }
+        Items = new List<Item>();
         InitializeAllItems();
     }
     private void Start()
@@ -119,27 +137,15 @@ public class InventoryManager : MonoBehaviour,IDataPersistence
 
     public void LoadGame(GameData gameData)
     {
-        if (Items == null)
+        foreach (var dictionnaryItem in gameData.datas[0].itemIds)
         {
-            Items = new List<Item>();
-        }
-        else
-        {
-            foreach (string itemId in gameData.BagItemsId)
-            {
-                AddItem(GetItemById(itemId));
-            }
+            Item item = GetItemById(dictionnaryItem.Key);
+            item.itemCont = dictionnaryItem.Value;
+            AddItem(item);
         }
     }
 
     public void SaveGame(GameData gameData)
     {
-        foreach (Item item in Items)
-        {
-            if (!item.id.Equals(gameData.BagItemsId))
-            {
-                gameData.BagItemsId.Add(item.id);
-            }
-        }
     }
 }
