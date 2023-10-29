@@ -17,6 +17,7 @@ public class QuestManager : MonoBehaviour,IDataPersistence
         EventManager.Instance.questEvent.OnAdvanceQuest += AdvanceQuest;
         EventManager.Instance.questEvent.OnFinishQuest += FinishQuest;
         EventManager.Instance.questEvent.OnQuestStepStateChange += QuestStepStateChange;
+        EventManager.Instance.questEvent.OnGetQuestMapToPropertyUI += SetQuestMap;
         EventManager.Instance.enimiesEvent.OnEnimyDie += EnimyDie;
     }
 
@@ -27,7 +28,8 @@ public class QuestManager : MonoBehaviour,IDataPersistence
         EventManager.Instance.questEvent.OnStartQuest -= StartQuest;
         EventManager.Instance.questEvent.OnAdvanceQuest -= AdvanceQuest;
         EventManager.Instance.questEvent.OnFinishQuest -= FinishQuest;
-        EventManager.Instance.questEvent.OnQuestStepStateChange += QuestStepStateChange;
+        EventManager.Instance.questEvent.OnQuestStepStateChange -= QuestStepStateChange;
+        EventManager.Instance.questEvent.OnGetQuestMapToPropertyUI -= SetQuestMap;
         EventManager.Instance.enimiesEvent.OnEnimyDie -= EnimyDie;
     }
     private void EnimyDie(NpcCell obj)
@@ -41,7 +43,6 @@ public class QuestManager : MonoBehaviour,IDataPersistence
             EventManager.Instance.questEvent.QuestStateChange(quest);
         }
         //这只是为页面提供任务信息而传递的map。只读。。
-        PropertyManuCtrl.instance.SetQuestMap(questMap);
     }
     private void Update()
     {
@@ -144,7 +145,10 @@ public class QuestManager : MonoBehaviour,IDataPersistence
         }
         return quest;
     }
-
+    public void SetQuestMap()
+    {
+        PropertyManuCtrl.instance.questMap_ReadOnly = questMap;
+    }
     public void LoadGame(GameData gameData)
     {
         foreach (QuestData questData in gameData.questDatas)

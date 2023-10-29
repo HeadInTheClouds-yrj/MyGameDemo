@@ -38,6 +38,14 @@ public class UIBase : MonoBehaviour
     //        }
     //    }
     //}
+    public void SetUISortUp()
+    {
+        transform.SetAsFirstSibling();
+    }
+    public void SetUISortDown()
+    {
+        transform.SetAsLastSibling();
+    }
     public GameObject GetUI(string panelName, string uIName)
     {
         return UIManager.instance.GetUI(panelName, uIName);

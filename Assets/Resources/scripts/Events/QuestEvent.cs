@@ -44,12 +44,12 @@ public class QuestEvent
             OnQuestStepStateChange(id, questStepIndex,stepState);
         }
     }
-    public event Action<Dictionary<string, Quest>> OnGetQuestMapToPropertyUI;
-    public void GetQuestMapToPropertyUI(Dictionary<string, Quest> questMap)
+    public event Action OnGetQuestMapToPropertyUI;
+    public void GetQuestMapToPropertyUI()
     {
         if (OnGetQuestMapToPropertyUI !=null)
         {
-            OnGetQuestMapToPropertyUI(questMap);
+            OnGetQuestMapToPropertyUI();
         }
     }
 }

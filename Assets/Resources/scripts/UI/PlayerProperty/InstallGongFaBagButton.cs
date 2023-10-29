@@ -60,6 +60,7 @@ public class InstallGongFaBagButton : MonoBehaviour, IInitializePotentialDragHan
             {
                 gongFapzt.GetComponent<Image>().sprite = GongFaManager.instance.GetInitGongFaById(gongFaId).gfInfo.gongFaInBattleIcon;
                 gongFapzt.Find("Name").GetComponent<TMP_Text>().text = GongFaManager.instance.GetInitGongFaById(gongFaId).gfInfo.gongFaName;
+                //判断是否已经装备正在拖拽的功法，是则调换位置
                 for (int i = 0; i < gongFas.Count; i++)
                 {
                     if (gongFaId.Equals(PlayerManager.instance.playerData.installOrderGongFaIds[i]))

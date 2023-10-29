@@ -8,7 +8,7 @@ public class PropertyManuCtrl : MonoBehaviour
 {
     public static PropertyManuCtrl instance;
     private Data data;
-    private Dictionary<string, Quest> questMap_ReadOnly;
+    public Dictionary<string, Quest> questMap_ReadOnly;
     [Header("基本属性页面元素")]
     [SerializeField]
     private TMP_Text base_Name;
@@ -56,6 +56,7 @@ public class PropertyManuCtrl : MonoBehaviour
     }
     private void Initialize()
     {
+        EventManager.Instance.questEvent.GetQuestMapToPropertyUI();
         data = PlayerManager.instance.playerData;
         gongFaButtons = new List<RectTransform>
         {
@@ -84,10 +85,7 @@ public class PropertyManuCtrl : MonoBehaviour
         base_LingShi.text = "灵石:" + data.lingShi.ToString();
     }
     ///以下为任务页面使用
-    public void SetQuestMap(Dictionary<string, Quest> questMap_OnlyRead)
-    {
-        this.questMap_ReadOnly = questMap_OnlyRead;
-    }
+
     public void ListQuest1UI()
     {
         foreach (Transform item in questContent)

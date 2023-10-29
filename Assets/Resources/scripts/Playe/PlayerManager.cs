@@ -416,6 +416,14 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
                 playerData.learnedSkills.Add(item.Key, item.Value);
             }
         }
+
+
+
+
+        foreach (var item in playerData.instaillGongFas)
+        {
+            GongFaManager.instance.InstantiateGongFa(item.Key, transform);
+        }
     }
 
     public void SaveGame(GameData gameData)
