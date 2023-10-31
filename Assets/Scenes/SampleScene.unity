@@ -18030,7 +18030,7 @@ GameObject:
   - component: {fileID: 1215702662}
   - component: {fileID: 1215702663}
   m_Layer: 5
-  m_Name: Content
+  m_Name: Content_N
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18828,21 +18828,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 441141212}
-        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
-        m_MethodName: ListItems
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 441141212}
-        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
-        m_MethodName: setItemcontrol
+      - m_Target: {fileID: 63610962}
+        m_TargetAssemblyTypeName: PropertyManuCtrl, Assembly-CSharp
+        m_MethodName: ListBag
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -41086,6 +41074,7 @@ GameObject:
   - component: {fileID: 2114509682}
   - component: {fileID: 2114509681}
   - component: {fileID: 2114509683}
+  - component: {fileID: 2114509684}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -41166,6 +41155,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c27aa57598032a4ebbd7f0844c04964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2114509684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114509679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd5dd127c8266334aa8e089b6c695319, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uI: {fileID: 915404833}
+  playerhpui: {fileID: 1430561563}
 --- !u!1 &2123278940
 GameObject:
   m_ObjectHideFlags: 0

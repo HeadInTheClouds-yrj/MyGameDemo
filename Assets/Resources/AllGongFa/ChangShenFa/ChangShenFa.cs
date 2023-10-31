@@ -12,7 +12,6 @@ public class ChangShenFa : GongFaInvokeContro
     private void Start()
     {
         myself = GetComponentInParent<Humanoid>()?.GetData();
-        InstallGongFa_Onece();
     }
     private void OnEnable()
     {

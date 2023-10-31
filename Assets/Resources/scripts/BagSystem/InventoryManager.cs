@@ -20,8 +20,12 @@ public class InventoryManager : MonoBehaviour,IDataPersistence
         if (Items.Contains(item))
         {
             item.itemCont++;
+            PlayerManager.instance.playerData.itemIds[item.id]++;
         }
-        Items.Add(item);
+        else
+        {
+            Items.Add(item);
+        }
     }
     public void ReduceItemCont(Item item)
     {
@@ -31,12 +35,13 @@ public class InventoryManager : MonoBehaviour,IDataPersistence
         }
         else
         {
-            Items.Remove(item);
+            RemoveItem(item);
         }
     }
     public void RemoveItem(Item item)
     {
         Items.Remove(item);
+        PlayerManager.instance.playerData.itemIds.Remove<string,int>(item.id,out item.itemCont);
     }
     private void InitializeAllItems()
     {
@@ -44,6 +49,7 @@ public class InventoryManager : MonoBehaviour,IDataPersistence
     }
     public void ListItems()
     {
+        itemContent = UIManager.instance.GetUI("Property", "Content_N").transform;
         foreach (Transform item in itemContent)
         {
             Destroy(item.gameObject);
@@ -137,6 +143,7 @@ public class InventoryManager : MonoBehaviour,IDataPersistence
 
     public void LoadGame(GameData gameData)
     {
+        Items.Clear();
         foreach (var dictionnaryItem in gameData.datas[0].itemIds)
         {
             Item item = GetItemById(dictionnaryItem.Key);

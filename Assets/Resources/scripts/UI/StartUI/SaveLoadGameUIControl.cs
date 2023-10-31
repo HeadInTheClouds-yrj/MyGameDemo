@@ -23,8 +23,7 @@ public class SaveLoadGameUIControl : MonoBehaviour
         }
         else
         {
-            saveInputBox.SetActive(true);
-            savePanel.SetActive(false);
+            DataPersistenceManager.instance.ChangeDataSourceName();
         }
     }
     // Start is called before the first frame update

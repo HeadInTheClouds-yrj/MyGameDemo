@@ -16,7 +16,7 @@ MonoBehaviour:
   itemname: yaoshui
   prefeberPath: players/items_18
   value: 50
-  itemCont: 1
+  itemCont: 0
   Bagicon: {fileID: -926585436, guid: 6a17726585bc9bf45895a06ff86f972d, type: 3}
   icon: {fileID: -926585436, guid: 6a17726585bc9bf45895a06ff86f972d, type: 3}
   itemkinde: 2

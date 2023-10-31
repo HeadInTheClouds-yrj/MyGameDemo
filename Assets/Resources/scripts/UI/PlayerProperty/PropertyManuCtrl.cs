@@ -80,7 +80,7 @@ public class PropertyManuCtrl : MonoBehaviour
         base_MaxAge.text = "寿元:" + data.maxAge.ToString();
         base_CurrentAge.text = "年龄:" + data.currentAge.ToString();
         base_HP.text = "血量:" + data.curenttHealth + " / " + data.maxHealth;
-        base_LingQi.text = "灵气值:" + data.curenttHealth + " / " + data.maxHealth;
+        base_LingQi.text = "灵气值:" + data.currentLingQi + " / " + data.maxLingQi;
         base_RegenerateLingQi.text = "灵气回复:" + data.regenerateLingQi + "/每秒";
         base_LingShi.text = "灵石:" + data.lingShi.ToString();
     }
@@ -150,5 +150,10 @@ public class PropertyManuCtrl : MonoBehaviour
         {
             gongFaButtons[i].GetComponent<InstallStaticGongFaUI>().InStaticGongFaIndex = i;
         }
+    }
+    public void ListBag()
+    {
+        InventoryManager.Instance.ListItems();
+        InventoryManager.Instance.setItemcontrol();
     }
 }

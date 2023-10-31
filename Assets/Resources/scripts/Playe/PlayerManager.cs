@@ -17,8 +17,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
     private float meleeAttackcooltime;
     private int meleeAttackindex = 0;
     public Sprite currentSwordIcon;
-    private Image uI;
-    private TMP_Text playerhpui;
+
     [SerializeField]
     public Transform Hand;
     public bool rightMouse;
@@ -99,8 +98,6 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
 
     private void Start()
     {
-        uI = UIManager.instance.GetUI("Panel", "Image_N").transform.GetComponent<Image>();
-        playerhpui = UIManager.instance.GetUI("Panel", "Text (TMP)_N").transform.GetComponent<TMP_Text>();
         BowPowerSlider.value = 0f;
         BowPowerSlider.maxValue = maxSliderValue;
         updateUI();
@@ -140,8 +137,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
     public void updateUI()
     {
         lrX = (playerData.currentLingQi / playerData.maxLingQi) * lrMaxX;
-        uI.fillAmount = playerData.curenttHealth /playerData.maxHealth;
-        playerhpui.text = playerData.curenttHealth.ToString()+"/"+playerData.maxHealth.ToString();
+
         lineRenderer.SetPosition(0, new Vector3(transform.position.x - relativetransformX, transform.position.y + 0.8f, 0));
         lineRenderer.SetPosition(1, new Vector3(transform.position.x + lrX / 2, transform.position.y + 0.8f, 0));
         blackDonateWidth.x = currentHearth * 0.001f;
@@ -483,42 +479,25 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
             }
             i++;
         }
+        gameData.datas[0].itemIds.Clear();
         foreach (var item in playerData.itemIds)
         {
-            if (!gameData.datas[0].itemIds.ContainsKey(item.Key))
-            {
-                gameData.datas[0].itemIds.Add(item.Key, item.Value);
-
-            }
+            gameData.datas[0].itemIds.Add(item.Key,item.Value);
         }
+        gameData.datas[0].instaillGongFas.Clear();
         foreach (var item in playerData.instaillGongFas)
         {
-            if (!gameData.datas[0].instaillGongFas.ContainsKey(item.Key))
-            {
-                gameData.datas[0].instaillGongFas.Add(item.Key, item.Value);
-            }
-            else
-            {
-                gameData.datas[0].instaillGongFas[item.Key] = item.Value;
-            }
+            gameData.datas[0].instaillGongFas.Add(item.Key,item.Value);
         }
+        gameData.datas[0].learnedGongFas.Clear();
         foreach (var item in playerData.learnedGongFas)
         {
-            if (!gameData.datas[0].learnedGongFas.ContainsKey(item.Key))
-            {
-                gameData.datas[0].learnedGongFas.Add(item.Key, item.Value);
-            }
-            else
-            {
-                gameData.datas[0].learnedGongFas[item.Key] = item.Value;
-            }
+            gameData.datas[0].learnedGongFas.Add(item.Key,item.Value);
         }
+        gameData.datas[0].learnedSkills.Clear();
         foreach (var item in playerData.learnedSkills)
         {
-            if (!gameData.datas[0].learnedSkills.ContainsKey(item.Key))
-            {
-                gameData.datas[0].learnedSkills.Add(item.Key, item.Value);
-            }
+            gameData.datas[0].learnedSkills.Add(item.Key,item.Value);
         }
     }
 

@@ -42,7 +42,6 @@ public class QuestManager : MonoBehaviour,IDataPersistence
         {
             EventManager.Instance.questEvent.QuestStateChange(quest);
         }
-        //这只是为页面提供任务信息而传递的map。只读。。
     }
     private void Update()
     {

@@ -3598,6 +3598,7 @@ GameObject:
   - component: {fileID: 321396544}
   - component: {fileID: 321396543}
   - component: {fileID: 321396542}
+  - component: {fileID: 321396545}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -3625,7 +3626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 92.99995, y: -55.851547}
+  m_AnchoredPosition: {x: 92.99994, y: -55.851562}
   m_SizeDelta: {x: 186.0068, y: 111.7043}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &321396542
@@ -3678,6 +3679,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321396540}
   m_CullTransparentMesh: 1
+--- !u!114 &321396545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321396540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd5dd127c8266334aa8e089b6c695319, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uI: {fileID: 802330921}
+  playerhpui: {fileID: 1950430104}
 --- !u!1 &332516110
 GameObject:
   m_ObjectHideFlags: 0
@@ -6027,21 +6042,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
-        m_MethodName: ListItems
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
-        m_MethodName: setItemcontrol
+      - m_Target: {fileID: 974132756}
+        m_TargetAssemblyTypeName: PropertyManuCtrl, Assembly-CSharp
+        m_MethodName: ListBag
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16673,7 +16676,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1741122159}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -16709,7 +16712,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1741122161}
         m_TargetAssemblyTypeName: InGameLoadUIControl, Assembly-CSharp
         m_MethodName: LoadDirTextChange
         m_Mode: 1
@@ -17236,7 +17239,7 @@ GameObject:
   - component: {fileID: 1283380848}
   - component: {fileID: 1283380847}
   m_Layer: 5
-  m_Name: Content
+  m_Name: Content_N
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20495,7 +20498,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1464823885}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -20531,7 +20534,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1464823887}
         m_TargetAssemblyTypeName: InGameSaveUI, Assembly-CSharp
         m_MethodName: LoadDirTextChange
         m_Mode: 1
