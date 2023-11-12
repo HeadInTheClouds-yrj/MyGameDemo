@@ -336,6 +336,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
         playerData.lingShi                  = gameData.datas[0].lingShi;
         playerData.maxAge                   = gameData.datas[0].maxAge;
         playerData.currentAge               = gameData.datas[0].currentAge;
+        playerData.scenceIndex              = gameData.datas[0].scenceIndex;
         playerData.survival                 = gameData.datas[0].survival;
         playerData.maxLingQi                = gameData.datas[0].maxLingQi;
         playerData.currentLingQi            = gameData.datas[0].currentLingQi;
@@ -345,6 +346,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
         playerData.moveSpeed                = gameData.datas[0].moveSpeed;
         playerData.killEnimiesCont          = gameData.datas[0].killEnimiesCont;
         playerData.maxGongFaInstall         = gameData.datas[0].maxGongFaInstall;
+        transform.position                  = gameData.datas[0].currentPosition;
         foreach (var item in gameData.datas[0].pickupedItemGameObj)
         {
             bool flag = false;
@@ -439,7 +441,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
         gameData.datas[0].moveSpeed = playerData.moveSpeed;
         gameData.datas[0].killEnimiesCont = playerData.killEnimiesCont;
         gameData.datas[0].maxGongFaInstall = playerData.maxGongFaInstall;
-
+        gameData.datas[0].currentPosition = transform.position;
         foreach (var item in playerData.pickupedItemGameObj)
         {
             bool flag = false;

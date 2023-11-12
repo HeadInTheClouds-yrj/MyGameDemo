@@ -22,6 +22,7 @@ public class Data
     public float moveSpeed;
     public int killEnimiesCont;
     public int maxGongFaInstall;
+    public Vector3 currentPosition;
     public List<string> pickupedItemGameObj;
     public string[] installOrderGongFaIds;
     public SerializableDictionary<string,int> itemIds;
@@ -46,6 +47,7 @@ public class Data
         moveSpeed = 2;
         killEnimiesCont = 0;
         maxGongFaInstall = 5;
+        currentPosition = new Vector3(0, 0, 0);
         pickupedItemGameObj = new List<string>();
         installOrderGongFaIds = new string[9];
         itemIds = new SerializableDictionary<string, int>();
