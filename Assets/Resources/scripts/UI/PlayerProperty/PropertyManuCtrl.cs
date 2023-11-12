@@ -48,11 +48,11 @@ public class PropertyManuCtrl : MonoBehaviour
         {
             instance = this;
         }
-        
+        Initialize();
     }
     private void Start()
     {
-        Initialize(); 
+        
     }
     private void Initialize()
     {

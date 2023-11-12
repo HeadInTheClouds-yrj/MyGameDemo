@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class DiscipleBedroom : MonoBehaviour
+public class DiscipleBedroom : MonoBehaviour,IDataPersistence
 {
-    [SerializeField] private GameObject option;
     private void Awake()
     {
     }
@@ -16,22 +15,12 @@ public class DiscipleBedroom : MonoBehaviour
     }
     private void OnEnable()
     {
-        EventManager.Instance.inputEvent.OnGetKeyESC += ScenceInputControl;
     }
     private void OnDisable()
     {
-        EventManager.Instance.inputEvent.OnGetKeyESC -= ScenceInputControl;
     }
     private void ScenceInputControl()
     {
-        if (!option.activeSelf)
-        {
-            option.SetActive(true);
-        }
-        else
-        {
-            option.SetActive(false);
-        }
     }
     public void ToDiZiRoom()
     {
@@ -42,5 +31,15 @@ public class DiscipleBedroom : MonoBehaviour
     {
         DataPersistenceManager.instance.SaveGame();
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
+    }
+
+    public void LoadGame(GameData gameData)
+    {
+        PlayerManager.instance.playerData.scenceIndex = SceneManager.GetActiveScene().buildIndex;
+    }
+
+    public void SaveGame(GameData gameData)
+    {
+        
     }
 }

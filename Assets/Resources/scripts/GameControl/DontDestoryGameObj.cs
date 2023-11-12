@@ -2,20 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DontDestoryGameObj : MonoBehaviour
+public class DontDestoryGameObj : MonoBehaviour,IDataPersistence
 {
-    private static DontDestoryGameObj Instance;
+    [SerializeField] private Canvas canvas;
+
+    public void LoadGame(GameData gameData)
+    {
+        canvas.renderMode = RenderMode.ScreenSpaceCamera;
+        canvas.worldCamera = Camera.main;
+    }
+
+    public void SaveGame(GameData gameData)
+    {
+        
+    }
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     void Start()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+
     }
 
     // Update is called once per frame
@@ -23,4 +31,5 @@ public class DontDestoryGameObj : MonoBehaviour
     {
         
     }
+
 }

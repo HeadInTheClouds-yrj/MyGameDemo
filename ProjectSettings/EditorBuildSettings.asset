@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DiscipleBedroom.unity
     guid: cee18c6ee7235194d9e125d2251d44c2
+  - enabled: 1
+    path: Assets/Scenes/InitializeScene.unity
+    guid: 5433c5178b57eee4694f164d4cd6a821
   m_configObjects: {}

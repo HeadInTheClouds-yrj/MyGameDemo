@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
@@ -98,9 +99,9 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
 
     private void Start()
     {
-        BowPowerSlider.value = 0f;
-        BowPowerSlider.maxValue = maxSliderValue;
-        updateUI();
+        //BowPowerSlider.value = 0f;
+        //BowPowerSlider.maxValue = maxSliderValue;
+        //updateUI();
     }
     public void HandleUpdate()
     {
@@ -335,7 +336,6 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
         playerData.lingShi                  = gameData.datas[0].lingShi;
         playerData.maxAge                   = gameData.datas[0].maxAge;
         playerData.currentAge               = gameData.datas[0].currentAge;
-        playerData.scenceIndex              = gameData.datas[0].scenceIndex;
         playerData.survival                 = gameData.datas[0].survival;
         playerData.maxLingQi                = gameData.datas[0].maxLingQi;
         playerData.currentLingQi            = gameData.datas[0].currentLingQi;

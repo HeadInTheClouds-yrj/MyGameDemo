@@ -36,7 +36,7 @@ public class Data
         lingShi = 0;
         maxAge = 100;
         currentAge = 18;
-        scenceIndex = 0;
+        scenceIndex = 1;
         survival = true;
         maxLingQi = 1000;
         currentLingQi = 1000;

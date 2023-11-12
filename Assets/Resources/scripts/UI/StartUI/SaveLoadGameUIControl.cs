@@ -11,7 +11,7 @@ public class SaveLoadGameUIControl : MonoBehaviour
     public void LoadButtonControl()
     {
         DataPersistenceManager.instance.ChangeDataSourceName(GetComponentInChildren<TMP_Text>().text);
-        SceneManager.LoadSceneAsync(1,LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync(4,LoadSceneMode.Single);
     }
     public void SaveButtonControl()
     {
