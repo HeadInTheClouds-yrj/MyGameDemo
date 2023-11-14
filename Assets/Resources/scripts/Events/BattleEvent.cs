@@ -5,6 +5,38 @@ using UnityEngine;
 
 public class BattleEvent
 {
+    public event Action OnBeforeBattleStart;
+    public void BeforeBattleStart()
+    {
+        if (OnBeforeBattleStart != null)
+        {
+            OnBeforeBattleStart();
+        }
+    }
+    public event Action OnBattleStarted;
+    public void BattleStarted()
+    {
+        if (OnBattleStarted != null)
+        {
+            OnBattleStarted();
+        }
+    }
+    public event Action OnBeforeBattleEnd;
+    public void BeforeBattleEnd()
+    {
+        if (OnBeforeBattleEnd != null)
+        {
+            OnBeforeBattleEnd();
+        }
+    }
+    public event Action OnBattleEnded;
+    public void BattleEnded()
+    {
+        if (OnBattleStarted != null)
+        {
+            OnBattleEnded();
+        }
+    }
     public event Action<float> OnPlayerHit;
     public void PlayerHit(float value)
     {

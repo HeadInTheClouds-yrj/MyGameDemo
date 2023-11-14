@@ -7,11 +7,13 @@ public class ChangShenFa : GongFaInvokeContro
 {
     private GongFa gongFa;
     private Data myself;
-    private List<Data> teams;
-    private List<Data> enimies;
+    private Dictionary<string,Data> teams;
+    private Dictionary<string,Data> enimies;
     private void Start()
     {
         myself = GetComponentInParent<Humanoid>()?.GetData();
+        teams = GetComponentInParent<Humanoid>()?.GetTeams();
+        enimies = GetComponentInParent<Humanoid>()?.GetEnimies();
     }
     private void OnEnable()
     {

@@ -5,4 +5,6 @@ using UnityEngine;
 public interface Humanoid
 {
     Data GetData();
+    Dictionary<string, Data> GetTeams();
+    Dictionary<string, Data> GetEnimies();
 }

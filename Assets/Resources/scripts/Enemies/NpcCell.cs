@@ -5,7 +5,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class NpcCell : MonoBehaviour,Humanoid
+public class NpcCell : MonoBehaviour,Humanoid,XingHeng
 {
     private Animator animator;
     public Data npcData;
@@ -206,5 +206,15 @@ public class NpcCell : MonoBehaviour,Humanoid
     public Data GetData()
     {
         return npcData;
+    }
+
+    public Dictionary<string, Data> GetTeams()
+    {
+        return null;
+    }
+
+    public Dictionary<string, Data> GetEnimies()
+    {
+        return null;
     }
 }
