@@ -9,7 +9,10 @@ public class ThrowDamageText : MonoBehaviour
     public static ThrowDamageText instance;
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
     public void ThrowReduceTextFactory(Transform parent, float value, float fontsize = 3f,float velocity =1f, float time = 1f)
     {

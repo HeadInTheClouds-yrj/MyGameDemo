@@ -72,15 +72,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
     }
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        instance = this;
         attackItems = new AttackItems();
         animator = GetComponent<Animator>();
         blackDonateScalTransform = transform.Find("LingQinGrid").GetComponent<Transform>();
@@ -420,10 +412,10 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
 
 
 
-        foreach (var item in playerData.instaillGongFas)
-        {
-            GongFaManager.instance.InstantiateGongFa(item.Key, transform);
-        }
+        //foreach (var item in playerData.instaillGongFas)
+        //{
+        //    GongFaManager.instance.InstantiateGongFa(item.Key, transform);
+        //}
     }
 
     public void SaveGame(GameData gameData)

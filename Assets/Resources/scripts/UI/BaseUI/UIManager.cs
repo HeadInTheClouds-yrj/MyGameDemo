@@ -17,8 +17,9 @@ public class UIManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            allUI = new Dictionary<string, Dictionary<string, GameObject>>();
         }
-        allUI = new Dictionary<string, Dictionary<string, GameObject>>();
+        
 
     }
     private void OnEnable()
@@ -34,7 +35,10 @@ public class UIManager : MonoBehaviour
         {
             allUI[panelName] = new Dictionary<string, GameObject>();
         }
-        allUI[panelName].Add(uIName, uIObject);
+        if (!allUI[panelName].ContainsKey(uIName))
+        {
+            allUI[panelName].Add(uIName, uIObject);
+        }
     }
     public GameObject GetUI (string panelName,string uIName)
     {
@@ -46,11 +50,17 @@ public class UIManager : MonoBehaviour
     }
     public void InvokeOpenUI()
     {
-        OpenUI.Invoke();
+        if (OpenUI != null)
+        {
+            OpenUI.Invoke();
+        }
     }
 
     public void InvokeCloseUI()
     {
-        CloseUI.Invoke();
+        if (CloseUI != null)
+        {
+            CloseUI.Invoke();
+        }
     }
 }

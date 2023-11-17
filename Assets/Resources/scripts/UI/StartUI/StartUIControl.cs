@@ -46,6 +46,10 @@ public class StartUIControl : UIBase
     }
     private void OnDisable()
     {
+        
+    }
+    private void OnDestroy()
+    {
         AudioManager.instance.StopLoopPlay("WeiWoTianXia", audioSource);
     }
     // Start is called before the first frame update

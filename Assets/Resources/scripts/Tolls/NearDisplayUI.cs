@@ -11,15 +11,7 @@ public class NearDisplayUI : MonoBehaviour
     private bool playerIsNear = false;
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Instance = this;
     }
     private void Start()
     {
