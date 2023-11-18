@@ -1,26 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class InitializeSceneContro : MonoBehaviour
 {
+    [SerializeField] private Image backGround;
+    [SerializeField] private TMP_Text loadingNumber;
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerManager.instance.playerData.scenceIndex == 0|| PlayerManager.instance.playerData.scenceIndex == 4)
-        {
-            SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
-        }
-        else
-        {
-            SceneManager.LoadSceneAsync(PlayerManager.instance.playerData.scenceIndex, LoadSceneMode.Single);
-        }
+        StartCoroutine(CheckInitalOver());
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    IEnumerator CheckInitalOver()
+    {
+        float num = 0;
+        string st = "";
+        while (num<=100)
+        {
+            num += Time.deltaTime * 20;
+            st = (int)num+"%";
+            loadingNumber.text = st;
+            yield return null;
+        }
+        SceneManager.LoadSceneAsync(1,LoadSceneMode.Single);
     }
 }

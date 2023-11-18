@@ -104,6 +104,14 @@ public class GongFaManager : MonoBehaviour
             }
         }
     }
+    public void OnLoadInstallGongFa(string gongFaKey,Transform parent)
+    {
+        GongFa gongFa = GetInitGongFaById(gongFaKey);
+        if (gongFa != null)
+        {
+            gongFa.InstantiateGongFaAgain(parent);
+        }
+    }
     public GongFa GetInitGongFaById(string gongFaId)
     {
         if (allGongFaMap.ContainsKey(gongFaId))

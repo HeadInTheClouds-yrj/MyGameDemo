@@ -8,7 +8,7 @@ public class DiscipleBedroomScence : MonoBehaviour,IDataPersistence
     public void LeftRoomToZongMen()
     {
         DataPersistenceManager.instance.SaveGame();
-        SceneManager.LoadSceneAsync(2, LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync(3, LoadSceneMode.Single);
     }
 
     public void LoadGame(GameData gameData)

@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class DontDestoryGameObj : MonoBehaviour,IDataPersistence
+public class DontDestoryGameObj : MonoBehaviour
 {
     [SerializeField] private Canvas canvas;
-
-    public void LoadGame(GameData gameData)
+    public void InitallCanvas(Scene scene, LoadSceneMode mode)
     {
         if (canvas != null)
         {
@@ -15,21 +15,17 @@ public class DontDestoryGameObj : MonoBehaviour,IDataPersistence
         }
         
     }
-
-    public void SaveGame(GameData gameData)
-    {
-        
-    }
     private void Awake()
     {
-        if(PlayerManager.instance == null)
-        {
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        DontDestroyOnLoad(gameObject);
+    }
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += InitallCanvas;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= InitallCanvas;
     }
     void Start()
     {

@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class StartUIControl : UIBase
 {
     private AudioSource audioSource;
+    [SerializeField] private GameObject bg1;
+    [SerializeField] private GameObject bg2;
     public void SetColorA()
     {
         Color color1 = transform.GetComponent<Image>().color;
@@ -15,6 +17,8 @@ public class StartUIControl : UIBase
         {
             color1.a = 0.5f;
             transform.GetComponent<Image>().color = color1;
+            bg1.SetActive(false);
+            bg2.SetActive(false);
         }
         catch (Exception e)
         {
@@ -29,6 +33,8 @@ public class StartUIControl : UIBase
         {
             color1.a = 1f;
             transform.GetComponent<Image>().color = color1;
+            bg1.SetActive(true);
+            bg2.SetActive(true);
         }
         catch (Exception e)
         {

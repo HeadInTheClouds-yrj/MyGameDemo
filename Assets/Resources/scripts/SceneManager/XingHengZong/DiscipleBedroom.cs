@@ -25,12 +25,12 @@ public class DiscipleBedroom : MonoBehaviour,IDataPersistence
     public void ToDiZiRoom()
     {
         DataPersistenceManager.instance.SaveGame();
-        SceneManager.LoadSceneAsync(3,LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync(4,LoadSceneMode.Single);
     }
     public void LeftZongMen()
     {
         DataPersistenceManager.instance.SaveGame();
-        SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync(2, LoadSceneMode.Single);
     }
 
     public void LoadGame(GameData gameData)

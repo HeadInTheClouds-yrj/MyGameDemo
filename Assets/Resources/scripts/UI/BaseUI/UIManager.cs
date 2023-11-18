@@ -16,11 +16,8 @@ public class UIManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
             allUI = new Dictionary<string, Dictionary<string, GameObject>>();
         }
-        
-
     }
     private void OnEnable()
     {

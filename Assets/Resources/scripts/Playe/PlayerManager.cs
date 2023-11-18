@@ -63,23 +63,20 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
             }
         }
     }
-    public Transform PlayerTransform
-    {
-        get
-        {
-            return transform;
-        }
-    }
     private void Awake()
     {
-        instance = this;
-        attackItems = new AttackItems();
-        animator = GetComponent<Animator>();
-        blackDonateScalTransform = transform.Find("LingQinGrid").GetComponent<Transform>();
-        blackDonateWidthSpriteRenderer = transform.Find("LingQinGrid").GetComponent<SpriteRenderer>();
-        blackDonateScal = blackDonateScalTransform.localScale;
-        blackDonateWidth = blackDonateWidthSpriteRenderer.size;
-        currentHearth = playerData.maxLingQi;
+        if (instance == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            instance = this;
+            attackItems = new AttackItems();
+            animator = GetComponent<Animator>();
+            blackDonateScalTransform = transform.Find("LingQinGrid").GetComponent<Transform>();
+            blackDonateWidthSpriteRenderer = transform.Find("LingQinGrid").GetComponent<SpriteRenderer>();
+            blackDonateScal = blackDonateScalTransform.localScale;
+            blackDonateWidth = blackDonateWidthSpriteRenderer.size;
+            currentHearth = playerData.maxLingQi;
+        }
     }
     private void OnEnable()
     {
@@ -96,6 +93,10 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
         //BowPowerSlider.value = 0f;
         //BowPowerSlider.maxValue = maxSliderValue;
         //updateUI();
+        foreach (var item in playerData.instaillGongFas)
+        {
+            GongFaManager.instance.OnLoadInstallGongFa(item.Key, transform);
+        }
     }
     public void HandleUpdate()
     {
@@ -408,14 +409,6 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
                 playerData.learnedSkills.Add(item.Key, item.Value);
             }
         }
-
-
-
-
-        //foreach (var item in playerData.instaillGongFas)
-        //{
-        //    GongFaManager.instance.InstantiateGongFa(item.Key, transform);
-        //}
     }
 
     public void SaveGame(GameData gameData)

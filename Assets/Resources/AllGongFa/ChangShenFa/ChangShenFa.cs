@@ -9,7 +9,7 @@ public class ChangShenFa : GongFaInvokeContro
     private Data myself;
     private Dictionary<string,Data> teams;
     private Dictionary<string,Data> enimies;
-    private void Start()
+    private void Awake()
     {
         myself = GetComponentInParent<Humanoid>()?.GetData();
         teams = GetComponentInParent<Humanoid>()?.GetTeams();

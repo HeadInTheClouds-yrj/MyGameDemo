@@ -168,7 +168,7 @@ public class NpcCell : MonoBehaviour,Humanoid,XingHeng
         animator.SetBool("skelenton01_isMoving", isMoving);
         while ((transform.position - playertemp).magnitude > Mathf.Epsilon)
         {
-            if (Camera.main.WorldToScreenPoint(PlayerManager.instance.PlayerTransform.position).x> Camera.main.WorldToScreenPoint(transform.position).x)
+            if (Camera.main.WorldToScreenPoint(PlayerManager.instance.transform.position).x> Camera.main.WorldToScreenPoint(transform.position).x)
             {
                 skeleton01_stateX = 1;
                 skeleton01_stateY = 0;

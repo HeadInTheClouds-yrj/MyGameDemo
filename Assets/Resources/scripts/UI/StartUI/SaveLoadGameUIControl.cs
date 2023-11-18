@@ -8,10 +8,29 @@ public class SaveLoadGameUIControl : MonoBehaviour
 {
     [SerializeField] GameObject saveInputBox;
     [SerializeField] GameObject savePanel;
+    public void StartUILoadButtonControl()
+    {
+        DataPersistenceManager.instance.ChangeDataSourceName(GetComponentInChildren<TMP_Text>().text);
+        if (DataPersistenceManager.instance.GetGameData().datas[0].scenceIndex == 0 || DataPersistenceManager.instance.GetGameData().datas[0].scenceIndex == 1)
+        {
+            SceneManager.LoadSceneAsync(2, LoadSceneMode.Single);
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync(DataPersistenceManager.instance.GetGameData().datas[0].scenceIndex, LoadSceneMode.Single);
+        }
+    }
     public void LoadButtonControl()
     {
         DataPersistenceManager.instance.ChangeDataSourceName(GetComponentInChildren<TMP_Text>().text);
-        SceneManager.LoadSceneAsync(4,LoadSceneMode.Single);
+        if (PlayerManager.instance.playerData.scenceIndex == 0 || PlayerManager.instance.playerData.scenceIndex == 1)
+        {
+            SceneManager.LoadSceneAsync(2, LoadSceneMode.Single);
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync(PlayerManager.instance.playerData.scenceIndex, LoadSceneMode.Single);
+        }
     }
     public void SaveButtonControl()
     {

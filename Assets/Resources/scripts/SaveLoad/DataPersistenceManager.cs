@@ -21,7 +21,6 @@ public class DataPersistenceManager : MonoBehaviour
         {
             instance = this;
         }
-        DontDestroyOnLoad(instance);
     }
     public void NewGame()
     {
@@ -53,6 +52,10 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistence?.SaveGame(gameData);
         }
         fileDataHandler.Save(gameData);
+    }
+    public GameData GetGameData()
+    {
+        return fileDataHandler.Load();
     }
     public void RemoveData(string fileName)
     {

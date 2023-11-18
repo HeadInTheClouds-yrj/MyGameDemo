@@ -47,6 +47,7 @@ public class GameControl : MonoBehaviour
         {
             allNpcCell = new Dictionary<string, NpcCell>();
         }
+        UIManager.instance.InvokeCloseUI();
     }
 
     // Update is called once per frame

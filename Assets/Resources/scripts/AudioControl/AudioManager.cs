@@ -9,7 +9,6 @@ public class AudioManager : MonoBehaviour
     public ClipManager clipManager;
     private void Awake()
     {
-        DontDestroyOnLoad(this);
         instance= this;
         sourceManager = new SourceManager(gameObject);
         clipManager = new ClipManager();

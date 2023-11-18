@@ -13,7 +13,6 @@ public class XiuLianInteractManager : MonoBehaviour,IDataPersistence
     private List<string> allInBagGongFaIds;
     private List<GongFaInfoSO> unLearnedInBagGongFas;
     private List<GongFaInfoSO> learndeGongFas;
-    private Data playerData;
     [Header("修炼界面的功法预制体")]
     [SerializeField] private GameObject gongFaUIPrefab;
     [Header("修炼界面功法预制体的父类")]
@@ -147,7 +146,7 @@ public class XiuLianInteractManager : MonoBehaviour,IDataPersistence
     }
     public void AddLearnedGongFaToPlayerData(GongFaInfoSO info)
     {
-        if (!playerData.learnedGongFas.ContainsKey(info.id))
+        if (!PlayerManager.instance.playerData.learnedGongFas.ContainsKey(info.id))
         {
             PlayerManager.instance.playerData.learnedGongFas.Add(info.id, 1);
         }
