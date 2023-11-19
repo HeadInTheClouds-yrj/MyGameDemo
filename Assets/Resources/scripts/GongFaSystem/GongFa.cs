@@ -18,17 +18,6 @@ public class GongFa
             GameObject obj =GameObject.Instantiate<GameObject>(gongFaPrfab, parent);
             obj.name = gfInfo.id;
             obj.GetComponent<GongFaInvokeContro>().InitializeGongFaMessage(this);
-            EventManager.Instance.gongFaEvent.InstallGongFa_Onece();
-        }
-    }
-    public void InstantiateGongFaAgain(Transform parent)
-    {
-        GameObject gongFaPrfab = gfInfo.gongFaPrefab;
-        if (gongFaPrfab != null)
-        {
-            GameObject obj = GameObject.Instantiate<GameObject>(gongFaPrfab, parent);
-            obj.name = gfInfo.id;
-            obj.GetComponent<GongFaInvokeContro>().InitializeGongFaMessage(this);
         }
     }
 }

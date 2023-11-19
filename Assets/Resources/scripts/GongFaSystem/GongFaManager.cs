@@ -45,13 +45,6 @@ public class GongFaManager : MonoBehaviour
         }
         else
         {
-            foreach (Transform t in transforms)
-            {
-                if (t.name.Equals(id))
-                {
-                    return;
-                }
-            }
             GongFa gongFa = GetInitGongFaById(id);
             gongFa.InstantiateGongFa(parent);
         }
@@ -67,7 +60,21 @@ public class GongFaManager : MonoBehaviour
     }
     private void GongFaLevelUP(string id, Transform parent)
     {
+        bool flag = false;
         Data data = parent.GetComponent<Humanoid>().GetData();
+        GongFaInvokeContro[] transforms = parent.GetComponentsInChildren<GongFaInvokeContro>();
+        foreach (GongFaInvokeContro t in transforms)
+        {
+            if (t.name.Equals(id) && data != null && data.instaillGongFas.ContainsKey(id))
+            {
+                EventManager.Instance.gongFaEvent.RemoveGongFa(id, parent);
+                GongFa gongFa = GetInitGongFaById(id);
+                gongFa.InstantiateGongFa(parent);
+                flag = true;
+                break;
+            }
+        }
+
         if (data.learnedGongFas.ContainsKey(id))
         {
             if (data.learnedGongFas[id] < GetInitGongFaById(id).gfInfo.gongFaMaxLevel)
@@ -92,24 +99,10 @@ public class GongFaManager : MonoBehaviour
         {
             return;
         }
-        Transform[] transforms = parent.GetComponentsInChildren<Transform>();
-        foreach (Transform t in transforms)
+
+        if (flag)
         {
-            if (t.name.Equals(id)&& data != null && data.instaillGongFas.ContainsKey(id))
-            {
-                EventManager.Instance.gongFaEvent.RemoveGongFa(id, parent);
-                GongFa gongFa = GetInitGongFaById(id);
-                gongFa.InstantiateGongFa(parent);
-                return;
-            }
-        }
-    }
-    public void OnLoadInstallGongFa(string gongFaKey,Transform parent)
-    {
-        GongFa gongFa = GetInitGongFaById(gongFaKey);
-        if (gongFa != null)
-        {
-            gongFa.InstantiateGongFaAgain(parent);
+            EventManager.Instance.gongFaEvent.AddGongFa(id, parent);
         }
     }
     public GongFa GetInitGongFaById(string gongFaId)

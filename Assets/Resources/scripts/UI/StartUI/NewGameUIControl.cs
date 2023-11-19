@@ -7,7 +7,7 @@ public class NewGameUIControl : UIBase
 {
     public void LoadScenes()
     {
-        SceneManager.LoadSceneAsync(4,LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync(2,LoadSceneMode.Single);
     }
 
     // Start is called before the first frame update

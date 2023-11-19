@@ -50,6 +50,10 @@ public class Data
         currentPosition = new Vector3(0, 0, 0);
         pickupedItemGameObj = new List<string>();
         installOrderGongFaIds = new string[9];
+        for (int i = 0; i < installOrderGongFaIds.Length; i++)
+        {
+            installOrderGongFaIds[i] = "empty";
+        }
         itemIds = new SerializableDictionary<string, int>();
         instaillGongFas = new SerializableDictionary<string, int>();
         learnedGongFas = new SerializableDictionary<string, int>();

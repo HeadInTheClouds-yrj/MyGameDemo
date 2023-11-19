@@ -65,17 +65,17 @@ public class InstallGongFaBagButton : MonoBehaviour, IInitializePotentialDragHan
                 {
                     if (gongFaId.Equals(PlayerManager.instance.playerData.installOrderGongFaIds[i]))
                     {
-                        PlayerManager.instance.playerData.installOrderGongFaIds[i] = null;
-
-                        PlayerManager.instance.playerData.instaillGongFas.Remove(gongFaId);
-                        GongFaManager.instance.RemoveGongFa(gongFaId,PlayerManager.instance.transform);
+                        PlayerManager.instance.playerData.installOrderGongFaIds[i] = "empty";
+                        GongFaManager.instance.RemoveGongFa(gongFaId, PlayerManager.instance.transform);
                         gongFas[i].GetComponent<Image>().sprite = empty;
                         gongFas[i].Find("Name").GetComponent<TMP_Text>().text = "нч";
+                        break;
                     }
                 }
                 PlayerManager.instance.playerData.installOrderGongFaIds[gongFapzt.GetComponent<InstallStaticGongFaUI>().InStaticGongFaIndex] = gongFaId;
                 PlayerManager.instance.playerData.instaillGongFas.Add(gongFaId,gongFaLevel);
                 GongFaManager.instance.InstantiateGongFa(gongFaId, PlayerManager.instance.transform);
+                EventManager.Instance.gongFaEvent.AddGongFa(gongFaId,PlayerManager.instance.transform);
                 PropertyManuCtrl.instance.ListInstalledGongFaStaticImage();
                 PropertyManuCtrl.instance.ListInstallGongFaBag();
             }

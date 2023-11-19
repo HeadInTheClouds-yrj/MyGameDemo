@@ -2,9 +2,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -93,10 +95,6 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
         //BowPowerSlider.value = 0f;
         //BowPowerSlider.maxValue = maxSliderValue;
         //updateUI();
-        foreach (var item in playerData.instaillGongFas)
-        {
-            GongFaManager.instance.OnLoadInstallGongFa(item.Key, transform);
-        }
     }
     public void HandleUpdate()
     {
@@ -323,7 +321,18 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
             meleeAttackcooltime += Time.deltaTime;
         }
     }
-
+    private void InstallGongFaOnLoad()
+    {
+        GongFaInvokeContro[] gongFaTransforms = GetComponentsInChildren<GongFaInvokeContro>();
+        foreach (var item in gongFaTransforms)
+        {
+            Destroy(item.gameObject);
+        }
+        foreach (var item in playerData.instaillGongFas.Keys)
+        {
+            GongFaManager.instance.InstantiateGongFa(item,transform);
+        }
+    }
     public void LoadGame(GameData gameData)
     {
         playerData.id = transform.name;
@@ -358,28 +367,9 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
                 playerData.pickupedItemGameObj.Add(item);
             }
         }
-        foreach (var item in gameData.datas[0].installOrderGongFaIds)
+        for (int i = 0; i < gameData.datas[0].installOrderGongFaIds.Length; i++)
         {
-            bool flag = false;
-            int i = 0;
-            if (item == null)
-            {
-                i++;
-                continue;
-            }
-            foreach (var item1 in playerData.installOrderGongFaIds)
-            {
-                if (item.Equals(item1))
-                {
-                    flag = true;
-                    break;
-                }
-            }
-            if (!flag)
-            {
-                playerData.installOrderGongFaIds[i] = item;
-            }
-            i++;
+            playerData.installOrderGongFaIds[i] = gameData.datas[0].installOrderGongFaIds[i];
         }
         foreach (var item in gameData.datas[0].itemIds)
         {
@@ -409,10 +399,16 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
                 playerData.learnedSkills.Add(item.Key, item.Value);
             }
         }
+
+        InstallGongFaOnLoad();
     }
 
     public void SaveGame(GameData gameData)
     {
+        if (gameData.datas[0] == null)
+        {
+            return;
+        }
         gameData.datas[0].id = playerData.id;
         gameData.datas[0].name = playerData.name;
         gameData.datas[0].lingShi = playerData.lingShi;
@@ -445,28 +441,9 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
                 gameData.datas[0].pickupedItemGameObj.Add(item);
             }
         }
-        foreach (var item in playerData.installOrderGongFaIds)
+        for (int i = 0; i < playerData.installOrderGongFaIds[i].Length; i++)
         {
-            bool flag = false;
-            int i = 0;
-            if (item == null)
-            {
-                i++;
-                continue;
-            }
-            foreach (var item1 in gameData.datas[0].installOrderGongFaIds)
-            {
-                if (item.Equals(item1))
-                {
-                    flag = true;
-                    break;
-                }
-            }
-            if (!flag)
-            {
-                gameData.datas[0].installOrderGongFaIds[i] = item;
-            }
-            i++;
+            gameData.datas[0].installOrderGongFaIds[i] = playerData.installOrderGongFaIds[i];
         }
         gameData.datas[0].itemIds.Clear();
         foreach (var item in playerData.itemIds)

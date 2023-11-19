@@ -10,5 +10,7 @@ public abstract class GongFaInvokeContro : MonoBehaviour
         this.gongFa = gongFa;
         UpdateGongFaMessage(gongFa);
     }
+    public abstract void InstallGongFa_Onece();
+    public abstract void UninstallGongFa_Onece();
     protected abstract void UpdateGongFaMessage(GongFa gongFa);
 }

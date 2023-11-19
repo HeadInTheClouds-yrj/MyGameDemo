@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PropertyManuCtrl : MonoBehaviour
+public class PropertyManuCtrl : MonoBehaviour,IDataPersistence
 {
     public static PropertyManuCtrl instance;
     private Data data;
@@ -134,7 +134,7 @@ public class PropertyManuCtrl : MonoBehaviour
     {
         for (int i = 0; i < data.installOrderGongFaIds.Length; i++)
         {
-            if (data.installOrderGongFaIds[i] == null || data.installOrderGongFaIds[i] == "")
+            if (data.installOrderGongFaIds[i] == null || data.installOrderGongFaIds[i] == "empty")
             {
                 continue;
             }
@@ -155,5 +155,15 @@ public class PropertyManuCtrl : MonoBehaviour
     {
         InventoryManager.Instance.ListItems();
         InventoryManager.Instance.setItemcontrol();
+    }
+
+    public void LoadGame(GameData gameData)
+    {
+        Initialize();
+    }
+
+    public void SaveGame(GameData gameData)
+    {
+        
     }
 }

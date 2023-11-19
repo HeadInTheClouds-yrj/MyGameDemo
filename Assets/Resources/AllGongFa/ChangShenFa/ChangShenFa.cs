@@ -17,20 +17,23 @@ public class ChangShenFa : GongFaInvokeContro
     }
     private void OnEnable()
     {
-        EventManager.Instance.gongFaEvent.OnRemoveGongFa += RemoveGongFa;
-        EventManager.Instance.gongFaEvent.OnInstallGongFa_Onece += InstallGongFa_Onece;
-        EventManager.Instance.gongFaEvent.OnUninstallGongFa_Onece += UninstallGongFa_Onece;
+        EventManager.Instance.gongFaEvent.OnAddGongFa += AddGongFaActualEffect_InstallOnece;
+        EventManager.Instance.gongFaEvent.OnRemoveGongFa += RemoveGongFaActualEffect_UnInstallOnece;
+        //EventManager.Instance.gongFaEvent.OnInstallGongFa_Onece += InstallGongFa_Onece;
+        //EventManager.Instance.gongFaEvent.OnUninstallGongFa_Onece += UninstallGongFa_Onece;
     }
 
     private void OnDisable()
     {
-        EventManager.Instance.gongFaEvent.UninstallGongFa_Onece();
-        EventManager.Instance.gongFaEvent.OnRemoveGongFa -= RemoveGongFa;
-        EventManager.Instance.gongFaEvent.OnInstallGongFa_Onece -= InstallGongFa_Onece;
-        EventManager.Instance.gongFaEvent.OnUninstallGongFa_Onece -= UninstallGongFa_Onece;
+        EventManager.Instance.gongFaEvent.OnAddGongFa -= AddGongFaActualEffect_InstallOnece;
+        EventManager.Instance.gongFaEvent.OnRemoveGongFa -= RemoveGongFaActualEffect_UnInstallOnece;
+        //EventManager.Instance.gongFaEvent.OnInstallGongFa_Onece -= InstallGongFa_Onece;
+        //EventManager.Instance.gongFaEvent.OnUninstallGongFa_Onece -= UninstallGongFa_Onece;
     }
-
-    private void InstallGongFa_Onece()
+    private void Start()
+    {
+    }
+    public override void InstallGongFa_Onece()
     {
         switch (myself.instaillGongFas[gongFa.gfInfo.id])
         {
@@ -47,7 +50,7 @@ public class ChangShenFa : GongFaInvokeContro
         }
     }
 
-    private void UninstallGongFa_Onece()
+    public override void UninstallGongFa_Onece()
     {
         switch (myself.instaillGongFas[gongFa.gfInfo.id])
         {
@@ -68,10 +71,18 @@ public class ChangShenFa : GongFaInvokeContro
                 break;
         }
     }
-    private void RemoveGongFa(string id,Transform parent)
+    private void AddGongFaActualEffect_InstallOnece(string id,Transform parent)
     {
-        if (gongFa.gfInfo.id.Equals(id) && parent == this.GetComponentInParent<Transform>())
+        if (gongFa.gfInfo.id.Equals(id) && parent.GetComponent<Humanoid>().GetData() == this.GetComponentInParent<Humanoid>().GetData())
         {
+            InstallGongFa_Onece();
+        }
+    }
+    private void RemoveGongFaActualEffect_UnInstallOnece(string id,Transform parent)
+    {
+        if (gongFa.gfInfo.id.Equals(id) && parent.GetComponent<Humanoid>().GetData() == this.GetComponentInParent<Humanoid>().GetData())
+        {
+            UninstallGongFa_Onece();
             Destroy(this.gameObject);
         }
     }
