@@ -414,7 +414,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
         gameData.datas[0].lingShi = playerData.lingShi;
         gameData.datas[0].maxAge = playerData.maxAge;
         gameData.datas[0].currentAge = playerData.currentAge;
-        gameData.datas[0].scenceIndex = playerData.scenceIndex;
+        gameData.datas[0].scenceIndex = SceneManager.GetActiveScene().buildIndex;
         gameData.datas[0].survival = playerData.survival;
         gameData.datas[0].maxLingQi = playerData.maxLingQi;
         gameData.datas[0].currentLingQi = playerData.currentLingQi;
