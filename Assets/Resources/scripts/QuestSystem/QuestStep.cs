@@ -26,6 +26,14 @@ public abstract class QuestStep : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public string GetCurrentQuestId()
+    {
+        return questId;
+    }
+    public int GetCurrentQuestStepIndex()
+    {
+        return questStepIndex;
+    }
     public void ChangeStepState(string newState)
     {
         EventManager.Instance.questEvent.QuestStepStateChange(questId,questStepIndex,new QuestStepState(newState));

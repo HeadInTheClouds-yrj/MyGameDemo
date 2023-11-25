@@ -38,10 +38,10 @@ public class QuestManager : MonoBehaviour,IDataPersistence
     }
     private void Start()
     {
-        foreach (Quest quest in questMap.Values)
-        {
-            EventManager.Instance.questEvent.QuestStateChange(quest);
-        }
+        //foreach (Quest quest in questMap.Values)
+        //{
+        //    EventManager.Instance.questEvent.QuestStateChange(quest);
+        //}
     }
     private void Update()
     {
@@ -144,6 +144,30 @@ public class QuestManager : MonoBehaviour,IDataPersistence
         }
         return quest;
     }
+    private bool IsExistsInstantiateQuestStep(QuestData questData)
+    {
+        QuestStep[] questSteps = GetComponentsInChildren<QuestStep>();
+        Dictionary<string, int> currentInstantiates = new Dictionary<string, int>();
+        foreach (QuestStep step in questSteps)
+        {
+            currentInstantiates.Add(step.GetCurrentQuestId(), step.GetCurrentQuestStepIndex());
+        }
+        if (currentInstantiates.ContainsKey(questData.questId))
+        {
+            if (currentInstantiates[questData.questId] == questData.currentQuestStepIndex)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
     public void SetQuestMap()
     {
         PropertyManuCtrl.instance.questMap_ReadOnly = questMap;
@@ -153,7 +177,8 @@ public class QuestManager : MonoBehaviour,IDataPersistence
         foreach (QuestData questData in gameData.questDatas)
         {
             questMap[questData.questId].LoadQuestData(questData.questState,questData.currentQuestStepIndex,questData.questStepStates);
-            if (questMap[questData.questId].state.Equals(QuestState.IN_PROGRESS))
+            ChangeQuestState(questData.questId,questData.questState);
+            if (questMap[questData.questId].state.Equals(QuestState.IN_PROGRESS)&&!IsExistsInstantiateQuestStep(questData))
             {
                 questMap[questData.questId].InstantiateCurrentQuestStep(this.transform);
             }
@@ -173,6 +198,7 @@ public class QuestManager : MonoBehaviour,IDataPersistence
                 {
                     gameData.questDatas[i] = questData;
                     flag = true;
+                    break;
                 }
             }
             if (!flag)

@@ -37,6 +37,7 @@ public class Quest
         {
             QuestStep questStep = Object.Instantiate<GameObject>(questStepPrefab, parent).GetComponent<QuestStep>();
             questStep.InitializeQuestStep(info.id, currentQuestStepIndex, stepStates[currentQuestStepIndex].stepState);
+            EventManager.Instance.questEvent.QuestStateChange(this);
         }
     }
     public GameObject GetCurrentQuestStepPrefab()
@@ -72,5 +73,6 @@ public class Quest
         this.state = state;
         this.currentQuestStepIndex= currentQuestStepIndex;
         this.stepStates = questStepStates;
+        EventManager.Instance.questEvent.QuestStateChange(this);
     }
 }
