@@ -12,7 +12,7 @@ public class FoxNpc : MonoBehaviour,Interactives
     {
         if (npcIcon == null)
         {
-            npcIcon = Resources.Load<Sprite>("data/Art/CharacterAvatar/Fox");
+            npcIcon = Resources.Load<Sprite>("ArtData/Art/CharacterAvatar/Fox");
             return npcIcon;
         }
         else
