@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f5ad24a21caa820448d5b9dd0db3aa5e
+guid: 8d70a8c11b5dca34e9570b47f2ff4c45
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -117,7 +117,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: 5431flower_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 403
+        width: 359
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eab96f9326b12bb459dec32727507348
+      internalID: 1179029519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 5431flower_1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 34
+        width: 223
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79581efa1761d3c45bfa5ab443c0db15
+      internalID: -902707377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 5431flower_2
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 32
+        width: 236
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cc3132e0b8f2df49ac19b50f1e57111
+      internalID: -1346499376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 5431flower_3
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 402
+        width: 174
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2ddabdbbe1fa984489f8a4abe8f2adb
+      internalID: 704321047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -128,7 +212,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      5431flower_3: 704321047
+      5431flower_0: 1179029519
+      5431flower_2: -1346499376
+      5431flower_1: -902707377
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
