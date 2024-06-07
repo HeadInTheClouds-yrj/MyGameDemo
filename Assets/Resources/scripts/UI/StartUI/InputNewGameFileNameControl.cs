@@ -8,7 +8,7 @@ public class InputNewGameFileNameControl : UIBase
 {
     public void ReplaceSLFileName(string value)
     {
-        if (value== null)
+        if (value== null || value == "")
         {
             value = "default";
         }

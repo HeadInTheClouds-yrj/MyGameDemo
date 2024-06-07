@@ -23,13 +23,13 @@ public class SaveLoadGameUIControl : MonoBehaviour
     public void LoadButtonControl()
     {
         DataPersistenceManager.instance.ChangeDataSourceName(GetComponentInChildren<TMP_Text>().text);
-        if (PlayerManager.instance.playerData.scenceIndex == 0 || PlayerManager.instance.playerData.scenceIndex == 1)
+        if (DataPersistenceManager.instance.GetGameData().datas[0].scenceIndex == 0 || DataPersistenceManager.instance.GetGameData().datas[0].scenceIndex == 1)
         {
             SceneManager.LoadSceneAsync(2, LoadSceneMode.Single);
         }
         else
         {
-            SceneManager.LoadSceneAsync(PlayerManager.instance.playerData.scenceIndex, LoadSceneMode.Single);
+            SceneManager.LoadSceneAsync(DataPersistenceManager.instance.GetGameData().datas[0].scenceIndex, LoadSceneMode.Single);
         }
     }
     public void SaveButtonControl()
