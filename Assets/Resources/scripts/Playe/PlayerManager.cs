@@ -321,16 +321,19 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
             meleeAttackcooltime += Time.deltaTime;
         }
     }
-    private void InstallGongFaOnLoad()
+    private void InstallGongFaOnLoad(GameData gameData)
     {
         GongFaInvokeContro[] gongFaTransforms = GetComponentsInChildren<GongFaInvokeContro>();
         foreach (var item in gongFaTransforms)
         {
             Destroy(item.gameObject);
         }
-        foreach (var item in playerData.instaillGongFas.Keys)
+        foreach (var item in gameData.datas[0].instaillGongFas.Keys)
         {
-            GongFaManager.instance.InstantiateGongFa(item,transform);
+            if (item != "empty")
+            {
+                GongFaManager.instance.InstantiateGongFa(item, transform);
+            }
         }
     }
     public void LoadGame(GameData gameData)
@@ -351,6 +354,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
         playerData.killEnimiesCont          = gameData.datas[0].killEnimiesCont;
         playerData.maxGongFaInstall         = gameData.datas[0].maxGongFaInstall;
         transform.position                  = gameData.datas[0].currentPosition;
+        playerData.pickupedItemGameObj.Clear();
         foreach (var item in gameData.datas[0].pickupedItemGameObj)
         {
             bool flag = false;
@@ -371,6 +375,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
         {
             playerData.installOrderGongFaIds[i] = gameData.datas[0].installOrderGongFaIds[i];
         }
+        playerData.itemIds.Clear();
         foreach (var item in gameData.datas[0].itemIds)
         {
             if (!playerData.itemIds.ContainsKey(item.Key))
@@ -378,6 +383,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
                 playerData.itemIds.Add(item.Key, item.Value);
             }
         }
+        playerData.instaillGongFas.Clear();
         foreach (var item in gameData.datas[0].instaillGongFas)
         {
             if (!playerData.instaillGongFas.ContainsKey(item.Key))
@@ -385,6 +391,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
                 playerData.instaillGongFas.Add(item.Key, item.Value);
             }
         }
+        playerData.learnedGongFas.Clear();
         foreach (var item in gameData.datas[0].learnedGongFas)
         {
             if (!playerData.learnedGongFas.ContainsKey(item.Key))
@@ -392,6 +399,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
                 playerData.learnedGongFas.Add(item.Key, item.Value);
             }
         }
+        playerData.learnedSkills.Clear();
         foreach (var item in gameData.datas[0].learnedSkills)
         {
             if (!playerData.learnedSkills.ContainsKey(item.Key))
@@ -400,7 +408,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
             }
         }
 
-        InstallGongFaOnLoad();
+        InstallGongFaOnLoad(gameData);
     }
 
     public void SaveGame(GameData gameData)

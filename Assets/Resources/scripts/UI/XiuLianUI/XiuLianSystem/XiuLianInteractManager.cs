@@ -25,6 +25,10 @@ public class XiuLianInteractManager : MonoBehaviour,IDataPersistence
         }
 
     }
+    private void Start()
+    {
+        Initialize();
+    }
     public void Initialize()
     {
         currentManu = CurrentXiuLianManu.GongFaStudy;
@@ -185,7 +189,7 @@ public class XiuLianInteractManager : MonoBehaviour,IDataPersistence
 
     public void LoadGame(GameData gameData)
     {
-        Initialize();
+
     }
 
     public void SaveGame(GameData gameData)

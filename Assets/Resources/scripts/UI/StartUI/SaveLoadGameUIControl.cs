@@ -13,10 +13,12 @@ public class SaveLoadGameUIControl : MonoBehaviour
         DataPersistenceManager.instance.ChangeDataSourceName(GetComponentInChildren<TMP_Text>().text);
         if (DataPersistenceManager.instance.GetGameData().datas[0].scenceIndex == 0 || DataPersistenceManager.instance.GetGameData().datas[0].scenceIndex == 1)
         {
+            StartCoroutine(DataPersistenceManager.instance.LoadGameData());
             SceneManager.LoadSceneAsync(2, LoadSceneMode.Single);
         }
         else
         {
+            StartCoroutine(DataPersistenceManager.instance.LoadGameData());
             SceneManager.LoadSceneAsync(DataPersistenceManager.instance.GetGameData().datas[0].scenceIndex, LoadSceneMode.Single);
         }
     }
@@ -25,10 +27,12 @@ public class SaveLoadGameUIControl : MonoBehaviour
         DataPersistenceManager.instance.ChangeDataSourceName(GetComponentInChildren<TMP_Text>().text);
         if (DataPersistenceManager.instance.GetGameData().datas[0].scenceIndex == 0 || DataPersistenceManager.instance.GetGameData().datas[0].scenceIndex == 1)
         {
+            StartCoroutine(DataPersistenceManager.instance.LoadGameData());
             SceneManager.LoadSceneAsync(2, LoadSceneMode.Single);
         }
         else
         {
+            StartCoroutine(DataPersistenceManager.instance.LoadGameData());
             SceneManager.LoadSceneAsync(DataPersistenceManager.instance.GetGameData().datas[0].scenceIndex, LoadSceneMode.Single);
         }
     }

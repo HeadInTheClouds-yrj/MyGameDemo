@@ -44,8 +44,17 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistence?.LoadGame(gameData);
         }
     }
+    public IEnumerator LoadGameData()
+    {
+        LoadGame();
+        yield return null;
+    }
     public void SaveGame()
     {
+        if (gameData == null)
+        {
+            NewGame();
+        }
         //通过其他实现了IdataPersitence的脚本可以更新这个gmaeData数据
         foreach (IDataPersistence dataPersistence in dataPersistenceList)
         {
@@ -86,19 +95,14 @@ public class DataPersistenceManager : MonoBehaviour
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         this.dataPersistenceList = FindAllDataPersistenceObjects();
-        LoadGame();
-    }
-    public void OnSceneUnloaded(Scene scene)
-    {
+        //LoadGame();
     }
 }

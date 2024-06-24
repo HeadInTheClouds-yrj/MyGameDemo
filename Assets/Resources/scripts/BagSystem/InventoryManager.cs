@@ -144,7 +144,7 @@ public class InventoryManager : MonoBehaviour,IDataPersistence
     public void LoadGame(GameData gameData)
     {
         Items.Clear();
-        foreach (var dictionnaryItem in gameData.datas[0].itemIds)
+        foreach (var dictionnaryItem in PlayerManager.instance.playerData.itemIds)
         {
             Item item = GetItemById(dictionnaryItem.Key);
             item.itemCont = dictionnaryItem.Value;

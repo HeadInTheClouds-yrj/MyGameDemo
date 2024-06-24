@@ -7,7 +7,11 @@ public class ItemPickup : MonoBehaviour,IDataPersistence
 {
     [SerializeField]
     private Item item;
-    private bool playerIsNear; 
+    private bool playerIsNear;
+    private void Start()
+    {
+        CheckPickupedItem();
+    }
     void Pickup()
     {
         InventoryManager.Instance.AddItem(item);
@@ -48,15 +52,19 @@ public class ItemPickup : MonoBehaviour,IDataPersistence
 
     public void LoadGame(GameData gameData)
     {
-        if (gameData.datas[0].pickupedItemGameObj != null)
+
+    }
+
+    private void CheckPickupedItem()
+    {
+        if (PlayerManager.instance.playerData.pickupedItemGameObj != null)
         {
-            if (gameData.datas[0].pickupedItemGameObj.Contains(this.name))
+            if (PlayerManager.instance.playerData.pickupedItemGameObj.Contains(this.name))
             {
                 Destroy(gameObject);
             }
         }
     }
-
     public void SaveGame(GameData gameData)
     {
         //foreach (var item in PlayerManager.instance.playerData.pickupedItemGameObj)

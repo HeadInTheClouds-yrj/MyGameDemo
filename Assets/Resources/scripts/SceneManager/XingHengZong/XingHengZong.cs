@@ -8,7 +8,6 @@ public class XingHengZong : MonoBehaviour,Interactives
         
     }
     public void EnterBuilding(){
-        DataPersistenceManager.instance.SaveGame();
         // SceneManager.LoadSceneAsync(2,LoadSceneMode.Additive);
         SceneManager.LoadSceneAsync(3,LoadSceneMode.Single);
     }

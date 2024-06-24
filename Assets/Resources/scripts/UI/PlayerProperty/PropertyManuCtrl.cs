@@ -54,7 +54,7 @@ public class PropertyManuCtrl : MonoBehaviour,IDataPersistence
     {
         
     }
-    private void Initialize()
+    public void Initialize()
     {
         EventManager.Instance.questEvent.GetQuestMapToPropertyUI();
         data = PlayerManager.instance.playerData;
@@ -134,7 +134,7 @@ public class PropertyManuCtrl : MonoBehaviour,IDataPersistence
     {
         for (int i = 0; i < data.installOrderGongFaIds.Length; i++)
         {
-            if (data.installOrderGongFaIds[i] == null || data.installOrderGongFaIds[i] == "empty")
+            if (data.installOrderGongFaIds[i] == null || data.installOrderGongFaIds[i] == "empty" || data.installOrderGongFaIds[i] == "")
             {
                 continue;
             }
@@ -159,7 +159,6 @@ public class PropertyManuCtrl : MonoBehaviour,IDataPersistence
 
     public void LoadGame(GameData gameData)
     {
-        Initialize();
     }
 
     public void SaveGame(GameData gameData)
