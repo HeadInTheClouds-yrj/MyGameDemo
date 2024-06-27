@@ -69,7 +69,7 @@ public class NpcManager : MonoBehaviour
     }
     public void RemoveNpcCell(NpcCell npcCell)
     {
-        allNpcCell.Remove(npcCell.name);
+        //allNpcCell.Remove(npcCell.name);
     }
     public Dictionary<string,NpcCell> getAllNpcCell() { return allNpcCell; }
 }

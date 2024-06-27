@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class KillEnimyQuestStep : QuestStep
 {
+    [Header("test")]
+    [SerializeField]
     private int killEnimiesCount = 0;
-    private int KillToComplete = 2;
+    private int KillToComplete = 10;
     private void OnEnable()
     {
         EventManager.Instance.enimiesEvent.OnEnimyDie += Dead;

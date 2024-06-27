@@ -23,6 +23,10 @@ public class Quest
     public void MoveToNextStep()
     {
         currentQuestStepIndex++;
+        if (currentQuestStepIndex>= info.questStepPrefabs.Length)
+        {
+            currentQuestStepIndex = info.questStepPrefabs.Length - 1;
+        }
     }
 
     //当前任务是否存在
@@ -53,7 +57,7 @@ public class Quest
         }
         return questStepPrefab;
     }
-    public void StoryQuestStepState(int stepIndex,QuestStepState questStepState)
+    public void StoreQuestStepState(int stepIndex,QuestStepState questStepState)
     {
         if (stepIndex<stepStates.Length)
         {
@@ -72,7 +76,18 @@ public class Quest
     {
         this.state = state;
         this.currentQuestStepIndex= currentQuestStepIndex;
-        this.stepStates = questStepStates;
+        for (int i = 0; i < this.stepStates.Length; i++)
+        {
+            stepStates[i] = questStepStates[i];
+        }
         EventManager.Instance.questEvent.QuestStateChange(this);
+    }
+    public int GetCurrentQuestStepIndex()
+    {
+        return currentQuestStepIndex;
+    }
+    public QuestStepState GetCurrentQuestStepState()
+    {
+        return stepStates[currentQuestStepIndex];
     }
 }

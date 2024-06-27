@@ -52,7 +52,10 @@ public class ItemPickup : MonoBehaviour,IDataPersistence
 
     public void LoadGame(GameData gameData)
     {
-
+        if (gameData.datas[0].pickupedItemGameObj.Contains(this.name))
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void CheckPickupedItem()
@@ -67,21 +70,10 @@ public class ItemPickup : MonoBehaviour,IDataPersistence
     }
     public void SaveGame(GameData gameData)
     {
-        //foreach (var item in PlayerManager.instance.playerData.pickupedItemGameObj)
-        //{
-        //    bool flag = false;
-        //    foreach (var item1 in gameData.datas[0].pickupedItemGameObj)
-        //    {
-        //        if (item.Equals(item1))
-        //        {
-        //            flag = true;
-        //            break;
-        //        }
-        //    }
-        //    if (!flag)
-        //    {
-        //        gameData.datas[0].pickupedItemGameObj.Add(item);
-        //    }
-        //}
+        gameData.datas[0].pickupedItemGameObj.Clear();
+        foreach (var item in gameData.datas[0].pickupedItemGameObj)
+        {
+            gameData.datas[0].pickupedItemGameObj.Add(item);
+        }
     }
 }

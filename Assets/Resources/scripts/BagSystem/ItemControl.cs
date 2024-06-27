@@ -15,6 +15,7 @@ public class ItemControl : MonoBehaviour
     public void RemoveItem()
     {
         InventoryManager.Instance.RemoveItem(item);
+        PlayerManager.instance.playerData.itemIds.Remove(item.id);
         Destroy(gameObject);
     }
     public void AddItem(Item newitem)

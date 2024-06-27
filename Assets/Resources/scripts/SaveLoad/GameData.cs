@@ -6,10 +6,9 @@ using UnityEngine;
 public class GameData
 {
     public Data[] datas;
-    public List<QuestData> questDatas;
+
     public GameData()
     {
         datas = new Data[20];
-        questDatas = new List<QuestData>();
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
-[Serializable]
+[System.Serializable]
 public class Data
 {
     public string id;
@@ -29,6 +29,7 @@ public class Data
     public SerializableDictionary<string, int> instaillGongFas;
     public SerializableDictionary<string, int> learnedGongFas;
     public SerializableDictionary<string, int> learnedSkills;
+    public List<QuestData> questDatas;
 
     public Data()
     {
@@ -58,5 +59,7 @@ public class Data
         instaillGongFas = new SerializableDictionary<string, int>();
         learnedGongFas = new SerializableDictionary<string, int>();
         learnedSkills = new SerializableDictionary<string, int>();
+        questDatas = new List<QuestData>();
+
     }
 }
