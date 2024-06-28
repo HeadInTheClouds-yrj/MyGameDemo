@@ -1,26 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class InputSaveFileName : UIBase
 {
-    public void ChangeSLFileName(string value)
-    {
-        DataPersistenceManager.instance.ChangeDataSourceName(value);
-    }
+    [SerializeField] private TMP_InputField m_Text;
     public void SaveData()
     {
+        DataPersistenceManager.instance.ChangeDataSourceName(m_Text.text);
         DataPersistenceManager.instance.SaveGame();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        OnEndEditAddLicener("NewGameDataName_N", ChangeSLFileName);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

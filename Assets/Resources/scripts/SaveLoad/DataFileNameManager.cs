@@ -14,11 +14,7 @@ public class DataFileNameManager : MonoBehaviour
         {
             files = new List<string>();
         }
-        List<string> temps = FindAllFiles();
-        foreach (string s in temps)
-        {
-            AddFileName(s);
-        }
+        files = FindAllFiles();
     }
     public List<string> FindAllFiles()
     {

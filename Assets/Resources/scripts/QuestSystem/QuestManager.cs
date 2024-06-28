@@ -188,15 +188,18 @@ public class QuestManager : MonoBehaviour,IDataPersistence
     }
     public void LoadGame(GameData gameData)
     {
+        foreach (Transform item in transform)
+        {
+            Destroy(item.gameObject);
+        }
         kiiEnimyCount = gameData.datas[0].killEnimiesCont;
         foreach (QuestData questData in gameData.datas[0].questDatas)
         {
-            questMap[questData.questId].LoadQuestData(questData.questState,questData.currentQuestStepIndex,questData.questStepStates);
-            if (questMap[questData.questId].state.Equals(QuestState.IN_PROGRESS)&&!IsExistsInstantiateQuestStep(questData))
+            questMap[questData.questId].LoadQuestData(questData.questState, questData.currentQuestStepIndex, questData.questStepStates);
+            if (questMap[questData.questId].state.Equals(QuestState.IN_PROGRESS) || questMap[questData.questId].state.Equals(QuestState.CAN_FINISH))
             {
                 questMap[questData.questId].InstantiateCurrentQuestStep(this.transform);
             }
-
             EventManager.Instance.questEvent.QuestStateChange(GetQuestById(questData.questId));
             EventManager.Instance.questEvent.QuestStepStateChange(GetQuestById(questData.questId).info.id, questData.currentQuestStepIndex, questData.questStepStates[questData.currentQuestStepIndex]);
         }

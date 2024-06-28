@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class InGameSaveUI : UIBase
 {
+    private int LoadButtonCount = 10;
     public void LoadDirTextChange()
     {
         List<string> files = DataFileNameManager.Instance.GetAllFileNames();
-        int i = 0;
-        foreach (string file in files)
+        for (int i = 0; i < LoadButtonCount; i++)
         {
-            ReplaceText("SaveDataButton(" + i + ")_N", file);
-            i++;
+            if (i >= files.Count)
+            {
+                ReplaceText("SaveDataButton(" + i + ")_N", "");
+            }
+            else
+            {
+                ReplaceText("SaveDataButton(" + i + ")_N", files[i]);
+            }
         }
     }
     // Start is called before the first frame update

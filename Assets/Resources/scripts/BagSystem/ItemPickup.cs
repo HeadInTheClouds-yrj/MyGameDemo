@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ItemPickup : MonoBehaviour,IDataPersistence
@@ -52,10 +53,7 @@ public class ItemPickup : MonoBehaviour,IDataPersistence
 
     public void LoadGame(GameData gameData)
     {
-        if (gameData.datas[0].pickupedItemGameObj.Contains(this.name))
-        {
-            Destroy(gameObject);
-        }
+
     }
 
     private void CheckPickupedItem()

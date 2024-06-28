@@ -38,26 +38,19 @@ public class SaveLoadGameUIControl : MonoBehaviour
     }
     public void SaveButtonControl()
     {
-        string fileName = GetComponentInChildren<TMP_Text>().text;
-        if (fileName != "")
+        if (GetComponentInChildren<TMP_Text>().text != "")
         {
-            DataPersistenceManager.instance.ChangeDataSourceName(fileName);
+            DataPersistenceManager.instance.ChangeDataSourceName(GetComponentInChildren<TMP_Text>().text);
             DataPersistenceManager.instance.SaveGame();
         }
         else
         {
-            DataPersistenceManager.instance.ChangeDataSourceName();
+            saveInputBox.SetActive(true);
+            savePanel.SetActive(false);
         }
     }
-    // Start is called before the first frame update
-    void Start()
+    public void RemoveGameData()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        DataPersistenceManager.instance.RemoveData(GetComponentInChildren<TMP_Text>().text);
     }
 }

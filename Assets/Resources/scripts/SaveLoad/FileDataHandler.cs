@@ -71,6 +71,6 @@ public class FileDataHandler
     public void Remove(string dataFileName)
     {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
-        Directory.Delete(fullPath, true);
+        File.Delete(fullPath);
     }
 }
