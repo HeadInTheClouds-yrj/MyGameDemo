@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -17,6 +18,7 @@ public class DialogManager : MonoBehaviour
     [SerializeField] GameObject chooseBox;
     public Interactives dialogingCharacter;
     [SerializeField] GameObject contentUI;
+    private float showDialogWaitTime = 0.1f;
 
     public static DialogManager Instance { get; private set; }
     private void Awake()
@@ -36,6 +38,10 @@ public class DialogManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.V))
         {
             isKeyDown = true;
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Skip();
         }
         if (isKeyDown && !isTyping)
         {
@@ -83,10 +89,50 @@ public class DialogManager : MonoBehaviour
             foreach (var letter in lines.Split(":")[1].ToCharArray())
             {
                 dialogText.text += letter;
-                yield return new WaitForSeconds(1.0f / lettersPerSecond);
+                if (Input.GetKeyDown(KeyCode.S))
+                {
+                    isTyping = true;
+                    Skip();
+                    yield break;
+                }
+                yield return new WaitForSeconds(showDialogWaitTime / lettersPerSecond);
             }
             isTyping = false;
         }
+    }
+    private void Skip()
+    {
+        isKeyDown = false;
+        currentLine++;
+        for (int i = currentLine; i < dialog.Count; i++)
+        {
+            if (currentLine < dialog.Count)
+            {
+                SkipDialog(dialogingCharacter, dialog[currentLine], avatar);
+            }
+        }
+        isTyping = false;
+        DialogBox.SetActive(false);
+        EventManager.Instance.dialogEvent.HideDailog();
+        currentLine = 0;
+
+    }
+    private void SkipDialog(Interactives character, string lines, List<Sprite> avatar)
+    {
+        isTyping = true;
+        dialogText.text = "";
+        string mark = lines.Split(":")[0];
+        DailogSetCharacterLogic(mark, avatar);
+
+        //============================================
+
+        if (mark.Equals("choose"))
+        {
+            string[] allChooseDialog = lines.Split(":")[1].Split("|");
+            chooseBox.SetActive(true);
+            ShowChooseButton(allChooseDialog);
+        }
+
     }
     private void DailogSetCharacterLogic(string characterName, List<Sprite> avatar)
     {
@@ -128,9 +174,17 @@ public class DialogManager : MonoBehaviour
             {
                 dialogingCharacter?.AddEventId(i);
                 Transform[] transforms = contentUI.GetComponentsInChildren<Transform>();
-                foreach (var transform in transforms)
+                foreach (Transform transform1 in transforms)
                 {
-                    Destroy(transform.gameObject);
+
+                    if (transform1.name.Equals(contentUI.name))
+                    {
+                        Debug.Log(transform1.name);
+                    }
+                    else
+                    {
+                        Destroy(transform1.gameObject);
+                    }
                 }
                 chooseBox.SetActive(false);
                 isKeyDown = true;

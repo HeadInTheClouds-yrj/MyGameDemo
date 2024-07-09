@@ -27,36 +27,30 @@ public class NpcCell : MonoBehaviour,Humanoid,XingHeng
     private float lrX = 1.38f;
     private float relativetransformX = 0.69f;
     public LineRenderer lineRenderer;
-
+    private Rigidbody2D rb2;
+    [SerializeField]
+    private float moveSpeed = 10f;
+    private EnemyAI enemyAI;
     // Start is called before the first frame update
     void Start()
     {
-        animator = transform.GetComponent<Animator>();
+        animator = transform.GetComponentInChildren<Animator>();
         npcData = new Data();
         NpcManager.instance.registeToManager(transform.name, this);
         attackItems = new AttackItems();
         tree = NpcManager.instance.tree;
-        lineRenderer = GetComponent<LineRenderer>();
+        rb2 = GetComponent<Rigidbody2D>();
+        enemyAI = GetComponent<EnemyAI>();
     }
 
     // Update is called once per frame
     public void HandleUpdate()
     {
-        
+        enemyAI.HandleUpdate();
         npcStatecontrllo();
-        if (!isMoving)
-        {
-            idletmptime += Time.deltaTime;
-            if (idletmptime > 2f)
-            {
-                AlIdleMoveLogic();
-                idletmptime = 0;
-            }
-            
-        }
         lineRenderer.SetPosition(0, new Vector3(transform.position.x - relativetransformX, transform.position.y + 0.4f, 0));
         lineRenderer.SetPosition(1, new Vector3(transform.position.x + lrX / 2, transform.position.y + 0.4f, 0));
-        AlMeleeAttack();
+        //AlMeleeAttack();
         hitContrllo();
     }
     public void hitContrllo()
@@ -118,77 +112,88 @@ public class NpcCell : MonoBehaviour,Humanoid,XingHeng
         animator.SetBool("skelenton01_isIdle", isIdle);
     }
 
-    public float AlMeleeAttack()
+    //public float AlMeleeAttack()
+    //{
+    //    if ((PlayerManager.instance.transform.position - transform.position).magnitude < 5&&!isIdle)
+    //    {
+    //        tmpmovetime += Time.deltaTime;
+    //        if (!isMoving&&!isIdle&&(PlayerManager.instance.transform.position - transform.position).magnitude > 1f)
+    //        {
+                
+    //            if (!isMoving&&!isIdle)
+    //            {
+    //                animator.SetBool("skelenton01_isMoving", isMoving);
+    //                playertemp = transform.position;
+    //                playertemp.x += (PlayerManager.instance.transform.position - transform.position).x * 0.1f;
+    //                playertemp.y += (PlayerManager.instance.transform.position - transform.position).y * 0.1f;
+    //                if (!Physics2D.OverlapCircle(playertemp, 0.1f, tree))
+    //                {
+    //                    StartCoroutine(moveToPlayer(playertemp));
+    //                }
+    //            }
+                
+                
+    //        }
+    //        if ((PlayerManager.instance.transform.position - transform.position).magnitude < 1f)
+    //        {
+    //            //if (attackItems.npcMeleeAttack(this, npcData.MeleeAttackRange))
+    //            //{
+    //            //    if (tmpmovetime > 0.5f)
+    //            //    {
+    //            //        tmpmovetime = 0;
+    //            //        isAttack = true;
+    //            //        animator.SetBool("skelenton01_isAttack", isAttack);
+    //            //        PlayerManager.instance.PlayerReduceHP(npcData.MeleeDamage);
+    //            //    }
+    //            //}
+    //        }
+    //        if (isAttack && tmpmovetime > 0.05f)
+    //        {
+    //            isAttack = false;
+    //            PlayerManager.instance.isHit = false;
+    //            animator.SetBool("skelenton01_isAttack", isAttack);
+    //        }
+    //    }
+    //    return 0f;
+    //}
+    public void Attack()
     {
-        if ((PlayerManager.instance.transform.position - transform.position).magnitude < 5&&!isIdle)
-        {
-            tmpmovetime += Time.deltaTime;
-            if (!isMoving&&!isIdle&&(PlayerManager.instance.transform.position - transform.position).magnitude > 1f)
-            {
-                
-                if (!isMoving&&!isIdle)
-                {
-                    animator.SetBool("skelenton01_isMoving", isMoving);
-                    playertemp = transform.position;
-                    playertemp.x += (PlayerManager.instance.transform.position - transform.position).x * 0.1f;
-                    playertemp.y += (PlayerManager.instance.transform.position - transform.position).y * 0.1f;
-                    if (!Physics2D.OverlapCircle(playertemp, 0.1f, tree))
-                    {
-                        StartCoroutine(moveToPlayer(playertemp));
-                    }
-                }
-                
-                
-            }
-            if ((PlayerManager.instance.transform.position - transform.position).magnitude < 1f)
-            {
-                //if (attackItems.npcMeleeAttack(this, npcData.MeleeAttackRange))
-                //{
-                //    if (tmpmovetime > 0.5f)
-                //    {
-                //        tmpmovetime = 0;
-                //        isAttack = true;
-                //        animator.SetBool("skelenton01_isAttack", isAttack);
-                //        PlayerManager.instance.PlayerReduceHP(npcData.MeleeDamage);
-                //    }
-                //}
-            }
-            if (isAttack && tmpmovetime > 0.05f)
-            {
-                isAttack = false;
-                PlayerManager.instance.isHit = false;
-                animator.SetBool("skelenton01_isAttack", isAttack);
-            }
-        }
-        return 0f;
+        attackItems.npcMeleeAttack(this, 5f);
+        tmpmovetime = 0;
+        isAttack = true;
+        animator.SetBool("skelenton01_isAttack", isAttack);
+        PlayerManager.instance.PlayerReduceHP(5f);
     }
-    IEnumerator moveToPlayer(Vector3 playertemp)//npc一多起来，就会停止移动，isMoving一直为True，里面的while是一直在运行的，但是会有两个npc是正常的！！！！！！！
+    public void MovePointInput(Vector2 playertemp)
     {
         isMoving = true;
         animator.SetBool("skelenton01_isMoving", isMoving);
-        while ((transform.position - playertemp).magnitude > Mathf.Epsilon)
+        Vector2 tempVector2 = playertemp - (Vector2)transform.position;
+        tempVector2 = tempVector2.normalized;
+        skeleton01_stateX = tempVector2.x;
+        skeleton01_stateY = tempVector2.y;
+        Vector2.MoveTowards(transform.position, playertemp, Time.deltaTime * moveSpeed);
+    }
+    public void MovementInput(Vector2 playertemp)
+    {
+        if (playertemp != Vector2.zero)
         {
-            if (Camera.main.WorldToScreenPoint(PlayerManager.instance.transform.position).x> Camera.main.WorldToScreenPoint(transform.position).x)
-            {
-                skeleton01_stateX = 1;
-                skeleton01_stateY = 0;
-            }
-            else
-            {
-                skeleton01_stateX = -1;
-                skeleton01_stateY = 0;
-            }
-            
-            transform.position = Vector3.MoveTowards(transform.position, playertemp, Time.deltaTime*1f);
-
-            yield return null;
+            isMoving = true;
+            animator.SetBool("skelenton01_isMoving", isMoving);
+            Vector2 tempTarget = transform.position;
+            tempTarget.x += playertemp.x;
+            tempTarget.y += playertemp.y;
+            skeleton01_stateX = playertemp.x;
+            skeleton01_stateY = playertemp.y;
+            Vector2.MoveTowards(transform.position, tempTarget, Time.deltaTime * moveSpeed);
         }
-        isMoving = false;
-        animator.SetBool("skelenton01_isMoving", isMoving);
-        transform.position = playertemp;
-
-
-
+        else
+        {
+            isMoving = false;
+            animator.SetBool("skelenton01_isMoving", isMoving);
+            transform.position = playertemp;
+        }
+        
     }
     public void npcStatecontrllo()
     {
@@ -197,8 +202,8 @@ public class NpcCell : MonoBehaviour,Humanoid,XingHeng
                 //animator.SetBool("skelenton01_isMoving", isMoving);
                 //animator.SetBool("skelenton01_isAttack", isAttack);
                 //animator.SetBool("skelenton01_isHit", isHit);
-                animator.SetFloat("skeleton01_stateX", skeleton01_stateX);
-                animator.SetFloat("skeleton01_stateY", skeleton01_stateY);
+                //animator.SetFloat("skeleton01_stateX", skeleton01_stateX);
+                //animator.SetFloat("skeleton01_stateY", skeleton01_stateY);
 
     }
 

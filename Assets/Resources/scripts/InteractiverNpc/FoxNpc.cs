@@ -29,6 +29,7 @@ public class FoxNpc : MonoBehaviour,Interactives
             index++;
         }else if(index>0)
         {
+            Debug.Log(2);
             StartCoroutine(DialogManager.Instance.ShowDialog(this,foxDialog.Task1Dialog(),foxDialog.Task1DialogSprites(this)));
         }
     }

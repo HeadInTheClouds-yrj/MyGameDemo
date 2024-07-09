@@ -34,6 +34,7 @@ public class NpcManager : MonoBehaviour
         {
             if (timeCount.IsFinished())
             {
+                RemoveNpcCell(npcCell);
                 Destroy(npcCell.gameObject);
                 break;
             }
@@ -69,7 +70,7 @@ public class NpcManager : MonoBehaviour
     }
     public void RemoveNpcCell(NpcCell npcCell)
     {
-        //allNpcCell.Remove(npcCell.name);
+        allNpcCell.Remove(npcCell.name);
     }
     public Dictionary<string,NpcCell> getAllNpcCell() { return allNpcCell; }
 }

@@ -1,0 +1,2 @@
+Fox:Good morning, warrior. Can you collect 5 herbs for me?
+choose:Sure! No problem!|Sorry, I have other matters to attend to.

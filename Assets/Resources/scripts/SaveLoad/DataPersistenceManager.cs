@@ -68,6 +68,10 @@ public class DataPersistenceManager : MonoBehaviour
     }
     public void RemoveData(string fileName)
     {
+        if (fileDataHandler == null)
+        {
+            fileDataHandler = new FileDataHandler(Application.persistentDataPath, "default.data");
+        }
         fileDataHandler.Remove(fileName);
         DataFileNameManager.Instance.RemoveFileName(fileName);
     }

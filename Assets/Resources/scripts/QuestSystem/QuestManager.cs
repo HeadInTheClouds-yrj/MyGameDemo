@@ -196,7 +196,7 @@ public class QuestManager : MonoBehaviour,IDataPersistence
         foreach (QuestData questData in gameData.datas[0].questDatas)
         {
             questMap[questData.questId].LoadQuestData(questData.questState, questData.currentQuestStepIndex, questData.questStepStates);
-            if (questMap[questData.questId].state.Equals(QuestState.IN_PROGRESS) || questMap[questData.questId].state.Equals(QuestState.CAN_FINISH))
+            if (questMap[questData.questId].state.Equals(QuestState.IN_PROGRESS))
             {
                 questMap[questData.questId].InstantiateCurrentQuestStep(this.transform);
             }

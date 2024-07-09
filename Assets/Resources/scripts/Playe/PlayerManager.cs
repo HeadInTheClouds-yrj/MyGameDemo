@@ -40,6 +40,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
     private float lrMaxX = 2.01f;
     private float lrX;
     private float relativetransformX = 1f;
+    [SerializeField]
     private float currentHearth;
     private float rectangleMaxLength = 50.9f;
     private float blackDonateLength = 10.0f;
