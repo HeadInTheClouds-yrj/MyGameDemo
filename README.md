@@ -1,5 +1,8 @@
 # 所有UI使用到的组件
 content size fitter（把这个组件添加在ScrollViewUI->Viewport->Content上能流畅的控制content下的子对象的滑动）;
+
+IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandler //拖拽接口，实现之后会有几个事件方法能用，方法的生命周期就是方法名字字面意思。
+
 其他创建某种ui时自动添加的组件
 # SaveLoad系统主要使用到的脚本[参考](https://github.com/shapedbyrainstudios/save-load-system"保存系统")
 #### JsonUtility: unity引擎自带序列化逆序列化工具.
