@@ -20,7 +20,7 @@ IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandle
 ## 思路：
 #### 首先考虑能不能保存，再一个是先后顺序和多结局，然后是任务是否易于编写和管理。
 ## 核心架构：
-#### manager：负责初始化所有的任务，检查并改变任务的状态.
+#### QuestManager：负责初始化所有的任务，检查并改变任务的状态.
 #### Quest：保存着任务的所有当前状态.
 #### QuestEvent：负责更新任务状态，可以在EventManager单例脚本拿到并调用.
 #### QuestPoint：任务接取的入口，负责接收任务.
