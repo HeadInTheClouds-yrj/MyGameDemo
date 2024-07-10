@@ -5,7 +5,7 @@ IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandle
 
 其他创建某种ui时自动添加的组件....
 
-# SaveLoad系统主要使用到的脚本[参考](https://github.com/shapedbyrainstudios/save-load-system"保存系统")
+# SaveLoad系统主要使用到的脚本[参考](https://github.com/shapedbyrainstudios/save-load-system)
 #### JsonUtility: unity引擎自带序列化逆序列化工具.
 
 #### ISerializationCallbackReceiver:继承这个class是因为JsonUtility它序列化不了复杂的数据，比如dictionary<TKey,TValue>,用法是创建一个新的C#脚本，让这个脚本继承 Dictionary<TKey,TValue>和 ISerializationCallbackReceiver.
