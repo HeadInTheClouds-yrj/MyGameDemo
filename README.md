@@ -39,9 +39,9 @@ IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandle
 #### ObstacleDetector：继承Detector，检测周围的障碍物，保存到AIData
 #### TargetDetector：继承Detector，检测周围的目标，保存到AIData
 
-#### SteeringBehaviour： 收集转向方向权重数据
-#### SeekBehaviour：计算八个方向目标权重，基于AIData数据里的targets，保存八个方向的权重数据到AIData
-#### ObstacleAvoidanceBehaviour：计算八个方向障碍权重，基于AIData数据里的obstacles，保存八个方向的权重数据到AIData
+#### SteeringBehaviour： 收集转向方向权重数据抽象类
+#### SeekBehaviour：继承SteeringBehaviour，计算八个方向目标权重，基于AIData数据里的targets，保存八个方向的权重数据到AIData
+#### ObstacleAvoidanceBehaviour：继承SteeringBehaviour，计算八个方向障碍权重，基于AIData数据里的obstacles，保存八个方向的权重数据到AIData
 
 #### ContextSolver：解析得到的数据，得出最佳移动方向（目标权重 - 障碍权重： 最后比大小）
 # Editor Version
