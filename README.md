@@ -16,7 +16,7 @@ IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandle
 
 #### 收集数据主要靠Scene Manager的OnSceneLoaded（）事件进行对继承了特定抽象类的脚本的收集.
 
-# QuestSystem任务系统主要思路[参考](https://github.com/shapedbyrainstudios/quest-system"任务系统")
+# QuestSystem任务系统主要思路[参考](https://github.com/shapedbyrainstudios/quest-system)
 ## 思路：
 #### 首先考虑能不能保存，再一个是先后顺序和多结局，然后是任务是否易于编写和管理。
 ## 核心架构：
