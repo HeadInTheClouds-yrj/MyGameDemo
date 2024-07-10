@@ -22,6 +22,15 @@ IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandle
 #### QuestEvent：负责更新任务状态，可以在EventManager单例脚本拿到并调用
 #### QuestPoint：任务接取的入口，负责接收任务
 #### QuestStep：负责与具体任务步骤状态的传递和更新到quest脚本
+
+# 有限状态机FSM Animation控制
+
+#### 这个项目没用到，之前做的demo有用到
+#### FSMBase：可更改的生命周期方法，不继承monobehaviour
+#### FSMManger：实现对FSMBase集合状态的添加，改变，开始，循环，退出功能
+#### AnimationControl：继承FSMBase的各个动画类
+#### 具体使用：实例化FSMManger，使用各种控制方法，传入需要更改的参数状态
+
 # Editor Version
 2022.2.0b16
 # 美术资源说明
