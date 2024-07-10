@@ -44,7 +44,7 @@ IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandle
 #### ObstacleAvoidanceBehaviour：继承SteeringBehaviour，计算八个方向障碍权重，基于AIData数据里的obstacles，保存八个方向的权重数据到AIData
 
 #### ContextSolver：解析得到的数据，得出最佳移动方向（目标权重 - 障碍权重： 最后比大小）
-# Editor Version
+# Unity Engine Version
 2022.2.0b16
 # 美术资源说明
 此项目不会用商用,美术资源为其他美术作者的作品,除了特效.
