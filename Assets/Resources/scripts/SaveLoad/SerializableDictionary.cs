@@ -19,7 +19,7 @@ public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IS
             values.Add(pair.Value);
         }
     }
-    //load之前运行
+    //load之后运行
     public void OnAfterDeserialize()
     {
 

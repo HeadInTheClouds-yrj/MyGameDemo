@@ -5,7 +5,7 @@ using UnityEngine;
 public class TargetDetector : Detector
 {
     [SerializeField]
-    private float targetDetectionRange = 5;
+    private float targetDetectionRange = 3f;
 
     [SerializeField]
     private LayerMask obstaclesLayerMask, playerLayerMask;

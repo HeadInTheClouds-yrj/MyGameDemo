@@ -35,7 +35,7 @@ public class DialogManager : MonoBehaviour
     public bool isKeyDown = false;
     public void HandleUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.V))
+        if (!isTyping&&Input.GetKeyDown(KeyCode.V))
         {
             isKeyDown = true;
         }

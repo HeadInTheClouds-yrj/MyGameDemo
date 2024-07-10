@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class NpcCell : MonoBehaviour,Humanoid,XingHeng
+public class NpcCell : MonoBehaviour,XingHeng
 {
     private Animator animator;
-    public Data npcData;
+    public EnemyData npcData;
     public bool isMoving=false;
     public bool isIdle=false;
     public bool isAttack = false;
@@ -26,21 +27,23 @@ public class NpcCell : MonoBehaviour,Humanoid,XingHeng
     private float lrMaxX = 1.38f;
     private float lrX = 1.38f;
     private float relativetransformX = 0.69f;
-    public LineRenderer lineRenderer;
+    private LineRenderer lineRenderer;
     private Rigidbody2D rb2;
     [SerializeField]
-    private float moveSpeed = 10f;
+    private float moveSpeed = 1f;
     private EnemyAI enemyAI;
     // Start is called before the first frame update
     void Start()
     {
         animator = transform.GetComponentInChildren<Animator>();
-        npcData = new Data();
+        npcData = new EnemyData();
+        npcData.id = this.name;
         NpcManager.instance.registeToManager(transform.name, this);
         attackItems = new AttackItems();
         tree = NpcManager.instance.tree;
         rb2 = GetComponent<Rigidbody2D>();
         enemyAI = GetComponent<EnemyAI>();
+        lineRenderer= GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
@@ -162,7 +165,15 @@ public class NpcCell : MonoBehaviour,Humanoid,XingHeng
         tmpmovetime = 0;
         isAttack = true;
         animator.SetBool("skelenton01_isAttack", isAttack);
+        StartCoroutine(AttackCountTime());
         PlayerManager.instance.PlayerReduceHP(5f);
+    }
+    IEnumerator AttackCountTime()
+    {
+        yield return new WaitForSeconds(0.1f);
+        isAttack = false;
+        animator.SetBool("skelenton01_isAttack", isAttack);
+
     }
     public void MovePointInput(Vector2 playertemp)
     {
@@ -172,7 +183,7 @@ public class NpcCell : MonoBehaviour,Humanoid,XingHeng
         tempVector2 = tempVector2.normalized;
         skeleton01_stateX = tempVector2.x;
         skeleton01_stateY = tempVector2.y;
-        Vector2.MoveTowards(transform.position, playertemp, Time.deltaTime * moveSpeed);
+        transform.position = Vector2.MoveTowards(transform.position, playertemp, Time.deltaTime * moveSpeed);
     }
     public void MovementInput(Vector2 playertemp)
     {
@@ -185,32 +196,39 @@ public class NpcCell : MonoBehaviour,Humanoid,XingHeng
             tempTarget.y += playertemp.y;
             skeleton01_stateX = playertemp.x;
             skeleton01_stateY = playertemp.y;
-            Vector2.MoveTowards(transform.position, tempTarget, Time.deltaTime * moveSpeed);
+            transform.position = Vector2.MoveTowards(transform.position, tempTarget, Time.deltaTime * moveSpeed);
         }
         else
         {
             isMoving = false;
             animator.SetBool("skelenton01_isMoving", isMoving);
-            transform.position = playertemp;
         }
         
     }
     public void npcStatecontrllo()
     {
 
-                
-                //animator.SetBool("skelenton01_isMoving", isMoving);
-                //animator.SetBool("skelenton01_isAttack", isAttack);
-                //animator.SetBool("skelenton01_isHit", isHit);
-                //animator.SetFloat("skeleton01_stateX", skeleton01_stateX);
-                //animator.SetFloat("skeleton01_stateY", skeleton01_stateY);
+
+        //animator.SetBool("skelenton01_isMoving", isMoving);
+        //animator.SetBool("skelenton01_isAttack", isAttack);
+        //animator.SetBool("skelenton01_isHit", isHit);
+        animator.SetFloat("skeleton01_stateX", skeleton01_stateX);
+        animator.SetFloat("skeleton01_stateY", skeleton01_stateY);
 
     }
 
-
-    public Data GetData()
+    public void UpdateData()
     {
-        return npcData;
+        npcData.currentPosition = transform.position;
+    }
+    public void UpdateToCell()
+    {
+        transform.position = npcData.currentPosition;
+        
+    }
+    public EnemyData GetData()
+    {
+        return new EnemyData(this.name,SceneManager.GetActiveScene().buildIndex,true,npcData.currentLingQi,npcData.maxLingQi,npcData.maxHealth,npcData.curenttHealth,npcData.moveSpeed,transform.position);
     }
 
     public Dictionary<string, Data> GetTeams()

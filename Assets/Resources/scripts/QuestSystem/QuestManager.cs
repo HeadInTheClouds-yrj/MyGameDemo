@@ -40,7 +40,10 @@ public class QuestManager : MonoBehaviour,IDataPersistence
     {
         foreach (Quest quest in questMap.Values)
         {
-            EventManager.Instance.questEvent.QuestStepStateChange(quest.info.id, quest.GetCurrentQuestStepIndex(), quest.GetCurrentQuestStepState());
+            if (quest.state != QuestState.FINISHED)
+            {
+                EventManager.Instance.questEvent.QuestStepStateChange(quest.info.id, quest.GetCurrentQuestStepIndex(), quest.GetCurrentQuestStepState());
+            }
         }
     }
     private void EnimyDie(NpcCell obj)
@@ -62,10 +65,6 @@ public class QuestManager : MonoBehaviour,IDataPersistence
             {
                 ChangeQuestState(quest.info.id, QuestState.CAN_START);
             }
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            EventManager.Instance.enimiesEvent.EnimyDie(null);
         }
     }
     private void ChangeQuestState(string id , QuestState questState)
@@ -201,7 +200,10 @@ public class QuestManager : MonoBehaviour,IDataPersistence
                 questMap[questData.questId].InstantiateCurrentQuestStep(this.transform);
             }
             EventManager.Instance.questEvent.QuestStateChange(GetQuestById(questData.questId));
-            EventManager.Instance.questEvent.QuestStepStateChange(GetQuestById(questData.questId).info.id, questData.currentQuestStepIndex, questData.questStepStates[questData.currentQuestStepIndex]);
+            if (!GetQuestById(questData.questId).CurrentStepExists())
+            {
+                EventManager.Instance.questEvent.QuestStepStateChange(GetQuestById(questData.questId).info.id, questData.currentQuestStepIndex-1, questData.questStepStates[questData.currentQuestStepIndex-1]);
+            }
         }
 
 

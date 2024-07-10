@@ -52,4 +52,12 @@ public class QuestEvent
             OnGetQuestMapToPropertyUI();
         }
     }
+    public event Action OnPickUpItem;
+    public void PickUpItem()
+    {
+        if (OnPickUpItem != null)
+        {
+            OnPickUpItem();
+        }
+    }
 }

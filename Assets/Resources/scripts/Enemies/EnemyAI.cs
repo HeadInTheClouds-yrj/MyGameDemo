@@ -22,27 +22,26 @@ public class EnemyAI : MonoBehaviour
     private float attackDistance = 1.5f;
 
     //Inputs sent from the Enemy AI to the Enemy controller
-    public UnityEvent OnAttackPressed;
-    public UnityEvent<Vector2> OnMovementInput, OnPointerInput;
+    //public UnityEvent OnAttackPressed;
+    //public UnityEvent<Vector2> OnMovementInput, OnPointerInput;
 
     [SerializeField]
     private Vector2 movementInput;
 
     [SerializeField]
     private ContextSolver movementDirectionSolver;
-    private Rigidbody2D rb2;
-    private float speed = 1000f;
     [SerializeField]
     private Transform weapon;
     [SerializeField]
     private Transform slash;
+    private NpcCell cell;
     bool following = false;
 
     private void Start()
     {
         //Detecting Player and Obstacles around
         InvokeRepeating("PerformDetection", 0.1f, detectionDelay);
-        rb2= GetComponent<Rigidbody2D>();
+        cell = GetComponent<NpcCell>();
     }
 
     private void PerformDetection()
@@ -59,7 +58,6 @@ public class EnemyAI : MonoBehaviour
         if (aiData.currentTarget != null)
         {
             //Looking at the Target
-            OnPointerInput?.Invoke(aiData.currentTarget.position);
             if (following == false)
             {
                 following = true;
@@ -72,7 +70,7 @@ public class EnemyAI : MonoBehaviour
             aiData.currentTarget = aiData.targets[0];
         }
         //Moving the Agent
-        OnMovementInput?.Invoke(movementInput);
+        cell.MovementInput(movementInput);
         //rb2.velocity = movementInput * speed * Time.deltaTime;
     }
 
@@ -93,7 +91,7 @@ public class EnemyAI : MonoBehaviour
             {
                 //Attack logic
                 movementInput = Vector2.zero;
-                OnAttackPressed?.Invoke();
+                cell.Attack();
                 //float anglez = Vector2.Angle(aiData.currentTarget.position, -Vector2.up);
                 //VisualEffect ve = slash.GetComponent<VisualEffect>();
                 //if (aiData.currentTarget.position.x < transform.position.x)

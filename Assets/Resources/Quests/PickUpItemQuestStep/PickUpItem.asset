@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebee345b75275f743a65da977e0362b5, type: 3}
-  m_Name: KillEnimy
+  m_Name: PickUpItem
   m_EditorClassIdentifier: 
-  <id>k__BackingField: KillEnimy
-  displayName: "\u6740\u6B7B\u8FD1\u6218\u654C\u4EBA"
+  <id>k__BackingField: PickUpItem
+  displayName: "\u6361\u5783\u573E"
   questType: 1
   levelRequirement: 0
   killEnimiesCont: 0
-  questPrerequisites: []
+  questPrerequisites:
+  - {fileID: 11400000, guid: b4feb2947eaceb04a89abc96d18c3f14, type: 2}
   questStepPrefabs:
-  - {fileID: 742501407452960050, guid: f5d7efb3260937c4295822ec1427e95c, type: 3}
-  - {fileID: 8462987442234778854, guid: 3761f3ddabf661044a79acbfae8b4faa, type: 3}
+  - {fileID: 7216527860734347378, guid: 401a7606478e37f4197435c6a43b6549, type: 3}
   skillId: 0
-  iteamId: sword
+  iteamId: sword1

@@ -42,7 +42,15 @@ public class QuestDisplayUICtrl : MonoBehaviour
                 break;
         }
         questDisplayName.text = quest_ReadOnly.info.displayName+"\n"+"ÈÎÎñ×´Ì¬£º  "+ questState;
+
+        if (quest_ReadOnly.CurrentStepExists())
+        {
+            questAavanceState.text = quest_ReadOnly.GetQuestData().questStepStates[quest_ReadOnly.GetQuestData().currentQuestStepIndex].stepState;
+        }
+        else
+        {
+            questAavanceState.text = quest_ReadOnly.GetQuestData().questStepStates[quest_ReadOnly.GetQuestData().currentQuestStepIndex-1].stepState;
+        }
         
-        questAavanceState.text = quest_ReadOnly.GetQuestData().questStepStates[quest_ReadOnly.GetQuestData().currentQuestStepIndex].stepState;
     }
 }

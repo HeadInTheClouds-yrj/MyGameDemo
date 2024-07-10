@@ -8,6 +8,13 @@ public class KillEnimyQuestStep : QuestStep
     [SerializeField]
     private int killEnimiesCount = 0;
     private int KillToComplete = 3;
+    private void Start()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            NpcManager.instance.factoryNpc();
+        }
+    }
     private void OnEnable()
     {
         EventManager.Instance.enimiesEvent.OnEnimyDie += Dead;

@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
 {
@@ -50,6 +51,8 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
     private SpriteRenderer blackDonateWidthSpriteRenderer;
     private Transform playerTransform;
     private Sprite playerIcon;
+    [SerializeField]
+    private VisualEffect slash;
     public Sprite PlayerIcon
     {
         get
@@ -100,7 +103,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
     {
         HitAnimation();
         GetMouseKey();
-        //chekAttackcool();
+        chekAttackcool();
         PlayerMeleeAttack();
         updateUI();
     }
@@ -141,27 +144,29 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
         blackDonateScalTransform.localScale = blackDonateScal;
         blackDonateWidthSpriteRenderer.size = blackDonateWidth;
     }
-    //public void meleeAttack(bool isAttack)
-    //{
-    //    if (isAttack)
-    //    {
-    //        Dictionary<string, NpcCell> allnpc = NpcManager.instance.getAllNpcCell();
-    //        NpcCell[] npcs = new NpcCell[allnpc.Count];
-    //        int j = 0;
-    //        foreach (NpcCell npc in allnpc.Values)
-    //        {
-    //            npcs[j] = npc;
-    //            j++;
-    //        }
-    //        for (int i = 0; i < npcs.Length; i++)
-    //        {
-    //            if (npcs[i] != null && attackItems.playerMeleeAttack(npcs[i], playerData.AttackAngle, playerData.MeleeAttackRange))
-    //            {
-    //                npcs[i].NpcReduceHP(playerData.MeleeDamage);
-    //            }
-    //        }
-    //    }
-    //}
+    public void meleeAttack(bool isAttack)
+    {
+        if (isAttack)
+        {
+            slash.SetVector3("InitializeAngle",new Vector3(0,0, AngleTowardsMouse() + 45));
+            slash.Play();
+            Dictionary<string, NpcCell> allnpc = NpcManager.instance.getAllNpcCell();
+            NpcCell[] npcs = new NpcCell[allnpc.Count];
+            int j = 0;
+            foreach (NpcCell npc in allnpc.Values)
+            {
+                npcs[j] = npc;
+                j++;
+            }
+            for (int i = 0; i < npcs.Length; i++)
+            {
+                if (npcs[i] != null && attackItems.playerMeleeAttack(npcs[i], 60, 5))
+                {
+                    npcs[i].NpcReduceHP(10);
+                }
+            }
+        }
+    }
     public void PlayerSwordBrow()
     {
         spriteRenderer.enabled = true;
@@ -177,14 +182,13 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
         float angle = Mathf.Atan2(mouseposition.y, mouseposition.x) * Mathf.Rad2Deg;
         return angle;
     }
-    //public void changeWearpon(Sprite wearponIcon, float Damage, string path)
-    //{
-    //    SwordPrefer = Resources.Load(path) as GameObject;
-    //    spriteRenderer = Hand.GetComponentInChildren<SpriteRenderer>();
-    //    spriteRenderer.sprite = wearponIcon;
-    //    playerData.RangedDamage = Damage;
+    public void changeWearpon(Sprite wearponIcon, float Damage, string path)
+    {
+        SwordPrefer = Resources.Load(path) as GameObject;
+        spriteRenderer = Hand.GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer.sprite = wearponIcon;
 
-    //}
+    }
     public void UsePoint(int value)
     {
         playerData.curenttHealth +=value;
@@ -203,14 +207,14 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
             leftMouse = false;
         }
     }
-    //private void chekAttackcool()
-    //{
-    //    playerMeleeTimeControl();
-    //    if (SwordPrefer != null)
-    //    {
-    //        PlayerBowSwordControl();
-    //    }
-    //}
+    private void chekAttackcool()
+    {
+        playerMeleeTimeControl();
+        if (SwordPrefer != null)
+        {
+            PlayerBowSwordControl();
+        }
+    }
     private void HitAnimation()
     {
         if (isHit)
@@ -225,46 +229,46 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
             animator.SetBool("isHitt", isHit);
         }
     }
-    //private void PlayerBowSwordControl()
-    //{
-    //    if (rightMouse&&canfire)
-    //    {
-    //        Accumulated();
-    //    }
-    //    else if (Input.GetMouseButtonUp(1) && canfire)
-    //    {
-    //        Shoot();
-    //    }
-    //    else
-    //    {
-    //        if (sliderValue>0f)
-    //        {
-    //            sliderValue -= Time.deltaTime * 5f;
-    //        }
-    //        else
-    //        {
-    //            sliderValue = 0f;
-    //            canfire = true;
-    //        }
-    //        BowPowerSlider.value = sliderValue;
-    //    }
-    //}
+    private void PlayerBowSwordControl()
+    {
+        if (rightMouse && canfire)
+        {
+            Accumulated();
+        }
+        else if (Input.GetMouseButtonUp(1) && canfire)
+        {
+            Shoot();
+        }
+        else
+        {
+            if (sliderValue > 0f)
+            {
+                sliderValue -= Time.deltaTime * 5f;
+            }
+            else
+            {
+                sliderValue = 0f;
+                canfire = true;
+            }
+            BowPowerSlider.value = sliderValue;
+        }
+    }
 
-    //private void Shoot()
-    //{
-    //    if (sliderValue > maxSliderValue)
-    //    {
-    //        sliderValue = maxSliderValue;
-    //    }
-    //    float SwordSpeed = sliderValue + BowPower;
-    //    float angle = AngleTowardsMouse();
-    //    Quaternion rotation = Quaternion.Euler(new Vector3(0f,0f,angle+90));
-    //    BowControl bowControl = Instantiate(SwordPrefer,sworte2.position, rotation).GetComponent<BowControl>();
-    //    bowControl.swordVelocity = SwordSpeed;
-    //    bowControl.playerDamge = playerData.BaseDamage + playerData.RangedDamage * 5 * (sliderValue / maxSliderValue);
-    //    canfire = false;
-    //    spriteRenderer.enabled = false;
-    //}
+    private void Shoot()
+    {
+        if (sliderValue > maxSliderValue)
+        {
+            sliderValue = maxSliderValue;
+        }
+        float SwordSpeed = sliderValue + BowPower;
+        float angle = AngleTowardsMouse();
+        Quaternion rotation = Quaternion.Euler(new Vector3(0f, 0f, angle + 90));
+        BowControl bowControl = Instantiate(SwordPrefer, sworte2.position, rotation).GetComponent<BowControl>();
+        bowControl.swordVelocity = SwordSpeed;
+        bowControl.playerDamge = 10 + 5 * 5 * (sliderValue / maxSliderValue);
+        canfire = false;
+        spriteRenderer.enabled = false;
+    }
 
     private void Accumulated()
     {
@@ -277,32 +281,32 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
         }
     }
 
-    //public void playerMeleeTimeControl()
-    //{
-    //    if (leftMouse)
-    //    {
-    //        if (meleeAttackindex == 0)
-    //        {
-    //            isMelee = true;
+    public void playerMeleeTimeControl()
+    {
+        if (leftMouse)
+        {
+            if (meleeAttackindex == 0)
+            {
+                isMelee = true;
 
-    //            meleeAttack(isMelee);
-    //            meleeAttackcooltime = 0;
-    //            meleeAttackindex++;
-    //        }
-    //        else
-    //        {
-    //            if (meleeAttackcooltime > 0.4f)
-    //            {
-    //                isMelee = true;
+                meleeAttack(isMelee);
+                meleeAttackcooltime = 0;
+                meleeAttackindex++;
+            }
+            else
+            {
+                if (meleeAttackcooltime > 0.4f)
+                {
+                    isMelee = true;
 
-    //                meleeAttack(isMelee);
-    //                meleeAttackcooltime = 0;
-    //            }
+                    meleeAttack(isMelee);
+                    meleeAttackcooltime = 0;
+                }
 
-    //        }
+            }
 
-    //    }
-    //}
+        }
+    }
     public void PlayerMeleeAttack()
     {
         if (isMelee)

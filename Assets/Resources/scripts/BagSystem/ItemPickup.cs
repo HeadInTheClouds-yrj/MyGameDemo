@@ -18,6 +18,7 @@ public class ItemPickup : MonoBehaviour,IDataPersistence
         InventoryManager.Instance.AddItem(item);
         PlayerManager.instance.playerData.pickupedItemGameObj.Add(this.name);
         PlayerManager.instance.playerData.itemIds.Add(item.id, item.itemCont);
+        EventManager.Instance.questEvent.PickUpItem();
         Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)

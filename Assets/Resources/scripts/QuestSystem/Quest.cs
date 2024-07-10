@@ -23,13 +23,9 @@ public class Quest
     public void MoveToNextStep()
     {
         currentQuestStepIndex++;
-        if (currentQuestStepIndex>= info.questStepPrefabs.Length)
-        {
-            currentQuestStepIndex = info.questStepPrefabs.Length - 1;
-        }
     }
 
-    //当前任务是否存在
+    //当前任务步骤是否存在
     public bool CurrentStepExists()
     {
         return (currentQuestStepIndex < info.questStepPrefabs.Length);
@@ -88,6 +84,14 @@ public class Quest
     }
     public QuestStepState GetCurrentQuestStepState()
     {
-        return stepStates[currentQuestStepIndex];
+        if (CurrentStepExists())
+        {
+            return stepStates[currentQuestStepIndex];
+        }
+        else
+        {
+            return stepStates[currentQuestStepIndex-1];
+        }
+        
     }
 }

@@ -60,6 +60,7 @@ public class QuestPoint : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             plyerIsNear = true;
+            Debug.Log("near");
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

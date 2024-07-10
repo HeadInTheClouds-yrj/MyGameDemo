@@ -7,37 +7,49 @@ public class TestQuestStep : QuestStep
 {
     protected override void SetStepState(string newState)
     {
-        
+        isSpawn = newState;
     }
-    [SerializeField]
-    private GameObject OgameObject;
-    private Transform[] gamobjList;
     private Vector3[] vector3s;
-    private bool isSpawn = false;
-    // Start is called before the first frame update
-    private void Update()
+    private string isSpawn = "0";
+    private void OnEnable()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 5 && isSpawn)
+        EventManager.Instance.enimiesEvent.OnEnimyDie += EnemyDead;
+    }
+    private void OnDisable()
+    {
+        EventManager.Instance.enimiesEvent.OnEnimyDie -= EnemyDead;
+
+    }
+    private void EnemyDead(NpcCell obj)
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 5 && NpcManager.instance.GetAllSceneNPCData()[5].Count <=1)
         {
-            Spawn();
-            isSpawn = true;
             FinishQuestStep();
         }
     }
+
+    // Start is called before the first frame update
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 5 && isSpawn.Equals("0"))
+        {
+            Spawn();
+            isSpawn = "1";
+            ChangeStepState(isSpawn);
+        }
+
+    }
     void Spawn()
     {
-        gamobjList = OgameObject.GetComponentsInChildren<Transform>();
-        vector3s = new Vector3[gamobjList.Length];
-        for (int i = 0; i < gamobjList.Length; i++)
+        vector3s = new Vector3[3];
+        for (int i = 0; i < 3; i++)
         {
             vector3s[i] = new Vector3(Random.Range(-4, 4), Random.Range(-4, 4), 0);
         }
-        for (int i = 0; i < gamobjList.Length; i++)
+        for (int i = 0; i < 3; i++)
         {
-            if (i != 0)
-            {
-                NpcManager.instance.factoryNpc("npcs/Skeleton", gamobjList[i].transform, vector3s[i]);
-            }
+
+                NpcManager.instance.factoryNpc("npcs/enemy", vector3s[i]);
 
 
         }
