@@ -34,7 +34,7 @@ IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandle
 #### AnimationControl：继承FSMBase的各个动画类.
 #### 具体使用：实例化FSMManger，使用各种控制方法，传入需要更改的参数状态.
 
-# AI寻路 
+# AI寻路 [参考] (https://github.com/SunnyValleyStudio/Unity-2D-Context-steering-AI)
 #### EnemyAI ：负责执行移动和攻击逻辑方法。
 #### AIData：顾名思义保存行为意向数据的，包括检测到的目标，障碍物，计算出的移动方向和不可移动的方向权重。
 
