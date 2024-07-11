@@ -52,7 +52,7 @@ IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandle
 # 美术资源说明
 此项目不会用商用,美术资源为其他美术作者的作品,除了特效.
 # 音频资源
-guigubahuang.mp3 广州鬼谷工作室鬼谷八荒主界面音乐
-miTian.mp3 北京若森数字科技有限公司 画江湖之不良人第五季里的bgm
-mixkit-dagger-woosh-1487.wav https://mixkit.co/free-sound-effects/sword/
-ZhangRanRuoShi.mp3 北京若森数字科技有限公司
+1. guigubahuang.mp3 广州鬼谷工作室鬼谷八荒主界面音乐
+2. miTian.mp3 北京若森数字科技有限公司 画江湖之不良人第五季里的bgm
+3. mixkit-dagger-woosh-1487.wav https://mixkit.co/free-sound-effects/sword/
+4. ZhangRanRuoShi.mp3 北京若森数字科技有限公司
