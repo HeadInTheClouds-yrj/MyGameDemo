@@ -148,8 +148,9 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
     {
         if (isAttack)
         {
-            slash.SetVector3("InitializeAngle",new Vector3(0,0, AngleTowardsMouse() + 45));
+            slash.SetVector3("InitializeAngle",new Vector3(0,0, AngleTowardsMouse() + 135));
             slash.Play();
+            AudioManager.instance.PlayClip("mixkit-dagger-woosh-1487");
             Dictionary<string, NpcCell> allnpc = NpcManager.instance.getAllNpcCell();
             NpcCell[] npcs = new NpcCell[allnpc.Count];
             int j = 0;
@@ -312,12 +313,12 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
         if (isMelee)
         {
             animator.SetBool("isAttack", isMelee);
+
             meleeAttackcooltime += Time.deltaTime;
         }
         if (meleeAttackcooltime > 0.15f && isMelee)
         {
             isMelee = false;
-
             animator.SetBool("isAttack", isMelee);
         }
         if (meleeAttackcooltime < 0.4f && !isMelee)

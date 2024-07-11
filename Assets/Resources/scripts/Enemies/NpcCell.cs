@@ -12,7 +12,7 @@ public class NpcCell : MonoBehaviour,XingHeng
     public EnemyData npcData;
     public bool isMoving=false;
     public bool isIdle=false;
-    public bool isAttack = false;
+    public bool isAttack = true;
     public bool isHit = false;
     public Vector3 targetMoving;
     public float skeleton01_stateY;
@@ -83,6 +83,10 @@ public class NpcCell : MonoBehaviour,XingHeng
         if (npcData.curenttHealth <= 0)
         {
             EventManager.Instance.enimiesEvent.EnimyDie(this);
+            npcData.curenttHealth = 0;
+            moveSpeed = 0;
+            npcData.moveSpeed = 0;
+            isAttack = false;
         }
         return npcData.curenttHealth;
     }
@@ -161,18 +165,22 @@ public class NpcCell : MonoBehaviour,XingHeng
     //}
     public void Attack()
     {
-        attackItems.npcMeleeAttack(this, 5f);
-        tmpmovetime = 0;
-        isAttack = true;
-        animator.SetBool("skelenton01_isAttack", isAttack);
-        StartCoroutine(AttackCountTime());
-        PlayerManager.instance.PlayerReduceHP(5f);
+        if (isAttack)
+        {
+            attackItems.npcMeleeAttack(this, 5f);
+            tmpmovetime = 0;
+            animator.SetBool("skelenton01_isAttack", isAttack);
+            StartCoroutine(AttackCountTime());
+            PlayerManager.instance.PlayerReduceHP(5f);
+        }
+        
     }
     IEnumerator AttackCountTime()
     {
         yield return new WaitForSeconds(0.1f);
         isAttack = false;
         animator.SetBool("skelenton01_isAttack", isAttack);
+        isAttack = true;
 
     }
     public void MovePointInput(Vector2 playertemp)

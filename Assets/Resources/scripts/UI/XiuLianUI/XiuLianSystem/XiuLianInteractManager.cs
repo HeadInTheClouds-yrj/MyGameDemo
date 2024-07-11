@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class XiuLianInteractManager : MonoBehaviour,IDataPersistence
@@ -29,13 +31,22 @@ public class XiuLianInteractManager : MonoBehaviour,IDataPersistence
     {
         Initialize();
     }
+    private void OnEnable()
+    {
+        //SceneManager.sceneLoaded += Initialize;
+    }
+    private void OnDisable()
+    {
+        //SceneManager.sceneLoaded -= Initialize;
+    }
+
     public void Initialize()
     {
         currentManu = CurrentXiuLianManu.GongFaStudy;
         items = InventoryManager.Instance.GetInBagItems();
         allInBagGongFaIds = GetGongFaIds();
-        unLearnedInBagGongFas = GetUnLearnedInBagGongFas(PlayerManager.instance.playerData);
         learndeGongFas = GetlearnedGongFas(PlayerManager.instance.playerData);
+        unLearnedInBagGongFas = GetUnLearnedInBagGongFas(PlayerManager.instance.playerData);
     }
     private List<string> GetGongFaIds()
     {
@@ -71,18 +82,20 @@ public class XiuLianInteractManager : MonoBehaviour,IDataPersistence
         }
         else
         {
-            foreach (string learnedId in playerData.learnedGongFas.Keys)
+            foreach (string itemId in allInBagGongFaIds)
             {
-                foreach (string itemId in allInBagGongFaIds)
+                bool flag = false;
+                foreach (GongFaInfoSO learned in learndeGongFas)
                 {
-                    if (!allInBagGongFaIds.Contains(learnedId))
+                    if (itemId.Equals(learned.id))
                     {
-                        GongFaInfoSO temp = GongFaManager.instance.GetInitGongFaById(itemId).gfInfo;
-                        if (!ulibgf.Contains(temp))
-                        {
-                            ulibgf.Add(temp);
-                        }
+                        flag= true;
+                        break;
                     }
+                }
+                if (!flag)
+                {
+                    ulibgf.Add(GongFaManager.instance.GetInitGongFaById(itemId).gfInfo);
                 }
             }
         }

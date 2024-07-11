@@ -56,24 +56,49 @@ public class InstallGongFaBagButton : MonoBehaviour, IInitializePotentialDragHan
             float rightX = buttonPosition.x + gongFapzt.rect.width /2;
             float topY = buttonPosition.y + gongFapzt.rect.height /2;
             float bottomY = buttonPosition.y - gongFapzt.rect.height / 2;
-            if (gongFapzt.transform.GetComponent<Button>().interactable&& eventData.position.x>leftX && eventData.position.x < rightX && eventData.position.y > bottomY && eventData.position.y<topY)
+            if (gongFapzt.transform.GetComponent<Button>().interactable&& eventData.position.x>leftX && eventData.position.x 
+                < rightX && eventData.position.y > bottomY && eventData.position.y<topY)
             {
-                gongFapzt.GetComponent<Image>().sprite = GongFaManager.instance.GetInitGongFaById(gongFaId).gfInfo.gongFaInBattleIcon;
-                gongFapzt.Find("Name").GetComponent<TMP_Text>().text = GongFaManager.instance.GetInitGongFaById(gongFaId).gfInfo.gongFaName;
+
                 //判断是否已经装备正在拖拽的功法，是则调换位置
                 for (int i = 0; i < gongFas.Count; i++)
                 {
                     if (gongFaId.Equals(PlayerManager.instance.playerData.installOrderGongFaIds[i]))
                     {
-                        PlayerManager.instance.playerData.installOrderGongFaIds[i] = "empty";
-                        GongFaManager.instance.RemoveGongFa(gongFaId, PlayerManager.instance.transform);
-                        gongFas[i].GetComponent<Image>().sprite = empty;
-                        gongFas[i].Find("Name").GetComponent<TMP_Text>().text = "无";
-                        break;
+                        if (gongFapzt.GetComponent<InstallStaticGongFaUI>().GongFaId != null
+                            && !"empty".Equals(gongFapzt.GetComponent<InstallStaticGongFaUI>().GongFaId) 
+                            &&!gongFaId.Equals(gongFapzt.GetComponent<InstallStaticGongFaUI>().GongFaId))
+                        {
+                            PlayerManager.instance.playerData.installOrderGongFaIds[i] = gongFapzt.GetComponent<InstallStaticGongFaUI>().GongFaId;
+                            gongFas[i].GetComponent<Image>().sprite = 
+                                GongFaManager.instance.GetInitGongFaById(gongFapzt.GetComponent<InstallStaticGongFaUI>().GongFaId).gfInfo.gongFaInBattleIcon;
+                            gongFas[i].Find("Name").GetComponent<TMP_Text>().text = 
+                                GongFaManager.instance.GetInitGongFaById(gongFapzt.GetComponent<InstallStaticGongFaUI>().GongFaId).gfInfo.gongFaName;
+                            GongFaManager.instance.RemoveGongFa(gongFaId, PlayerManager.instance.transform);
+                        }
+                        else
+                        {
+                            PlayerManager.instance.playerData.installOrderGongFaIds[i] = "empty";
+                            GongFaManager.instance.RemoveGongFa(gongFaId, PlayerManager.instance.transform);
+                            gongFas[i].GetComponent<Image>().sprite = empty;
+                            gongFas[i].Find("Name").GetComponent<TMP_Text>().text = "无";
+                            break;
+                        }
+
                     }
                 }
+                gongFapzt.GetComponent<Image>().sprite = GongFaManager.instance.GetInitGongFaById(gongFaId).gfInfo.gongFaInBattleIcon;
+                gongFapzt.Find("Name").GetComponent<TMP_Text>().text = GongFaManager.instance.GetInitGongFaById(gongFaId).gfInfo.gongFaName;
                 PlayerManager.instance.playerData.installOrderGongFaIds[gongFapzt.GetComponent<InstallStaticGongFaUI>().InStaticGongFaIndex] = gongFaId;
-                PlayerManager.instance.playerData.instaillGongFas.Add(gongFaId,gongFaLevel);
+                if (PlayerManager.instance.playerData.instaillGongFas.ContainsKey(gongFaId))
+                {
+                    PlayerManager.instance.playerData.instaillGongFas[gongFaId] = gongFaLevel;
+                }
+                else
+                {
+                    PlayerManager.instance.playerData.instaillGongFas.Add(gongFaId, gongFaLevel);
+                }
+                
                 GongFaManager.instance.InstantiateGongFa(gongFaId, PlayerManager.instance.transform);
                 EventManager.Instance.gongFaEvent.AddGongFa(gongFaId,PlayerManager.instance.transform);
                 PropertyManuCtrl.instance.ListInstalledGongFaStaticImage();

@@ -54,7 +54,6 @@ public class PlayerContrllo : MonoBehaviour
     private void GetMainCamera(Scene arg0, LoadSceneMode arg1)
     {
         maincamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        Debug.Log(maincamera.IsDestroyed());
     }
     private void ToTalk()
     {

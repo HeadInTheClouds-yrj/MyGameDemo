@@ -107,7 +107,7 @@ public class GongFaManager : MonoBehaviour
     }
     public GongFa GetInitGongFaById(string gongFaId)
     {
-        if (allGongFaMap.ContainsKey(gongFaId))
+        if (gongFaId!=null && allGongFaMap.ContainsKey(gongFaId))
         {
             return allGongFaMap[gongFaId];
         }

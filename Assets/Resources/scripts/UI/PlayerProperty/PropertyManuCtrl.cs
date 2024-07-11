@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PropertyManuCtrl : MonoBehaviour,IDataPersistence
@@ -42,19 +44,25 @@ public class PropertyManuCtrl : MonoBehaviour,IDataPersistence
     [SerializeField] private RectTransform GongFa_7;
     [SerializeField] private RectTransform GongFa_8;
     private List<RectTransform> gongFaButtons;
+    [SerializeField]
+    private Sprite defaultGongFaSprite;
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
-        Initialize();
+        Initialize(new Scene(),LoadSceneMode.Single);
     }
-    private void Start()
+    private void OnEnable()
     {
-        
+        SceneManager.sceneLoaded += Initialize;
     }
-    public void Initialize()
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= Initialize;
+    }
+    public void Initialize(Scene arg0, LoadSceneMode arg1)
     {
         EventManager.Instance.questEvent.GetQuestMapToPropertyUI();
         data = PlayerManager.instance.playerData;
@@ -136,6 +144,8 @@ public class PropertyManuCtrl : MonoBehaviour,IDataPersistence
         {
             if (data.installOrderGongFaIds[i] == null || data.installOrderGongFaIds[i] == "empty" || data.installOrderGongFaIds[i] == "")
             {
+                gongFaButtons[i].GetComponent<Image>().sprite = defaultGongFaSprite;
+                gongFaButtons[i].GetComponent<InstallStaticGongFaUI>().GongFaId = null;
                 continue;
             }
             gongFaButtons[i].GetComponent<Image>().sprite = GongFaManager.instance.GetInitGongFaById(data.installOrderGongFaIds[i]).gfInfo.gongFaInBattleIcon;

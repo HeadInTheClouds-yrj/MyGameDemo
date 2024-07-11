@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 814c5360d711fb4429b6ed8f436c4d99, type: 3}
+  m_Name: LiJianJue
+  m_EditorClassIdentifier: 
+  itemId: 1
+  <id>k__BackingField: LiJianJue
+  gongFaName: "\u783A\u5251\u51B3"
+  gongFaDisplayName: "\u4FEE\u4E60\u6B64\u6CD5\uFF0C\u5251\u6C14\u7EB5\u6A2A\uFF0C\u8FDE\u7EF5\u4E0D\u7EDD"
+  gongFaRate: 12
+  gongFaMaxLevel: 6
+  gongFaInItemIcon: {fileID: -2088243867, guid: 4bd1678e487c6814da282689c529e110, type: 3}
+  gongFaInBattleIcon: {fileID: -2088243867, guid: 4bd1678e487c6814da282689c529e110, type: 3}
+  gongFaXiuLianSpeek: 0
+  gongFaTypes: 0
+  gongFaPrefab: {fileID: 8290375894555028972, guid: 0375bf3341064cb4f8189984970c84e7, type: 3}
+  gongFaEffectText:
+  - "\u6218\u6597\u72B6\u6001\u6BCF\u79D2\u53E0\u52A01\u5C42\u5251\u6C14"
+  - "\u6218\u6597\u72B6\u6001\u6BCF\u79D2\u53E0\u52A02\u5C42\u5251\u6C14"
+  - "\u6218\u6597\u72B6\u6001\u6BCF\u79D2\u53E0\u52A04\u5C42\u5251\u6C14"
+  - "\u6218\u6597\u72B6\u6001\u6BCF\u79D2\u53E0\u52A08\u5C42\u5251\u6C14"
+  - "\u6218\u6597\u72B6\u6001\u6BCF\u79D2\u53E0\u52A016\u5C42\u5251\u6C14"
+  - "\u6218\u6597\u72B6\u6001\u6BCF\u79D2\u53E0\u52A032\u5C42\u5251\u6C14"

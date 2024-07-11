@@ -22,4 +22,4 @@ MonoBehaviour:
   questStepPrefabs:
   - {fileID: 7216527860734347378, guid: 401a7606478e37f4197435c6a43b6549, type: 3}
   skillId: 0
-  iteamId: sword1
+  iteamId: LiJianJue
