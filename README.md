@@ -58,7 +58,9 @@ IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandle
 #### SourceManager：主要功能： 给一个空的gameobj添加AudioSource组件然后存进一个资源池里，对资源池操作。
 #### ClipManager：主要功能：读取和管理声音的
 #### AudioManager：提供对外接口方法
-
+#### GongFaInfoSO:继承ScriptableObject的类，方便创建功法
+#### GongFa：保存着单个功法的数据
+#### 其余基本都是和ui交互的脚本，很简单。
 # 功法显示和生效
 #### 自己捣鼓的，一坨，略。。。很简单的ugui控制
 # Unity Engine Version
