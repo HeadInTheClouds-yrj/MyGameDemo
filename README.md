@@ -66,6 +66,14 @@ IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandle
 #### GongFa：保存着单个功法的数据
 #### GongFaInvokeContro：实际生效的功法的抽象类，方便集中控制功法运行的时间和其他效果的交互。
 #### 其余基本都是和ui交互的脚本，很简单。
+
+# EnemiesManager敌人管理
+#### 有怪物生产工厂模式，配合任务系统使用。enemy数据收集使用管理者模式让enemy在生产时自己注册到manager集合里
+#### NPCManager：有俩存敌人数据的数组：Dictionary<int,data>全局数据 key为场景索引，data敌人数据。Dictionary<string,NPCCell>() 当前场景数据,key为敌人名字，value为控制行动的脚本。
+#### NPCCell：挂载在npc身上的脚本，方便控制npc。
+
+# EventManager事件管理（对委托的使用）
+
 # Unity Engine Version
 2022.2.0b16
 # 美术资源说明
