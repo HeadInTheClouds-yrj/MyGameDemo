@@ -5,7 +5,7 @@ IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandle
 
 其他创建某种ui时自动添加的组件....
 
-# SaveLoad系统主要使用到的脚本[参考](https://github.com/shapedbyrainstudios/save-load-system"保存系统")
+# SaveLoad系统主要使用到的脚本[参考](https://github.com/shapedbyrainstudios/save-load-system)
 #### JsonUtility: unity引擎自带序列化逆序列化工具.
 
 #### ISerializationCallbackReceiver:继承这个class是因为JsonUtility它序列化不了复杂的数据，比如dictionary<TKey,TValue>,用法是创建一个新的C#脚本，让这个脚本继承 Dictionary<TKey,TValue>和 ISerializationCallbackReceiver.
@@ -16,7 +16,7 @@ IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandle
 
 #### 收集数据主要靠Scene Manager的OnSceneLoaded（）事件进行对继承了特定抽象类的脚本的收集.
 
-# QuestSystem任务系统主要思路[参考](https://github.com/shapedbyrainstudios/quest-system"任务系统")
+# QuestSystem任务系统主要思路[参考](https://github.com/shapedbyrainstudios/quest-system)
 ## 思路：
 #### 首先考虑能不能保存，再一个是先后顺序和多结局，然后是任务是否易于编写和管理。
 ## 核心架构：
@@ -51,3 +51,8 @@ IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandle
 2022.2.0b16
 # 美术资源说明
 此项目不会用商用,美术资源为其他美术作者的作品,除了特效.
+# 音频资源
+1. guigubahuang.mp3 广州鬼谷工作室鬼谷八荒主界面音乐
+2. miTian.mp3 北京若森数字科技有限公司 画江湖之不良人第五季里的bgm
+3. mixkit-dagger-woosh-1487.wav https://mixkit.co/free-sound-effects/sword/
+4. ZhangRanRuoShi.mp3 北京若森数字科技有限公司
