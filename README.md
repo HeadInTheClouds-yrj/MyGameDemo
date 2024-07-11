@@ -34,7 +34,7 @@ IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandle
 #### AnimationControl：继承FSMBase的各个动画类.
 #### 具体使用：实例化FSMManger，使用各种控制方法，传入需要更改的参数状态.
 
-# AI寻路
+# AI寻路 
 #### EnemyAI ：负责执行移动和攻击逻辑方法。
 #### AIData：顾名思义保存行为意向数据的，包括检测到的目标，障碍物，计算出的移动方向和不可移动的方向权重。
 
@@ -47,6 +47,20 @@ IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandle
 #### ObstacleAvoidanceBehaviour：继承SteeringBehaviour，计算八个方向障碍权重，基于AIData数据里的obstacles，保存八个方向的权重数据到AIData.
 
 #### ContextSolver：解析得到的数据，得出最佳移动方向（目标权重 - 障碍权重： 最后比大小）.
+
+# dialogSytem对话功能
+#### 显示和隐藏对话框预制体就行，对话选项动态实例化为每个选项添加事件。对话文本按照特定格式书写可以实现对对话人物的头像显示。对话文本读取streamingAssets文件夹下的txt文件
+
+# 背包功能
+#### 使用的ScriptableObject创建的item，其他方面没什么好说的，基本上都是crud。
+
+# AudioManager声音管理
+#### SourceManager：主要功能： 给一个空的gameobj添加AudioSource组件然后存进一个资源池里，对资源池操作。
+#### ClipManager：主要功能：读取和管理声音的
+#### AudioManager：提供对外接口方法
+
+# 功法显示和生效
+#### 自己捣鼓的，一坨，略。。。很简单的ugui控制
 # Unity Engine Version
 2022.2.0b16
 # 美术资源说明
