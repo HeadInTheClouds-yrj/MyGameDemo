@@ -105,12 +105,20 @@ public class QuestManager : MonoBehaviour,IDataPersistence
     private void FinishQuest(string id)
     {
         Quest quest = GetQuestById(id);
-        Reward(id);
+        Reward(GetQuestById(id).info.iteamId);
         ChangeQuestState(quest.info.id, QuestState.FINISHED);
     }
     private void Reward(string id)
     {
-        InventoryManager.Instance.AddItem(InventoryManager.Instance.GetItemById(GetQuestById(id).info.iteamId));
+        InventoryManager.Instance.AddItem(InventoryManager.Instance.GetItemById(id));
+        if (PlayerManager.instance.playerData.itemIds.ContainsKey(id))
+        {
+            PlayerManager.instance.playerData.itemIds[id]++;
+        }
+        else
+        {
+            PlayerManager.instance.playerData.itemIds.Add(id, 1);
+        }
     }
     private void QuestStepStateChange(string questId, int currentQuestStepIndex, QuestStepState questStepState)
     {

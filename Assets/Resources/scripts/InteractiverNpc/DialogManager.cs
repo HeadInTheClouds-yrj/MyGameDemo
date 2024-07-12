@@ -165,6 +165,10 @@ public class DialogManager : MonoBehaviour
     private void ShowChooseButton(string[] allChooseDialog)
     {
         int i = 0;
+        foreach (Transform item in contentUI.transform)
+        {
+            Destroy(item.gameObject);
+        }
         foreach (string choose in allChooseDialog)
         {
             GameObject obj = Instantiate(chooseButton,contentUI.transform);

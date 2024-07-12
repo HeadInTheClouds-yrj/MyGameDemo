@@ -17,7 +17,14 @@ public class ItemPickup : MonoBehaviour,IDataPersistence
     {
         InventoryManager.Instance.AddItem(item);
         PlayerManager.instance.playerData.pickupedItemGameObj.Add(this.name);
-        PlayerManager.instance.playerData.itemIds.Add(item.id, item.itemCont);
+        if (PlayerManager.instance.playerData.itemIds.ContainsKey(item.id))
+        {
+            PlayerManager.instance.playerData.itemIds[item.id]++;
+        }
+        else
+        {
+            PlayerManager.instance.playerData.itemIds.Add(item.id, item.itemCont);
+        }
         EventManager.Instance.questEvent.PickUpItem();
         Destroy(gameObject);
     }
