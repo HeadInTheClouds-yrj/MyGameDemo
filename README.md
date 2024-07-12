@@ -34,7 +34,7 @@ IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandle
 #### AnimationControl：继承FSMBase的各个动画类.
 #### 具体使用：实例化FSMManger，使用各种控制方法，传入需要更改的参数状态.
 
-# AI寻路
+# AI寻路 [参考](https://github.com/SunnyValleyStudio/Unity-2D-Context-steering-AI)
 #### EnemyAI ：负责执行移动和攻击逻辑方法。
 #### AIData：顾名思义保存行为意向数据的，包括检测到的目标，障碍物，计算出的移动方向和不可移动的方向权重。
 
@@ -47,6 +47,33 @@ IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandle
 #### ObstacleAvoidanceBehaviour：继承SteeringBehaviour，计算八个方向障碍权重，基于AIData数据里的obstacles，保存八个方向的权重数据到AIData.
 
 #### ContextSolver：解析得到的数据，得出最佳移动方向（目标权重 - 障碍权重： 最后比大小）.
+
+# dialogSytem对话功能
+#### 显示和隐藏对话框预制体就行，对话选项动态实例化为每个选项添加事件。对话文本按照特定格式书写可以实现对对话人物的头像显示。对话文本读取streamingAssets文件夹下的txt文件
+
+# 背包功能
+#### 使用的ScriptableObject创建的item，其他方面没什么好说的，基本上都是crud。
+
+# AudioManager声音管理
+#### SourceManager：主要功能： 给一个空的gameobj添加AudioSource组件然后存进一个资源池里，对资源池操作。
+#### ClipManager：主要功能：读取和管理声音的
+#### AudioManager：提供对外接口方法
+
+# 功法显示和生效
+#### 自己捣鼓的，一坨，略。。。很简单的ugui控制
+#### GongFaManager：完成功法加载和初始化，提供对外接口方法。对各组数据的操作。
+#### GongFaInfoSO:继承ScriptableObject的类，方便创建功法
+#### GongFa：保存着单个功法的数据
+#### GongFaInvokeContro：实际生效的功法的抽象类，方便集中控制功法运行的时间和其他效果的交互。
+#### 其余基本都是和ui交互的脚本，很简单。
+
+# EnemiesManager敌人管理
+#### 有怪物生产工厂模式，配合任务系统使用。enemy数据收集使用管理者模式让enemy在生产时自己注册到manager集合里
+#### NPCManager：有俩存敌人数据的数组：Dictionary<int,data>全局数据 key为场景索引，data敌人数据。Dictionary<string,NPCCell>() 当前场景数据,key为敌人名字，value为控制行动的脚本。
+#### NPCCell：挂载在npc身上的脚本，方便控制npc。
+
+# EventManager事件管理（对委托的使用）
+
 # Unity Engine Version
 2022.2.0b16
 # 美术资源说明
