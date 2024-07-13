@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: KillEnimy
   m_EditorClassIdentifier: 
   <id>k__BackingField: KillEnimy
-  displayName: "\u6740\u6B7B\u8FD1\u6218\u654C\u4EBA"
+  displayName: "fsfgg\u6740\u6B7B\u8FD1\u6218\u654C\u4EBA"
   questType: 1
   levelRequirement: 0
   killEnimiesCont: 0

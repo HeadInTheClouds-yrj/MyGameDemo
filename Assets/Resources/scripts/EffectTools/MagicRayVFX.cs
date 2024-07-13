@@ -12,9 +12,9 @@ public class MagicRayVFX : MonoBehaviour
     private string START_SHOOT_POSITION = "StartShootPosition";
     private string PER_POWERFULL_START_POSITION = "PerPowerfullStartPosition";
     [SerializeField]
-    private Transform player;
+    private Transform mainCamera;
     [SerializeField]
-    private LayerMask mask;
+    private LayerMask targetMask;
     private VisualEffect visualEffect;
     // Start is called before the first frame update
     [SerializeField] 
@@ -74,9 +74,9 @@ public class MagicRayVFX : MonoBehaviour
         //tempHit= true;
         //tempflag = true;
         //counttime = 0;
-        StartCoroutine(ShootRayCountTime(transform,visualEffect,targetPosition,mask));
+        StartCoroutine(ShootRayCountTime(transform,visualEffect,targetPosition, targetMask));
     }
-    IEnumerator ShootRayCountTime(Transform transform,VisualEffect visualEffect,Vector3 targetPosition,LayerMask mask)
+    IEnumerator ShootRayCountTime(Transform transform,VisualEffect visualEffect,Vector3 targetPosition,LayerMask targetMask)
     {
         float counttime = 0;
         bool raycastHitFlag = true;
@@ -87,7 +87,7 @@ public class MagicRayVFX : MonoBehaviour
             counttime += Time.deltaTime;
             if (counttime>.23f && raycastHitFlag)
             {
-                RaycastHit2D[] all = Physics2D.RaycastAll(transform.position, (Vector3)targetPosition - transform.position,((Vector3)targetPosition - transform.position).magnitude * 100f , mask);
+                RaycastHit2D[] all = Physics2D.RaycastAll(transform.position, (Vector3)targetPosition - transform.position,((Vector3)targetPosition - transform.position).magnitude * 100f , targetMask);
                 foreach (RaycastHit2D item in all)
                 {
                     Debug.Log(item.transform.name);
@@ -111,7 +111,7 @@ public class MagicRayVFX : MonoBehaviour
         visualEffect.SetFloat(BEGING_TOTAL_TIME, 0f);
         visualEffect.SetVector2(ATTACK_DIRECTION, direction.normalized);
         visualEffect.SetVector3(START_SHOOT_POSITION, endPosition);
-        visualEffect.SetVector3(PER_POWERFULL_START_POSITION, new Vector3(transform.position.x - player.position.x, transform.position.y - player.position.y, 0));
+        visualEffect.SetVector3(PER_POWERFULL_START_POSITION, new Vector3(transform.position.x - mainCamera.position.x, transform.position.y - mainCamera.position.y, 0));
         visualEffect.Play();
     }
     private Vector3 GetStartPosition(Vector2 dir,Vector2 owner, Vector2 endPosition, float redius = 2f)

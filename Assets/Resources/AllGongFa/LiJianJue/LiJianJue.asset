@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814c5360d711fb4429b6ed8f436c4d99, type: 3}
   m_Name: LiJianJue
   m_EditorClassIdentifier: 
-  itemId: 1
+  itemId: LiJianJue
   <id>k__BackingField: LiJianJue
   gongFaName: "\u783A\u5251\u51B3"
   gongFaDisplayName: "\u4FEE\u4E60\u6B64\u6CD5\uFF0C\u5251\u6C14\u7EB5\u6A2A\uFF0C\u8FDE\u7EF5\u4E0D\u7EDD"

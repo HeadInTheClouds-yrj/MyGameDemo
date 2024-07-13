@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireballAttack
   m_EditorClassIdentifier: 
   id: FireballAttack
-  itemname: 
+  itemname: "\u5E73\u5E73\u65E0\u5947\u7684\u706B\u7403"
   prefeberPath: 
   value: 0
   itemCont: 1

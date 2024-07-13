@@ -9,8 +9,13 @@ public class ItemPickup : MonoBehaviour,IDataPersistence
     [SerializeField]
     private Item item;
     private bool playerIsNear;
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
     private void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = item.icon;
+
         CheckPickupedItem();
     }
     void Pickup()

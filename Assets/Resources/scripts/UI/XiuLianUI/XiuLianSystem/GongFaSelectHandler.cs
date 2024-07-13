@@ -27,14 +27,14 @@ public class GongFaSelectHandler : MonoBehaviour
         effectTextContent = UIManager.instance.GetUI("DiscipleBedroom", "EffectContent_N").transform;
         pressedButton = UIManager.instance.GetUI("DiscipleBedroom", "PressedButton_N").GetComponent<Button>();
         pressedButtonText = UIManager.instance.GetUI("DiscipleBedroom", "PressedText_N").GetComponent<TMP_Text>();
-        currentGongFaImage = UIManager.instance.GetUI("DiscipleBedroom", "CurrentGongFa_N").GetComponent<Image>();
+        currentGongFaImage = UIManager.instance.GetUI("DiscipleBedroom", "CurrentSelect_N").GetComponent<Image>();
     }
     public void GongFaManuOnClick()
     {
         PropertyInit();
         currentGongFaImage.sprite = info.gongFaInBattleIcon;
         displayNameText.text = info.gongFaDisplayName;
-        gongFaEffectTextInit();
+        GongFaEffectTextInit();
         if (currentManu.Equals(CurrentXiuLianManu.GongFaStudy))
         {
             pressedButton.interactable = true;
@@ -54,11 +54,11 @@ public class GongFaSelectHandler : MonoBehaviour
                 pressedButtonText.text = "¾«½ø";
                 pressedButton.onClick.RemoveAllListeners();
                 pressedButton.onClick.AddListener(LevelUPGongFa);
-                pressedButton.onClick.AddListener(gongFaEffectTextInit);
+                pressedButton.onClick.AddListener(GongFaEffectTextInit);
             }
         }
     }
-    private void gongFaEffectTextInit()
+    private void GongFaEffectTextInit()
     {
         foreach (Transform item in effectTextContent)
         {
@@ -98,7 +98,7 @@ public class GongFaSelectHandler : MonoBehaviour
     private void StudyGongFa()
     {
         XiuLianInteractManager.Instance.AddLearnedGongFa(info.id);
-        XiuLianInteractManager.Instance.RevomUnLearnedInBagGongFaById(info.id);
+        XiuLianInteractManager.Instance.RemoveUnLearnedInBagGongFaById(info.id);
         XiuLianInteractManager.Instance.AddLearnedGongFaToPlayerData(info);
         RoolBackGongFaManu();
         pressedButton.onClick.RemoveListener(StudyGongFa);

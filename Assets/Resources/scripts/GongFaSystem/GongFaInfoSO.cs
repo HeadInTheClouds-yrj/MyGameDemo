@@ -6,7 +6,8 @@ using UnityEngine;
 public class GongFaInfoSO : ScriptableObject
 {
     [Header("在背包中的ID")]
-    public int itemId;
+    [field: SerializeField]
+    public string itemId;
     [field: SerializeField] public string id { get; set; }
     [Header("功法名字")]
     public string gongFaName;
@@ -26,6 +27,7 @@ public class GongFaInfoSO : ScriptableObject
     private void OnValidate()
     {
         #if UNITY_EDITOR
+            itemId = this.id;
             id = this.name;
             UnityEditor.EditorUtility.SetDirty(this);
         #endif

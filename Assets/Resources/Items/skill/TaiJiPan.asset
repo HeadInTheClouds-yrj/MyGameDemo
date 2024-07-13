@@ -16,7 +16,7 @@ MonoBehaviour:
   itemname: "\u592A\u6781\u53CD\u51FB\u76FE"
   prefeberPath: 
   value: 0
-  itemCont: 0
+  itemCont: 1
   Bagicon: {fileID: 21300000, guid: 80b5e6896a6418e4ea810cf50eca8f22, type: 3}
   icon: {fileID: 21300000, guid: 80b5e6896a6418e4ea810cf50eca8f22, type: 3}
   itemkinde: 5

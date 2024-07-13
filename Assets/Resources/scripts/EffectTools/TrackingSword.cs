@@ -33,9 +33,9 @@ public class TrackingSword : MonoBehaviour
             Vector2 randomTarget = new Vector2(target.position.x + Random.Range(-2.5f, 2.5f), target.position.y + Random.Range(-2.5f, 2.5f));
             direction = randomTarget - flySword.position;
             direction.Normalize();
-            float rotateAmount = Vector3.Cross(direction, -transform.up).z;
+            float rotateAmount = Vector3.Cross(direction, transform.right).z;
             flySword.angularVelocity = -rotateAmount * rotateSpeed;
-            flySword.velocity = -transform.up * flySpeed;
+            flySword.velocity = transform.right * flySpeed;
             Collider2D collider2d = Physics2D.OverlapCircle(transform.position, .1f, npcLayerMask);
             if (lastHitTime < attackCoolingTime)
             {
@@ -56,9 +56,9 @@ public class TrackingSword : MonoBehaviour
             target = owner;
             direction = (Vector2)target.position - flySword.position;
             direction.Normalize();
-            float rotateAmount = Vector3.Cross(direction, -transform.up).z;
+            float rotateAmount = Vector3.Cross(direction, transform.right).z;
             flySword.angularVelocity = -rotateAmount * rotateSpeed;
-            flySword.velocity = -transform.up * flySpeed;
+            flySword.velocity = transform.right * flySpeed;
         }
     }
     public void InitializedSword(Transform owner ,Transform target, LayerMask npcLayerMask, float flySpeed=100f, float rotateSpeed=500f)
