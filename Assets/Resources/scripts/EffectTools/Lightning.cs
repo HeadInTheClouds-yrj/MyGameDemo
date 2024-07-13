@@ -8,7 +8,7 @@ public class Lightning : MonoBehaviour
     [SerializeField] private VisualEffect effect;
     private void OnEnable()
     {
-        EventManager.Instance.InputEvent.OnGetRightMouseDown += PlayVFXEffect_Onetwice;
+        //EventManager.Instance.InputEvent.OnGetRightMouseDown += PlayVFXEffect_Onetwice;
     }
     // Start is called before the first frame update
     void Start()

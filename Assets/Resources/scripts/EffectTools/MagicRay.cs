@@ -19,16 +19,16 @@ public class MagicRay : MonoBehaviour
     {
         instance = this;
     }
-    private void OnEnable()
-    {
-        EventManager.Instance.InputEvent.OnGetLeftMouse += MagicRayPreWarm;
-        EventManager.Instance.InputEvent.OnGetLeftMouseUp += FireMagicRay;
-    }
-    private void OnDisable()
-    {
-        EventManager.Instance.InputEvent.OnGetLeftMouse -= MagicRayPreWarm;
-        EventManager.Instance.InputEvent.OnGetLeftMouseUp -= FireMagicRay;
-    }
+    //private void OnEnable()
+    //{
+    //    EventManager.Instance.InputEvent.OnGetLeftMouse += MagicRayPreWarm;
+    //    EventManager.Instance.InputEvent.OnGetLeftMouseUp += FireMagicRay;
+    //}
+    //private void OnDisable()
+    //{
+    //    EventManager.Instance.InputEvent.OnGetLeftMouse -= MagicRayPreWarm;
+    //    EventManager.Instance.InputEvent.OnGetLeftMouseUp -= FireMagicRay;
+    //}
 
     private void MagicRayPreWarm()
     {
@@ -226,11 +226,11 @@ public class MagicRay : MonoBehaviour
         {
             foreach (var item in hit)
             {
-                if (item.transform.TryGetComponent<NpcAI>(out NpcAI npcAI))
-                {
+                //if (item.transform.TryGetComponent<NpcAI>(out NpcAI npcAI))
+                //{
 
-                }
-                else
+                //}
+                
                 {
                     endParticle.position = item.transform.position;
                     Vector3 self_target = item.transform.position - start.position;

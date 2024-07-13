@@ -43,12 +43,12 @@ public class TrackingSword : MonoBehaviour
             }
             if (collider2d != null)
             {
-                if (collider2d.transform.TryGetComponent(out NpcAI npc) && lastHitTime > 2f)
-                {
-                    Debug.Log(npc.name);
-                    npc.ReduceBlood(Random.Range(1, 101));
-                    lastHitTime = 0;
-                }
+                //if (collider2d.transform.TryGetComponent(out NpcAI npc) && lastHitTime > 2f)
+                //{
+                //    Debug.Log(npc.name);
+                //    npc.ReduceBlood(Random.Range(1, 101));
+                //    lastHitTime = 0;
+                //}
             }
         }
         else
