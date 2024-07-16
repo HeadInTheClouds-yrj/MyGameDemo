@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b4c3251dc77fd048aa7387f41199334, type: 3}
-  m_Name: FlaySword
+  m_Name: FlySword
   m_EditorClassIdentifier: 
-  id: FlaySword
+  id: FlySword
   itemname: "\u672C\u547D\u98DE\u5251"
   prefeberPath: 
   value: 0

@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gongFaUIPrefab: {fileID: 6761182179036781368, guid: 4a8943b7f367dbe49ad05ecdd419f788, type: 3}
-  skillUIPrefab: {fileID: 8828723083429102401, guid: 0b95399680f89184e887f9ec54c9f106, type: 3}
+  skillUIPrefab: {fileID: 6761182179036781368, guid: 4732aa7bb98729641b1e9c8f9c5091b4, type: 3}
   content: {fileID: 1795524497}
 --- !u!4 &18410781
 Transform:

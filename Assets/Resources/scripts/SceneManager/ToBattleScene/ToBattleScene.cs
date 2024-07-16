@@ -16,6 +16,5 @@ public class ToBattleScene : MonoBehaviour
         {
             SceneManager.LoadSceneAsync(2);
         }
-        Debug.Log(SceneManager.GetActiveScene().buildIndex);
     }
 }

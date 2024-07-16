@@ -7,18 +7,26 @@ using UnityEngine.VFX;
 
 public class MagicRayVFX : MonoBehaviour
 {
+    private string PER_PARTICLE_LIFE_TIME = "PerParticleLifeTime";
     private string BEGING_TOTAL_TIME = "BegingTotalTime";
-    private string ATTACK_DIRECTION = "AttackDirection";
+    private string MAIN_ATTACK_DIRECTION = "MainAttackDirection";
+    private string ATTACK_DIRECTION_1 = "AttackDirection1";
+    private string ATTACK_DIRECTION_2 = "AttackDirection2";
     private string START_SHOOT_POSITION = "StartShootPosition";
     private string PER_POWERFULL_START_POSITION = "PerPowerfullStartPosition";
+    private string SHOOT_RAY_SPEED = "ShootRaySpeed";
+    private string PER_START_ANGLE = "PerStartAngle";
+    [SerializeField]
+    private GameObject project;
     [SerializeField]
     private Transform mainCamera;
     [SerializeField]
     private LayerMask targetMask;
+    [SerializeField]
     private VisualEffect visualEffect;
     // Start is called before the first frame update
-    [SerializeField] 
-    private float redius = 2f;
+    [SerializeField]
+    private float redius = 1f;
     private void OnEnable()
     {
         //EventManager.Instance.InputEvent.OnGetRightMouseDown += Shoot;
@@ -29,7 +37,8 @@ public class MagicRayVFX : MonoBehaviour
     }
     void Start()
     {
-        visualEffect= GetComponentInChildren<VisualEffect>();
+        mainCamera = Camera.main.transform;
+        Destroy(gameObject,2f);
     }
 
     // Update is called once per frame
@@ -55,11 +64,15 @@ public class MagicRayVFX : MonoBehaviour
         //    tempflag = false;
         //}
     }
-    float counttime = 0;
-    bool tempflag = false;
-    bool tempHit = false;
-    Vector3 startPosition;
-    Vector3 endPosition1;
+    public void PlayerShoot()
+    {
+        StartCoroutine(ShootRayCountTime(PlayerManager.instance.transform, visualEffect, Camera.main.ScreenToWorldPoint(Input.mousePosition), targetMask));
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="transform">这个参数需要释放人的位置</param>
+    /// <param name="targetPosition"></param>
     public void Shoot(Transform transform,Vector3 targetPosition)
     {
         //startPosition = transform.position;
@@ -76,25 +89,31 @@ public class MagicRayVFX : MonoBehaviour
         //counttime = 0;
         StartCoroutine(ShootRayCountTime(transform,visualEffect,targetPosition, targetMask));
     }
+    IEnumerator SelfDestruct()
+    {
+        int targetTime = 1, countTime = 0;
+        while (targetTime == countTime)
+        {
+            countTime++;
+            yield return new WaitForSeconds(1);
+        }
+        Destroy(gameObject);
+    }
     IEnumerator ShootRayCountTime(Transform transform,VisualEffect visualEffect,Vector3 targetPosition,LayerMask targetMask)
     {
         float counttime = 0;
-        bool raycastHitFlag = true;
+        bool raycastHitFlag = false;
         //Vector2 end = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         InitializePropety(transform, visualEffect, targetPosition);
         while (true)
         {
             counttime += Time.deltaTime;
-            if (counttime>.23f && raycastHitFlag)
+            if (counttime> visualEffect.GetFloat(PER_PARTICLE_LIFE_TIME)&&!raycastHitFlag)
             {
-                RaycastHit2D[] all = Physics2D.RaycastAll(transform.position, (Vector3)targetPosition - transform.position,((Vector3)targetPosition - transform.position).magnitude * 100f , targetMask);
-                foreach (RaycastHit2D item in all)
-                {
-                    Debug.Log(item.transform.name);
-                }
-                raycastHitFlag = !raycastHitFlag;
+                ShootProjectDetector();
+                raycastHitFlag=true;
             }
-            if (counttime>.4f)
+            if (counttime>visualEffect.GetFloat(PER_PARTICLE_LIFE_TIME)+0.3f)
             {
                 visualEffect.SetFloat("BegingTotalTime", 9999999f);
                 break;
@@ -103,16 +122,41 @@ public class MagicRayVFX : MonoBehaviour
         }
         yield return null;
     }
+    Quaternion tempQuaternion;
     private void InitializePropety(Transform transform, VisualEffect visualEffect, Vector3 targetPosition)
     {
         Vector2 end = targetPosition;
         Vector2 direction = end - (Vector2)transform.position;
         Vector3 endPosition = GetStartPosition(direction, transform.position, end, redius);
         visualEffect.SetFloat(BEGING_TOTAL_TIME, 0f);
-        visualEffect.SetVector2(ATTACK_DIRECTION, direction.normalized);
+        visualEffect.SetVector2(ATTACK_DIRECTION_1, direction.normalized);
+        visualEffect.SetVector2(ATTACK_DIRECTION_2, direction.normalized);
+        visualEffect.SetVector2(MAIN_ATTACK_DIRECTION, direction.normalized);
         visualEffect.SetVector3(START_SHOOT_POSITION, endPosition);
-        visualEffect.SetVector3(PER_POWERFULL_START_POSITION, new Vector3(transform.position.x - mainCamera.position.x, transform.position.y - mainCamera.position.y, 0));
+        visualEffect.SetVector3(PER_POWERFULL_START_POSITION, new Vector3(transform.position.x - Camera.main.transform.position.x, transform.position.y - Camera.main.transform.position.y, 0));
+        tempQuaternion = Quaternion.Euler(new Vector3(0, 0, GetAngleForMousePosition() + 90));
+        visualEffect.SetVector3(PER_START_ANGLE, new Vector3(-GetAngleForMousePosition(), 80, 0));
+        //
+
+        //
+
         visualEffect.Play();
+    }
+    private void ShootProjectDetector()
+    {
+        //Quaternion tempQuaternion = Quaternion.Euler(new Vector3(0, 0, GetAngleForMousePosition() + 90));
+        BowControl bowControl = Instantiate(project, visualEffect.GetVector3(START_SHOOT_POSITION), tempQuaternion).GetComponent<BowControl>();
+        bowControl.swordVelocity = visualEffect.GetFloat(SHOOT_RAY_SPEED);
+        bowControl.playerDamge = 6;
+    }
+    private float GetAngleForMousePosition()
+    {
+        Vector3 mouseposition = Input.mousePosition;
+        Vector3 playerposition = Camera.main.WorldToScreenPoint(PlayerManager.instance.transform.position);
+        mouseposition.x = mouseposition.x - playerposition.x;
+        mouseposition.y = mouseposition.y - playerposition.y;
+        float angle = Mathf.Atan2(mouseposition.y, mouseposition.x) * Mathf.Rad2Deg;
+        return angle;
     }
     private Vector3 GetStartPosition(Vector2 dir,Vector2 owner, Vector2 endPosition, float redius = 2f)
     {

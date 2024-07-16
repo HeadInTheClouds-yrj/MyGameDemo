@@ -40,13 +40,11 @@ public class OrderKeyForUI : MonoBehaviour
     public void ManuForSetUpButton()
     {
         UIManager.instance.InvokeOpenUI();
+        EventManager.Instance.gameStateEvent.ChangeGameState(State.UI);
     }
     public void ManuForOption()
     {
         UIManager.instance.InvokeCloseUI();
-    }
-    // Update is called once per frame
-    void Update()
-    {
+        EventManager.Instance.gameStateEvent.ChangeGameState(State.BATTLE);
     }
 }

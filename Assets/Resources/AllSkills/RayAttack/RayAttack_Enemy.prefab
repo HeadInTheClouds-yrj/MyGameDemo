@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8792868029675359614}
   - component: {fileID: 5474047758808888138}
   m_Layer: 0
-  m_Name: RayAttack
+  m_Name: RayAttack_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -12,10 +12,12 @@ public class EventManager : MonoBehaviour
     public InputEvent inputEvent;
     public BattleEvent battleEvent;
     public GongFaEvent gongFaEvent;
+    public SkillEvent skillEvent;
+    public GameStateEvent gameStateEvent;
     private void Awake()
     {
         Instance = this;
-
+        
         questEvent = new QuestEvent();
         enimiesEvent = new EnimiesEvent();
         playerEvent = new PlayerEvent();
@@ -23,5 +25,7 @@ public class EventManager : MonoBehaviour
         inputEvent = new InputEvent();
         battleEvent = new BattleEvent();
         gongFaEvent= new GongFaEvent();
+        skillEvent = new SkillEvent();
+        gameStateEvent = new GameStateEvent();
     }
 }

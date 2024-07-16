@@ -7,4 +7,6 @@ public interface Humanoid
     Data GetData();
     Dictionary<string, Data> GetTeams();
     Dictionary<string, Data> GetEnimies();
+    List<Transform> GetOwnerTeams();
+    List<Transform> GetEnemies();
 }

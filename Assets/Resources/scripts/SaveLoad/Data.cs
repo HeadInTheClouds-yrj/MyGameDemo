@@ -25,11 +25,14 @@ public class Data
     public Vector3 currentPosition;
     public List<string> pickupedItemGameObj;
     public string[] installOrderGongFaIds;
+    public string[] installOrderSkillIds;
     public SerializableDictionary<string,int> itemIds;
     public SerializableDictionary<string, int> instaillGongFas;
+    public SerializableDictionary<string, int> installSkills;
     public SerializableDictionary<string, int> learnedGongFas;
     public SerializableDictionary<string, int> learnedSkills;
     public List<QuestData> questDatas;
+    public int[] skillKey;
 
     public Data()
     {
@@ -51,15 +54,21 @@ public class Data
         currentPosition = new Vector3(0, 0, 0);
         pickupedItemGameObj = new List<string>();
         installOrderGongFaIds = new string[9];
+        installOrderSkillIds = new string[10];
         for (int i = 0; i < installOrderGongFaIds.Length; i++)
         {
             installOrderGongFaIds[i] = "empty";
         }
+        for (int i = 0; i < installOrderSkillIds.Length; i++)
+        {
+            installOrderSkillIds[i] = "empty";
+        }
         itemIds = new SerializableDictionary<string, int>();
         instaillGongFas = new SerializableDictionary<string, int>();
+        installSkills = new SerializableDictionary<string, int>();
         learnedGongFas = new SerializableDictionary<string, int>();
         learnedSkills = new SerializableDictionary<string, int>();
         questDatas = new List<QuestData>();
-
+        skillKey = new int[] { (int)KeyCode.Q, (int)KeyCode.E, (int)KeyCode.R, (int)KeyCode.T, (int)KeyCode.F, (int)KeyCode.Mouse0, (int)KeyCode.Mouse1, (int)KeyCode.Mouse2, (int)KeyCode.Alpha1, (int)KeyCode.Alpha2 };
     }
 }

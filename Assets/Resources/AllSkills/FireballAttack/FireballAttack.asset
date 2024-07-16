@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d3a2d2027db409449f6501df844428b, type: 3}
-  m_Name: FlySword
+  m_Name: FireballAttack
   m_EditorClassIdentifier: 
-  itemId: FlySword
-  id: FlySword
-  skillName: "\u672C\u547D\u98DE\u5251"
-  skillDisplayName: "\u91D1\u4E39\u671F\u53EF\u653E\u5FC3\u98DF\u7528"
+  itemId: FireballAttack
+  id: FireballAttack
+  skillName: 12123
+  skillDisplayName: 213123
   skillEffectPrefab: {fileID: 0}
-  skillInItemIcon: {fileID: 0}
-  skillInBattleIcon: {fileID: 0}
+  skillInItemIcon: {fileID: 21300000, guid: 5b2e35b3d02aa894db64058c00632991, type: 3}
+  skillInBattleIcon: {fileID: 21300000, guid: 5b2e35b3d02aa894db64058c00632991, type: 3}
   SkillRate: 0
-  skillEffectText: []
+  skillEffectText:
+  - FireballAttack
+  - FireballAttack
+  - FireballAttack

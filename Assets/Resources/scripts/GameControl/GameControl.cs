@@ -48,6 +48,7 @@ public class GameControl : MonoBehaviour
             allNpcCell = new Dictionary<string, NpcCell>();
         }
         UIManager.instance.InvokeCloseUI();
+
     }
 
     // Update is called once per frame
@@ -61,7 +62,9 @@ public class GameControl : MonoBehaviour
             {
                 npcCell.HandleUpdate();
             }
-        }else if (state == GameState.Dialog)
+            EventManager.Instance.gameStateEvent.ChangeGameState(State.BATTLE);
+        }
+        else if (state == GameState.Dialog)
         {
             DialogManager.Instance.HandleUpdate();
         }else if (state==GameState.Fighting)

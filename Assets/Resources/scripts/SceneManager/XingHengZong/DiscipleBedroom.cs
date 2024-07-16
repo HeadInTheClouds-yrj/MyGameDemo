@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class DiscipleBedroom : MonoBehaviour,IDataPersistence
+public class DiscipleBedroom : MonoBehaviour
 {
     private void Awake()
     {
@@ -24,16 +24,17 @@ public class DiscipleBedroom : MonoBehaviour,IDataPersistence
     }
     public void ToDiZiRoom()
     {
+        EventManager.Instance.gameStateEvent.ChangeGameState(State.UI);
         SceneManager.LoadSceneAsync(4,LoadSceneMode.Single);
     }
     public void LeftZongMen()
     {
+        EventManager.Instance.gameStateEvent.ChangeGameState(State.BATTLE);
         SceneManager.LoadSceneAsync(2, LoadSceneMode.Single);
     }
 
     public void LoadGame(GameData gameData)
     {
-        PlayerManager.instance.playerData.scenceIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
     public void SaveGame(GameData gameData)

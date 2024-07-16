@@ -86,6 +86,15 @@ public class InstallGongFaBagButton : MonoBehaviour, IInitializePotentialDragHan
                         }
 
                     }
+                    else
+                    {
+                        if (gongFapzt.GetComponent<InstallStaticGongFaUI>().GongFaId != null
+                            && !"empty".Equals(gongFapzt.GetComponent<InstallStaticGongFaUI>().GongFaId)
+                            && !gongFaId.Equals(gongFapzt.GetComponent<InstallStaticGongFaUI>().GongFaId))
+                        {
+                            GongFaManager.instance.RemoveGongFa(gongFapzt.GetComponent<InstallStaticGongFaUI>().GongFaId,PlayerManager.instance.transform);
+                        }
+                    }
                 }
                 gongFapzt.GetComponent<Image>().sprite = GongFaManager.instance.GetInitGongFaById(gongFaId).gfInfo.gongFaInBattleIcon;
                 gongFapzt.Find("Name").GetComponent<TMP_Text>().text = GongFaManager.instance.GetInitGongFaById(gongFaId).gfInfo.gongFaName;
@@ -102,7 +111,7 @@ public class InstallGongFaBagButton : MonoBehaviour, IInitializePotentialDragHan
                 GongFaManager.instance.InstantiateGongFa(gongFaId, PlayerManager.instance.transform);
                 EventManager.Instance.gongFaEvent.AddGongFa(gongFaId,PlayerManager.instance.transform);
                 PropertyManuCtrl.instance.ListInstalledGongFaStaticImage();
-                PropertyManuCtrl.instance.ListInstallGongFaBag();
+                PropertyManuCtrl.instance.ListLearnedGongFaBag();
             }
         }
         transform.position = beforeTransformPosition;

@@ -103,7 +103,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
     {
         HitAnimation();
         GetMouseKey();
-        chekAttackcool();
+        //chekAttackcool();
         PlayerMeleeAttack();
         updateUI();
     }
@@ -232,6 +232,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
     }
     private void PlayerBowSwordControl()
     {
+        Debug.Log("what fuck!!!!");
         if (rightMouse && canfire)
         {
             Accumulated();
@@ -376,9 +377,17 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
                 playerData.pickupedItemGameObj.Add(item);
             }
         }
+        for (int i = 0; i < gameData.datas[0].skillKey.Length; i++)
+        {
+            playerData.skillKey[i] = gameData.datas[0].skillKey[i];
+        }
         for (int i = 0; i < gameData.datas[0].installOrderGongFaIds.Length; i++)
         {
             playerData.installOrderGongFaIds[i] = gameData.datas[0].installOrderGongFaIds[i];
+        }
+        for (int i = 0; i < gameData.datas[0].installOrderSkillIds.Length; i++)
+        {
+            playerData.installOrderSkillIds[i] = gameData.datas[0].installOrderSkillIds[i];
         }
         playerData.itemIds.Clear();
         foreach (var item in gameData.datas[0].itemIds)
@@ -394,6 +403,14 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
             if (!playerData.instaillGongFas.ContainsKey(item.Key))
             {
                 playerData.instaillGongFas.Add(item.Key, item.Value);
+            }
+        }
+        playerData.installSkills.Clear();
+        foreach (var item in gameData.datas[0].installSkills)
+        {
+            if (!playerData.installSkills.ContainsKey(item.Key))
+            {
+                playerData.installSkills.Add(item.Key,item.Value);
             }
         }
         playerData.learnedGongFas.Clear();
@@ -455,9 +472,17 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
                 gameData.datas[0].pickupedItemGameObj.Add(item);
             }
         }
-        for (int i = 0; i < playerData.installOrderGongFaIds[i].Length; i++)
+        for (int i = 0; i < playerData.skillKey.Length; i++)
+        {
+            gameData.datas[0].skillKey[i] = playerData.skillKey[i];
+        }
+        for (int i = 0; i < playerData.installOrderGongFaIds.Length; i++)
         {
             gameData.datas[0].installOrderGongFaIds[i] = playerData.installOrderGongFaIds[i];
+        }
+        for (int i = 0; i < playerData.installOrderSkillIds.Length; i++)
+        {
+            gameData.datas[0].installOrderSkillIds[i] = playerData.installOrderSkillIds[i];
         }
         gameData.datas[0].itemIds.Clear();
         foreach (var item in playerData.itemIds)
@@ -468,6 +493,11 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
         foreach (var item in playerData.instaillGongFas)
         {
             gameData.datas[0].instaillGongFas.Add(item.Key,item.Value);
+        }
+        gameData.datas[0].installSkills.Clear();
+        foreach (var item in playerData.installSkills)
+        {
+            gameData.datas[0].installSkills.Add(item.Key,item.Value);
         }
         gameData.datas[0].learnedGongFas.Clear();
         foreach (var item in playerData.learnedGongFas)
@@ -494,5 +524,20 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
     public Dictionary<string, Data> GetEnimies()
     {
         return null;
+    }
+
+    public List<Transform> GetOwnerTeams()
+    {
+        return null;
+    }
+
+    public List<Transform> GetEnemies()
+    {
+        List<Transform> enemies = new List<Transform>();
+        foreach (NpcCell item in NpcManager.instance.getAllNpcCell().Values)
+        {
+            enemies.Add(item.transform);
+        }
+        return enemies;
     }
 }

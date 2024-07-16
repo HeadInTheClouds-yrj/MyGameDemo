@@ -17,7 +17,10 @@ MonoBehaviour:
   skillName: "\u7075\u6C14\u62A4\u76FE"
   skillDisplayName: "\u7075\u6C14\u5927\u9646\u6700\u5E38\u89C1\u7684\u9632\u62A4\u624B\u6BB5\uFF0C\u7B80\u5355\u6613\u5B66\uFF0C\u6548\u679C\u51FA\u4F17\uFF0C\u771F\u662F\u5C45\u5BB6\u65C5\u884C\u5FC5\u5907\u826F\u672F\u3002"
   skillEffectPrefab: {fileID: 2661941890177943888, guid: ca2c2f4aefcb9a948a40d6da38637404, type: 3}
-  skillInItemIcon: {fileID: 0}
-  skillInBattleIcon: {fileID: 0}
+  skillInItemIcon: {fileID: 21300000, guid: 2888ad453accfbf4bb7611d4c76fb309, type: 3}
+  skillInBattleIcon: {fileID: 21300000, guid: 2888ad453accfbf4bb7611d4c76fb309, type: 3}
   SkillRate: 2
-  skillEffectText: []
+  skillEffectText:
+  - DetonatingVenom
+  - DetonatingVenom
+  - DetonatingVenom

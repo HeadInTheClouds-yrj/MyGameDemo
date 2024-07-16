@@ -147,7 +147,6 @@ public class InventoryManager : MonoBehaviour,IDataPersistence
         foreach (string id in gameData.datas[0].itemIds.Keys)
         {
             Item item = GetItemById(id);
-            Debug.Log(item == null);
             item.itemCont = gameData.datas[0].itemIds[id];
             AddItem(item);
         }

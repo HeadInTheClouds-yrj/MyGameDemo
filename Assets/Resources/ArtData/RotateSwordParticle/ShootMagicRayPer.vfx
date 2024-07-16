@@ -667,8 +667,8 @@ MonoBehaviour:
     max: Infinity
     enumValues: []
     descendantCount: 0
-  - name: PerStarAngle
-    path: PerStarAngle
+  - name: PerStartAngle
+    path: PerStartAngle
     tooltip: 
     sheetType: m_Vector3f
     realType: Vector3
@@ -33191,7 +33191,7 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661616693}
-  m_ExposedName: PerStarAngle
+  m_ExposedName: PerStartAngle
   m_Exposed: 1
   m_Order: 13
   m_Category: 

@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PropertyManuCtrl : MonoBehaviour,IDataPersistence
+public class PropertyManuCtrl : MonoBehaviour
 {
     public static PropertyManuCtrl instance;
     private Data data;
@@ -44,6 +44,20 @@ public class PropertyManuCtrl : MonoBehaviour,IDataPersistence
     [SerializeField] private RectTransform GongFa_7;
     [SerializeField] private RectTransform GongFa_8;
     private List<RectTransform> gongFaButtons;
+    [Header("装备神通页面元素")]
+    [SerializeField] private Transform installSkillBagContent;
+    [SerializeField] private GameObject installSkillPfb;
+    [SerializeField] private RectTransform zhuXiuSkill;
+    [SerializeField] private RectTransform skill_1;
+    [SerializeField] private RectTransform skill_2;
+    [SerializeField] private RectTransform skill_3;
+    [SerializeField] private RectTransform skill_4;
+    [SerializeField] private RectTransform skill_5;
+    [SerializeField] private RectTransform skill_6;
+    [SerializeField] private RectTransform skill_7;
+    [SerializeField] private RectTransform skill_8;
+    [SerializeField] private RectTransform skill_9;
+    private List<RectTransform> skillButtons;
     [SerializeField]
     private Sprite defaultGongFaSprite;
     private void Awake()
@@ -52,17 +66,23 @@ public class PropertyManuCtrl : MonoBehaviour,IDataPersistence
         {
             instance = this;
         }
-        Initialize(new Scene(),LoadSceneMode.Single);
+        Initialize();
+        
+    }
+    private void Start()
+    {
+        SkiilManager.Instance.RegisteSkillKeyBind(skillButtons);
+        gameObject.SetActive(false);
     }
     private void OnEnable()
     {
-        SceneManager.sceneLoaded += Initialize;
+
     }
     private void OnDisable()
     {
-        SceneManager.sceneLoaded -= Initialize;
+
     }
-    public void Initialize(Scene arg0, LoadSceneMode arg1)
+    public void Initialize()
     {
         EventManager.Instance.questEvent.GetQuestMapToPropertyUI();
         data = PlayerManager.instance.playerData;
@@ -79,6 +99,19 @@ public class PropertyManuCtrl : MonoBehaviour,IDataPersistence
             GongFa_7,
             GongFa_8
         };
+        skillButtons = new List<RectTransform>
+        {
+            zhuXiuSkill,
+            skill_1,
+            skill_2,
+            skill_3,
+            skill_4,
+            skill_5,
+            skill_6,
+            skill_7,
+            skill_8,
+            skill_9
+        };
         InitStaticGongFaManuIndex();
     }
     ///以下为属性页面使用
@@ -91,6 +124,8 @@ public class PropertyManuCtrl : MonoBehaviour,IDataPersistence
         base_LingQi.text = "灵气值:" + data.currentLingQi + " / " + data.maxLingQi;
         base_RegenerateLingQi.text = "灵气回复:" + data.regenerateLingQi + "/每秒";
         base_LingShi.text = "灵石:" + data.lingShi.ToString();
+
+        EventManager.Instance.gameStateEvent.ChangeGameState(State.UI);
     }
     ///以下为任务页面使用
 
@@ -121,7 +156,7 @@ public class PropertyManuCtrl : MonoBehaviour,IDataPersistence
             }
         }
     }
-    public void ListInstallGongFaBag()
+    public void ListLearnedGongFaBag()
     {
         foreach (Transform item in installGongFaBagContent)
         {
@@ -136,6 +171,21 @@ public class PropertyManuCtrl : MonoBehaviour,IDataPersistence
             installGong.SetGongFaButton(gongFaId, data.learnedGongFas[gongFaId],gongFaButtons);
             gongFaButton.sprite = GongFaManager.instance.GetInitGongFaById(gongFaId).gfInfo.gongFaInBattleIcon;
             gongFaName.text = GongFaManager.instance.GetInitGongFaById(gongFaId).gfInfo.name;
+        }
+    }
+    public void ListLearnedSkillBag()
+    {
+        foreach (Transform item in installSkillBagContent) { Destroy(item.gameObject); }
+        foreach (string skillId in data.learnedSkills.Keys)
+        {
+            GameObject obj = Instantiate<GameObject>(installSkillPfb, installSkillBagContent);
+            InstallSkillBagButton installSkill = obj.GetComponent<InstallSkillBagButton>();
+            var skillButton = obj.GetComponent<Image>();
+            var skillName = obj.transform.Find("Name").GetComponent<TMP_Text>();
+            SkillInfoSO tempInfo = SkiilManager.Instance.GetSkillInfoSOById(skillId);
+            installSkill.SetSkillMessage(tempInfo,skillButtons);
+            skillButton.sprite = tempInfo.skillInBattleIcon;
+            skillName.text = tempInfo.skillName;
         }
     }
     public void ListInstalledGongFaStaticImage()
@@ -154,12 +204,33 @@ public class PropertyManuCtrl : MonoBehaviour,IDataPersistence
             gongFaButtons[i].GetComponent<InstallStaticGongFaUI>().GongFaLevel = data.learnedGongFas[data.installOrderGongFaIds[i]];
         }
     }
+    public void ListInstalledSkillStaticImage()
+    {
+        for (int i = 0; i < data.installOrderSkillIds.Length; i++)
+        {
+            if (data.installOrderSkillIds[i] == null || data.installOrderSkillIds[i] == "empty" || data.installOrderSkillIds[i] == "")
+            {
+                skillButtons[i].GetComponent<Image>().sprite = null;
+                skillButtons[i].GetComponent<InstalledSkillUIHandler>().SetSkillInfoSO(null);
+                skillButtons[i].GetComponent<InstalledSkillUIHandler>().SetDisplayKeyCode(SkiilManager.Instance.GetSkillBindKeyByIndex(i));
+                continue;
+            }
+            skillButtons[i].GetComponent<Image>().sprite = SkiilManager.Instance.GetSkillInfoSOById(data.installOrderSkillIds[i]).skillInBattleIcon;
+            skillButtons[i].Find("Name").GetComponent<TMP_Text>().text = SkiilManager.Instance.GetSkillInfoSOById(data.installOrderSkillIds[i]).skillName;
+            skillButtons[i].GetComponent<InstalledSkillUIHandler>().SetSkillInfoSO(SkiilManager.Instance.GetSkillInfoSOById(data.installOrderSkillIds[i]));
+            skillButtons[i].GetComponent<InstalledSkillUIHandler>().SetDisplayKeyCode(SkiilManager.Instance.GetSkillBindKeyByIndex(i));
+        }
+    }
     public void InitStaticGongFaManuIndex()
     {
         for (int i = 0; i < 9; i++)
         {
             gongFaButtons[i].GetComponent<InstallStaticGongFaUI>().InStaticGongFaIndex = i;
         }
+    }
+    public List<RectTransform> GetSkillRectTransforms()
+    {
+        return skillButtons;
     }
     public void ListBag()
     {

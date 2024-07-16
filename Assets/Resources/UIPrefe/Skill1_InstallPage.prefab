@@ -203,8 +203,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u592A\u4E59\u5251\u8BC0"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 20f8db5b9d3dea149852e4db03e23dfb, type: 2}
-  m_sharedMaterial: {fileID: -7149318421426342785, guid: 20f8db5b9d3dea149852e4db03e23dfb, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 51315d99d365d70429e1ca49d0793483, type: 2}
+  m_sharedMaterial: {fileID: 7733139254353697556, guid: 51315d99d365d70429e1ca49d0793483, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
