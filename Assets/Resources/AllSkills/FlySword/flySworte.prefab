@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9ad1724aef26d468e537c116eccd55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCoolingTime: 2
+  attackCoolingTime: 0
   flySpeed: 9.06
   rotateSpeed: 171.5
   targetLayerMask:

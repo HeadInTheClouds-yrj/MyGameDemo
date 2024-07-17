@@ -44,6 +44,7 @@ public class NpcCell : MonoBehaviour,XingHeng
         rb2 = GetComponent<Rigidbody2D>();
         enemyAI = GetComponent<EnemyAI>();
         lineRenderer= GetComponent<LineRenderer>();
+        npcData.survival = true;
     }
 
     // Update is called once per frame
@@ -72,16 +73,21 @@ public class NpcCell : MonoBehaviour,XingHeng
     }
     public float NpcReduceHP(float velue)
     {
-        isHit = true;
-        npcData.curenttHealth -= velue;
-        lrX -= lrMaxX * (velue / npcData.maxHealth) * 2;
-        if (lrX < -2f * relativetransformX)
+
+        if (npcData.survival)
         {
-            lrX = -2f * relativetransformX;
+            isHit = true;
+            npcData.curenttHealth -= velue;
+            lrX -= lrMaxX * (velue / npcData.maxHealth) * 2;
+            if (lrX < -2f * relativetransformX)
+            {
+                lrX = -2f * relativetransformX;
+            }
+            ThrowDamageText.instance.ThrowReduceTextFactory(transform, velue);
         }
-        ThrowDamageText.instance.ThrowReduceTextFactory(transform, velue);
-        if (npcData.curenttHealth <= 0)
+        if (npcData.curenttHealth <= 0 && npcData.survival)
         {
+            npcData.survival = false;
             EventManager.Instance.enimiesEvent.EnimyDie(this);
             npcData.curenttHealth = 0;
             moveSpeed = 0;

@@ -3,9 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 public enum State
 {
@@ -159,13 +157,13 @@ public class SkiilManager : MonoBehaviour,IDataPersistence
     private void ReleaseSkill_GlobalLightning()
     {
         // NpcCell可以换一个通用的敌人接口，暂时懒得换了
-        foreach (NpcCell item in NpcManager.instance.getAllNpcCell().Values)
+        for (int i = 0; i < NpcManager.instance.GetNpcCells().Count; i++)
         {
-            GameObject gameObj = Instantiate(GetSkillInfoSOById(GLOBAL_LIGHTNING).skillEffectPrefab, item.transform);
-            if (item != null && !item.IsDestroyed())
+            GameObject gameObj = Instantiate(GetSkillInfoSOById(GLOBAL_LIGHTNING).skillEffectPrefab, NpcManager.instance.GetNpcCells()[i].transform);
+            if (NpcManager.instance.getAllNpcCell().Values != null && !NpcManager.instance.GetNpcCells()[i].IsDestroyed())
             {
                 gameObj.GetComponent<ParticleSystem>().Play();
-                item.NpcReduceHP(8);
+                NpcManager.instance.GetNpcCells()[i].NpcReduceHP(8);
             }
             Destroy(gameObj, 1f);
         }

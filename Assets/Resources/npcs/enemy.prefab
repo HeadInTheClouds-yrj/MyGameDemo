@@ -892,6 +892,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1659202485905296207}
     m_Modifications:
+    - target: {fileID: 132015267291112441, guid: 791e7c1eab9d8a3469c26b8fa61de65b, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5101216821918777160, guid: 791e7c1eab9d8a3469c26b8fa61de65b, type: 3}
       propertyPath: m_Name
       value: HitParticle
@@ -969,6 +973,10 @@ PrefabInstance:
     - target: {fileID: 2661941890177943888, guid: ca2c2f4aefcb9a948a40d6da38637404, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2661941890177943890, guid: ca2c2f4aefcb9a948a40d6da38637404, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2661941890177943917, guid: ca2c2f4aefcb9a948a40d6da38637404, type: 3}
       propertyPath: m_RootOrder

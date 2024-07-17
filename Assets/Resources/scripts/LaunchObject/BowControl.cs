@@ -40,7 +40,11 @@ public class BowControl : MonoBehaviour
             NpcCell cell = collision.gameObject.GetComponent<NpcCell>();
             if (cell != null && !cell.IsDestroyed())
             {
-                cell.NpcReduceHP(Mathf.Round(playerDamge));
+                if (cell.npcData.survival)
+                {
+                    cell.NpcReduceHP(Mathf.Round(playerDamge));
+
+                }
             }
         }
         

@@ -40,33 +40,30 @@ public class NpcManager : MonoBehaviour,IDataPersistence
             InitializeNPC(allSceneNPCData[SceneManager.GetActiveScene().buildIndex]);
         }
         yield return null;
-
+        
     }
 
 
-
+    public List<NpcCell> GetNpcCells()
+    {
+        List<NpcCell> npcCells = new List<NpcCell>();
+        foreach (var item in allNpcCell.Values)
+        {
+            npcCells.Add(item);
+        }
+        return npcCells;
+    }
 
     private void Ondead(NpcCell npcCell)
     {
         PlayerManager.instance.playerData.killEnimiesCont++;
         RemoveNpcCell(npcCell);
         timeCount.SetTime(1.5f);
-        StartCoroutine(NpcDestoryTime(npcCell));
+        RemoveNpcCell(npcCell);
+        RemoveCurrentNPCData(npcCell.name);
+        Destroy(npcCell.gameObject, 2f);
     }
-    IEnumerator NpcDestoryTime(NpcCell npcCell)
-    {
-        while (true)
-        {
-            if (timeCount.IsFinished())
-            {
-                RemoveNpcCell(npcCell);
-                RemoveCurrentNPCData(npcCell.name);
-                Destroy(npcCell.gameObject);
-                break;
-            }
-            yield return null;
-        }
-    }
+   
     private Dictionary<string,NpcCell> allNpcCell;
     public GameObject factoryNpc(string path = "npcs/enemy",Vector3 position = new Vector3())
     {
@@ -171,8 +168,11 @@ public class NpcManager : MonoBehaviour,IDataPersistence
     {
         allSceneNPCData[SceneManager.GetActiveScene().buildIndex].Remove(GetCurrentSceneNPCDataByID(id));
     }
-    public Dictionary<string,NpcCell> getAllNpcCell() { return allNpcCell; }
-
+    public Dictionary<string,NpcCell> getAllNpcCell()
+    {
+        
+        return allNpcCell; 
+    }
     public void LoadGame(GameData gameData)
     {
         for (int i = 0; i < SceneManager.sceneCount; i++)

@@ -169,7 +169,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 124.43
+      scalar: 126
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -2747,8 +2747,8 @@ ParticleSystem:
     strength:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 9.4
-      minScalar: 0.45
+      scalar: 20
+      minScalar: 10
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2904,7 +2904,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     separateAxes: 0
-    frequency: 2.7
+    frequency: 5.91
     damping: 1
     octaves: 3
     octaveMultiplier: 0.5
@@ -2913,7 +2913,7 @@ ParticleSystem:
     scrollSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -0.12
+      scalar: -0.45
       minScalar: 0
       maxCurve:
         serializedVersion: 2

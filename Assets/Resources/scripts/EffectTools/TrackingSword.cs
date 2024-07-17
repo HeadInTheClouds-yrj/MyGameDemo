@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.VFX;
-using static UnityEditor.Progress;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class TrackingSword : MonoBehaviour
@@ -76,18 +74,24 @@ public class TrackingSword : MonoBehaviour
             {
                 if (collider2d.transform.TryGetComponent(out NpcCell npc) && lastHitTime >= attackCoolingTime)
                 {
-                    npc.NpcReduceHP(10);
-                    lastHitTime = 0;
+                    if (npc.npcData.survival)
+                    {
+                        npc.NpcReduceHP(10);
+                        lastHitTime = 0;
+                    }
                 }
             }
         }
         else if (targets.Count > 0)
         {
+            float temp = 10f;
+            int flag = 0,defaultIndex;
             for (int i = 0; i < targets.Count; i++)
             {
                 if (targets[i].IsDestroyed())
                 {
                     targets.Remove(targets[i]);
+                    i--;
                 }
             }
             currentTarget = targets.OrderBy(target => (owner.position - target.position).magnitude).FirstOrDefault();
