@@ -29,6 +29,7 @@ public class GongFaManager : MonoBehaviour
         {
             if (!gongFaMap.ContainsKey(gfInfo.id))
             {
+                //需要结合saveload创建
                 gongFaMap.Add(gfInfo.id,new GongFa(gfInfo));
             }
         }

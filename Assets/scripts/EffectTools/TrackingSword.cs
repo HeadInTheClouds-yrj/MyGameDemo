@@ -85,7 +85,7 @@ public class TrackingSword : MonoBehaviour
         else if (targets.Count > 0)
         {
             float temp = 10f;
-            int flag = 0,defaultIndex;
+            int flag = 0;
             for (int i = 0; i < targets.Count; i++)
             {
                 if (targets[i].IsDestroyed())
