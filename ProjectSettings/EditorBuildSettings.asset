@@ -26,4 +26,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SpawnEnemiesSecne.unity
     guid: 1f11f6ee43d1459488cfb5eeeda27f9b
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 0654cc3594e42d147963992ba2d0ae80, type: 2}

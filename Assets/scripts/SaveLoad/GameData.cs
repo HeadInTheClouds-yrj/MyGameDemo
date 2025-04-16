@@ -6,11 +6,11 @@ using UnityEngine;
 public class GameData
 {
     public Data[] datas;
-    public SerializableDictionary<int, List<EnemyData>> enemies;
+    public SerializableDictionary<int, EnemiesDataGroup> enimies;
 
     public GameData()
     {
         datas = new Data[20];
-
+        enimies = new SerializableDictionary<int, EnemiesDataGroup>();
     }
 }

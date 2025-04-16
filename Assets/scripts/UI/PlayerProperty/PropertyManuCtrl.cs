@@ -225,6 +225,9 @@ public class PropertyManuCtrl : MonoBehaviour
     {
         for (int i = 0; i < 9; i++)
         {
+            Debug.Log(i);
+            Debug.Log(gongFaButtons[i] == null);
+            Debug.Log(gongFaButtons[i].GetComponent<InstallStaticGongFaUI>() == null); 
             gongFaButtons[i].GetComponent<InstallStaticGongFaUI>().InStaticGongFaIndex = i;
         }
     }

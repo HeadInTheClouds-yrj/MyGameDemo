@@ -22,6 +22,9 @@ scopes = {
 	"last_search.3172962C" = ""
 	"OpenInspectorPreview.3172962C" = "0"
 	"currentGroup.3172962C" = "all"
+	"last_search.3BE40471" = ""
+	"OpenInspectorPreview.3BE40471" = "0"
+	"currentGroup.3BE40471" = "scene"
 }
 providers = {
 	log = {

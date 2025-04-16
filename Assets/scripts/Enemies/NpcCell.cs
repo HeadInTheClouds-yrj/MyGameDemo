@@ -77,7 +77,7 @@ public class NpcCell : MonoBehaviour,XingHeng
         if (npcData.survival)
         {
             isHit = true;
-            npcData.curenttHealth -= velue;
+            npcData.currentHealth -= velue;
             lrX -= lrMaxX * (velue / npcData.maxHealth) * 2;
             if (lrX < -2f * relativetransformX)
             {
@@ -85,16 +85,16 @@ public class NpcCell : MonoBehaviour,XingHeng
             }
             ThrowDamageText.instance.ThrowReduceTextFactory(transform, velue);
         }
-        if (npcData.curenttHealth <= 0 && npcData.survival)
+        if (npcData.currentHealth <= 0 && npcData.survival)
         {
             npcData.survival = false;
             EventManager.Instance.enimiesEvent.EnimyDie(this);
-            npcData.curenttHealth = 0;
+            npcData.currentHealth = 0;
             moveSpeed = 0;
             npcData.moveSpeed = 0;
             isAttack = false;
         }
-        return npcData.curenttHealth;
+        return npcData.currentHealth;
     }
     public bool AlIdleMoveLogic()
     {
@@ -242,7 +242,7 @@ public class NpcCell : MonoBehaviour,XingHeng
     }
     public EnemyData GetData()
     {
-        return new EnemyData(this.name,SceneManager.GetActiveScene().buildIndex,true,npcData.currentLingQi,npcData.maxLingQi,npcData.maxHealth,npcData.curenttHealth,npcData.moveSpeed,transform.position);
+        return new EnemyData(this.name,SceneManager.GetActiveScene().buildIndex,true,npcData.currentLingQi,npcData.maxLingQi,npcData.maxHealth,npcData.currentHealth,npcData.moveSpeed,transform.position);
     }
 
     public Dictionary<string, Data> GetTeams()

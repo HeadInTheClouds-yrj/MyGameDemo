@@ -24,11 +24,14 @@ public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IS
     {
 
         this.Clear();
+        if (keys.Count != values.Count)
+        {
+            return;
+        }
         for (int i = 0; i < keys.Count; i++)
         {
             this.Add(keys[i], values[i]);
         }
-
     }
 
 }

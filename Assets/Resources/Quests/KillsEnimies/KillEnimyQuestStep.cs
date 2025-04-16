@@ -10,8 +10,10 @@ public class KillEnimyQuestStep : QuestStep
     private int KillToComplete = 3;
     private void Start()
     {
-        for (int i = 0; i < 3; i++)
+
+        for (int i = 0; i < KillToComplete - killEnimiesCount; i++)
         {
+            Debug.Log("factory start!");
             NpcManager.instance.factoryNpc();
         }
     }

@@ -60,6 +60,10 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistence?.SaveGame(gameData);
         }
+        if (fileDataHandler == null)
+        {
+            ChangeDataSourceName();
+        }
         fileDataHandler.Save(gameData);
     }
     public GameData GetGameData()

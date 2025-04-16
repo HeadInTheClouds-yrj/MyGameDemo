@@ -20,6 +20,12 @@ public class XingHengZong : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (tmpText.IsDestroyed())
+        {
+            tmpText = Instantiate(text, transform).GetComponent<TMP_Text>();
+
+            tmpText.text = "V";
+        }
         Destroy(tmpText.gameObject);
         near= false;
     }
