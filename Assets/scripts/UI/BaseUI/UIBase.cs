@@ -18,6 +18,7 @@ public class UIBase : MonoBehaviour
             {
                 if (allPanelUI[i].name.EndsWith("_N"))
                 {
+                    UIManager.instance.RegisterUI(this.name, allPanelUI[i].name, allPanelUI[i].gameObject);
                     if (!allPanelUI[i].gameObject.TryGetComponent<UIBehaviour>(out UIBehaviour ui))
                     {
                         allPanelUI[i].gameObject.AddComponent<UIBehaviour>();

@@ -5,6 +5,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using Unity.VisualScripting;
 
 public class NpcCell : MonoBehaviour,XingHeng
 {
@@ -24,14 +25,19 @@ public class NpcCell : MonoBehaviour,XingHeng
     private Vector3 checkLayervector;
     Vector3 playertemp;
     private float hittmptime = 0;
-    private float lrMaxX = 1.38f;
-    private float lrX = 1.38f;
+    private float lrMaxX = 0.68f;
+    private float lrX = 0.68f;
     private float relativetransformX = 0.69f;
     private LineRenderer lineRenderer;
     private Rigidbody2D rb2;
     [SerializeField]
     private float moveSpeed = 1f;
     private EnemyAI enemyAI;
+    private bool isActivelyDestroy = false;
+    public void SetIsActivelyDestroy(bool action)
+    {
+        isActivelyDestroy = action;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -43,17 +49,23 @@ public class NpcCell : MonoBehaviour,XingHeng
         tree = NpcManager.instance.tree;
         rb2 = GetComponent<Rigidbody2D>();
         enemyAI = GetComponent<EnemyAI>();
-        lineRenderer= GetComponent<LineRenderer>();
+        lineRenderer= GetComponentInChildren<LineRenderer>();
         npcData.survival = true;
     }
-
+    private void OnDisable()
+    {
+        if (!isActiveAndEnabled)
+        {
+            NpcManager.instance.OnSceneStartLoadUpdateNpcData(this);
+        }
+    }
     // Update is called once per frame
     public void HandleUpdate()
     {
         enemyAI.HandleUpdate();
         npcStatecontrllo();
-        lineRenderer.SetPosition(0, new Vector3(transform.position.x - relativetransformX, transform.position.y + 0.4f, 0));
-        lineRenderer.SetPosition(1, new Vector3(transform.position.x + lrX / 2, transform.position.y + 0.4f, 0));
+        lineRenderer.SetPosition(0, new Vector3(transform.position.x - lrMaxX, transform.position.y + 0.4f, 0));
+        lineRenderer.SetPosition(1, new Vector3(transform.position.x + lrX, transform.position.y + 0.4f, 0));
         //AlMeleeAttack();
         hitContrllo();
     }
@@ -78,11 +90,8 @@ public class NpcCell : MonoBehaviour,XingHeng
         {
             isHit = true;
             npcData.currentHealth -= velue;
-            lrX -= lrMaxX * (velue / npcData.maxHealth) * 2;
-            if (lrX < -2f * relativetransformX)
-            {
-                lrX = -2f * relativetransformX;
-            }
+            lrX = ((npcData.currentHealth - npcData.maxHealth / 2) / (npcData.maxHealth / 2))* lrMaxX;
+
             ThrowDamageText.instance.ThrowReduceTextFactory(transform, velue);
         }
         if (npcData.currentHealth <= 0 && npcData.survival)
@@ -201,7 +210,7 @@ public class NpcCell : MonoBehaviour,XingHeng
     }
     public void MovementInput(Vector2 playertemp)
     {
-        if (playertemp != Vector2.zero)
+        if (playertemp != Vector2.zero&&!transform.IsDestroyed())
         {
             isMoving = true;
             animator.SetBool("skelenton01_isMoving", isMoving);
@@ -238,11 +247,26 @@ public class NpcCell : MonoBehaviour,XingHeng
     public void UpdateToCell()
     {
         transform.position = npcData.currentPosition;
-        
+        lrX = ((npcData.currentHealth - npcData.maxHealth / 2) / (npcData.maxHealth / 2)) * lrMaxX;
+    }
+    public void SetNpcData(EnemyData enemyData)
+    {
+        npcData.currentHealth = enemyData.currentHealth;
+        npcData.maxHealth = enemyData.maxHealth;
+        npcData.currentPosition = enemyData.currentPosition;
+        UpdateToCell();
     }
     public EnemyData GetData()
     {
-        return new EnemyData(this.name,SceneManager.GetActiveScene().buildIndex,true,npcData.currentLingQi,npcData.maxLingQi,npcData.maxHealth,npcData.currentHealth,npcData.moveSpeed,transform.position);
+        if(npcData != null&&this != null)
+        {
+            return new EnemyData(this.name, SceneManager.GetActiveScene().buildIndex, true, npcData.currentLingQi, npcData.maxLingQi, npcData.maxHealth, npcData.currentHealth, npcData.moveSpeed, transform.position);
+        }
+        else
+        {
+            Debug.LogWarning("npcData is null!");
+            return null;
+        }
     }
 
     public Dictionary<string, Data> GetTeams()

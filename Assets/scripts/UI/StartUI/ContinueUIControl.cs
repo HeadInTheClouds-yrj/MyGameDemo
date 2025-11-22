@@ -23,6 +23,19 @@ public class ContinueUIControl : UIBase
             }
         }
     }
+    public void OpenLoadPanel()
+    {
+        GameObject loadGameUI =  UIManager.instance.GetUI("LoadPanel", "Load_N");
+        GameObject playerIcon = UIManager.instance.GetUI("IconPanel_N", "IconPanel_N");
+        GameObject settingIcon = UIManager.instance.GetUI("OpenOptionsManu_N", "OpenOptionsManu_N");
+        GameObject mainCanvas = GameObject.FindGameObjectWithTag("MainCanvas");
+        mainCanvas.GetComponent<Canvas>().sortingOrder = 100;
+        loadGameUI.SetActive(true);
+        loadGameUI.GetComponent<InGameLoadUIControl>().LoadDirTextChange();
+        playerIcon.SetActive(false);
+        settingIcon.SetActive(false);
+
+    }
     // Start is called before the first frame update
     void Start()
     {

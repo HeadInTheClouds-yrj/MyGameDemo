@@ -39,7 +39,7 @@ public class Data
         id = "";
         name = "";
         lingShi = 0;
-        maxAge = 100;
+        maxAge = 200;
         currentAge = 18;
         scenceIndex = 1;
         survival = true;

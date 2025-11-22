@@ -133,12 +133,11 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
     }
     public void updateUI()
     {
-        lrX = (playerData.currentLingQi / playerData.maxLingQi) * lrMaxX;
-
-        lineRenderer.SetPosition(0, new Vector3(transform.position.x - relativetransformX, transform.position.y + 0.8f, 0));
-        lineRenderer.SetPosition(1, new Vector3(transform.position.x + lrX / 2, transform.position.y + 0.8f, 0));
-        blackDonateWidth.x = currentHearth * 0.001f;
-        blackDonateScal.x = rectangleMaxLength / (blackDonateWidth.x * 100);
+        lrX = (playerData.curenttHealth - playerData.maxHealth / 2) / (playerData.maxHealth / 2);
+        lineRenderer.SetPosition(0, new Vector3(transform.position.x -1, transform.position.y + 0.8f, 0));
+        lineRenderer.SetPosition(1, new Vector3(transform.position.x + lrX, transform.position.y + 0.8f, 0));
+        blackDonateWidth.x = (int)(playerData.maxHealth / 50 )*0.1f-0.1f;
+        blackDonateScal.x = 5f/(blackDonateWidth.x *10+1);
 
 
         blackDonateScalTransform.localScale = blackDonateScal;
@@ -445,7 +444,6 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
         gameData.datas[0].maxAge = playerData.maxAge;
         gameData.datas[0].currentAge = playerData.currentAge;
         gameData.datas[0].scenceIndex = SceneManager.GetActiveScene().buildIndex;
-        Debug.Log("CurrentScenceIndex:\n"+gameData.datas[0].scenceIndex);
         gameData.datas[0].survival = playerData.survival;
         gameData.datas[0].maxLingQi = playerData.maxLingQi;
         gameData.datas[0].currentLingQi = playerData.currentLingQi;

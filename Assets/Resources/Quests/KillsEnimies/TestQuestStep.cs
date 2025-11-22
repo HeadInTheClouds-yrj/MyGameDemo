@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TestQuestStep : QuestStep
 {
-    protected override void SetStepState(string newState)
+    protected override void SetStepState(string newState, bool boolState)
     {
         isSpawn = newState;
     }
@@ -35,7 +35,7 @@ public class TestQuestStep : QuestStep
         {
             Spawn();
             isSpawn = "1";
-            ChangeStepState(isSpawn);
+            ChangeStepState(isSpawn,false);
         }
 
     }
@@ -49,7 +49,7 @@ public class TestQuestStep : QuestStep
         for (int i = 0; i < 3; i++)
         {
 
-                NpcManager.instance.factoryNpc("npcs/enemy", vector3s[i]);
+                //NpcManager.instance.FactoryNpc("npcs/enemy",null, vector3s[i]);
 
 
         }

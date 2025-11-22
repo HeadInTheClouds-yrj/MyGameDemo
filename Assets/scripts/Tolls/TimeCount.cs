@@ -8,10 +8,24 @@ public class TimeCount : MonoBehaviour
     public void SetTime(float time)
     {
         this.time = time;
+        StartCoroutine(CountTime());
+    }
+    private IEnumerator CountTime()
+    {
+        while (true)
+        {
+            time -= Time.deltaTime;
+            yield return null;
+            if (time < 0)
+            {
+                break;
+            }
+        }
+
     }
     private void Update()
     {
-        time -= Time.deltaTime;
+        
     }
     public bool IsFinished()
     {

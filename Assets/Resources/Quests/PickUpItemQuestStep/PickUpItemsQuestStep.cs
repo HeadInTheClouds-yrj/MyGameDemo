@@ -6,7 +6,7 @@ using UnityEngine;
 public class PickUpItemsQuestStep : QuestStep
 {
     private int pickUpItem = 0;
-    protected override void SetStepState(string newState)
+    protected override void SetStepState(string newState,bool boolState)    
     {
         pickUpItem = System.Int32.Parse(newState);
     }
@@ -18,7 +18,7 @@ public class PickUpItemsQuestStep : QuestStep
     private void PickUpItemCount()
     {
         pickUpItem++;
-        ChangeStepState(pickUpItem.ToString());
+        ChangeStepState(pickUpItem.ToString(),false);
         if (pickUpItem >=2)
         {
             FinishQuestStep();

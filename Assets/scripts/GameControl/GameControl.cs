@@ -1,6 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public enum GameState
 {
     Freedom,
@@ -17,6 +21,19 @@ public class GameControl : MonoBehaviour
     {
         PlayerContrllo = PlayerManager.instance.GetComponent<PlayerContrllo>();
     }
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoadUptateNpcData;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoadUptateNpcData;
+    }
+    private void OnSceneLoadUptateNpcData(Scene arg0, LoadSceneMode arg1)
+    {
+        allNpcCell = NpcManager.instance.getAllNpcCell();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,7 +77,10 @@ public class GameControl : MonoBehaviour
             PlayerManager.instance.HandleUpdate();
             foreach (NpcCell npcCell in allNpcCell.Values)
             {
-                npcCell.HandleUpdate();
+                if (npcCell!=null)
+                {
+                    npcCell.HandleUpdate();
+                }
             }
             EventManager.Instance.gameStateEvent.ChangeGameState(State.BATTLE);
         }

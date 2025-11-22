@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,10 +25,8 @@ public class NpcManager : MonoBehaviour,IDataPersistence
         EventManager.Instance.enimiesEvent.OnEnimyDie += Ondead;
         SceneManager.sceneLoaded += UpdateNPCList;
     }
-
     private void UpdateNPCList(Scene arg0, LoadSceneMode arg1)
     {
-        allNpcCell.Clear();
         StartCoroutine(UpdateNPCDatas());
     }
 
@@ -35,15 +34,46 @@ public class NpcManager : MonoBehaviour,IDataPersistence
 
     IEnumerator UpdateNPCDatas()
     {
+        while (true)
+        {
+            if (DataPersistenceManager.instance.GetIsSceneChanged())
+            {
+                break;
+            }
+            yield return null;
+        }
+        yield return null;
         if (allSceneNPCData.ContainsKey(SceneManager.GetActiveScene().buildIndex))
         {
             InitializeNPC(allSceneNPCData[SceneManager.GetActiveScene().buildIndex]);
         }
-        yield return null;
+        UpdateCurrentScenceNPCData();
         
     }
-
-
+    private void UpdateCurrentScenceNPCData()
+    {
+        if (allSceneNPCData.ContainsKey(SceneManager.GetActiveScene().buildIndex))
+        {
+            allSceneNPCData[SceneManager.GetActiveScene().buildIndex].Clear();
+            foreach (NpcCell npcCell in allNpcCell.Values)
+            {
+                allSceneNPCData[SceneManager.GetActiveScene().buildIndex].Add(npcCell.GetData());
+            }
+        }
+    }
+    public void OnSceneStartLoadUpdateNpcData(NpcCell npcCell)
+    {
+        if (allSceneNPCData.ContainsKey(SceneManager.GetActiveScene().buildIndex))
+        {
+            for (int i = 0; i < allSceneNPCData[SceneManager.GetActiveScene().buildIndex].Count; i++)
+            {
+                if (allSceneNPCData[SceneManager.GetActiveScene().buildIndex][i].id == npcCell.name)
+                {
+                    allSceneNPCData[SceneManager.GetActiveScene().buildIndex][i] = npcCell.GetData();
+                }
+            }
+        }
+    }
     public List<NpcCell> GetNpcCells()
     {
         List<NpcCell> npcCells = new List<NpcCell>();
@@ -54,21 +84,25 @@ public class NpcManager : MonoBehaviour,IDataPersistence
         return npcCells;
     }
 
+    [Obsolete]
     private void Ondead(NpcCell npcCell)
     {
         PlayerManager.instance.playerData.killEnimiesCont++;
-        RemoveNpcCell(npcCell);
-        timeCount.SetTime(1.5f);
+        npcCell.transform.gameObject.active = false;
+        Debug.Log("dead?");
         RemoveNpcCell(npcCell);
         RemoveCurrentNPCData(npcCell.name);
         Destroy(npcCell.gameObject, 2f);
     }
-   
+   /// <summary>
+   /// 当前场景存在的npc容器
+   /// </summary>
     private Dictionary<string,NpcCell> allNpcCell;
-    public GameObject factoryNpc(string path = "npcs/enemy",Vector3 position = new Vector3())
+    public GameObject FactoryNpc(string path = "npcs/enemy",Transform parent = null,Vector3 position = new Vector3())
     {
         GameObject tempObj = (GameObject)Resources.Load(path);
         GameObject NPC = GameObject.Instantiate(tempObj);
+        NPC.transform.parent = parent;
         string npcname = NPC.name;
         string[] strnaem = npcname.Split("(");
         NPC.name = strnaem[0]+"_"+nameFanolyId++;
@@ -78,7 +112,22 @@ public class NpcManager : MonoBehaviour,IDataPersistence
     }
     private void InitializeNPC(List<EnemyData> datas)
     {
-        Debug.Log("初始化");
+        foreach (NpcCell item in allNpcCell.Values)
+        {
+            Destroy(item);
+        }
+        allNpcCell.Clear();
+        for (int i = 0; i < datas.Count; i++)
+        {                                                                                                 
+            if (!allNpcCell.ContainsKey(datas[i].id))
+            {
+                FactoryNpc().GetComponent<NpcCell>().SetNpcData(datas[i]);
+            }
+            else
+            {
+                allNpcCell[datas[i].id].SetNpcData(datas[i]);
+            }
+        }
     }
     private EnemyData GetCurrentSceneNPCDataByID(string id)
     {
@@ -90,6 +139,18 @@ public class NpcManager : MonoBehaviour,IDataPersistence
             }
         }
         return null;
+    }
+    private void UpdateCurrentScenceToAllScenceNpcData(NpcCell npcCell)
+    {
+        if (allSceneNPCData.ContainsKey(SceneManager.GetActiveScene().buildIndex))
+        {
+            allSceneNPCData[SceneManager.GetActiveScene().buildIndex].Add(npcCell.GetData());
+        }
+        else
+        {
+            allSceneNPCData.Add(SceneManager.GetActiveScene().buildIndex, new List<EnemyData>());
+            allSceneNPCData[SceneManager.GetActiveScene().buildIndex].Add(npcCell.GetData());
+        }
     }
     public void registeToManager(string npcName,NpcCell npcCell)
     {
@@ -104,16 +165,8 @@ public class NpcManager : MonoBehaviour,IDataPersistence
         if (!CurrentSceneIsExistEnemyData(npcName))
         {
             Debug.Log("registe");
-            if (allSceneNPCData.ContainsKey(SceneManager.GetActiveScene().buildIndex))
-            {
-                allSceneNPCData[SceneManager.GetActiveScene().buildIndex].Add(npcCell.GetData());
-            }
-            else
-            {
-                allSceneNPCData.Add(SceneManager.GetActiveScene().buildIndex, new List<EnemyData>());
-                allSceneNPCData[SceneManager.GetActiveScene().buildIndex].Add(npcCell.GetData());
-            }
-            
+            Debug.Log((npcCell == null)+"====npcCell");
+            UpdateCurrentScenceToAllScenceNpcData(npcCell);
         }
 
     }
@@ -124,7 +177,6 @@ public class NpcManager : MonoBehaviour,IDataPersistence
         {
             foreach (EnemyData item in allSceneNPCData[SceneManager.GetActiveScene().buildIndex])
             {
-                Debug.Log(item.id + "===" + npcName);
                 if (item.id.Equals(npcName))
                 {
                     flag = true;
@@ -158,18 +210,23 @@ public class NpcManager : MonoBehaviour,IDataPersistence
     }
     public void LoadGame(GameData gameData)
     {
+        int k = 0;
         for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
         {
             if (gameData.enimies.ContainsKey(i))
             {
-                if (allSceneNPCData[i] != null)
+                k = i;
+                if (allSceneNPCData.ContainsKey(i))
                 {
-                    allSceneNPCData[i].Clear();
+                    allSceneNPCData[i] = gameData.enimies[i].GetScenceEnemiesGroup();
                 }
-                allSceneNPCData.Add(i,gameData.enimies[i].GetScenceEnemiesGroup());
+                else
+                {
+                    allSceneNPCData.Add(i, gameData.enimies[i].GetScenceEnemiesGroup());
+                }
+                
             }
         }
-        Debug.Log("load");
     }
 
     public void SaveGame(GameData gameData)
@@ -178,6 +235,7 @@ public class NpcManager : MonoBehaviour,IDataPersistence
         {
             cell.UpdateData();
         }
+        UpdateCurrentScenceNPCData();
         for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
         {
             Debug.Log(SceneManager.sceneCountInBuildSettings);
@@ -186,12 +244,8 @@ public class NpcManager : MonoBehaviour,IDataPersistence
                 if (!gameData.enimies.ContainsKey(i))
                 {
                     gameData.enimies.Add(i, new EnemiesDataGroup());
-                    gameData.enimies[i].ImportEnemyDataByObject(allSceneNPCData[i]);
                 }
-                else
-                {
-                    gameData.enimies[i].ImportEnemyDataByObject(allSceneNPCData[i]);
-                }
+                gameData.enimies[i].ImportEnemyDataByObject(allSceneNPCData[i]);
                 //else
                 //{
                 //    gameData.enimies[i] = allSceneNPCData[i][j].id;

@@ -15,6 +15,8 @@ public class DataPersistenceManager : MonoBehaviour
     public static DataPersistenceManager instance { get; private set; }
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceList;
+    private bool isChangedScene = false;
+    [SerializeField] private TimeCount timeCount;
     private void Awake()
     {
         if (instance == null)
@@ -46,8 +48,15 @@ public class DataPersistenceManager : MonoBehaviour
     }
     public IEnumerator LoadGameData()
     {
+        while (true)
+        {
+            if (isChangedScene)
+            {
+                break;
+            }
+            yield return null;
+        }
         LoadGame();
-        yield return null;
     }
     public void SaveGame()
     {
@@ -111,6 +120,15 @@ public class DataPersistenceManager : MonoBehaviour
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         this.dataPersistenceList = FindAllDataPersistenceObjects();
+        isChangedScene = true;
         //LoadGame();
+    }
+    public void SetIsSceneChanged()
+    {
+        isChangedScene = false;
+    }
+    public bool GetIsSceneChanged()
+    {
+        return isChangedScene;
     }
 }

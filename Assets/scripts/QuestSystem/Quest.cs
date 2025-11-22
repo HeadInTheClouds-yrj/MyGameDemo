@@ -36,7 +36,7 @@ public class Quest
         if (questStepPrefab != null)
         {
             QuestStep questStep = Object.Instantiate<GameObject>(questStepPrefab, parent).GetComponent<QuestStep>();
-            questStep.InitializeQuestStep(info.id, currentQuestStepIndex, stepStates[currentQuestStepIndex].stepState);
+            questStep.InitializeQuestStep(info.id, currentQuestStepIndex, stepStates[currentQuestStepIndex].stepState, stepStates[currentQuestStepIndex].stepStateBool);
             EventManager.Instance.questEvent.QuestStateChange(this);
         }
     }
@@ -58,6 +58,7 @@ public class Quest
         if (stepIndex<stepStates.Length)
         {
             stepStates[stepIndex].stepState = questStepState.stepState;
+            stepStates[stepIndex].stepStateBool = questStepState.stepStateBool;
         }
         else
         {

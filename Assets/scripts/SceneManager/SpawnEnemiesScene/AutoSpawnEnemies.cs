@@ -18,7 +18,7 @@ public class AutoSpawnEnemies : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-            NpcManager.instance.factoryNpc();
+            //NpcManager.instance.FactoryNpc();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

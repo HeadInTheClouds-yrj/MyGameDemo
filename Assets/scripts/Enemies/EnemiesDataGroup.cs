@@ -69,14 +69,27 @@ public class EnemiesDataGroup
         foreach (EnemyData enemyData in enemyDatas)
         {
             currentNPCBelongScenceIndex = enemyData.scenceIndex;
-            ids.Add(enemyData.id);
-            isSurvivals.Add(enemyData.id,enemyData.survival);
-            maxLingQis.Add(enemyData.id, enemyData.maxLingQi);
-            maxHealths.Add(enemyData.id, enemyData.maxHealth);
-            currentLingQis.Add(enemyData.id, enemyData.currentLingQi);
-            currentHealths.Add(enemyData.id, enemyData.currentHealth);
-            moveSpeeds.Add(enemyData.id, enemyData.moveSpeed);
-            currentPositions.Add(enemyData.id, enemyData.currentPosition);
+            if (!ids.Contains(enemyData.id))
+            {
+                ids.Add(enemyData.id);
+                isSurvivals.Add(enemyData.id, enemyData.survival);
+                maxLingQis.Add(enemyData.id, enemyData.maxLingQi);
+                maxHealths.Add(enemyData.id, enemyData.maxHealth);
+                currentLingQis.Add(enemyData.id, enemyData.currentLingQi);
+                currentHealths.Add(enemyData.id, enemyData.currentHealth);
+                moveSpeeds.Add(enemyData.id, enemyData.moveSpeed);
+                currentPositions.Add(enemyData.id, enemyData.currentPosition);
+            }
+            else
+            {
+                isSurvivals[enemyData.id]= enemyData.survival;
+                maxLingQis[enemyData.id]= enemyData.maxLingQi;
+                maxHealths[enemyData.id] = enemyData.maxHealth;
+                currentLingQis[enemyData.id] = enemyData.currentLingQi;
+                currentHealths[enemyData.id] = enemyData.currentHealth;
+                moveSpeeds[enemyData.id] = enemyData.moveSpeed;
+                currentPositions[enemyData.id] = enemyData.currentPosition;
+            }
         }
     }
     public List<EnemyData> GetScenceEnemiesGroup()

@@ -8,13 +8,13 @@ public abstract class QuestStep : MonoBehaviour
     private string questId;
     private int questStepIndex;
     private string questStepState;
-    public void InitializeQuestStep(string questId,int questStepIndex,string questStepState)
+    public void InitializeQuestStep(string questId,int questStepIndex,string questStepState,bool questStepBoolState)
     {
         this.questId = questId;
         this.questStepIndex = questStepIndex;
         if (questStepState != null && questStepState != "")
         {
-            SetStepState(questStepState);
+            SetStepState(questStepState, questStepBoolState);
         }
     }
     public void FinishQuestStep()
@@ -34,9 +34,9 @@ public abstract class QuestStep : MonoBehaviour
     {
         return questStepIndex;
     }
-    public void ChangeStepState(string newState)
+    public void ChangeStepState(string newState,bool boolState)
     {
-        EventManager.Instance.questEvent.QuestStepStateChange(questId,questStepIndex,new QuestStepState(newState));
+        EventManager.Instance.questEvent.QuestStepStateChange(questId,questStepIndex,new QuestStepState(newState, boolState));
     }
-    protected abstract void SetStepState(string newState);
+    protected abstract void SetStepState(string newState,bool boolState);
 }

@@ -69,8 +69,15 @@ public class EnemyAI : MonoBehaviour
             //Target acquisition logic
             aiData.currentTarget = aiData.targets[0];
         }
+        if (cell != null)
+        {
+            cell.MovementInput(movementInput);
+        }
+        else
+        {
+            Debug.LogWarning("npc si destroy!");
+        }
         //Moving the Agent
-        cell.MovementInput(movementInput);
         //rb2.velocity = movementInput * speed * Time.deltaTime;
     }
 

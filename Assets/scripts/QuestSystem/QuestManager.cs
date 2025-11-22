@@ -73,6 +73,7 @@ public class QuestManager : MonoBehaviour,IDataPersistence
         if (quest != null)
         {
             quest.state = questState;
+            //just change quest icon UI state
             EventManager.Instance.questEvent.QuestStateChange(quest);
         }
     }
