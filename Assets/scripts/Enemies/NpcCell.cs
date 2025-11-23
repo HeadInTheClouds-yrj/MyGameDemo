@@ -251,9 +251,16 @@ public class NpcCell : MonoBehaviour,XingHeng
     }
     public void SetNpcData(EnemyData enemyData)
     {
-        npcData.currentHealth = enemyData.currentHealth;
-        npcData.maxHealth = enemyData.maxHealth;
-        npcData.currentPosition = enemyData.currentPosition;
+        if (npcData != null)
+        {
+            npcData.currentHealth = enemyData.currentHealth;
+            npcData.maxHealth = enemyData.maxHealth;
+            npcData.currentPosition = enemyData.currentPosition;
+        }
+        else
+        {
+            npcData = enemyData;
+        }
         UpdateToCell();
     }
     public EnemyData GetData()

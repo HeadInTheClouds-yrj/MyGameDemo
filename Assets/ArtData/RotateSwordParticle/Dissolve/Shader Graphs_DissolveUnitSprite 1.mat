@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_DissolveUnitSprite
+  m_Name: Shader Graphs_DissolveUnitSprite 1
   m_Shader: {fileID: -6465566751694194690, guid: 04376c28f076ce84d83eb73be44fbde7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -45,7 +45,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 294.0667, g: 0, b: 113.5175, a: 1}
+    - _Color: {r: 392.60214, g: 392.60214, b: 392.60214, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &7916890556554670758
 MonoBehaviour:

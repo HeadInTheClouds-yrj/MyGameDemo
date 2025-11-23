@@ -26,6 +26,7 @@ public class SkiilManager : MonoBehaviour,IDataPersistence
     private KeyCode[] skillKeycode = new KeyCode[]{ KeyCode.Q, KeyCode.E, KeyCode.R, KeyCode.T, KeyCode.F,KeyCode.Mouse0,KeyCode.Mouse1,KeyCode.Mouse2,KeyCode.Alpha1, KeyCode.Alpha2 };
     private List<Action> staticSkillGradeAction;
     private List<GameObject> releaseFlySwordSkillData = new List<GameObject>();
+    private List<TrackingSword> flySwordPool = new List<TrackingSword>();
     private void Awake()
     {
         if (Instance == null)
@@ -99,6 +100,15 @@ public class SkiilManager : MonoBehaviour,IDataPersistence
             skillKeycode[i] = (KeyCode)PlayerManager.instance.playerData.skillKey[i];
         }
         UpdateSkillKeyBind(skillKeycode);
+        for (int i = 0; i < 20; i++)
+        {
+            flySwordPool.Add(Instantiate(GetSkillInfoSOById(FLY_SWORD).skillEffectPrefab, new Vector3(0, 0, 0), new Quaternion()).GetComponent<TrackingSword>());
+        }
+        foreach (var item in flySwordPool)
+        {
+            item.transform.parent = this.transform;
+            item.gameObject.SetActive(false);
+        }
     }
     private Dictionary<SkillInfoSO,Action> InitAllSkillAction()
     {
@@ -139,15 +149,41 @@ public class SkiilManager : MonoBehaviour,IDataPersistence
             staticSkillGradeAction[gradeIndex] -= GetRealesAction(info);
         }
     }
+    private bool flag = true;
     /// <summary>
     /// this is release flysword skill（释放飞剑法宝） action
     /// </summary>
+    [Obsolete]
     private void ReleaseSkill_FlySword()
     {
-        for (int i = 0; i < 5; i++)
+        if (flag)
         {
-            releaseFlySwordSkillData.Add(Instantiate(GetSkillInfoSOById(FLY_SWORD).skillEffectPrefab, PlayerManager.instance.transform.position, new Quaternion()));
+            int x = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int k = 0; k < 4; k++)
+                {
+                    
+                    flySwordPool[x].SetLaunchSword(PlayerManager.instance.transform, PlayerManager.instance.GetEnemies(), new Vector3(PlayerManager.instance.transform
+                        .position.x + UnityEngine.Random.RandomRange(-2f, 2f), PlayerManager.instance.transform.position.y
+                         + UnityEngine.Random.RandomRange(-2f, 2f), PlayerManager.instance.transform.position.z), i);
+                    flySwordPool[x].transform.parent = null;
+                    flySwordPool[x].LaunchStep();
+                    x++;
+                }
+            }
+            StartCoroutine(TimeCount(5f, flag));
         }
+    }
+    private IEnumerator TimeCount(float time,bool flag)
+    {
+        this.flag =flag = false;
+        while (time < 0)
+        {
+            time -= Time.deltaTime;
+            yield return null;
+        }
+        this.flag=flag = true;
     }
     /// <summary>
     /// 全局闪电攻击技能未实现，未实现

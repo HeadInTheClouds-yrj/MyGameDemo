@@ -59,7 +59,7 @@ public class PlayerManager : MonoBehaviour,IDataPersistence,Humanoid
         {
             if (playerIcon == null)
             {
-                playerIcon = Resources.Load<Sprite>("ArtData/Art/CharacterAvatar/Beastmaster");
+                playerIcon = Resources.Load<Sprite>("Beastmaster");
                 return playerIcon;
             }
             else

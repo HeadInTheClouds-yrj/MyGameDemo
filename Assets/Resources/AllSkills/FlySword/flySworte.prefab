@@ -128,14 +128,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9ad1724aef26d468e537c116eccd55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCoolingTime: 0
+  attackInterval: 2
   flySpeed: 9.06
   rotateSpeed: 171.5
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 1024
   effect: {fileID: 3413404567072219693}
-  material: {fileID: 2100000, guid: 87f24bd1706ef5b42ba821aa5464d835, type: 2}
+  material:
+  - {fileID: 2100000, guid: 87f24bd1706ef5b42ba821aa5464d835, type: 2}
+  - {fileID: 2100000, guid: dc9732dfa3d169440b0775dac95c1c37, type: 2}
+  - {fileID: 2100000, guid: 4cd4377f7b69fe04c99723b626ed571a, type: 2}
+  - {fileID: 2100000, guid: 4df260ffcd47ee74f9493c04bbd7fd3c, type: 2}
+  - {fileID: 2100000, guid: 1bcfc1054adc7dd49b6d588fc61adfff, type: 2}
+  spriteRenderer: {fileID: 4787938495283215409}
 --- !u!96 &1970677321994124817
 TrailRenderer:
   serializedVersion: 3
@@ -209,17 +215,17 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 1, g: 0.98572457, b: 0, a: 1}
+      key0: {r: 0, g: 1, b: 0.52612114, a: 0.5176471}
+      key1: {r: 0.5886836, g: 1, b: 0, a: 1}
+      key2: {r: 1, g: 0, b: 0.52317095, a: 1}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 56090
+      ctime0: 13356
+      ctime1: 36815
+      ctime2: 51272
       ctime3: 0
       ctime4: 0
       ctime5: 0
@@ -234,8 +240,8 @@ TrailRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 1
-      m_ColorSpace: -1
-      m_NumColorKeys: 2
+      m_ColorSpace: 0
+      m_NumColorKeys: 3
       m_NumAlphaKeys: 3
     numCornerVertices: 0
     numCapVertices: 0
@@ -267,7 +273,7 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 0.034
+      - m_Value: 0
         m_Name: ParticleRotateRadius
         m_Overridden: 1
     m_Vector2f:
@@ -291,16 +297,16 @@ VisualEffect:
       m_Array:
       - m_Value:
           serializedVersion: 2
-          key0: {r: 1, g: 0, b: 0.05751419, a: 0}
-          key1: {r: 0.9056604, g: 0, b: 0.042990487, a: 1}
-          key2: {r: 0.745283, g: 0.010546438, b: 0.010546438, a: 0.7254902}
+          key0: {r: 1, g: 1, b: 1, a: 1}
+          key1: {r: 1, g: 1, b: 1, a: 1}
+          key2: {r: 0.745283, g: 0.010546438, b: 0.010546438, a: 1}
           key3: {r: 0, g: 0, b: 0, a: 0.32156864}
           key4: {r: 0.03773582, g: 0, b: 0, a: 1}
           key5: {r: 0, g: 0, b: 0, a: 0.5946015}
           key6: {r: 0, g: 0, b: 0, a: 0}
           key7: {r: 0, g: 0, b: 0, a: 0}
           ctime0: 0
-          ctime1: 13685
+          ctime1: 65535
           ctime2: 23901
           ctime3: 33539
           ctime4: 50886
@@ -308,17 +314,17 @@ VisualEffect:
           ctime6: 0
           ctime7: 0
           atime0: 0
-          atime1: 13878
-          atime2: 23708
+          atime1: 31611
+          atime2: 65535
           atime3: 33539
           atime4: 44140
           atime5: 65535
           atime6: 65535
           atime7: 0
-          m_Mode: 0
+          m_Mode: 1
           m_ColorSpace: 1
-          m_NumColorKeys: 6
-          m_NumAlphaKeys: 6
+          m_NumColorKeys: 2
+          m_NumAlphaKeys: 3
         m_Name: GradientTrailColor
         m_Overridden: 1
       - m_Value:
